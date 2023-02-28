@@ -41,7 +41,6 @@ GPS
 #include "modulos/admins/admincmds.pwn"
 
 main() {
-	print("Bom dia");
 	return 1;
  }
 public OnGameModeInit()
