@@ -1,8 +1,8 @@
 
-#include <YSI_Coding/y_hooks>
-
-
-stock GPS:iconsInit(playerid) {
+stock GPS:CreateGPSIcons(playerid) {
+	/*
+			Pegado de uma gamemode da internet
+												*/
     SetPlayerMapIcon(playerid, 1, -1716.7061,1444.3845,0.9405, 9, 0xE6E6E6E6);//aluguel de barcos
 	SetPlayerMapIcon(playerid, 2, 2802.2051,-1180.1276,25.5363, 60, 0xE6E6E6E6);//vagos
 	SetPlayerMapIcon(playerid, 3, 2516.1411,-1675.4065,13.9113, 62, 0xE6E6E6E6);//groove
