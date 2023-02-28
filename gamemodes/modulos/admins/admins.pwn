@@ -9,13 +9,18 @@
                         */
 enum ADMININFO {
     Int:ADMININFO_LEVEL,
+    Int:ADMININFO_AUTH,
     String:ADMININFO_ROLE[64],
     Int:ADMININFO_WORKING
 }
 new gAdmins[MAX_PLAYERS][ADMININFO];
+/*
+    Includes de admin
+                        */
+#include "modulos/admins/adminauth.pwn"
 
 /*
-        Inclui os comandos de Admin
+        Comandos de Admin
                                     */
 
 #include "modulos/admins/cmds/aa.pwn"
@@ -58,6 +63,7 @@ public Login:FinishAdminCheck(const username[]) {
                 cache_get_value_index_int(0,1,gAdmins[i][ADMININFO_LEVEL]);
                 cache_get_value_index(0,2,gAdmins[i][ADMININFO_ROLE],64);
                 SendClientMessage(i,COLOR_AQUA,"Entraste no servidor como administrador");
+                PrepareAdminAuth(GetPlayerIdFromName(username));
             }
         }
     }
