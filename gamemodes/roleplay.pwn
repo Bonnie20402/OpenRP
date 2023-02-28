@@ -6,13 +6,13 @@
 #include <a_mysql>
 #include <sscanf2>
 #include <bcrypt>
-#include "modulos/colors.inc"
+#include "modulos/colors.inc" 
 #include "modulos/util/uteis.pwn"
 
 /*
 	VARIAVEIS GLOBAIS
 */
-new MySQL:mysql;
+new MySQL:mysql; 
 
 /*gi
 	LOGIN
