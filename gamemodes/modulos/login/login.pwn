@@ -1,7 +1,5 @@
 
 #include <YSI_Coding/y_hooks>
-#include <YSI_Server/y_colours>
-#include <bcrypt>
 
 #define MAX_PASSWORD_LENGTH 64
 

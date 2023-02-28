@@ -1,10 +1,11 @@
 // This is a comment
 // uncomment the line below if you want to write a filterscript
 //#define FILTERSCRIPT
-
+#define AMX_OLD_CALL
 #include <a_samp>
 #include <a_mysql>
 #include <sscanf2>
+#include <bcrypt>
 #include "modulos/colors.inc"
 #include "modulos/util/uteis.pwn"
 
@@ -12,10 +13,6 @@
 	VARIAVEIS GLOBAIS
 */
 new MySQL:mysql;
-/*
-	HEADERS
-*/
-#include "modulos/login/headers/login.inc"
 
 /*gi
 	LOGIN
@@ -30,7 +27,7 @@ new MySQL:mysql;
 /*
 GPS
 */
-#include "modulos/gps/gpsMain.pwn"
+#include "modulos/gps/gps.pwn"
 #include "modulos/gps/gpsIcons.pwn"
 
 

@@ -1,14 +1,14 @@
 {
 	"user": "bonnie20402",
-	"repo": "Bonnie20402\\OpenRP",
+	"repo": "openrp",
 	"entry": "gamemodes\\roleplay.pwn",
 	"output": "gamemodes/gamemodes\\roleplay.amx",
 	"dependencies": [
 		"pawn-lang/samp-stdlib",
-		"pawn-lang/YSI-Includes:v5.06.1932",
+		"pawn-lang/YSI-Includes/:v5.06.1932",
 		"pBlueG/SA-MP-MySQL:R41",
-		"LassiR/bcrypt-samp:v2.2.3",
-		"Y-Less/sscanf/:v2.13.8"
+		"Y-Less/sscanf:v2.13.8",
+		"LassiR/bcrypt-samp"
 	],
 	"local": true,
 	"runtime": {
