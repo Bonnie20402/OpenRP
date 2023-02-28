@@ -147,7 +147,7 @@ public Login:FinishAccountCheck(playerid) {
         return 1;
     }
     format(RegisterTitulo,64,"Criação de conta");
-    format(RegisterMsg,256,"Parece que não és registrado no servidor\nInsere a tua senha em baixo!");
+    format(RegisterMsg,256,"Parece que não és registrado!\nInsere a tua senha em baixo!");
     ShowPlayerDialog(playerid,LOGINDIALOG_REGISTER,DIALOG_STYLE_PASSWORD,RegisterTitulo,RegisterMsg,"Registrar","");
 
 }
@@ -158,15 +158,16 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         PrepareRegister(playerid,GetPlayerNameEx(playerid),inputtext);
     }
     if(dialogid==LOGINDIALOG_LOGIN) {
-        printf("Login para %d ID %d",playerid,LOGINDIALOG_LOGIN);
         PrepareLogin(playerid,inputtext);
     }
 }
 
-/*
-    Restrições
-    Ao jogador antes de estar com sessão iniciada
 
+
+/*
+    Restriçõesgi
+    Ao jogador antes de estar com sessão iniciada
+    
 */
 
 hook OnPlayerText(playerid,text[]) {

@@ -83,7 +83,6 @@ public Admin:FinishCreateAdmin(playerid,Int:level,const role[]) {
 forward Admin:PreparteDeleteAdmin(playerid,const username[]);
 public Admin:PrepareDeleteAdmin(playerid,const username[]) {
     new query[255];
-    SendClientMessage(playerid,COLOR_AQUA,"Está quase...");
     mysql_format(mysql,query,255,"DELETE FROM admins WHERE username = '%s'",username);
     mysql_pquery(mysql,query,"FinishDeleteAdmin","is",playerid,username);
     return 1;
@@ -126,7 +125,7 @@ forward Getter:GetStaffRole(playerid);
 public Getter:GetStaffRole(playerid) {
     if(IsPlayerLoggedIn(playerid)) return gAdmins[playerid][ADMININFO_ROLE];
     return 0;
-    
+
 }
 
 forward Getter:IsStaffWorking(playerid);

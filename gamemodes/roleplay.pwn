@@ -17,10 +17,9 @@ new MySQL:mysql;
 */
 #include "modulos/login/headers/login.inc"
 
-/*
+/*gi
 	LOGIN
 	*/
-#include "modulos/login/headers/login.inc"
 #include "modulos/login/login.pwn"
 
 /*
@@ -51,7 +50,7 @@ public OnGameModeInit()
 	SendRconCommand("maxplayers 100");
 	SendRconCommand("language PT");
 	SendRconCommand("mode RPG");
-	print("Gamemode iniciada");
+	print("A gamemode está a iniciar");
 	dbInit();
 	return 1;
 }
@@ -66,8 +65,9 @@ public dbInit() {
 	mysql=mysql_connect("localhost","root","","openrp",option_id);
 	if(mysql_errno(mysql)) {
 		print("[LOGIN] Erro ao ligar á db!");
+		SendRconCommand("stop");
 	}
-	else print("Ligado á DB - Tabela: openrp");
+	else print("Ligado á DB - Tabela: OpenRP");
 	    	/*
 		CRIAÇÃO DE TABELAS
 						*/
@@ -129,11 +129,6 @@ public OnPlayerText(playerid, text[])
 
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-	if (strcmp("/mycommand", cmdtext, true, 10) == 0)
-	{
-		// Do something here
-		return 1;
-	}
 	return 0;
 }
 
