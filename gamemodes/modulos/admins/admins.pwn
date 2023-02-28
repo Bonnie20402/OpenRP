@@ -17,6 +17,7 @@ new gAdmins[MAX_PLAYERS][ADMININFO];
 /*
     Includes de admin
                         */
+#include "modulos/admins/adminmsg.pwn"
 #include "modulos/admins/adminauth.pwn"
 
 /*
@@ -137,7 +138,7 @@ public Admin:FinishDeleteAdmin(playerid,const username[]) {
                 */
 forward Getter:GetStaffLevel(playerid);
 public Getter:GetStaffLevel(playerid) {
-    if(IsPlayerLoggedIn(playerid)&&gAdmins[playerid][ADMININFO_LEVEL]) return gAdmins[playerid][ADMININFO_LEVEL];
+    if(IsPlayerLoggedIn(playerid)&&gAdmins[playerid][ADMININFO_LEVEL]&&gAdmins[playerid][ADMININFO_AUTH]) return gAdmins[playerid][ADMININFO_LEVEL];
     return 0;
 }
 forward Getter:GetStaffRole(playerid);
@@ -155,7 +156,7 @@ public Getter:IsStaffWorking(playerid) {
 
 forward Getter:IsValidStaff(playerid);
 public Getter:IsValidStaff(playerid) {
-    if(IsPlayerLoggedIn(playerid)&&gAdmins[playerid][ADMININFO_LEVEL]) return 1;
+    if(IsPlayerLoggedIn(playerid)&&gAdmins[playerid][ADMININFO_LEVEL]&&gAdmins[playerid][ADMININFO_AUTH]) return 1;
     return 0;
 }
 
