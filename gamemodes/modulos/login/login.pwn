@@ -140,12 +140,15 @@ public Login:FinishAccountCheck(playerid) {
     cache_get_value_index_int(0,0,isRegistered);
     if(isRegistered) {
         format(LoginTitulo,64,"Iniciar sessão");
-        format(LoginMsg,256,"Bem vindo de volta, %s!\nInsere a tua palavra-passe em baixo:",GetPlayerNameEx(playerid));
+        format(LoginMsg,256,"{FFFFFF}Bem vindo de volta, %s!\
+        \nInsere a tua palavra-passe em baixo:",GetPlayerNameEx(playerid));
         ShowPlayerDialog(playerid,LOGINDIALOG_LOGIN,DIALOG_STYLE_PASSWORD,LoginTitulo,LoginMsg,"Iniciar sessão","");
         return 1;
     }
     format(RegisterTitulo,64,"Criação de conta");
-    format(RegisterMsg,256,"Parece que não és registrado!\nInsere a tua senha em baixo!");
+    format(RegisterMsg,256,"{ffffff}Parece que não és registrado!\
+    \nDesde já, damos-te as nossas boas-vindas\
+    \nInsere a tua senha em baixo!");
     ShowPlayerDialog(playerid,LOGINDIALOG_REGISTER,DIALOG_STYLE_PASSWORD,RegisterTitulo,RegisterMsg,"Registrar","");
 
 }
@@ -163,7 +166,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 
 
 /*
-    Restriçõesgi
+    Restrições ao registrar
     Ao jogador antes de estar com sessão iniciada
     
 */
