@@ -3,6 +3,7 @@
 //#define FILTERSCRIPT
 #define AMX_OLD_CALL
 #include <a_samp>
+#include <YSI_Visual/y_commands>
 #include <a_mysql>
 #include <sscanf2>
 #include <bcrypt>
@@ -27,10 +28,7 @@ new MySQL:mysql;
 /*
 GPS
 */
-#include "modulos/gps/gps.pwn"
-#include "modulos/gps/gpsIcons.pwn"
-
-
+#include "modulos/locations/locations.pwn"
 /*
 	admin
 				*/
@@ -41,7 +39,7 @@ main() {
  }
 public OnGameModeInit()
 {
-	SendRconCommand("hostname Open Source RP!");
+	SendRconCommand("hostname Open SXurce RP!");
 	SendRconCommand("maxplayers 100");
 	SendRconCommand("language PT");
 	SendRconCommand("mode RPG");
@@ -68,10 +66,14 @@ public dbInit() {
 	new TabelaAccounts[128];
 	mysql_format(mysql,TabelaAccounts,128,"CREATE TABLE IF NOT EXISTS ACCOUNTS (account_id INT(11) PRIMARY KEY NOT NULL,username VARCHAR(32),password VARCHAR(256))");
 	mysql_query(mysql,TabelaAccounts,false);
+
+	/*
+		Tabela init
+				*/
+	PrepareLocationsTable();
 }
 forward SQL:getInstance();
 public SQL:getInstance() {
-	return mysql;
 }
 public OnGameModeExit()
 {
@@ -123,7 +125,7 @@ public OnPlayerText(playerid, text[])
 
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-	return 0;
+	return 1;
 }
 
 public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)

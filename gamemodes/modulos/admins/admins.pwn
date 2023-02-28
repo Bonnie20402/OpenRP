@@ -31,6 +31,7 @@ new gAdmins[MAX_PLAYERS][ADMININFO];
 #include "modulos/admins/cmds/criaradmin.pwn"
 #include "modulos/admins/cmds/removeradmin.pwn"
 #include "modulos/admins/cmds/adminslist.pwn"
+#include "modulos/admins/cmds/printloc.pwn"
 /*
     HOOKS
                 */
@@ -124,7 +125,8 @@ public Admin:FinishDeleteAdmin(playerid,const username[]) {
         }
         return 1;
     }
-    format(msg,255,"Esse jogador não consta na tabela de administradores. Os valores na RAM relativamente ao playerid foram zerados se o ID for válido.");
+    format(msg,255,"Esse jogador não consta na tabela de administradores.\
+     Os valores na RAM relativamente ao playerid foram zerados se o ID for válido.");
     if(staffid!=-1)gAdmins[staffid][ADMININFO_LEVEL]=0;
     if(staffid!=-1)gAdmins[staffid][ADMININFO_WORKING]=0;
     SendClientMessage(playerid,COLOR_AQUA,msg);

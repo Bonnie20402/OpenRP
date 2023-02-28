@@ -13,7 +13,6 @@ static String:msg[128];
 
 
 hook OnPlayerCommandText@003(playerid) {
-
     if(GetStaffLevel(playerid)&&!gAdmins[playerid][ADMININFO_AUTH]) {
         SendClientMessage(playerid,COLOR_ORANGE,"Não podes executar comandos até te autenticares");
         return 0;
