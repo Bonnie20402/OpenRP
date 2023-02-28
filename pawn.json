@@ -1,6 +1,6 @@
 {
 	"user": "bonnie20402",
-	"repo": "openrp",
+	"repo": "Bonnie20402\\OpenRP",
 	"entry": "gamemodes\\roleplay.pwn",
 	"output": "gamemodes/gamemodes\\roleplay.amx",
 	"dependencies": [

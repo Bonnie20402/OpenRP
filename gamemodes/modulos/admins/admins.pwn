@@ -80,7 +80,6 @@ public Admin:FinishCreateAdmin(playerid,Int:level,const role[]) {
     Deletes an admin from the table
                                 */
 
-                                // TODO testar a função
 forward Admin:PreparteDeleteAdmin(playerid,const username[]);
 public Admin:PrepareDeleteAdmin(playerid,const username[]) {
     new query[255];
@@ -127,6 +126,7 @@ forward Getter:GetStaffRole(playerid);
 public Getter:GetStaffRole(playerid) {
     if(IsPlayerLoggedIn(playerid)) return gAdmins[playerid][ADMININFO_ROLE];
     return 0;
+    
 }
 
 forward Getter:IsStaffWorking(playerid);
