@@ -1,5 +1,5 @@
 
-YCMD:removeradmin(playerid,params[]) {
+YCMD:removeradmin(playerid,params[],help) {
     if(GetStaffLevel(playerid)>=3000) {
         new String:staffname[MAX_PLAYER_NAME];
         if(!sscanf(params,"s[64]",staffname)) {

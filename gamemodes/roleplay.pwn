@@ -35,7 +35,6 @@ GPS
 	admin
 				*/
 #include "modulos/admins/admins.pwn"
-#include "modulos/admins/admincmds.pwn"
 
 main() {
 	return 1;

@@ -1,6 +1,6 @@
 
 
-YCMD:aa(playerid,params[]) {
+YCMD:aa(playerid,params[],help) {
     if(Getter:GetStaffLevel(playerid)) {
         new String:msg[256];
         format(msg,256,"\

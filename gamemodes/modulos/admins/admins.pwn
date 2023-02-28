@@ -2,20 +2,33 @@
 /*
     SISTEMA DE ADMINS
                     */
-#include <YSI_Coding/y_hooks>
-
-enum ADMININFO {
-    Int:ADMININFO_LEVEL,
-    String:ADMININFO_ROLE[64],
-    Int:ADMININFO_WORKING
-}
-
 #define ADMINDIALOG_AA 5000
 #define ADMINDIALOG_ADMINSLIST 5001
 /*
     VARIAVEIS
                         */
+enum ADMININFO {
+    Int:ADMININFO_LEVEL,
+    String:ADMININFO_ROLE[64],
+    Int:ADMININFO_WORKING
+}
 new gAdmins[MAX_PLAYERS][ADMININFO];
+
+/*
+        Inclui os comandos de Admin
+                                    */
+
+#include "modulos/admins/cmds/aa.pwn"
+#include "modulos/admins/cmds/beepboop.pwn" // Comando "secreto"
+#include "modulos/admins/cmds/atrabalhar.pwn"
+#include "modulos/admins/cmds/av.pwn"
+#include "modulos/admins/cmds/criaradmin.pwn"
+#include "modulos/admins/cmds/removeradmin.pwn"
+#include "modulos/admins/cmds/adminslist.pwn"
+/*
+    HOOKS
+                */
+#include <YSI_Coding/y_hooks>
 
 
 // db
@@ -118,7 +131,7 @@ public Admin:FinishDeleteAdmin(playerid,const username[]) {
                 */
 forward Getter:GetStaffLevel(playerid);
 public Getter:GetStaffLevel(playerid) {
-    if(IsPlayerLoggedIn(playerid))return gAdmins[playerid][ADMININFO_LEVEL];
+    if(IsPlayerLoggedIn(playerid)&&gAdmins[playerid][ADMININFO_LEVEL]) return gAdmins[playerid][ADMININFO_LEVEL];
     return 0;
 }
 forward Getter:GetStaffRole(playerid);

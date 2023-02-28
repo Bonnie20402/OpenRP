@@ -22428,3 +22428,3320 @@ v0.3.7-R2, (C)2005-2015 SA-MP Team
 [22:36:43] [join] Bonnie20402 has joined the server (0:127.0.0.1)
 [22:36:46] Login para 0 ID 0
 [22:36:57] STAFF REMOVE aaaa
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[11:59:29] language = ""  (string)
+[11:59:29] 
+[11:59:29] Server Plugins
+[11:59:29] --------------
+[11:59:29]  Loading plugin: mysql
+[11:59:29]  >> plugin.mysql: R41 successfully loaded.
+[11:59:29]   Loaded.
+[11:59:29]  Loading plugin: sscanf
+[11:59:29] 
+[11:59:29]  ===============================
+[11:59:29] 
+[11:59:29]       sscanf plugin loaded.     
+[11:59:29] 
+[11:59:29]          Version: 2.13.8
+[11:59:29] 
+[11:59:29]    (c) 2022 Alex "Y_Less" Cole  
+[11:59:29] 
+[11:59:29]  ===============================
+[11:59:29] 
+[11:59:29]   Loaded.
+[11:59:29]  Loading plugin: bcrypt-samp
+[11:59:29]   plugin.bcrypt v2.2.3 was loaded.
+[11:59:29]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[11:59:29]   Loaded.
+[11:59:29]  Loaded 3 plugins.
+
+[11:59:29] 
+[11:59:29] Filterscripts
+[11:59:30] ---------------
+[11:59:30]   Loaded 0 filterscripts.
+
+[11:59:30]  
+[11:59:30]  
+[11:59:30]          ==============================================================
+[11:59:30]          |                                                            |
+[11:59:30]          |                                                            |
+[11:59:30]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[11:59:30]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[11:59:30]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[11:59:30]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[11:59:30]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[11:59:30]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[11:59:30]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[11:59:30]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[11:59:30]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[11:59:30]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[11:59:30]          |           Y:::::Y                    S:::::S   I::::I      |
+[11:59:30]          |           Y:::::Y                    S:::::S   I::::I      |
+[11:59:30]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[11:59:30]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[11:59:30]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[11:59:30]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[11:59:30]          |                                                            |
+[11:59:30]          |                                                            |
+[11:59:30]          |                      (c) 2021 MPL v1.1                     |
+[11:59:30]          |            Alex "Y_Less" Cole and contributors.            |
+[11:59:30]          |                                                            |
+[11:59:30]          |                                                            |
+[11:59:30]          ==============================================================
+[11:59:30]  
+[11:59:30]  
+[11:59:30]  ========================================== 
+[11:59:30]  |                                        | 
+[11:59:30]  |  Missing YSI scriptfiles directories:  | 
+[11:59:30]  |                                        | 
+[11:59:30]  |      /scriptfiles/YSI/fixes/           | 
+[11:59:30]  |      /scriptfiles/YSI/temp/            | 
+[11:59:30]  |                                        | 
+[11:59:30]  ========================================== 
+[11:59:30]  |                                        | 
+[11:59:30]  |   Generating code, this may take a     | 
+[11:59:30]  |  little bit of time.  Note that this   | 
+[11:59:30]  |  code generation works best with the   | 
+[11:59:30]  |     JIT plugin, which you are not      | 
+[11:59:30]  |     currently using.  Get it here:     | 
+[11:59:30]  |                                        | 
+[11:59:30]  |       https://git.io/jit-plugin        | 
+[11:59:30]  |                                        | 
+[11:59:30]  |             Please wait...             | 
+[11:59:30]  |                                        | 
+[11:59:30]  |             Done in 21ms!              | 
+[11:59:30]  |                                        | 
+[11:59:30]  ========================================== 
+[11:59:30]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[11:59:30] *** YSI Info: YSI Script ID: 1
+[11:59:30]  |                                        | 
+[11:59:30]  | Server:      0.3.7-R2 (Windows)        | 
+[11:59:30]  | Started:     28 Feb 2023 - 11:59:30    | 
+[11:59:30]  |                                        | 
+[11:59:30]  | Compiler:    3.10.10 (Windows)         | 
+[11:59:30]  | Includes:    0.3DL                     | 
+[11:59:30]  | Codepage:    <none>                    | 
+[11:59:30]  | Built:       27 Feb 2023 - 22:36:26    | 
+[11:59:30]  |                                        | 
+[11:59:30]  | YSI:         v5.07.3082                | 
+[11:59:30]  | Master:      1                         | 
+[11:59:30]  |                                        | 
+[11:59:30]  | JIT:         <none>                    | 
+[11:59:30]  | Crashdetect: <none>                    | 
+[11:59:30]  |                                        | 
+[11:59:30]  ========================================== 
+[11:59:30]  
+[11:59:30]  
+[11:59:30] Sistema de login ligado!
+[11:59:30] maxplayers = 50  (int, read-only)
+[11:59:30] Gamemode iniciada
+[11:59:30] A ligar á DB...
+[11:59:46] [LOGIN] Erro ao ligar á db!
+[11:59:46] Bom dia
+[11:59:46] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[11:59:54] language = ""  (string)
+[11:59:54] 
+[11:59:54] Server Plugins
+[11:59:54] --------------
+[11:59:54]  Loading plugin: mysql
+[11:59:54]  >> plugin.mysql: R41 successfully loaded.
+[11:59:54]   Loaded.
+[11:59:54]  Loading plugin: sscanf
+[11:59:54] 
+[11:59:54]  ===============================
+[11:59:54] 
+[11:59:54]       sscanf plugin loaded.     
+[11:59:54] 
+[11:59:54]          Version: 2.13.8
+[11:59:54] 
+[11:59:54]    (c) 2022 Alex "Y_Less" Cole  
+[11:59:54] 
+[11:59:54]  ===============================
+[11:59:54] 
+[11:59:54]   Loaded.
+[11:59:54]  Loading plugin: bcrypt-samp
+[11:59:54]   plugin.bcrypt v2.2.3 was loaded.
+[11:59:54]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[11:59:54]   Loaded.
+[11:59:54]  Loaded 3 plugins.
+
+[11:59:54] 
+[11:59:54] Filterscripts
+[11:59:54] ---------------
+[11:59:54]   Loaded 0 filterscripts.
+
+[11:59:54]  
+[11:59:54]  
+[11:59:54]          ==============================================================
+[11:59:54]          |                                                            |
+[11:59:54]          |                                                            |
+[11:59:54]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[11:59:54]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[11:59:54]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[11:59:54]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[11:59:54]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[11:59:54]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[11:59:54]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[11:59:54]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[11:59:54]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[11:59:54]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[11:59:54]          |           Y:::::Y                    S:::::S   I::::I      |
+[11:59:54]          |           Y:::::Y                    S:::::S   I::::I      |
+[11:59:54]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[11:59:54]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[11:59:54]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[11:59:54]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[11:59:54]          |                                                            |
+[11:59:54]          |                                                            |
+[11:59:54]          |                      (c) 2021 MPL v1.1                     |
+[11:59:54]          |            Alex "Y_Less" Cole and contributors.            |
+[11:59:54]          |                                                            |
+[11:59:54]          |                                                            |
+[11:59:54]          ==============================================================
+[11:59:54]  
+[11:59:54]  
+[11:59:54]  ========================================== 
+[11:59:54]  |                                        | 
+[11:59:54]  |  Missing YSI scriptfiles directories:  | 
+[11:59:54]  |                                        | 
+[11:59:54]  |      /scriptfiles/YSI/fixes/           | 
+[11:59:54]  |      /scriptfiles/YSI/temp/            | 
+[11:59:54]  |                                        | 
+[11:59:54]  ========================================== 
+[11:59:54]  |                                        | 
+[11:59:54]  |   Generating code, this may take a     | 
+[11:59:54]  |  little bit of time.  Note that this   | 
+[11:59:54]  |  code generation works best with the   | 
+[11:59:54]  |     JIT plugin, which you are not      | 
+[11:59:54]  |     currently using.  Get it here:     | 
+[11:59:54]  |                                        | 
+[11:59:54]  |       https://git.io/jit-plugin        | 
+[11:59:54]  |                                        | 
+[11:59:54]  |             Please wait...             | 
+[11:59:54]  |                                        | 
+[11:59:54]  |             Done in 19ms!              | 
+[11:59:54]  |                                        | 
+[11:59:54]  ========================================== 
+[11:59:54]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[11:59:54] *** YSI Info: YSI Script ID: 1
+[11:59:54]  |                                        | 
+[11:59:54]  | Server:      0.3.7-R2 (Windows)        | 
+[11:59:54]  | Started:     28 Feb 2023 - 11:59:54    | 
+[11:59:54]  |                                        | 
+[11:59:54]  | Compiler:    3.10.10 (Windows)         | 
+[11:59:54]  | Includes:    0.3DL                     | 
+[11:59:54]  | Codepage:    <none>                    | 
+[11:59:54]  | Built:       27 Feb 2023 - 22:36:26    | 
+[11:59:54]  |                                        | 
+[11:59:54]  | YSI:         v5.07.3082                | 
+[11:59:54]  | Master:      1                         | 
+[11:59:54]  |                                        | 
+[11:59:54]  | JIT:         <none>                    | 
+[11:59:54]  | Crashdetect: <none>                    | 
+[11:59:54]  |                                        | 
+[11:59:54]  ========================================== 
+[11:59:54]  
+[11:59:54]  
+[11:59:54] Sistema de login ligado!
+[11:59:54] maxplayers = 50  (int, read-only)
+[11:59:54] Gamemode iniciada
+[11:59:54] A ligar á DB...
+[11:59:54] Ligado á DB - Tabela: openrp
+[11:59:54] Bom dia
+[11:59:54] Number of vehicle models: 0
+[12:00:12] [connection] incoming connection: 127.0.0.1:57681 id: 0
+[12:00:12] [join] Bonnie20402 has joined the server (0:127.0.0.1)
+[12:00:16] Login para 0 ID 0
+[12:01:03] STAFF REMOVE Bonnie20402
+[12:01:03] [part] Bonnie20402 has left the server (0:2)
+[12:01:25] [connection] incoming connection: 127.0.0.1:51097 id: 0
+[12:01:26] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:01:28] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:03:39] language = ""  (string)
+[12:03:39] 
+[12:03:39] Server Plugins
+[12:03:39] --------------
+[12:03:39]  Loading plugin: mysql
+[12:03:39]  >> plugin.mysql: R41 successfully loaded.
+[12:03:39]   Loaded.
+[12:03:39]  Loading plugin: sscanf
+[12:03:39] 
+[12:03:39]  ===============================
+[12:03:39] 
+[12:03:39]       sscanf plugin loaded.     
+[12:03:39] 
+[12:03:39]          Version: 2.13.8
+[12:03:39] 
+[12:03:39]    (c) 2022 Alex "Y_Less" Cole  
+[12:03:39] 
+[12:03:39]  ===============================
+[12:03:39] 
+[12:03:39]   Loaded.
+[12:03:39]  Loading plugin: bcrypt-samp
+[12:03:39]   plugin.bcrypt v2.2.3 was loaded.
+[12:03:39]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:03:39]   Loaded.
+[12:03:39]  Loaded 3 plugins.
+
+[12:03:39] 
+[12:03:39] Filterscripts
+[12:03:39] ---------------
+[12:03:39]   Loaded 0 filterscripts.
+
+[12:03:39]  
+[12:03:39]  
+[12:03:39]          ==============================================================
+[12:03:39]          |                                                            |
+[12:03:39]          |                                                            |
+[12:03:39]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:03:39]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:03:39]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:03:39]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:03:39]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:03:39]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:03:39]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:03:39]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:03:39]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:03:39]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:03:39]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:03:39]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:03:39]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:03:39]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:03:39]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:03:39]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:03:39]          |                                                            |
+[12:03:39]          |                                                            |
+[12:03:39]          |                      (c) 2021 MPL v1.1                     |
+[12:03:40]          |            Alex "Y_Less" Cole and contributors.            |
+[12:03:40]          |                                                            |
+[12:03:40]          |                                                            |
+[12:03:40]          ==============================================================
+[12:03:40]  
+[12:03:40]  
+[12:03:40]  ========================================== 
+[12:03:40]  |                                        | 
+[12:03:40]  |  Missing YSI scriptfiles directories:  | 
+[12:03:40]  |                                        | 
+[12:03:40]  |      /scriptfiles/YSI/fixes/           | 
+[12:03:40]  |      /scriptfiles/YSI/temp/            | 
+[12:03:40]  |                                        | 
+[12:03:40]  ========================================== 
+[12:03:40]  |                                        | 
+[12:03:40]  |   Generating code, this may take a     | 
+[12:03:40]  |  little bit of time.  Note that this   | 
+[12:03:40]  |  code generation works best with the   | 
+[12:03:40]  |     JIT plugin, which you are not      | 
+[12:03:40]  |     currently using.  Get it here:     | 
+[12:03:40]  |                                        | 
+[12:03:40]  |       https://git.io/jit-plugin        | 
+[12:03:40]  |                                        | 
+[12:03:40]  |             Please wait...             | 
+[12:03:40]  |                                        | 
+[12:03:40]  |             Done in 19ms!              | 
+[12:03:40]  |                                        | 
+[12:03:40]  ========================================== 
+[12:03:40]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:03:40] *** YSI Info: YSI Script ID: 1
+[12:03:40]  |                                        | 
+[12:03:40]  | Server:      0.3.7-R2 (Windows)        | 
+[12:03:40]  | Started:     28 Feb 2023 - 12:03:39    | 
+[12:03:40]  |                                        | 
+[12:03:40]  | Compiler:    3.10.10 (Windows)         | 
+[12:03:40]  | Includes:    0.3DL                     | 
+[12:03:40]  | Codepage:    <none>                    | 
+[12:03:40]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:03:40]  |                                        | 
+[12:03:40]  | YSI:         v5.07.3082                | 
+[12:03:40]  | Master:      1                         | 
+[12:03:40]  |                                        | 
+[12:03:40]  | JIT:         <none>                    | 
+[12:03:40]  | Crashdetect: <none>                    | 
+[12:03:40]  |                                        | 
+[12:03:40]  ========================================== 
+[12:03:40]  
+[12:03:40]  
+[12:03:40] Sistema de login ligado!
+[12:03:40] maxplayers = 50  (int, read-only)
+[12:03:40] Gamemode iniciada
+[12:03:40] A ligar á DB...
+[12:03:40] Ligado á DB - Tabela: openrp
+[12:03:40] Bom dia
+[12:03:40] Number of vehicle models: 0
+[12:03:59] [connection] incoming connection: 127.0.0.1:62640 id: 0
+[12:03:59] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:04:01] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:06:59] language = ""  (string)
+[12:06:59] 
+[12:06:59] Server Plugins
+[12:06:59] --------------
+[12:06:59]  Loading plugin: mysql
+[12:06:59]  >> plugin.mysql: R41 successfully loaded.
+[12:06:59]   Loaded.
+[12:06:59]  Loading plugin: sscanf
+[12:06:59] 
+[12:06:59]  ===============================
+[12:06:59] 
+[12:06:59]       sscanf plugin loaded.     
+[12:06:59] 
+[12:06:59]          Version: 2.13.8
+[12:06:59] 
+[12:06:59]    (c) 2022 Alex "Y_Less" Cole  
+[12:06:59] 
+[12:06:59]  ===============================
+[12:06:59] 
+[12:06:59]   Loaded.
+[12:06:59]  Loading plugin: bcrypt-samp
+[12:06:59]   plugin.bcrypt v2.2.3 was loaded.
+[12:06:59]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:06:59]   Loaded.
+[12:06:59]  Loaded 3 plugins.
+
+[12:06:59] 
+[12:06:59] Filterscripts
+[12:06:59] ---------------
+[12:06:59]   Loaded 0 filterscripts.
+
+[12:06:59]  
+[12:06:59]  
+[12:06:59]          ==============================================================
+[12:06:59]          |                                                            |
+[12:06:59]          |                                                            |
+[12:06:59]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:06:59]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:06:59]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:06:59]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:06:59]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:06:59]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:06:59]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:06:59]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:06:59]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:06:59]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:06:59]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:06:59]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:06:59]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:06:59]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:06:59]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:06:59]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:06:59]          |                                                            |
+[12:06:59]          |                                                            |
+[12:06:59]          |                      (c) 2021 MPL v1.1                     |
+[12:06:59]          |            Alex "Y_Less" Cole and contributors.            |
+[12:06:59]          |                                                            |
+[12:06:59]          |                                                            |
+[12:06:59]          ==============================================================
+[12:06:59]  
+[12:06:59]  
+[12:06:59]  ========================================== 
+[12:06:59]  |                                        | 
+[12:06:59]  |  Missing YSI scriptfiles directories:  | 
+[12:06:59]  |                                        | 
+[12:06:59]  |      /scriptfiles/YSI/fixes/           | 
+[12:06:59]  |      /scriptfiles/YSI/temp/            | 
+[12:06:59]  |                                        | 
+[12:06:59]  ========================================== 
+[12:06:59]  |                                        | 
+[12:06:59]  |   Generating code, this may take a     | 
+[12:06:59]  |  little bit of time.  Note that this   | 
+[12:06:59]  |  code generation works best with the   | 
+[12:06:59]  |     JIT plugin, which you are not      | 
+[12:06:59]  |     currently using.  Get it here:     | 
+[12:06:59]  |                                        | 
+[12:06:59]  |       https://git.io/jit-plugin        | 
+[12:06:59]  |                                        | 
+[12:06:59]  |             Please wait...             | 
+[12:06:59]  |                                        | 
+[12:06:59]  |             Done in 30ms!              | 
+[12:06:59]  |                                        | 
+[12:06:59]  ========================================== 
+[12:06:59]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:06:59] *** YSI Info: YSI Script ID: 1
+[12:06:59]  |                                        | 
+[12:06:59]  | Server:      0.3.7-R2 (Windows)        | 
+[12:06:59]  | Started:     28 Feb 2023 - 12:06:59    | 
+[12:06:59]  |                                        | 
+[12:06:59]  | Compiler:    3.10.10 (Windows)         | 
+[12:06:59]  | Includes:    0.3DL                     | 
+[12:06:59]  | Codepage:    <none>                    | 
+[12:06:59]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:06:59]  |                                        | 
+[12:06:59]  | YSI:         v5.07.3082                | 
+[12:06:59]  | Master:      1                         | 
+[12:06:59]  |                                        | 
+[12:06:59]  | JIT:         <none>                    | 
+[12:06:59]  | Crashdetect: <none>                    | 
+[12:06:59]  |                                        | 
+[12:06:59]  ========================================== 
+[12:06:59]  
+[12:06:59]  
+[12:06:59] Sistema de login ligado!
+[12:06:59] maxplayers = 50  (int, read-only)
+[12:06:59] Gamemode iniciada
+[12:06:59] A ligar á DB...
+[12:06:59] Ligado á DB - Tabela: openrp
+[12:06:59] Bom dia
+[12:06:59] Number of vehicle models: 0
+[12:07:00] [connection] incoming connection: 127.0.0.1:57778 id: 0
+[12:07:01] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:07:03] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:07:24] language = ""  (string)
+[12:07:24] 
+[12:07:24] Server Plugins
+[12:07:24] --------------
+[12:07:24]  Loading plugin: mysql
+[12:07:24]  >> plugin.mysql: R41 successfully loaded.
+[12:07:24]   Loaded.
+[12:07:24]  Loading plugin: sscanf
+[12:07:24] 
+[12:07:24]  ===============================
+[12:07:24] 
+[12:07:24]       sscanf plugin loaded.     
+[12:07:24] 
+[12:07:24]          Version: 2.13.8
+[12:07:24] 
+[12:07:24]    (c) 2022 Alex "Y_Less" Cole  
+[12:07:24] 
+[12:07:24]  ===============================
+[12:07:24] 
+[12:07:24]   Loaded.
+[12:07:24]  Loading plugin: bcrypt-samp
+[12:07:24]   plugin.bcrypt v2.2.3 was loaded.
+[12:07:24]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:07:24]   Loaded.
+[12:07:24]  Loaded 3 plugins.
+
+[12:07:24] 
+[12:07:24] Filterscripts
+[12:07:24] ---------------
+[12:07:24]   Loaded 0 filterscripts.
+
+[12:07:24]  
+[12:07:24]  
+[12:07:24]          ==============================================================
+[12:07:24]          |                                                            |
+[12:07:24]          |                                                            |
+[12:07:24]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:07:24]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:07:24]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:07:24]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:07:24]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:07:24]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:07:24]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:07:24]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:07:24]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:07:24]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:07:24]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:07:24]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:07:24]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:07:24]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:07:24]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:07:24]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:07:24]          |                                                            |
+[12:07:24]          |                                                            |
+[12:07:24]          |                      (c) 2021 MPL v1.1                     |
+[12:07:24]          |            Alex "Y_Less" Cole and contributors.            |
+[12:07:24]          |                                                            |
+[12:07:24]          |                                                            |
+[12:07:24]          ==============================================================
+[12:07:24]  
+[12:07:24]  
+[12:07:24]  ========================================== 
+[12:07:24]  |                                        | 
+[12:07:24]  |  Missing YSI scriptfiles directories:  | 
+[12:07:24]  |                                        | 
+[12:07:24]  |      /scriptfiles/YSI/fixes/           | 
+[12:07:24]  |      /scriptfiles/YSI/temp/            | 
+[12:07:24]  |                                        | 
+[12:07:24]  ========================================== 
+[12:07:24]  |                                        | 
+[12:07:24]  |   Generating code, this may take a     | 
+[12:07:24]  |  little bit of time.  Note that this   | 
+[12:07:24]  |  code generation works best with the   | 
+[12:07:24]  |     JIT plugin, which you are not      | 
+[12:07:24]  |     currently using.  Get it here:     | 
+[12:07:24]  |                                        | 
+[12:07:24]  |       https://git.io/jit-plugin        | 
+[12:07:24]  |                                        | 
+[12:07:24]  |             Please wait...             | 
+[12:07:24]  |                                        | 
+[12:07:24]  |             Done in 22ms!              | 
+[12:07:24]  |                                        | 
+[12:07:24]  ========================================== 
+[12:07:24]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:07:24] *** YSI Info: YSI Script ID: 1
+[12:07:24]  |                                        | 
+[12:07:24]  | Server:      0.3.7-R2 (Windows)        | 
+[12:07:24]  | Started:     28 Feb 2023 - 12:07:24    | 
+[12:07:24]  |                                        | 
+[12:07:24]  | Compiler:    3.10.10 (Windows)         | 
+[12:07:24]  | Includes:    0.3DL                     | 
+[12:07:24]  | Codepage:    <none>                    | 
+[12:07:24]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:07:24]  |                                        | 
+[12:07:24]  | YSI:         v5.07.3082                | 
+[12:07:24]  | Master:      1                         | 
+[12:07:24]  |                                        | 
+[12:07:24]  | JIT:         <none>                    | 
+[12:07:24]  | Crashdetect: <none>                    | 
+[12:07:24]  |                                        | 
+[12:07:24]  ========================================== 
+[12:07:24]  
+[12:07:24]  
+[12:07:24] Sistema de login ligado!
+[12:07:24] maxplayers = 50  (int, read-only)
+[12:07:24] Gamemode iniciada
+[12:07:24] A ligar á DB...
+[12:07:24] Ligado á DB - Tabela: openrp
+[12:07:24] Bom dia
+[12:07:24] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:08:59] language = ""  (string)
+[12:08:59] 
+[12:08:59] Server Plugins
+[12:08:59] --------------
+[12:08:59]  Loading plugin: mysql
+[12:08:59]  >> plugin.mysql: R41 successfully loaded.
+[12:08:59]   Loaded.
+[12:08:59]  Loading plugin: sscanf
+[12:08:59] 
+[12:08:59]  ===============================
+[12:08:59] 
+[12:08:59]       sscanf plugin loaded.     
+[12:08:59] 
+[12:08:59]          Version: 2.13.8
+[12:08:59] 
+[12:08:59]    (c) 2022 Alex "Y_Less" Cole  
+[12:08:59] 
+[12:08:59]  ===============================
+[12:08:59] 
+[12:08:59]   Loaded.
+[12:08:59]  Loading plugin: bcrypt-samp
+[12:08:59]   plugin.bcrypt v2.2.3 was loaded.
+[12:08:59]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:08:59]   Loaded.
+[12:08:59]  Loaded 3 plugins.
+
+[12:08:59] 
+[12:08:59] Filterscripts
+[12:08:59] ---------------
+[12:08:59]   Loaded 0 filterscripts.
+
+[12:09:00]  
+[12:09:00]  
+[12:09:00]          ==============================================================
+[12:09:00]          |                                                            |
+[12:09:00]          |                                                            |
+[12:09:00]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:09:00]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:09:00]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:09:00]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:09:00]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:09:00]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:09:00]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:09:00]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:09:00]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:09:00]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:09:00]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:09:00]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:09:00]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:09:00]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:09:00]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:09:00]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:09:00]          |                                                            |
+[12:09:00]          |                                                            |
+[12:09:00]          |                      (c) 2021 MPL v1.1                     |
+[12:09:00]          |            Alex "Y_Less" Cole and contributors.            |
+[12:09:00]          |                                                            |
+[12:09:00]          |                                                            |
+[12:09:00]          ==============================================================
+[12:09:00]  
+[12:09:00]  
+[12:09:00]  ========================================== 
+[12:09:00]  |                                        | 
+[12:09:00]  |  Missing YSI scriptfiles directories:  | 
+[12:09:00]  |                                        | 
+[12:09:00]  |      /scriptfiles/YSI/fixes/           | 
+[12:09:00]  |      /scriptfiles/YSI/temp/            | 
+[12:09:00]  |                                        | 
+[12:09:00]  ========================================== 
+[12:09:00]  |                                        | 
+[12:09:00]  |   Generating code, this may take a     | 
+[12:09:00]  |  little bit of time.  Note that this   | 
+[12:09:00]  |  code generation works best with the   | 
+[12:09:00]  |     JIT plugin, which you are not      | 
+[12:09:00]  |     currently using.  Get it here:     | 
+[12:09:00]  |                                        | 
+[12:09:00]  |       https://git.io/jit-plugin        | 
+[12:09:00]  |                                        | 
+[12:09:00]  |             Please wait...             | 
+[12:09:00]  |                                        | 
+[12:09:00]  |             Done in 18ms!              | 
+[12:09:00]  |                                        | 
+[12:09:00]  ========================================== 
+[12:09:00]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:09:00] *** YSI Info: YSI Script ID: 1
+[12:09:00]  |                                        | 
+[12:09:00]  | Server:      0.3.7-R2 (Windows)        | 
+[12:09:00]  | Started:     28 Feb 2023 - 12:09:00    | 
+[12:09:00]  |                                        | 
+[12:09:00]  | Compiler:    3.10.10 (Windows)         | 
+[12:09:00]  | Includes:    0.3DL                     | 
+[12:09:00]  | Codepage:    <none>                    | 
+[12:09:00]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:09:00]  |                                        | 
+[12:09:00]  | YSI:         v5.07.3082                | 
+[12:09:00]  | Master:      1                         | 
+[12:09:00]  |                                        | 
+[12:09:00]  | JIT:         <none>                    | 
+[12:09:00]  | Crashdetect: <none>                    | 
+[12:09:00]  |                                        | 
+[12:09:00]  ========================================== 
+[12:09:00]  
+[12:09:00]  
+[12:09:00] Sistema de login ligado!
+[12:09:00] maxplayers = 50  (int, read-only)
+[12:09:00] Gamemode iniciada
+[12:09:00] A ligar á DB...
+[12:09:00] Ligado á DB - Tabela: openrp
+[12:09:00] Bom dia
+[12:09:00] Number of vehicle models: 0
+[12:09:08] [connection] incoming connection: 127.0.0.1:52357 id: 0
+[12:09:08] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:09:10] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:10:37] language = ""  (string)
+[12:10:37] 
+[12:10:37] Server Plugins
+[12:10:37] --------------
+[12:10:37]  Loading plugin: mysql
+[12:10:37]  >> plugin.mysql: R41 successfully loaded.
+[12:10:37]   Loaded.
+[12:10:37]  Loading plugin: sscanf
+[12:10:37] 
+[12:10:37]  ===============================
+[12:10:37] 
+[12:10:37]       sscanf plugin loaded.     
+[12:10:37] 
+[12:10:37]          Version: 2.13.8
+[12:10:37] 
+[12:10:37]    (c) 2022 Alex "Y_Less" Cole  
+[12:10:37] 
+[12:10:37]  ===============================
+[12:10:37] 
+[12:10:37]   Loaded.
+[12:10:37]  Loading plugin: bcrypt-samp
+[12:10:37]   plugin.bcrypt v2.2.3 was loaded.
+[12:10:37]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:10:37]   Loaded.
+[12:10:37]  Loaded 3 plugins.
+
+[12:10:37] 
+[12:10:37] Filterscripts
+[12:10:37] ---------------
+[12:10:37]   Loaded 0 filterscripts.
+
+[12:10:37]  
+[12:10:37]  
+[12:10:37]          ==============================================================
+[12:10:37]          |                                                            |
+[12:10:37]          |                                                            |
+[12:10:37]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:10:37]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:10:37]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:10:37]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:10:37]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:10:37]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:10:37]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:10:37]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:10:37]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:10:37]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:10:37]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:10:37]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:10:37]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:10:37]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:10:37]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:10:37]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:10:37]          |                                                            |
+[12:10:37]          |                                                            |
+[12:10:37]          |                      (c) 2021 MPL v1.1                     |
+[12:10:37]          |            Alex "Y_Less" Cole and contributors.            |
+[12:10:37]          |                                                            |
+[12:10:37]          |                                                            |
+[12:10:37]          ==============================================================
+[12:10:37]  
+[12:10:37]  
+[12:10:37]  ========================================== 
+[12:10:37]  |                                        | 
+[12:10:37]  |  Missing YSI scriptfiles directories:  | 
+[12:10:37]  |                                        | 
+[12:10:37]  |      /scriptfiles/YSI/fixes/           | 
+[12:10:37]  |      /scriptfiles/YSI/temp/            | 
+[12:10:37]  |                                        | 
+[12:10:37]  ========================================== 
+[12:10:37]  |                                        | 
+[12:10:37]  |   Generating code, this may take a     | 
+[12:10:37]  |  little bit of time.  Note that this   | 
+[12:10:37]  |  code generation works best with the   | 
+[12:10:37]  |     JIT plugin, which you are not      | 
+[12:10:37]  |     currently using.  Get it here:     | 
+[12:10:37]  |                                        | 
+[12:10:37]  |       https://git.io/jit-plugin        | 
+[12:10:37]  |                                        | 
+[12:10:37]  |             Please wait...             | 
+[12:10:37]  |                                        | 
+[12:10:37]  |             Done in 18ms!              | 
+[12:10:37]  |                                        | 
+[12:10:37]  ========================================== 
+[12:10:37]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:10:37] *** YSI Info: YSI Script ID: 1
+[12:10:37]  |                                        | 
+[12:10:37]  | Server:      0.3.7-R2 (Windows)        | 
+[12:10:37]  | Started:     28 Feb 2023 - 12:10:37    | 
+[12:10:37]  |                                        | 
+[12:10:37]  | Compiler:    3.10.10 (Windows)         | 
+[12:10:37]  | Includes:    0.3DL                     | 
+[12:10:37]  | Codepage:    <none>                    | 
+[12:10:37]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:10:37]  |                                        | 
+[12:10:37]  | YSI:         v5.07.3082                | 
+[12:10:37]  | Master:      1                         | 
+[12:10:37]  |                                        | 
+[12:10:37]  | JIT:         <none>                    | 
+[12:10:37]  | Crashdetect: <none>                    | 
+[12:10:37]  |                                        | 
+[12:10:37]  ========================================== 
+[12:10:37]  
+[12:10:37]  
+[12:10:37] Sistema de login ligado!
+[12:10:37] maxplayers = 50  (int, read-only)
+[12:10:37] Gamemode iniciada
+[12:10:37] A ligar á DB...
+[12:10:37] Ligado á DB - Tabela: openrp
+[12:10:37] Bom dia
+[12:10:37] Number of vehicle models: 0
+[12:10:46] [connection] incoming connection: 127.0.0.1:56157 id: 0
+[12:10:46] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:10:48] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:11:09] language = ""  (string)
+[12:11:09] 
+[12:11:09] Server Plugins
+[12:11:09] --------------
+[12:11:09]  Loading plugin: mysql
+[12:11:09]  >> plugin.mysql: R41 successfully loaded.
+[12:11:09]   Loaded.
+[12:11:09]  Loading plugin: sscanf
+[12:11:09] 
+[12:11:09]  ===============================
+[12:11:09] 
+[12:11:09]       sscanf plugin loaded.     
+[12:11:09] 
+[12:11:09]          Version: 2.13.8
+[12:11:09] 
+[12:11:09]    (c) 2022 Alex "Y_Less" Cole  
+[12:11:09] 
+[12:11:09]  ===============================
+[12:11:09] 
+[12:11:09]   Loaded.
+[12:11:09]  Loading plugin: bcrypt-samp
+[12:11:09]   plugin.bcrypt v2.2.3 was loaded.
+[12:11:09]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:11:09]   Loaded.
+[12:11:09]  Loaded 3 plugins.
+
+[12:11:09] 
+[12:11:09] Filterscripts
+[12:11:09] ---------------
+[12:11:09]   Loaded 0 filterscripts.
+
+[12:11:09]  
+[12:11:09]  
+[12:11:09]          ==============================================================
+[12:11:09]          |                                                            |
+[12:11:09]          |                                                            |
+[12:11:09]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:11:09]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:11:09]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:11:09]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:11:09]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:11:09]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:11:09]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:11:09]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:11:09]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:11:09]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:11:09]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:11:09]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:11:09]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:11:09]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:11:09]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:11:09]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:11:09]          |                                                            |
+[12:11:09]          |                                                            |
+[12:11:09]          |                      (c) 2021 MPL v1.1                     |
+[12:11:09]          |            Alex "Y_Less" Cole and contributors.            |
+[12:11:09]          |                                                            |
+[12:11:09]          |                                                            |
+[12:11:09]          ==============================================================
+[12:11:09]  
+[12:11:09]  
+[12:11:09]  ========================================== 
+[12:11:09]  |                                        | 
+[12:11:09]  |  Missing YSI scriptfiles directories:  | 
+[12:11:09]  |                                        | 
+[12:11:09]  |      /scriptfiles/YSI/fixes/           | 
+[12:11:09]  |      /scriptfiles/YSI/temp/            | 
+[12:11:09]  |                                        | 
+[12:11:09]  ========================================== 
+[12:11:09]  |                                        | 
+[12:11:09]  |   Generating code, this may take a     | 
+[12:11:09]  |  little bit of time.  Note that this   | 
+[12:11:09]  |  code generation works best with the   | 
+[12:11:09]  |     JIT plugin, which you are not      | 
+[12:11:09]  |     currently using.  Get it here:     | 
+[12:11:09]  |                                        | 
+[12:11:09]  |       https://git.io/jit-plugin        | 
+[12:11:09]  |                                        | 
+[12:11:09]  |             Please wait...             | 
+[12:11:10]  |                                        | 
+[12:11:10]  |             Done in 22ms!              | 
+[12:11:10]  |                                        | 
+[12:11:10]  ========================================== 
+[12:11:10]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:11:10] *** YSI Info: YSI Script ID: 1
+[12:11:10]  |                                        | 
+[12:11:10]  | Server:      0.3.7-R2 (Windows)        | 
+[12:11:10]  | Started:     28 Feb 2023 - 12:11:09    | 
+[12:11:10]  |                                        | 
+[12:11:10]  | Compiler:    3.10.10 (Windows)         | 
+[12:11:10]  | Includes:    0.3DL                     | 
+[12:11:10]  | Codepage:    <none>                    | 
+[12:11:10]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:11:10]  |                                        | 
+[12:11:10]  | YSI:         v5.07.3082                | 
+[12:11:10]  | Master:      1                         | 
+[12:11:10]  |                                        | 
+[12:11:10]  | JIT:         <none>                    | 
+[12:11:10]  | Crashdetect: <none>                    | 
+[12:11:10]  |                                        | 
+[12:11:10]  ========================================== 
+[12:11:10]  
+[12:11:10]  
+[12:11:10] Sistema de login ligado!
+[12:11:10] maxplayers = 50  (int, read-only)
+[12:11:10] Gamemode iniciada
+[12:11:10] A ligar á DB...
+[12:11:10] Ligado á DB - Tabela: openrp
+[12:11:10] Bom dia
+[12:11:10] Number of vehicle models: 0
+[12:11:55] [connection] incoming connection: 127.0.0.1:64469 id: 0
+[12:11:55] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:11:58] Login para 0 ID 0
+[12:12:00] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:14:18] language = ""  (string)
+[12:14:18] 
+[12:14:18] Server Plugins
+[12:14:18] --------------
+[12:14:18]  Loading plugin: mysql
+[12:14:18]  >> plugin.mysql: R41 successfully loaded.
+[12:14:18]   Loaded.
+[12:14:18]  Loading plugin: sscanf
+[12:14:18] 
+[12:14:18]  ===============================
+[12:14:18] 
+[12:14:18]       sscanf plugin loaded.     
+[12:14:18] 
+[12:14:18]          Version: 2.13.8
+[12:14:18] 
+[12:14:18]    (c) 2022 Alex "Y_Less" Cole  
+[12:14:18] 
+[12:14:18]  ===============================
+[12:14:18] 
+[12:14:18]   Loaded.
+[12:14:18]  Loading plugin: bcrypt-samp
+[12:14:18]   plugin.bcrypt v2.2.3 was loaded.
+[12:14:18]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:14:18]   Loaded.
+[12:14:18]  Loaded 3 plugins.
+
+[12:14:19] 
+[12:14:19] Filterscripts
+[12:14:19] ---------------
+[12:14:19]   Loaded 0 filterscripts.
+
+[12:14:19]  
+[12:14:19]  
+[12:14:19]          ==============================================================
+[12:14:19]          |                                                            |
+[12:14:19]          |                                                            |
+[12:14:19]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:14:19]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:14:19]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:14:19]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:14:19]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:14:19]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:14:19]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:14:19]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:14:19]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:14:19]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:14:19]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:14:19]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:14:19]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:14:19]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:14:19]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:14:19]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:14:19]          |                                                            |
+[12:14:19]          |                                                            |
+[12:14:19]          |                      (c) 2021 MPL v1.1                     |
+[12:14:19]          |            Alex "Y_Less" Cole and contributors.            |
+[12:14:19]          |                                                            |
+[12:14:19]          |                                                            |
+[12:14:19]          ==============================================================
+[12:14:19]  
+[12:14:19]  
+[12:14:19]  ========================================== 
+[12:14:19]  |                                        | 
+[12:14:19]  |  Missing YSI scriptfiles directories:  | 
+[12:14:19]  |                                        | 
+[12:14:19]  |      /scriptfiles/YSI/fixes/           | 
+[12:14:19]  |      /scriptfiles/YSI/temp/            | 
+[12:14:19]  |                                        | 
+[12:14:19]  ========================================== 
+[12:14:19]  |                                        | 
+[12:14:19]  |   Generating code, this may take a     | 
+[12:14:19]  |  little bit of time.  Note that this   | 
+[12:14:19]  |  code generation works best with the   | 
+[12:14:19]  |     JIT plugin, which you are not      | 
+[12:14:19]  |     currently using.  Get it here:     | 
+[12:14:19]  |                                        | 
+[12:14:19]  |       https://git.io/jit-plugin        | 
+[12:14:19]  |                                        | 
+[12:14:19]  |             Please wait...             | 
+[12:14:19]  |                                        | 
+[12:14:19]  |             Done in 19ms!              | 
+[12:14:19]  |                                        | 
+[12:14:19]  ========================================== 
+[12:14:19]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:14:19] *** YSI Info: YSI Script ID: 1
+[12:14:19]  |                                        | 
+[12:14:19]  | Server:      0.3.7-R2 (Windows)        | 
+[12:14:19]  | Started:     28 Feb 2023 - 12:14:19    | 
+[12:14:19]  |                                        | 
+[12:14:19]  | Compiler:    3.10.10 (Windows)         | 
+[12:14:19]  | Includes:    0.3DL                     | 
+[12:14:19]  | Codepage:    <none>                    | 
+[12:14:19]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:14:19]  |                                        | 
+[12:14:19]  | YSI:         v5.07.3082                | 
+[12:14:19]  | Master:      1                         | 
+[12:14:19]  |                                        | 
+[12:14:19]  | JIT:         <none>                    | 
+[12:14:19]  | Crashdetect: <none>                    | 
+[12:14:19]  |                                        | 
+[12:14:19]  ========================================== 
+[12:14:19]  
+[12:14:19]  
+[12:14:19] Sistema de login ligado!
+[12:14:19] maxplayers = 50  (int, read-only)
+[12:14:19] Gamemode iniciada
+[12:14:19] A ligar á DB...
+[12:14:19] Ligado á DB - Tabela: openrp
+[12:14:19] Bom dia
+[12:14:19] Number of vehicle models: 0
+[12:14:20] [connection] incoming connection: 127.0.0.1:58676 id: 0
+[12:14:20] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:14:22] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:17:33] language = ""  (string)
+[12:17:33] 
+[12:17:33] Server Plugins
+[12:17:33] --------------
+[12:17:33]  Loading plugin: mysql
+[12:17:33]  >> plugin.mysql: R41 successfully loaded.
+[12:17:33]   Loaded.
+[12:17:33]  Loading plugin: sscanf
+[12:17:33] 
+[12:17:33]  ===============================
+[12:17:33] 
+[12:17:33]       sscanf plugin loaded.     
+[12:17:33] 
+[12:17:33]          Version: 2.13.8
+[12:17:33] 
+[12:17:33]    (c) 2022 Alex "Y_Less" Cole  
+[12:17:33] 
+[12:17:33]  ===============================
+[12:17:33] 
+[12:17:33]   Loaded.
+[12:17:33]  Loading plugin: bcrypt-samp
+[12:17:33]   plugin.bcrypt v2.2.3 was loaded.
+[12:17:33]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:17:33]   Loaded.
+[12:17:33]  Loaded 3 plugins.
+
+[12:17:33] 
+[12:17:33] Filterscripts
+[12:17:33] ---------------
+[12:17:33]   Loaded 0 filterscripts.
+
+[12:17:33]  
+[12:17:33]  
+[12:17:33]          ==============================================================
+[12:17:33]          |                                                            |
+[12:17:33]          |                                                            |
+[12:17:33]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:17:33]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:17:33]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:17:33]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:17:33]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:17:33]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:17:33]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:17:33]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:17:33]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:17:33]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:17:33]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:17:33]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:17:33]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:17:33]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:17:33]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:17:33]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:17:33]          |                                                            |
+[12:17:33]          |                                                            |
+[12:17:33]          |                      (c) 2021 MPL v1.1                     |
+[12:17:33]          |            Alex "Y_Less" Cole and contributors.            |
+[12:17:33]          |                                                            |
+[12:17:33]          |                                                            |
+[12:17:33]          ==============================================================
+[12:17:33]  
+[12:17:33]  
+[12:17:33]  ========================================== 
+[12:17:33]  |                                        | 
+[12:17:33]  |  Missing YSI scriptfiles directories:  | 
+[12:17:33]  |                                        | 
+[12:17:33]  |      /scriptfiles/YSI/fixes/           | 
+[12:17:33]  |      /scriptfiles/YSI/temp/            | 
+[12:17:33]  |                                        | 
+[12:17:33]  ========================================== 
+[12:17:33]  |                                        | 
+[12:17:33]  |   Generating code, this may take a     | 
+[12:17:33]  |  little bit of time.  Note that this   | 
+[12:17:33]  |  code generation works best with the   | 
+[12:17:33]  |     JIT plugin, which you are not      | 
+[12:17:33]  |     currently using.  Get it here:     | 
+[12:17:33]  |                                        | 
+[12:17:33]  |       https://git.io/jit-plugin        | 
+[12:17:33]  |                                        | 
+[12:17:33]  |             Please wait...             | 
+[12:17:33]  |                                        | 
+[12:17:33]  |             Done in 21ms!              | 
+[12:17:33]  |                                        | 
+[12:17:33]  ========================================== 
+[12:17:33]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:17:33] *** YSI Info: YSI Script ID: 1
+[12:17:33]  |                                        | 
+[12:17:33]  | Server:      0.3.7-R2 (Windows)        | 
+[12:17:33]  | Started:     28 Feb 2023 - 12:17:33    | 
+[12:17:33]  |                                        | 
+[12:17:33]  | Compiler:    3.10.10 (Windows)         | 
+[12:17:33]  | Includes:    0.3DL                     | 
+[12:17:33]  | Codepage:    <none>                    | 
+[12:17:33]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:17:33]  |                                        | 
+[12:17:33]  | YSI:         v5.07.3082                | 
+[12:17:33]  | Master:      1                         | 
+[12:17:33]  |                                        | 
+[12:17:33]  | JIT:         <none>                    | 
+[12:17:33]  | Crashdetect: <none>                    | 
+[12:17:33]  |                                        | 
+[12:17:33]  ========================================== 
+[12:17:33]  
+[12:17:33]  
+[12:17:33] Sistema de login ligado!
+[12:17:33] maxplayers = 50  (int, read-only)
+[12:17:33] Gamemode iniciada
+[12:17:33] A ligar á DB...
+[12:17:33] Ligado á DB - Tabela: openrp
+[12:17:33] Bom dia
+[12:17:33] Number of vehicle models: 0
+[12:17:43] [connection] incoming connection: 127.0.0.1:54164 id: 0
+[12:17:44] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:23:05] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:25:18] language = ""  (string)
+[12:25:18] 
+[12:25:18] Server Plugins
+[12:25:18] --------------
+[12:25:18]  Loading plugin: mysql
+[12:25:18]  >> plugin.mysql: R41 successfully loaded.
+[12:25:18]   Loaded.
+[12:25:18]  Loading plugin: sscanf
+[12:25:18] 
+[12:25:18]  ===============================
+[12:25:18] 
+[12:25:18]       sscanf plugin loaded.     
+[12:25:18] 
+[12:25:18]          Version: 2.13.8
+[12:25:18] 
+[12:25:18]    (c) 2022 Alex "Y_Less" Cole  
+[12:25:18] 
+[12:25:18]  ===============================
+[12:25:18] 
+[12:25:18]   Loaded.
+[12:25:18]  Loading plugin: bcrypt-samp
+[12:25:18]   plugin.bcrypt v2.2.3 was loaded.
+[12:25:18]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:25:18]   Loaded.
+[12:25:18]  Loaded 3 plugins.
+
+[12:25:18] 
+[12:25:18] Filterscripts
+[12:25:18] ---------------
+[12:25:18]   Loaded 0 filterscripts.
+
+[12:25:18]  
+[12:25:18]  
+[12:25:18]          ==============================================================
+[12:25:18]          |                                                            |
+[12:25:18]          |                                                            |
+[12:25:18]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:25:18]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:25:18]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:25:18]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:25:18]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:25:18]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:25:18]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:25:18]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:25:18]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:25:18]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:25:18]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:25:18]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:25:18]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:25:18]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:25:18]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:25:18]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:25:18]          |                                                            |
+[12:25:18]          |                                                            |
+[12:25:18]          |                      (c) 2021 MPL v1.1                     |
+[12:25:18]          |            Alex "Y_Less" Cole and contributors.            |
+[12:25:18]          |                                                            |
+[12:25:18]          |                                                            |
+[12:25:18]          ==============================================================
+[12:25:18]  
+[12:25:18]  
+[12:25:18]  ========================================== 
+[12:25:18]  |                                        | 
+[12:25:18]  |  Missing YSI scriptfiles directories:  | 
+[12:25:18]  |                                        | 
+[12:25:18]  |      /scriptfiles/YSI/fixes/           | 
+[12:25:18]  |      /scriptfiles/YSI/temp/            | 
+[12:25:18]  |                                        | 
+[12:25:18]  ========================================== 
+[12:25:18]  |                                        | 
+[12:25:18]  |   Generating code, this may take a     | 
+[12:25:18]  |  little bit of time.  Note that this   | 
+[12:25:18]  |  code generation works best with the   | 
+[12:25:18]  |     JIT plugin, which you are not      | 
+[12:25:18]  |     currently using.  Get it here:     | 
+[12:25:18]  |                                        | 
+[12:25:18]  |       https://git.io/jit-plugin        | 
+[12:25:18]  |                                        | 
+[12:25:18]  |             Please wait...             | 
+[12:25:18]  |                                        | 
+[12:25:18]  |             Done in 30ms!              | 
+[12:25:18]  |                                        | 
+[12:25:18]  ========================================== 
+[12:25:18]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:25:18] *** YSI Info: YSI Script ID: 1
+[12:25:18]  |                                        | 
+[12:25:18]  | Server:      0.3.7-R2 (Windows)        | 
+[12:25:18]  | Started:     28 Feb 2023 - 12:25:18    | 
+[12:25:18]  |                                        | 
+[12:25:18]  | Compiler:    3.10.10 (Windows)         | 
+[12:25:18]  | Includes:    0.3DL                     | 
+[12:25:18]  | Codepage:    <none>                    | 
+[12:25:18]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:25:18]  |                                        | 
+[12:25:18]  | YSI:         v5.07.3082                | 
+[12:25:18]  | Master:      1                         | 
+[12:25:18]  |                                        | 
+[12:25:18]  | JIT:         <none>                    | 
+[12:25:18]  | Crashdetect: <none>                    | 
+[12:25:18]  |                                        | 
+[12:25:18]  ========================================== 
+[12:25:18]  
+[12:25:18]  
+[12:25:18] Sistema de login ligado!
+[12:25:18] maxplayers = 50  (int, read-only)
+[12:25:18] Gamemode iniciada
+[12:25:18] A ligar á DB...
+[12:25:19] Ligado á DB - Tabela: openrp
+[12:25:19] Bom dia
+[12:25:19] Number of vehicle models: 0
+[12:25:26] [connection] incoming connection: 127.0.0.1:49292 id: 0
+[12:25:26] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:25:28] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:26:21] language = ""  (string)
+[12:26:21] 
+[12:26:21] Server Plugins
+[12:26:21] --------------
+[12:26:21]  Loading plugin: mysql
+[12:26:21]  >> plugin.mysql: R41 successfully loaded.
+[12:26:21]   Loaded.
+[12:26:21]  Loading plugin: sscanf
+[12:26:21] 
+[12:26:21]  ===============================
+[12:26:21] 
+[12:26:21]       sscanf plugin loaded.     
+[12:26:21] 
+[12:26:21]          Version: 2.13.8
+[12:26:21] 
+[12:26:21]    (c) 2022 Alex "Y_Less" Cole  
+[12:26:21] 
+[12:26:21]  ===============================
+[12:26:21] 
+[12:26:21]   Loaded.
+[12:26:21]  Loading plugin: bcrypt-samp
+[12:26:21]   plugin.bcrypt v2.2.3 was loaded.
+[12:26:21]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:26:21]   Loaded.
+[12:26:21]  Loaded 3 plugins.
+
+[12:26:21] 
+[12:26:21] Filterscripts
+[12:26:21] ---------------
+[12:26:21]   Loaded 0 filterscripts.
+
+[12:26:21]  
+[12:26:21]  
+[12:26:21]          ==============================================================
+[12:26:21]          |                                                            |
+[12:26:21]          |                                                            |
+[12:26:21]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:26:21]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:26:21]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:26:21]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:26:21]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:26:21]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:26:21]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:26:21]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:26:21]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:26:21]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:26:21]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:26:21]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:26:21]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:26:21]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:26:21]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:26:21]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:26:21]          |                                                            |
+[12:26:21]          |                                                            |
+[12:26:21]          |                      (c) 2021 MPL v1.1                     |
+[12:26:21]          |            Alex "Y_Less" Cole and contributors.            |
+[12:26:21]          |                                                            |
+[12:26:21]          |                                                            |
+[12:26:21]          ==============================================================
+[12:26:21]  
+[12:26:21]  
+[12:26:21]  ========================================== 
+[12:26:21]  |                                        | 
+[12:26:21]  |  Missing YSI scriptfiles directories:  | 
+[12:26:21]  |                                        | 
+[12:26:21]  |      /scriptfiles/YSI/fixes/           | 
+[12:26:21]  |      /scriptfiles/YSI/temp/            | 
+[12:26:21]  |                                        | 
+[12:26:21]  ========================================== 
+[12:26:21]  |                                        | 
+[12:26:21]  |   Generating code, this may take a     | 
+[12:26:21]  |  little bit of time.  Note that this   | 
+[12:26:21]  |  code generation works best with the   | 
+[12:26:21]  |     JIT plugin, which you are not      | 
+[12:26:21]  |     currently using.  Get it here:     | 
+[12:26:21]  |                                        | 
+[12:26:21]  |       https://git.io/jit-plugin        | 
+[12:26:21]  |                                        | 
+[12:26:21]  |             Please wait...             | 
+[12:26:21]  |                                        | 
+[12:26:21]  |             Done in 24ms!              | 
+[12:26:21]  |                                        | 
+[12:26:21]  ========================================== 
+[12:26:21]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:26:21] *** YSI Info: YSI Script ID: 1
+[12:26:21]  |                                        | 
+[12:26:21]  | Server:      0.3.7-R2 (Windows)        | 
+[12:26:21]  | Started:     28 Feb 2023 - 12:26:21    | 
+[12:26:21]  |                                        | 
+[12:26:21]  | Compiler:    3.10.10 (Windows)         | 
+[12:26:21]  | Includes:    0.3DL                     | 
+[12:26:21]  | Codepage:    <none>                    | 
+[12:26:21]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:26:21]  |                                        | 
+[12:26:21]  | YSI:         v5.07.3082                | 
+[12:26:21]  | Master:      1                         | 
+[12:26:21]  |                                        | 
+[12:26:21]  | JIT:         <none>                    | 
+[12:26:21]  | Crashdetect: <none>                    | 
+[12:26:21]  |                                        | 
+[12:26:21]  ========================================== 
+[12:26:21]  
+[12:26:21]  
+[12:26:21] Sistema de login ligado!
+[12:26:21] maxplayers = 50  (int, read-only)
+[12:26:21] Gamemode iniciada
+[12:26:21] A ligar á DB...
+[12:26:21] Ligado á DB - Tabela: openrp
+[12:26:21] Bom dia
+[12:26:21] Number of vehicle models: 0
+[12:26:33] [connection] incoming connection: 127.0.0.1:62843 id: 0
+[12:26:33] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:26:38] Login para 0 ID 0
+[12:26:40] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:28:02] language = ""  (string)
+[12:28:02] 
+[12:28:02] Server Plugins
+[12:28:02] --------------
+[12:28:02]  Loading plugin: mysql
+[12:28:02]  >> plugin.mysql: R41 successfully loaded.
+[12:28:02]   Loaded.
+[12:28:02]  Loading plugin: sscanf
+[12:28:02] 
+[12:28:02]  ===============================
+[12:28:02] 
+[12:28:02]       sscanf plugin loaded.     
+[12:28:02] 
+[12:28:02]          Version: 2.13.8
+[12:28:02] 
+[12:28:02]    (c) 2022 Alex "Y_Less" Cole  
+[12:28:02] 
+[12:28:02]  ===============================
+[12:28:02] 
+[12:28:02]   Loaded.
+[12:28:02]  Loading plugin: bcrypt-samp
+[12:28:02]   plugin.bcrypt v2.2.3 was loaded.
+[12:28:02]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:28:02]   Loaded.
+[12:28:02]  Loaded 3 plugins.
+
+[12:28:02] 
+[12:28:02] Filterscripts
+[12:28:02] ---------------
+[12:28:02]   Loaded 0 filterscripts.
+
+[12:28:02]  
+[12:28:02]  
+[12:28:02]          ==============================================================
+[12:28:02]          |                                                            |
+[12:28:02]          |                                                            |
+[12:28:02]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:28:02]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:28:02]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:28:02]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:28:02]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:28:02]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:28:02]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:28:02]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:28:02]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:28:02]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:28:02]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:28:02]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:28:02]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:28:02]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:28:02]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:28:02]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:28:02]          |                                                            |
+[12:28:02]          |                                                            |
+[12:28:02]          |                      (c) 2021 MPL v1.1                     |
+[12:28:02]          |            Alex "Y_Less" Cole and contributors.            |
+[12:28:02]          |                                                            |
+[12:28:02]          |                                                            |
+[12:28:02]          ==============================================================
+[12:28:02]  
+[12:28:02]  
+[12:28:02]  ========================================== 
+[12:28:02]  |                                        | 
+[12:28:02]  |  Missing YSI scriptfiles directories:  | 
+[12:28:02]  |                                        | 
+[12:28:02]  |      /scriptfiles/YSI/fixes/           | 
+[12:28:02]  |      /scriptfiles/YSI/temp/            | 
+[12:28:02]  |                                        | 
+[12:28:02]  ========================================== 
+[12:28:02]  |                                        | 
+[12:28:02]  |   Generating code, this may take a     | 
+[12:28:02]  |  little bit of time.  Note that this   | 
+[12:28:02]  |  code generation works best with the   | 
+[12:28:02]  |     JIT plugin, which you are not      | 
+[12:28:02]  |     currently using.  Get it here:     | 
+[12:28:02]  |                                        | 
+[12:28:02]  |       https://git.io/jit-plugin        | 
+[12:28:02]  |                                        | 
+[12:28:02]  |             Please wait...             | 
+[12:28:02]  |                                        | 
+[12:28:02]  |             Done in 19ms!              | 
+[12:28:02]  |                                        | 
+[12:28:02]  ========================================== 
+[12:28:02]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:28:02] *** YSI Info: YSI Script ID: 1
+[12:28:02]  |                                        | 
+[12:28:02]  | Server:      0.3.7-R2 (Windows)        | 
+[12:28:02]  | Started:     28 Feb 2023 - 12:28:02    | 
+[12:28:02]  |                                        | 
+[12:28:02]  | Compiler:    3.10.10 (Windows)         | 
+[12:28:02]  | Includes:    0.3DL                     | 
+[12:28:02]  | Codepage:    <none>                    | 
+[12:28:02]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:28:02]  |                                        | 
+[12:28:02]  | YSI:         v5.07.3082                | 
+[12:28:02]  | Master:      1                         | 
+[12:28:02]  |                                        | 
+[12:28:02]  | JIT:         <none>                    | 
+[12:28:02]  | Crashdetect: <none>                    | 
+[12:28:02]  |                                        | 
+[12:28:02]  ========================================== 
+[12:28:02]  
+[12:28:02]  
+[12:28:02] Sistema de login ligado!
+[12:28:02] maxplayers = 50  (int, read-only)
+[12:28:02] Gamemode iniciada
+[12:28:02] A ligar á DB...
+[12:28:02] Ligado á DB - Tabela: openrp
+[12:28:02] Bom dia
+[12:28:02] Number of vehicle models: 0
+[12:28:20] [connection] incoming connection: 127.0.0.1:49398 id: 0
+[12:28:20] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:28:22] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:29:59] language = ""  (string)
+[12:29:59] 
+[12:29:59] Server Plugins
+[12:29:59] --------------
+[12:29:59]  Loading plugin: mysql
+[12:29:59]  >> plugin.mysql: R41 successfully loaded.
+[12:29:59]   Loaded.
+[12:29:59]  Loading plugin: sscanf
+[12:29:59] 
+[12:29:59]  ===============================
+[12:29:59] 
+[12:29:59]       sscanf plugin loaded.     
+[12:29:59] 
+[12:29:59]          Version: 2.13.8
+[12:29:59] 
+[12:29:59]    (c) 2022 Alex "Y_Less" Cole  
+[12:29:59] 
+[12:29:59]  ===============================
+[12:29:59] 
+[12:29:59]   Loaded.
+[12:29:59]  Loading plugin: bcrypt-samp
+[12:29:59]   plugin.bcrypt v2.2.3 was loaded.
+[12:29:59]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:29:59]   Loaded.
+[12:29:59]  Loaded 3 plugins.
+
+[12:29:59] 
+[12:29:59] Filterscripts
+[12:29:59] ---------------
+[12:29:59]   Loaded 0 filterscripts.
+
+[12:29:59]  
+[12:29:59]  
+[12:29:59]          ==============================================================
+[12:29:59]          |                                                            |
+[12:29:59]          |                                                            |
+[12:29:59]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:29:59]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:29:59]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:29:59]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:29:59]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:29:59]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:29:59]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:29:59]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:29:59]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:29:59]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:29:59]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:29:59]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:29:59]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:29:59]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:29:59]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:29:59]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:29:59]          |                                                            |
+[12:29:59]          |                                                            |
+[12:29:59]          |                      (c) 2021 MPL v1.1                     |
+[12:29:59]          |            Alex "Y_Less" Cole and contributors.            |
+[12:29:59]          |                                                            |
+[12:29:59]          |                                                            |
+[12:29:59]          ==============================================================
+[12:29:59]  
+[12:29:59]  
+[12:29:59]  ========================================== 
+[12:29:59]  |                                        | 
+[12:29:59]  |  Missing YSI scriptfiles directories:  | 
+[12:29:59]  |                                        | 
+[12:29:59]  |      /scriptfiles/YSI/fixes/           | 
+[12:29:59]  |      /scriptfiles/YSI/temp/            | 
+[12:29:59]  |                                        | 
+[12:29:59]  ========================================== 
+[12:29:59]  |                                        | 
+[12:29:59]  |   Generating code, this may take a     | 
+[12:29:59]  |  little bit of time.  Note that this   | 
+[12:29:59]  |  code generation works best with the   | 
+[12:29:59]  |     JIT plugin, which you are not      | 
+[12:29:59]  |     currently using.  Get it here:     | 
+[12:29:59]  |                                        | 
+[12:29:59]  |       https://git.io/jit-plugin        | 
+[12:29:59]  |                                        | 
+[12:29:59]  |             Please wait...             | 
+[12:29:59]  |                                        | 
+[12:29:59]  |             Done in 28ms!              | 
+[12:29:59]  |                                        | 
+[12:29:59]  ========================================== 
+[12:29:59]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:29:59] *** YSI Info: YSI Script ID: 1
+[12:29:59]  |                                        | 
+[12:29:59]  | Server:      0.3.7-R2 (Windows)        | 
+[12:29:59]  | Started:     28 Feb 2023 - 12:29:59    | 
+[12:29:59]  |                                        | 
+[12:29:59]  | Compiler:    3.10.10 (Windows)         | 
+[12:29:59]  | Includes:    0.3DL                     | 
+[12:29:59]  | Codepage:    <none>                    | 
+[12:29:59]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:29:59]  |                                        | 
+[12:29:59]  | YSI:         v5.07.3082                | 
+[12:29:59]  | Master:      1                         | 
+[12:29:59]  |                                        | 
+[12:29:59]  | JIT:         <none>                    | 
+[12:29:59]  | Crashdetect: <none>                    | 
+[12:29:59]  |                                        | 
+[12:29:59]  ========================================== 
+[12:29:59]  
+[12:29:59]  
+[12:29:59] Sistema de login ligado!
+[12:29:59] maxplayers = 50  (int, read-only)
+[12:29:59] Gamemode iniciada
+[12:29:59] A ligar á DB...
+[12:29:59] Ligado á DB - Tabela: openrp
+[12:29:59] Bom dia
+[12:29:59] Number of vehicle models: 0
+[12:30:11] [connection] incoming connection: 127.0.0.1:49600 id: 0
+[12:30:11] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:30:14] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:33:17] language = ""  (string)
+[12:33:17] 
+[12:33:17] Server Plugins
+[12:33:17] --------------
+[12:33:17]  Loading plugin: mysql
+[12:33:17]  >> plugin.mysql: R41 successfully loaded.
+[12:33:17]   Loaded.
+[12:33:17]  Loading plugin: sscanf
+[12:33:17] 
+[12:33:17]  ===============================
+[12:33:17] 
+[12:33:17]       sscanf plugin loaded.     
+[12:33:17] 
+[12:33:17]          Version: 2.13.8
+[12:33:17] 
+[12:33:17]    (c) 2022 Alex "Y_Less" Cole  
+[12:33:17] 
+[12:33:17]  ===============================
+[12:33:17] 
+[12:33:17]   Loaded.
+[12:33:17]  Loading plugin: bcrypt-samp
+[12:33:17]   plugin.bcrypt v2.2.3 was loaded.
+[12:33:17]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:33:17]   Loaded.
+[12:33:17]  Loaded 3 plugins.
+
+[12:33:17] 
+[12:33:17] Filterscripts
+[12:33:17] ---------------
+[12:33:17]   Loaded 0 filterscripts.
+
+[12:33:17]  
+[12:33:17]  
+[12:33:17]          ==============================================================
+[12:33:17]          |                                                            |
+[12:33:17]          |                                                            |
+[12:33:17]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:33:17]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:33:17]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:33:17]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:33:17]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:33:17]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:33:17]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:33:17]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:33:17]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:33:17]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:33:17]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:33:17]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:33:17]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:33:17]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:33:17]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:33:17]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:33:17]          |                                                            |
+[12:33:17]          |                                                            |
+[12:33:17]          |                      (c) 2021 MPL v1.1                     |
+[12:33:17]          |            Alex "Y_Less" Cole and contributors.            |
+[12:33:17]          |                                                            |
+[12:33:17]          |                                                            |
+[12:33:17]          ==============================================================
+[12:33:17]  
+[12:33:17]  
+[12:33:17]  ========================================== 
+[12:33:17]  |                                        | 
+[12:33:17]  |  Missing YSI scriptfiles directories:  | 
+[12:33:17]  |                                        | 
+[12:33:17]  |      /scriptfiles/YSI/fixes/           | 
+[12:33:17]  |      /scriptfiles/YSI/temp/            | 
+[12:33:17]  |                                        | 
+[12:33:17]  ========================================== 
+[12:33:17]  |                                        | 
+[12:33:17]  |   Generating code, this may take a     | 
+[12:33:17]  |  little bit of time.  Note that this   | 
+[12:33:17]  |  code generation works best with the   | 
+[12:33:17]  |     JIT plugin, which you are not      | 
+[12:33:17]  |     currently using.  Get it here:     | 
+[12:33:17]  |                                        | 
+[12:33:17]  |       https://git.io/jit-plugin        | 
+[12:33:17]  |                                        | 
+[12:33:17]  |             Please wait...             | 
+[12:33:17]  |                                        | 
+[12:33:17]  |             Done in 19ms!              | 
+[12:33:17]  |                                        | 
+[12:33:17]  ========================================== 
+[12:33:17]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:33:17] *** YSI Info: YSI Script ID: 1
+[12:33:17]  |                                        | 
+[12:33:17]  | Server:      0.3.7-R2 (Windows)        | 
+[12:33:17]  | Started:     28 Feb 2023 - 12:33:17    | 
+[12:33:17]  |                                        | 
+[12:33:17]  | Compiler:    3.10.10 (Windows)         | 
+[12:33:17]  | Includes:    0.3DL                     | 
+[12:33:17]  | Codepage:    <none>                    | 
+[12:33:17]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:33:17]  |                                        | 
+[12:33:17]  | YSI:         v5.07.3082                | 
+[12:33:17]  | Master:      1                         | 
+[12:33:17]  |                                        | 
+[12:33:17]  | JIT:         <none>                    | 
+[12:33:17]  | Crashdetect: <none>                    | 
+[12:33:17]  |                                        | 
+[12:33:17]  ========================================== 
+[12:33:17]  
+[12:33:17]  
+[12:33:17] Sistema de login ligado!
+[12:33:17] maxplayers = 50  (int, read-only)
+[12:33:17] Gamemode iniciada
+[12:33:17] A ligar á DB...
+[12:33:17] Ligado á DB - Tabela: openrp
+[12:33:17] Bom dia
+[12:33:17] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:34:01] language = ""  (string)
+[12:34:01] 
+[12:34:01] Server Plugins
+[12:34:01] --------------
+[12:34:01]  Loading plugin: mysql
+[12:34:01]  >> plugin.mysql: R41 successfully loaded.
+[12:34:01]   Loaded.
+[12:34:01]  Loading plugin: sscanf
+[12:34:01] 
+[12:34:01]  ===============================
+[12:34:01] 
+[12:34:01]       sscanf plugin loaded.     
+[12:34:01] 
+[12:34:01]          Version: 2.13.8
+[12:34:01] 
+[12:34:01]    (c) 2022 Alex "Y_Less" Cole  
+[12:34:01] 
+[12:34:01]  ===============================
+[12:34:01] 
+[12:34:01]   Loaded.
+[12:34:01]  Loading plugin: bcrypt-samp
+[12:34:01]   plugin.bcrypt v2.2.3 was loaded.
+[12:34:01]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:34:01]   Loaded.
+[12:34:01]  Loaded 3 plugins.
+
+[12:34:01] 
+[12:34:01] Filterscripts
+[12:34:01] ---------------
+[12:34:01]   Loaded 0 filterscripts.
+
+[12:34:01]  
+[12:34:01]  
+[12:34:01]          ==============================================================
+[12:34:01]          |                                                            |
+[12:34:01]          |                                                            |
+[12:34:01]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:34:01]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:34:01]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:34:01]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:34:01]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:34:01]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:34:01]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:34:01]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:34:01]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:34:01]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:34:01]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:34:01]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:34:01]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:34:01]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:34:01]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:34:01]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:34:01]          |                                                            |
+[12:34:01]          |                                                            |
+[12:34:01]          |                      (c) 2021 MPL v1.1                     |
+[12:34:01]          |            Alex "Y_Less" Cole and contributors.            |
+[12:34:01]          |                                                            |
+[12:34:01]          |                                                            |
+[12:34:01]          ==============================================================
+[12:34:01]  
+[12:34:01]  
+[12:34:01]  ========================================== 
+[12:34:01]  |                                        | 
+[12:34:01]  |  Missing YSI scriptfiles directories:  | 
+[12:34:01]  |                                        | 
+[12:34:01]  |      /scriptfiles/YSI/fixes/           | 
+[12:34:01]  |      /scriptfiles/YSI/temp/            | 
+[12:34:01]  |                                        | 
+[12:34:01]  ========================================== 
+[12:34:01]  |                                        | 
+[12:34:01]  |   Generating code, this may take a     | 
+[12:34:01]  |  little bit of time.  Note that this   | 
+[12:34:01]  |  code generation works best with the   | 
+[12:34:01]  |     JIT plugin, which you are not      | 
+[12:34:01]  |     currently using.  Get it here:     | 
+[12:34:01]  |                                        | 
+[12:34:01]  |       https://git.io/jit-plugin        | 
+[12:34:01]  |                                        | 
+[12:34:01]  |             Please wait...             | 
+[12:34:01]  |                                        | 
+[12:34:01]  |             Done in 24ms!              | 
+[12:34:01]  |                                        | 
+[12:34:01]  ========================================== 
+[12:34:01]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:34:01] *** YSI Info: YSI Script ID: 1
+[12:34:01]  |                                        | 
+[12:34:01]  | Server:      0.3.7-R2 (Windows)        | 
+[12:34:01]  | Started:     28 Feb 2023 - 12:34:01    | 
+[12:34:01]  |                                        | 
+[12:34:01]  | Compiler:    3.10.10 (Windows)         | 
+[12:34:01]  | Includes:    0.3DL                     | 
+[12:34:01]  | Codepage:    <none>                    | 
+[12:34:01]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:34:01]  |                                        | 
+[12:34:01]  | YSI:         v5.07.3082                | 
+[12:34:01]  | Master:      1                         | 
+[12:34:01]  |                                        | 
+[12:34:01]  | JIT:         <none>                    | 
+[12:34:01]  | Crashdetect: <none>                    | 
+[12:34:01]  |                                        | 
+[12:34:01]  ========================================== 
+[12:34:01]  
+[12:34:01]  
+[12:34:01] Sistema de login ligado!
+[12:34:01] maxplayers = 50  (int, read-only)
+[12:34:01] Gamemode iniciada
+[12:34:01] A ligar á DB...
+[12:34:01] Ligado á DB - Tabela: openrp
+[12:34:01] Bom dia
+[12:34:01] Number of vehicle models: 0
+[12:34:03] [connection] incoming connection: 127.0.0.1:56746 id: 0
+[12:34:03] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:34:05] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:34:56] language = ""  (string)
+[12:34:56] 
+[12:34:56] Server Plugins
+[12:34:56] --------------
+[12:34:56]  Loading plugin: mysql
+[12:34:56]  >> plugin.mysql: R41 successfully loaded.
+[12:34:56]   Loaded.
+[12:34:56]  Loading plugin: sscanf
+[12:34:56] 
+[12:34:56]  ===============================
+[12:34:56] 
+[12:34:56]       sscanf plugin loaded.     
+[12:34:56] 
+[12:34:56]          Version: 2.13.8
+[12:34:56] 
+[12:34:56]    (c) 2022 Alex "Y_Less" Cole  
+[12:34:56] 
+[12:34:56]  ===============================
+[12:34:56] 
+[12:34:56]   Loaded.
+[12:34:56]  Loading plugin: bcrypt-samp
+[12:34:56]   plugin.bcrypt v2.2.3 was loaded.
+[12:34:56]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:34:56]   Loaded.
+[12:34:56]  Loaded 3 plugins.
+
+[12:34:56] 
+[12:34:56] Filterscripts
+[12:34:56] ---------------
+[12:34:56]   Loaded 0 filterscripts.
+
+[12:34:56]  
+[12:34:56]  
+[12:34:56]          ==============================================================
+[12:34:56]          |                                                            |
+[12:34:56]          |                                                            |
+[12:34:56]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:34:56]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:34:56]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:34:56]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:34:56]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:34:56]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:34:56]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:34:56]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:34:56]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:34:56]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:34:56]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:34:56]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:34:56]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:34:56]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:34:56]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:34:56]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:34:56]          |                                                            |
+[12:34:56]          |                                                            |
+[12:34:56]          |                      (c) 2021 MPL v1.1                     |
+[12:34:56]          |            Alex "Y_Less" Cole and contributors.            |
+[12:34:56]          |                                                            |
+[12:34:56]          |                                                            |
+[12:34:56]          ==============================================================
+[12:34:56]  
+[12:34:56]  
+[12:34:56]  ========================================== 
+[12:34:56]  |                                        | 
+[12:34:56]  |  Missing YSI scriptfiles directories:  | 
+[12:34:56]  |                                        | 
+[12:34:56]  |      /scriptfiles/YSI/fixes/           | 
+[12:34:56]  |      /scriptfiles/YSI/temp/            | 
+[12:34:56]  |                                        | 
+[12:34:56]  ========================================== 
+[12:34:56]  |                                        | 
+[12:34:56]  |   Generating code, this may take a     | 
+[12:34:56]  |  little bit of time.  Note that this   | 
+[12:34:56]  |  code generation works best with the   | 
+[12:34:56]  |     JIT plugin, which you are not      | 
+[12:34:56]  |     currently using.  Get it here:     | 
+[12:34:56]  |                                        | 
+[12:34:56]  |       https://git.io/jit-plugin        | 
+[12:34:56]  |                                        | 
+[12:34:56]  |             Please wait...             | 
+[12:34:56]  |                                        | 
+[12:34:56]  |             Done in 26ms!              | 
+[12:34:56]  |                                        | 
+[12:34:56]  ========================================== 
+[12:34:56]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:34:56] *** YSI Info: YSI Script ID: 1
+[12:34:56]  |                                        | 
+[12:34:56]  | Server:      0.3.7-R2 (Windows)        | 
+[12:34:56]  | Started:     28 Feb 2023 - 12:34:56    | 
+[12:34:56]  |                                        | 
+[12:34:56]  | Compiler:    3.10.10 (Windows)         | 
+[12:34:56]  | Includes:    0.3DL                     | 
+[12:34:56]  | Codepage:    <none>                    | 
+[12:34:56]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:34:56]  |                                        | 
+[12:34:56]  | YSI:         v5.07.3082                | 
+[12:34:56]  | Master:      1                         | 
+[12:34:56]  |                                        | 
+[12:34:56]  | JIT:         <none>                    | 
+[12:34:56]  | Crashdetect: <none>                    | 
+[12:34:56]  |                                        | 
+[12:34:56]  ========================================== 
+[12:34:56]  
+[12:34:56]  
+[12:34:56] Sistema de login ligado!
+[12:34:56] maxplayers = 50  (int, read-only)
+[12:34:56] Gamemode iniciada
+[12:34:56] A ligar á DB...
+[12:34:56] Ligado á DB - Tabela: openrp
+[12:34:56] Bom dia
+[12:34:56] Number of vehicle models: 0
+[12:35:05] [connection] incoming connection: 127.0.0.1:59915 id: 0
+[12:35:05] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:35:08] Login para 0 ID 0
+[12:35:11] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:35:43] language = ""  (string)
+[12:35:43] 
+[12:35:43] Server Plugins
+[12:35:43] --------------
+[12:35:43]  Loading plugin: mysql
+[12:35:43]  >> plugin.mysql: R41 successfully loaded.
+[12:35:43]   Loaded.
+[12:35:43]  Loading plugin: sscanf
+[12:35:43] 
+[12:35:43]  ===============================
+[12:35:43] 
+[12:35:43]       sscanf plugin loaded.     
+[12:35:43] 
+[12:35:43]          Version: 2.13.8
+[12:35:43] 
+[12:35:43]    (c) 2022 Alex "Y_Less" Cole  
+[12:35:43] 
+[12:35:43]  ===============================
+[12:35:43] 
+[12:35:43]   Loaded.
+[12:35:43]  Loading plugin: bcrypt-samp
+[12:35:43]   plugin.bcrypt v2.2.3 was loaded.
+[12:35:43]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:35:43]   Loaded.
+[12:35:43]  Loaded 3 plugins.
+
+[12:35:43] 
+[12:35:43] Filterscripts
+[12:35:43] ---------------
+[12:35:43]   Loaded 0 filterscripts.
+
+[12:35:43]  
+[12:35:43]  
+[12:35:43]          ==============================================================
+[12:35:43]          |                                                            |
+[12:35:43]          |                                                            |
+[12:35:43]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:35:43]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:35:43]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:35:43]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:35:43]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:35:43]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:35:43]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:35:43]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:35:43]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:35:43]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:35:43]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:35:43]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:35:43]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:35:43]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:35:43]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:35:43]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:35:43]          |                                                            |
+[12:35:43]          |                                                            |
+[12:35:43]          |                      (c) 2021 MPL v1.1                     |
+[12:35:43]          |            Alex "Y_Less" Cole and contributors.            |
+[12:35:43]          |                                                            |
+[12:35:43]          |                                                            |
+[12:35:43]          ==============================================================
+[12:35:43]  
+[12:35:43]  
+[12:35:43]  ========================================== 
+[12:35:43]  |                                        | 
+[12:35:43]  |  Missing YSI scriptfiles directories:  | 
+[12:35:43]  |                                        | 
+[12:35:43]  |      /scriptfiles/YSI/fixes/           | 
+[12:35:43]  |      /scriptfiles/YSI/temp/            | 
+[12:35:43]  |                                        | 
+[12:35:43]  ========================================== 
+[12:35:43]  |                                        | 
+[12:35:43]  |   Generating code, this may take a     | 
+[12:35:43]  |  little bit of time.  Note that this   | 
+[12:35:43]  |  code generation works best with the   | 
+[12:35:43]  |     JIT plugin, which you are not      | 
+[12:35:43]  |     currently using.  Get it here:     | 
+[12:35:43]  |                                        | 
+[12:35:43]  |       https://git.io/jit-plugin        | 
+[12:35:43]  |                                        | 
+[12:35:43]  |             Please wait...             | 
+[12:35:43]  |                                        | 
+[12:35:43]  |             Done in 18ms!              | 
+[12:35:43]  |                                        | 
+[12:35:43]  ========================================== 
+[12:35:43]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:35:43] *** YSI Info: YSI Script ID: 1
+[12:35:43]  |                                        | 
+[12:35:43]  | Server:      0.3.7-R2 (Windows)        | 
+[12:35:43]  | Started:     28 Feb 2023 - 12:35:43    | 
+[12:35:43]  |                                        | 
+[12:35:43]  | Compiler:    3.10.10 (Windows)         | 
+[12:35:43]  | Includes:    0.3DL                     | 
+[12:35:43]  | Codepage:    <none>                    | 
+[12:35:43]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:35:43]  |                                        | 
+[12:35:43]  | YSI:         v5.07.3082                | 
+[12:35:43]  | Master:      1                         | 
+[12:35:43]  |                                        | 
+[12:35:43]  | JIT:         <none>                    | 
+[12:35:43]  | Crashdetect: <none>                    | 
+[12:35:43]  |                                        | 
+[12:35:43]  ========================================== 
+[12:35:43]  
+[12:35:43]  
+[12:35:43] Sistema de login ligado!
+[12:35:43] maxplayers = 50  (int, read-only)
+[12:35:43] Gamemode iniciada
+[12:35:43] A ligar á DB...
+[12:35:43] Ligado á DB - Tabela: openrp
+[12:35:43] Bom dia
+[12:35:43] Number of vehicle models: 0
+[12:36:07] [connection] incoming connection: 127.0.0.1:62543 id: 0
+[12:36:07] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:36:10] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:37:17] language = ""  (string)
+[12:37:17] 
+[12:37:17] Server Plugins
+[12:37:17] --------------
+[12:37:17]  Loading plugin: mysql
+[12:37:17]  >> plugin.mysql: R41 successfully loaded.
+[12:37:17]   Loaded.
+[12:37:17]  Loading plugin: sscanf
+[12:37:17] 
+[12:37:17]  ===============================
+[12:37:17] 
+[12:37:17]       sscanf plugin loaded.     
+[12:37:17] 
+[12:37:17]          Version: 2.13.8
+[12:37:17] 
+[12:37:17]    (c) 2022 Alex "Y_Less" Cole  
+[12:37:17] 
+[12:37:17]  ===============================
+[12:37:17] 
+[12:37:17]   Loaded.
+[12:37:17]  Loading plugin: bcrypt-samp
+[12:37:17]   plugin.bcrypt v2.2.3 was loaded.
+[12:37:17]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:37:17]   Loaded.
+[12:37:17]  Loaded 3 plugins.
+
+[12:37:17] 
+[12:37:17] Filterscripts
+[12:37:17] ---------------
+[12:37:17]   Loaded 0 filterscripts.
+
+[12:37:17]  
+[12:37:17]  
+[12:37:17]          ==============================================================
+[12:37:17]          |                                                            |
+[12:37:17]          |                                                            |
+[12:37:17]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:37:17]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:37:17]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:37:17]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:37:17]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:37:17]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:37:17]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:37:17]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:37:17]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:37:17]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:37:17]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:37:17]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:37:17]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:37:17]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:37:17]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:37:17]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:37:17]          |                                                            |
+[12:37:17]          |                                                            |
+[12:37:17]          |                      (c) 2021 MPL v1.1                     |
+[12:37:17]          |            Alex "Y_Less" Cole and contributors.            |
+[12:37:17]          |                                                            |
+[12:37:17]          |                                                            |
+[12:37:17]          ==============================================================
+[12:37:17]  
+[12:37:17]  
+[12:37:17]  ========================================== 
+[12:37:17]  |                                        | 
+[12:37:17]  |  Missing YSI scriptfiles directories:  | 
+[12:37:17]  |                                        | 
+[12:37:17]  |      /scriptfiles/YSI/fixes/           | 
+[12:37:17]  |      /scriptfiles/YSI/temp/            | 
+[12:37:17]  |                                        | 
+[12:37:17]  ========================================== 
+[12:37:17]  |                                        | 
+[12:37:17]  |   Generating code, this may take a     | 
+[12:37:17]  |  little bit of time.  Note that this   | 
+[12:37:17]  |  code generation works best with the   | 
+[12:37:17]  |     JIT plugin, which you are not      | 
+[12:37:17]  |     currently using.  Get it here:     | 
+[12:37:17]  |                                        | 
+[12:37:17]  |       https://git.io/jit-plugin        | 
+[12:37:17]  |                                        | 
+[12:37:17]  |             Please wait...             | 
+[12:37:17]  |                                        | 
+[12:37:17]  |             Done in 17ms!              | 
+[12:37:17]  |                                        | 
+[12:37:17]  ========================================== 
+[12:37:17]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:37:17] *** YSI Info: YSI Script ID: 1
+[12:37:17]  |                                        | 
+[12:37:17]  | Server:      0.3.7-R2 (Windows)        | 
+[12:37:17]  | Started:     28 Feb 2023 - 12:37:17    | 
+[12:37:17]  |                                        | 
+[12:37:17]  | Compiler:    3.10.10 (Windows)         | 
+[12:37:17]  | Includes:    0.3DL                     | 
+[12:37:17]  | Codepage:    <none>                    | 
+[12:37:17]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:37:17]  |                                        | 
+[12:37:17]  | YSI:         v5.07.3082                | 
+[12:37:17]  | Master:      1                         | 
+[12:37:17]  |                                        | 
+[12:37:17]  | JIT:         <none>                    | 
+[12:37:17]  | Crashdetect: <none>                    | 
+[12:37:17]  |                                        | 
+[12:37:17]  ========================================== 
+[12:37:17]  
+[12:37:17]  
+[12:37:17] Sistema de login ligado!
+[12:37:17] maxplayers = 50  (int, read-only)
+[12:37:17] Gamemode iniciada
+[12:37:17] A ligar á DB...
+[12:37:17] Ligado á DB - Tabela: openrp
+[12:37:17] Bom dia
+[12:37:17] Number of vehicle models: 0
+[12:37:34] [connection] incoming connection: 127.0.0.1:50842 id: 0
+[12:37:34] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:37:37] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:38:21] language = ""  (string)
+[12:38:21] 
+[12:38:21] Server Plugins
+[12:38:21] --------------
+[12:38:21]  Loading plugin: mysql
+[12:38:21]  >> plugin.mysql: R41 successfully loaded.
+[12:38:21]   Loaded.
+[12:38:21]  Loading plugin: sscanf
+[12:38:21] 
+[12:38:21]  ===============================
+[12:38:21] 
+[12:38:21]       sscanf plugin loaded.     
+[12:38:21] 
+[12:38:21]          Version: 2.13.8
+[12:38:21] 
+[12:38:21]    (c) 2022 Alex "Y_Less" Cole  
+[12:38:21] 
+[12:38:21]  ===============================
+[12:38:21] 
+[12:38:21]   Loaded.
+[12:38:21]  Loading plugin: bcrypt-samp
+[12:38:21]   plugin.bcrypt v2.2.3 was loaded.
+[12:38:21]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:38:21]   Loaded.
+[12:38:21]  Loaded 3 plugins.
+
+[12:38:21] 
+[12:38:21] Filterscripts
+[12:38:21] ---------------
+[12:38:21]   Loaded 0 filterscripts.
+
+[12:38:21]  
+[12:38:21]  
+[12:38:21]          ==============================================================
+[12:38:21]          |                                                            |
+[12:38:21]          |                                                            |
+[12:38:21]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:38:21]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:38:21]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:38:21]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:38:21]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:38:21]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:38:21]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:38:21]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:38:21]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:38:21]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:38:21]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:38:21]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:38:21]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:38:21]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:38:21]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:38:21]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:38:21]          |                                                            |
+[12:38:21]          |                                                            |
+[12:38:21]          |                      (c) 2021 MPL v1.1                     |
+[12:38:21]          |            Alex "Y_Less" Cole and contributors.            |
+[12:38:21]          |                                                            |
+[12:38:21]          |                                                            |
+[12:38:21]          ==============================================================
+[12:38:21]  
+[12:38:21]  
+[12:38:21]  ========================================== 
+[12:38:21]  |                                        | 
+[12:38:21]  |  Missing YSI scriptfiles directories:  | 
+[12:38:21]  |                                        | 
+[12:38:21]  |      /scriptfiles/YSI/fixes/           | 
+[12:38:21]  |      /scriptfiles/YSI/temp/            | 
+[12:38:21]  |                                        | 
+[12:38:21]  ========================================== 
+[12:38:21]  |                                        | 
+[12:38:21]  |   Generating code, this may take a     | 
+[12:38:21]  |  little bit of time.  Note that this   | 
+[12:38:21]  |  code generation works best with the   | 
+[12:38:21]  |     JIT plugin, which you are not      | 
+[12:38:21]  |     currently using.  Get it here:     | 
+[12:38:21]  |                                        | 
+[12:38:21]  |       https://git.io/jit-plugin        | 
+[12:38:21]  |                                        | 
+[12:38:21]  |             Please wait...             | 
+[12:38:21]  |                                        | 
+[12:38:21]  |             Done in 20ms!              | 
+[12:38:21]  |                                        | 
+[12:38:21]  ========================================== 
+[12:38:21]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:38:21] *** YSI Info: YSI Script ID: 1
+[12:38:21]  |                                        | 
+[12:38:21]  | Server:      0.3.7-R2 (Windows)        | 
+[12:38:21]  | Started:     28 Feb 2023 - 12:38:21    | 
+[12:38:21]  |                                        | 
+[12:38:21]  | Compiler:    3.10.10 (Windows)         | 
+[12:38:21]  | Includes:    0.3DL                     | 
+[12:38:21]  | Codepage:    <none>                    | 
+[12:38:21]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:38:21]  |                                        | 
+[12:38:21]  | YSI:         v5.07.3082                | 
+[12:38:21]  | Master:      1                         | 
+[12:38:21]  |                                        | 
+[12:38:21]  | JIT:         <none>                    | 
+[12:38:21]  | Crashdetect: <none>                    | 
+[12:38:21]  |                                        | 
+[12:38:21]  ========================================== 
+[12:38:21]  
+[12:38:21]  
+[12:38:21] Sistema de login ligado!
+[12:38:21] maxplayers = 50  (int, read-only)
+[12:38:21] Gamemode iniciada
+[12:38:21] A ligar á DB...
+[12:38:21] Ligado á DB - Tabela: openrp
+[12:38:21] Bom dia
+[12:38:21] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:43:06] language = ""  (string)
+[12:43:06] 
+[12:43:06] Server Plugins
+[12:43:06] --------------
+[12:43:06]  Loading plugin: mysql
+[12:43:06]  >> plugin.mysql: R41 successfully loaded.
+[12:43:06]   Loaded.
+[12:43:06]  Loading plugin: sscanf
+[12:43:06] 
+[12:43:06]  ===============================
+[12:43:06] 
+[12:43:06]       sscanf plugin loaded.     
+[12:43:06] 
+[12:43:06]          Version: 2.13.8
+[12:43:06] 
+[12:43:06]    (c) 2022 Alex "Y_Less" Cole  
+[12:43:06] 
+[12:43:06]  ===============================
+[12:43:06] 
+[12:43:06]   Loaded.
+[12:43:06]  Loading plugin: bcrypt-samp
+[12:43:06]   plugin.bcrypt v2.2.3 was loaded.
+[12:43:06]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:43:06]   Loaded.
+[12:43:06]  Loaded 3 plugins.
+
+[12:43:06] 
+[12:43:06] Filterscripts
+[12:43:06] ---------------
+[12:43:06]   Loaded 0 filterscripts.
+
+[12:43:06]  
+[12:43:06]  
+[12:43:06]          ==============================================================
+[12:43:06]          |                                                            |
+[12:43:06]          |                                                            |
+[12:43:06]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:43:06]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:43:06]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:43:06]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:43:06]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:43:06]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:43:06]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:43:06]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:43:06]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:43:06]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:43:06]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:43:06]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:43:06]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:43:06]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:43:06]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:43:06]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:43:06]          |                                                            |
+[12:43:06]          |                                                            |
+[12:43:06]          |                      (c) 2021 MPL v1.1                     |
+[12:43:06]          |            Alex "Y_Less" Cole and contributors.            |
+[12:43:06]          |                                                            |
+[12:43:06]          |                                                            |
+[12:43:06]          ==============================================================
+[12:43:06]  
+[12:43:06]  
+[12:43:06]  ========================================== 
+[12:43:06]  |                                        | 
+[12:43:06]  |  Missing YSI scriptfiles directories:  | 
+[12:43:06]  |                                        | 
+[12:43:06]  |      /scriptfiles/YSI/fixes/           | 
+[12:43:06]  |      /scriptfiles/YSI/temp/            | 
+[12:43:06]  |                                        | 
+[12:43:06]  ========================================== 
+[12:43:06]  |                                        | 
+[12:43:06]  |   Generating code, this may take a     | 
+[12:43:06]  |  little bit of time.  Note that this   | 
+[12:43:06]  |  code generation works best with the   | 
+[12:43:06]  |     JIT plugin, which you are not      | 
+[12:43:06]  |     currently using.  Get it here:     | 
+[12:43:06]  |                                        | 
+[12:43:06]  |       https://git.io/jit-plugin        | 
+[12:43:06]  |                                        | 
+[12:43:06]  |             Please wait...             | 
+[12:43:06]  |                                        | 
+[12:43:06]  |             Done in 20ms!              | 
+[12:43:06]  |                                        | 
+[12:43:06]  ========================================== 
+[12:43:06]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:43:06] *** YSI Info: YSI Script ID: 1
+[12:43:06]  |                                        | 
+[12:43:06]  | Server:      0.3.7-R2 (Windows)        | 
+[12:43:06]  | Started:     28 Feb 2023 - 12:43:06    | 
+[12:43:06]  |                                        | 
+[12:43:06]  | Compiler:    3.10.10 (Windows)         | 
+[12:43:06]  | Includes:    0.3DL                     | 
+[12:43:06]  | Codepage:    <none>                    | 
+[12:43:06]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:43:06]  |                                        | 
+[12:43:06]  | YSI:         v5.07.3082                | 
+[12:43:06]  | Master:      1                         | 
+[12:43:06]  |                                        | 
+[12:43:06]  | JIT:         <none>                    | 
+[12:43:06]  | Crashdetect: <none>                    | 
+[12:43:06]  |                                        | 
+[12:43:06]  ========================================== 
+[12:43:06]  
+[12:43:06]  
+[12:43:06] Sistema de login ligado!
+[12:43:06] maxplayers = 50  (int, read-only)
+[12:43:06] Gamemode iniciada
+[12:43:06] A ligar á DB...
+[12:43:06] Ligado á DB - Tabela: openrp
+[12:43:06] Bom dia
+[12:43:06] Number of vehicle models: 0
+[12:43:08] [connection] incoming connection: 127.0.0.1:54689 id: 0
+[12:43:08] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:43:10] Login para 0 ID 0
+[12:43:28] [chat] [Bonnie20402_PT]: t
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:44:55] language = ""  (string)
+[12:44:55] 
+[12:44:55] Server Plugins
+[12:44:55] --------------
+[12:44:55]  Loading plugin: mysql
+[12:44:55]  >> plugin.mysql: R41 successfully loaded.
+[12:44:55]   Loaded.
+[12:44:55]  Loading plugin: sscanf
+[12:44:55] 
+[12:44:55]  ===============================
+[12:44:55] 
+[12:44:55]       sscanf plugin loaded.     
+[12:44:55] 
+[12:44:55]          Version: 2.13.8
+[12:44:55] 
+[12:44:55]    (c) 2022 Alex "Y_Less" Cole  
+[12:44:55] 
+[12:44:55]  ===============================
+[12:44:55] 
+[12:44:55]   Loaded.
+[12:44:55]  Loading plugin: bcrypt-samp
+[12:44:55]   plugin.bcrypt v2.2.3 was loaded.
+[12:44:55]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:44:55]   Loaded.
+[12:44:55]  Loaded 3 plugins.
+
+[12:44:55] 
+[12:44:55] Filterscripts
+[12:44:55] ---------------
+[12:44:55]   Loaded 0 filterscripts.
+
+[12:44:55]  
+[12:44:55]  
+[12:44:55]          ==============================================================
+[12:44:55]          |                                                            |
+[12:44:55]          |                                                            |
+[12:44:55]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:44:55]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:44:55]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:44:55]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:44:55]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:44:55]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:44:55]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:44:55]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:44:55]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:44:55]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:44:55]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:44:55]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:44:55]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:44:55]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:44:55]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:44:55]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:44:55]          |                                                            |
+[12:44:55]          |                                                            |
+[12:44:55]          |                      (c) 2021 MPL v1.1                     |
+[12:44:55]          |            Alex "Y_Less" Cole and contributors.            |
+[12:44:55]          |                                                            |
+[12:44:55]          |                                                            |
+[12:44:55]          ==============================================================
+[12:44:55]  
+[12:44:55]  
+[12:44:55]  ========================================== 
+[12:44:55]  |                                        | 
+[12:44:55]  |  Missing YSI scriptfiles directories:  | 
+[12:44:55]  |                                        | 
+[12:44:55]  |      /scriptfiles/YSI/fixes/           | 
+[12:44:55]  |      /scriptfiles/YSI/temp/            | 
+[12:44:55]  |                                        | 
+[12:44:55]  ========================================== 
+[12:44:55]  |                                        | 
+[12:44:55]  |   Generating code, this may take a     | 
+[12:44:55]  |  little bit of time.  Note that this   | 
+[12:44:55]  |  code generation works best with the   | 
+[12:44:55]  |     JIT plugin, which you are not      | 
+[12:44:55]  |     currently using.  Get it here:     | 
+[12:44:55]  |                                        | 
+[12:44:55]  |       https://git.io/jit-plugin        | 
+[12:44:55]  |                                        | 
+[12:44:55]  |             Please wait...             | 
+[12:44:55]  |                                        | 
+[12:44:55]  |             Done in 22ms!              | 
+[12:44:55]  |                                        | 
+[12:44:55]  ========================================== 
+[12:44:55]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:44:55] *** YSI Info: YSI Script ID: 1
+[12:44:55]  |                                        | 
+[12:44:55]  | Server:      0.3.7-R2 (Windows)        | 
+[12:44:55]  | Started:     28 Feb 2023 - 12:44:55    | 
+[12:44:55]  |                                        | 
+[12:44:55]  | Compiler:    3.10.10 (Windows)         | 
+[12:44:55]  | Includes:    0.3DL                     | 
+[12:44:55]  | Codepage:    <none>                    | 
+[12:44:55]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:44:55]  |                                        | 
+[12:44:55]  | YSI:         v5.07.3082                | 
+[12:44:55]  | Master:      1                         | 
+[12:44:55]  |                                        | 
+[12:44:55]  | JIT:         <none>                    | 
+[12:44:55]  | Crashdetect: <none>                    | 
+[12:44:55]  |                                        | 
+[12:44:55]  ========================================== 
+[12:44:55]  
+[12:44:55]  
+[12:44:55] Sistema de login ligado!
+[12:44:55] maxplayers = 50  (int, read-only)
+[12:44:55] Gamemode iniciada
+[12:44:55] A ligar á DB...
+[12:44:55] Ligado á DB - Tabela: openrp
+[12:44:55] Bom dia
+[12:44:55] Number of vehicle models: 0
+[12:45:04] [connection] incoming connection: 127.0.0.1:57501 id: 0
+[12:45:04] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:45:07] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:46:06] language = ""  (string)
+[12:46:06] 
+[12:46:06] Server Plugins
+[12:46:06] --------------
+[12:46:06]  Loading plugin: mysql
+[12:46:07]  >> plugin.mysql: R41 successfully loaded.
+[12:46:07]   Loaded.
+[12:46:07]  Loading plugin: sscanf
+[12:46:07] 
+[12:46:07]  ===============================
+[12:46:07] 
+[12:46:07]       sscanf plugin loaded.     
+[12:46:07] 
+[12:46:07]          Version: 2.13.8
+[12:46:07] 
+[12:46:07]    (c) 2022 Alex "Y_Less" Cole  
+[12:46:07] 
+[12:46:07]  ===============================
+[12:46:07] 
+[12:46:07]   Loaded.
+[12:46:07]  Loading plugin: bcrypt-samp
+[12:46:07]   plugin.bcrypt v2.2.3 was loaded.
+[12:46:07]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:46:07]   Loaded.
+[12:46:07]  Loaded 3 plugins.
+
+[12:46:07] 
+[12:46:07] Filterscripts
+[12:46:07] ---------------
+[12:46:07]   Loaded 0 filterscripts.
+
+[12:46:07]  
+[12:46:07]  
+[12:46:07]          ==============================================================
+[12:46:07]          |                                                            |
+[12:46:07]          |                                                            |
+[12:46:07]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:46:07]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:46:07]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:46:07]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:46:07]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:46:07]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:46:07]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:46:07]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:46:07]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:46:07]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:46:07]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:46:07]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:46:07]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:46:07]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:46:07]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:46:07]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:46:07]          |                                                            |
+[12:46:07]          |                                                            |
+[12:46:07]          |                      (c) 2021 MPL v1.1                     |
+[12:46:07]          |            Alex "Y_Less" Cole and contributors.            |
+[12:46:07]          |                                                            |
+[12:46:07]          |                                                            |
+[12:46:07]          ==============================================================
+[12:46:07]  
+[12:46:07]  
+[12:46:07]  ========================================== 
+[12:46:07]  |                                        | 
+[12:46:07]  |  Missing YSI scriptfiles directories:  | 
+[12:46:07]  |                                        | 
+[12:46:07]  |      /scriptfiles/YSI/fixes/           | 
+[12:46:07]  |      /scriptfiles/YSI/temp/            | 
+[12:46:07]  |                                        | 
+[12:46:07]  ========================================== 
+[12:46:07]  |                                        | 
+[12:46:07]  |   Generating code, this may take a     | 
+[12:46:07]  |  little bit of time.  Note that this   | 
+[12:46:07]  |  code generation works best with the   | 
+[12:46:07]  |     JIT plugin, which you are not      | 
+[12:46:07]  |     currently using.  Get it here:     | 
+[12:46:07]  |                                        | 
+[12:46:07]  |       https://git.io/jit-plugin        | 
+[12:46:07]  |                                        | 
+[12:46:07]  |             Please wait...             | 
+[12:46:07]  |                                        | 
+[12:46:07]  |             Done in 20ms!              | 
+[12:46:07]  |                                        | 
+[12:46:07]  ========================================== 
+[12:46:07]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:46:07] *** YSI Info: YSI Script ID: 1
+[12:46:07]  |                                        | 
+[12:46:07]  | Server:      0.3.7-R2 (Windows)        | 
+[12:46:07]  | Started:     28 Feb 2023 - 12:46:07    | 
+[12:46:07]  |                                        | 
+[12:46:07]  | Compiler:    3.10.10 (Windows)         | 
+[12:46:07]  | Includes:    0.3DL                     | 
+[12:46:07]  | Codepage:    <none>                    | 
+[12:46:07]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:46:07]  |                                        | 
+[12:46:07]  | YSI:         v5.07.3082                | 
+[12:46:07]  | Master:      1                         | 
+[12:46:07]  |                                        | 
+[12:46:07]  | JIT:         <none>                    | 
+[12:46:07]  | Crashdetect: <none>                    | 
+[12:46:07]  |                                        | 
+[12:46:07]  ========================================== 
+[12:46:07]  
+[12:46:07]  
+[12:46:07] Sistema de login ligado!
+[12:46:07] maxplayers = 50  (int, read-only)
+[12:46:07] Gamemode iniciada
+[12:46:07] A ligar á DB...
+[12:46:07] Ligado á DB - Tabela: openrp
+[12:46:07] Bom dia
+[12:46:07] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:46:52] language = ""  (string)
+[12:46:52] 
+[12:46:52] Server Plugins
+[12:46:52] --------------
+[12:46:52]  Loading plugin: mysql
+[12:46:52]  >> plugin.mysql: R41 successfully loaded.
+[12:46:52]   Loaded.
+[12:46:52]  Loading plugin: sscanf
+[12:46:52] 
+[12:46:52]  ===============================
+[12:46:52] 
+[12:46:52]       sscanf plugin loaded.     
+[12:46:52] 
+[12:46:52]          Version: 2.13.8
+[12:46:52] 
+[12:46:52]    (c) 2022 Alex "Y_Less" Cole  
+[12:46:52] 
+[12:46:52]  ===============================
+[12:46:52] 
+[12:46:52]   Loaded.
+[12:46:52]  Loading plugin: bcrypt-samp
+[12:46:52]   plugin.bcrypt v2.2.3 was loaded.
+[12:46:52]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:46:52]   Loaded.
+[12:46:52]  Loaded 3 plugins.
+
+[12:46:52] 
+[12:46:52] Filterscripts
+[12:46:52] ---------------
+[12:46:52]   Loaded 0 filterscripts.
+
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:47:29] language = ""  (string)
+[12:47:29] 
+[12:47:29] Server Plugins
+[12:47:29] --------------
+[12:47:29]  Loading plugin: mysql
+[12:47:29]  >> plugin.mysql: R41 successfully loaded.
+[12:47:29]   Loaded.
+[12:47:29]  Loading plugin: sscanf
+[12:47:29] 
+[12:47:29]  ===============================
+[12:47:29] 
+[12:47:29]       sscanf plugin loaded.     
+[12:47:29] 
+[12:47:29]          Version: 2.13.8
+[12:47:29] 
+[12:47:29]    (c) 2022 Alex "Y_Less" Cole  
+[12:47:29] 
+[12:47:29]  ===============================
+[12:47:29] 
+[12:47:29]   Loaded.
+[12:47:29]  Loading plugin: bcrypt-samp
+[12:47:29]   plugin.bcrypt v2.2.3 was loaded.
+[12:47:29]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:47:29]   Loaded.
+[12:47:29]  Loaded 3 plugins.
+
+[12:47:29] 
+[12:47:29] Filterscripts
+[12:47:29] ---------------
+[12:47:29]   Loaded 0 filterscripts.
+
+[12:47:29]  
+[12:47:29]  
+[12:47:29]          ==============================================================
+[12:47:29]          |                                                            |
+[12:47:29]          |                                                            |
+[12:47:29]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:47:29]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:47:29]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:47:29]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:47:29]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:47:29]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:47:29]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:47:29]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:47:29]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:47:29]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:47:29]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:47:29]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:47:29]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:47:29]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:47:29]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:47:29]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:47:29]          |                                                            |
+[12:47:29]          |                                                            |
+[12:47:29]          |                      (c) 2021 MPL v1.1                     |
+[12:47:29]          |            Alex "Y_Less" Cole and contributors.            |
+[12:47:29]          |                                                            |
+[12:47:29]          |                                                            |
+[12:47:29]          ==============================================================
+[12:47:29]  
+[12:47:29]  
+[12:47:29]  ========================================== 
+[12:47:29]  |                                        | 
+[12:47:29]  |  Missing YSI scriptfiles directories:  | 
+[12:47:29]  |                                        | 
+[12:47:29]  |      /scriptfiles/YSI/fixes/           | 
+[12:47:29]  |      /scriptfiles/YSI/temp/            | 
+[12:47:29]  |                                        | 
+[12:47:29]  ========================================== 
+[12:47:29]  |                                        | 
+[12:47:29]  |   Generating code, this may take a     | 
+[12:47:29]  |  little bit of time.  Note that this   | 
+[12:47:29]  |  code generation works best with the   | 
+[12:47:29]  |     JIT plugin, which you are not      | 
+[12:47:29]  |     currently using.  Get it here:     | 
+[12:47:29]  |                                        | 
+[12:47:29]  |       https://git.io/jit-plugin        | 
+[12:47:29]  |                                        | 
+[12:47:29]  |             Please wait...             | 
+[12:47:29]  |                                        | 
+[12:47:29]  |             Done in 20ms!              | 
+[12:47:29]  |                                        | 
+[12:47:29]  ========================================== 
+[12:47:29]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:47:29] *** YSI Info: YSI Script ID: 1
+[12:47:29]  |                                        | 
+[12:47:29]  | Server:      0.3.7-R2 (Windows)        | 
+[12:47:29]  | Started:     28 Feb 2023 - 12:47:29    | 
+[12:47:29]  |                                        | 
+[12:47:29]  | Compiler:    3.10.10 (Windows)         | 
+[12:47:29]  | Includes:    0.3DL                     | 
+[12:47:29]  | Codepage:    <none>                    | 
+[12:47:29]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:47:29]  |                                        | 
+[12:47:29]  | YSI:         v5.07.3082                | 
+[12:47:29]  | Master:      1                         | 
+[12:47:29]  |                                        | 
+[12:47:29]  | JIT:         <none>                    | 
+[12:47:29]  | Crashdetect: <none>                    | 
+[12:47:29]  |                                        | 
+[12:47:29]  ========================================== 
+[12:47:29]  
+[12:47:29]  
+[12:47:29] Sistema de login ligado!
+[12:47:29] maxplayers = 50  (int, read-only)
+[12:47:29] Gamemode iniciada
+[12:47:29] A ligar á DB...
+[12:47:29] Ligado á DB - Tabela: openrp
+[12:47:29] Bom dia
+[12:47:29] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:48:55] language = ""  (string)
+[12:48:55] 
+[12:48:55] Server Plugins
+[12:48:55] --------------
+[12:48:55]  Loading plugin: mysql
+[12:48:55]  >> plugin.mysql: R41 successfully loaded.
+[12:48:55]   Loaded.
+[12:48:55]  Loading plugin: sscanf
+[12:48:55] 
+[12:48:55]  ===============================
+[12:48:55] 
+[12:48:55]       sscanf plugin loaded.     
+[12:48:55] 
+[12:48:55]          Version: 2.13.8
+[12:48:55] 
+[12:48:55]    (c) 2022 Alex "Y_Less" Cole  
+[12:48:55] 
+[12:48:55]  ===============================
+[12:48:55] 
+[12:48:55]   Loaded.
+[12:48:55]  Loading plugin: bcrypt-samp
+[12:48:55]   plugin.bcrypt v2.2.3 was loaded.
+[12:48:55]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:48:55]   Loaded.
+[12:48:55]  Loaded 3 plugins.
+
+[12:48:55] 
+[12:48:55] Filterscripts
+[12:48:55] ---------------
+[12:48:55]   Loaded 0 filterscripts.
+
+[12:48:55]  
+[12:48:55]  
+[12:48:55]          ==============================================================
+[12:48:55]          |                                                            |
+[12:48:55]          |                                                            |
+[12:48:55]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:48:55]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:48:55]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:48:55]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:48:55]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:48:55]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:48:55]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:48:55]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:48:55]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:48:55]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:48:55]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:48:55]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:48:55]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:48:55]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:48:55]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:48:55]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:48:55]          |                                                            |
+[12:48:55]          |                                                            |
+[12:48:55]          |                      (c) 2021 MPL v1.1                     |
+[12:48:55]          |            Alex "Y_Less" Cole and contributors.            |
+[12:48:55]          |                                                            |
+[12:48:55]          |                                                            |
+[12:48:55]          ==============================================================
+[12:48:55]  
+[12:48:55]  
+[12:48:55]  ========================================== 
+[12:48:55]  |                                        | 
+[12:48:55]  |  Missing YSI scriptfiles directories:  | 
+[12:48:55]  |                                        | 
+[12:48:55]  |      /scriptfiles/YSI/fixes/           | 
+[12:48:55]  |      /scriptfiles/YSI/temp/            | 
+[12:48:55]  |                                        | 
+[12:48:55]  ========================================== 
+[12:48:55]  |                                        | 
+[12:48:55]  |   Generating code, this may take a     | 
+[12:48:55]  |  little bit of time.  Note that this   | 
+[12:48:55]  |  code generation works best with the   | 
+[12:48:55]  |     JIT plugin, which you are not      | 
+[12:48:55]  |     currently using.  Get it here:     | 
+[12:48:55]  |                                        | 
+[12:48:55]  |       https://git.io/jit-plugin        | 
+[12:48:55]  |                                        | 
+[12:48:55]  |             Please wait...             | 
+[12:48:55]  |                                        | 
+[12:48:55]  |             Done in 19ms!              | 
+[12:48:55]  |                                        | 
+[12:48:55]  ========================================== 
+[12:48:55]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:48:55] *** YSI Info: YSI Script ID: 1
+[12:48:55]  |                                        | 
+[12:48:55]  | Server:      0.3.7-R2 (Windows)        | 
+[12:48:55]  | Started:     28 Feb 2023 - 12:48:55    | 
+[12:48:55]  |                                        | 
+[12:48:55]  | Compiler:    3.10.10 (Windows)         | 
+[12:48:55]  | Includes:    0.3DL                     | 
+[12:48:55]  | Codepage:    <none>                    | 
+[12:48:55]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:48:55]  |                                        | 
+[12:48:55]  | YSI:         v5.07.3082                | 
+[12:48:55]  | Master:      1                         | 
+[12:48:55]  |                                        | 
+[12:48:55]  | JIT:         <none>                    | 
+[12:48:55]  | Crashdetect: <none>                    | 
+[12:48:55]  |                                        | 
+[12:48:55]  ========================================== 
+[12:48:55]  
+[12:48:55]  
+[12:48:55] Sistema de login ligado!
+[12:48:55] maxplayers = 50  (int, read-only)
+[12:48:55] Gamemode iniciada
+[12:48:55] A ligar á DB...
+[12:48:55] Ligado á DB - Tabela: openrp
+[12:48:55] Bom dia
+[12:48:55] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:49:38] language = ""  (string)
+[12:49:38] 
+[12:49:38] Server Plugins
+[12:49:38] --------------
+[12:49:38]  Loading plugin: mysql
+[12:49:38]  >> plugin.mysql: R41 successfully loaded.
+[12:49:38]   Loaded.
+[12:49:38]  Loading plugin: sscanf
+[12:49:38] 
+[12:49:38]  ===============================
+[12:49:38] 
+[12:49:38]       sscanf plugin loaded.     
+[12:49:38] 
+[12:49:38]          Version: 2.13.8
+[12:49:38] 
+[12:49:38]    (c) 2022 Alex "Y_Less" Cole  
+[12:49:38] 
+[12:49:38]  ===============================
+[12:49:38] 
+[12:49:38]   Loaded.
+[12:49:38]  Loading plugin: bcrypt-samp
+[12:49:38]   plugin.bcrypt v2.2.3 was loaded.
+[12:49:38]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:49:38]   Loaded.
+[12:49:38]  Loaded 3 plugins.
+
+[12:49:38] 
+[12:49:38] Filterscripts
+[12:49:38] ---------------
+[12:49:38]   Loaded 0 filterscripts.
+
+[12:49:38]  
+[12:49:38]  
+[12:49:38]          ==============================================================
+[12:49:38]          |                                                            |
+[12:49:38]          |                                                            |
+[12:49:38]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:49:38]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:49:38]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:49:38]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:49:38]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:49:38]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:49:38]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:49:38]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:49:38]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:49:38]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:49:38]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:49:38]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:49:38]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:49:38]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:49:38]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:49:38]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:49:38]          |                                                            |
+[12:49:38]          |                                                            |
+[12:49:38]          |                      (c) 2021 MPL v1.1                     |
+[12:49:38]          |            Alex "Y_Less" Cole and contributors.            |
+[12:49:38]          |                                                            |
+[12:49:38]          |                                                            |
+[12:49:38]          ==============================================================
+[12:49:38]  
+[12:49:38]  
+[12:49:38]  ========================================== 
+[12:49:38]  |                                        | 
+[12:49:38]  |  Missing YSI scriptfiles directories:  | 
+[12:49:38]  |                                        | 
+[12:49:38]  |      /scriptfiles/YSI/fixes/           | 
+[12:49:38]  |      /scriptfiles/YSI/temp/            | 
+[12:49:38]  |                                        | 
+[12:49:38]  ========================================== 
+[12:49:38]  |                                        | 
+[12:49:38]  |   Generating code, this may take a     | 
+[12:49:38]  |  little bit of time.  Note that this   | 
+[12:49:38]  |  code generation works best with the   | 
+[12:49:38]  |     JIT plugin, which you are not      | 
+[12:49:38]  |     currently using.  Get it here:     | 
+[12:49:38]  |                                        | 
+[12:49:38]  |       https://git.io/jit-plugin        | 
+[12:49:38]  |                                        | 
+[12:49:38]  |             Please wait...             | 
+[12:49:39]  |                                        | 
+[12:49:39]  |             Done in 25ms!              | 
+[12:49:39]  |                                        | 
+[12:49:39]  ========================================== 
+[12:49:39]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:49:39] *** YSI Info: YSI Script ID: 1
+[12:49:39]  |                                        | 
+[12:49:39]  | Server:      0.3.7-R2 (Windows)        | 
+[12:49:39]  | Started:     28 Feb 2023 - 12:49:38    | 
+[12:49:39]  |                                        | 
+[12:49:39]  | Compiler:    3.10.10 (Windows)         | 
+[12:49:39]  | Includes:    0.3DL                     | 
+[12:49:39]  | Codepage:    <none>                    | 
+[12:49:39]  | Built:       27 Feb 2023 - 22:36:26    | 
+[12:49:39]  |                                        | 
+[12:49:39]  | YSI:         v5.07.3082                | 
+[12:49:39]  | Master:      1                         | 
+[12:49:39]  |                                        | 
+[12:49:39]  | JIT:         <none>                    | 
+[12:49:39]  | Crashdetect: <none>                    | 
+[12:49:39]  |                                        | 
+[12:49:39]  ========================================== 
+[12:49:39]  
+[12:49:39]  
+[12:49:39] Sistema de login ligado!
+[12:49:39] maxplayers = 50  (int, read-only)
+[12:49:39] Gamemode iniciada
+[12:49:39] A ligar á DB...
+[12:49:39] Ligado á DB - Tabela: openrp
+[12:49:39] Bom dia
+[12:49:39] Number of vehicle models: 0
+[12:49:39] [connection] incoming connection: 127.0.0.1:55923 id: 0
+[12:49:40] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:49:45] Login para 0 ID 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:52:28] language = ""  (string)
+[12:52:28] 
+[12:52:28] Server Plugins
+[12:52:28] --------------
+[12:52:28]  Loading plugin: mysql
+[12:52:28]  >> plugin.mysql: R41 successfully loaded.
+[12:52:28]   Loaded.
+[12:52:28]  Loading plugin: sscanf
+[12:52:28] 
+[12:52:28]  ===============================
+[12:52:28] 
+[12:52:28]       sscanf plugin loaded.     
+[12:52:28] 
+[12:52:28]          Version: 2.13.8
+[12:52:28] 
+[12:52:28]    (c) 2022 Alex "Y_Less" Cole  
+[12:52:28] 
+[12:52:28]  ===============================
+[12:52:28] 
+[12:52:28]   Loaded.
+[12:52:28]  Loading plugin: bcrypt-samp
+[12:52:28]   plugin.bcrypt v2.2.3 was loaded.
+[12:52:28]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[12:52:28]   Loaded.
+[12:52:28]  Loaded 3 plugins.
+
+[12:52:28] 
+[12:52:28] Filterscripts
+[12:52:28] ---------------
+[12:52:28]   Loaded 0 filterscripts.
+
+[12:52:28]  
+[12:52:28]  
+[12:52:28]          ==============================================================
+[12:52:28]          |                                                            |
+[12:52:28]          |                                                            |
+[12:52:28]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[12:52:28]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[12:52:28]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[12:52:28]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[12:52:28]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[12:52:28]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[12:52:28]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[12:52:28]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[12:52:28]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[12:52:28]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[12:52:28]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:52:28]          |           Y:::::Y                    S:::::S   I::::I      |
+[12:52:28]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[12:52:28]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[12:52:28]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[12:52:28]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[12:52:28]          |                                                            |
+[12:52:28]          |                                                            |
+[12:52:28]          |                      (c) 2021 MPL v1.1                     |
+[12:52:28]          |            Alex "Y_Less" Cole and contributors.            |
+[12:52:28]          |                                                            |
+[12:52:28]          |                                                            |
+[12:52:28]          ==============================================================
+[12:52:28]  
+[12:52:28]  
+[12:52:28]  ========================================== 
+[12:52:28]  |                                        | 
+[12:52:28]  |  Missing YSI scriptfiles directories:  | 
+[12:52:28]  |                                        | 
+[12:52:28]  |      /scriptfiles/YSI/fixes/           | 
+[12:52:28]  |      /scriptfiles/YSI/temp/            | 
+[12:52:28]  |                                        | 
+[12:52:28]  ========================================== 
+[12:52:28]  |                                        | 
+[12:52:28]  |   Generating code, this may take a     | 
+[12:52:28]  |  little bit of time.  Note that this   | 
+[12:52:28]  |  code generation works best with the   | 
+[12:52:28]  |     JIT plugin, which you are not      | 
+[12:52:28]  |     currently using.  Get it here:     | 
+[12:52:28]  |                                        | 
+[12:52:28]  |       https://git.io/jit-plugin        | 
+[12:52:28]  |                                        | 
+[12:52:28]  |             Please wait...             | 
+[12:52:28]  |                                        | 
+[12:52:28]  |                 Done!                  | 
+[12:52:28]  |                                        | 
+[12:52:28]  ========================================== 
+[12:52:28]  |                                        | 
+[12:52:28]  | Server:      0.3DL - Windows           | 
+[12:52:28]  | Compiler:    3.10.10 - Windows         | 
+[12:52:28]  | Codepage:    <none>                    | 
+[12:52:28]  | YSI:         5.06.1932                 | 
+[12:52:28]  | Started:     1677588748                | 
+[12:52:28]  | JIT:         <none>                    | 
+[12:52:28]  | Crashdetect: <none>                    | 
+[12:52:28]  |                                        | 
+[12:52:28]  ========================================== 
+[12:52:28]  
+[12:52:28]   Filterscript '../scriptfiles/callbackfix.amx' loaded.
+[12:52:28] *** YSI Info: YSI Script ID: 1
+[12:52:28]  
+[12:52:28] Sistema de login ligado!
+[12:52:28] maxplayers = 50  (int, read-only)
+[12:52:28] A ligar á DB...
+[12:52:28] Ligado á DB - Tabela: OpenRP
+[12:52:28] Number of vehicle models: 0
+[12:52:49] [connection] incoming connection: 127.0.0.1:63642 id: 0
+[12:52:49] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[12:53:03] BARRA ADEMINES -> J: 0, on: 0
+[12:53:05] BARRA ADEMINES -> J: 0, on: 0
+[12:53:06] BARRA ADEMINES -> J: 0, on: 0
+[12:53:19] BARRA ADEMINES -> J: 0, on: 0

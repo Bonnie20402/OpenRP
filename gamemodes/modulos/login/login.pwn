@@ -175,6 +175,9 @@ hook OnPlayerText(playerid,text[]) {
     }
     return 1;
 }
+hook OnPlayerDisconnect(playerid) {
+    gLoggedIn[playerid]=0;
+}
 hook OnPlayerCommandText(playerid,cmdtext[]) {
     if(!Login:gLoggedIn[playerid]) {
         SendClientMessage(playerid,COLOR_RED,"Precisas de iniciar sessão para falar no chat!");

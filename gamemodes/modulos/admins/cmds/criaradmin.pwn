@@ -1,5 +1,5 @@
 
-YCMD:criaradmin(playerid,params[]) {
+YCMD:criaradmin(playerid,params[],help) {
     if(Getter:GetStaffLevel(playerid)>=3000) {
         new id,level;
         new String:role[256];

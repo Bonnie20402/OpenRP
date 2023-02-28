@@ -2,7 +2,7 @@
 	"user": "bonnie20402",
 	"repo": "openrp",
 	"entry": "gamemodes\\roleplay.pwn",
-	"output": "gamemodes/gamemodes\\roleplay.amx",
+	"output": "gamemodes\\roleplay.amx",
 	"dependencies": [
 		"pawn-lang/samp-stdlib",
 		"pawn-lang/YSI-Includes/:v5.06.1932",

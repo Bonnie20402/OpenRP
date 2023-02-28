@@ -1,5 +1,5 @@
 
-YCMD:av(playerid,params[]) {
+YCMD:av(playerid,params[],help) {
     if(Getter:GetStaffLevel(playerid)) {
         if(IsStaffWorking(playerid)) {
             new msg[256];
