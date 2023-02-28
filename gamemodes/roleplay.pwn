@@ -49,7 +49,6 @@ public OnGameModeInit()
 	SendRconCommand("maxplayers 100");
 	SendRconCommand("language PT");
 	SendRconCommand("mode RPG");
-	print("A gamemode está a iniciar");
 	dbInit();
 	return 1;
 }
