@@ -49,6 +49,7 @@ public OnGameModeInit()
 forward dbInit();
 public dbInit() {
 	/*
+	// TODO tablea contas em ingles
 			LIGAÇÃO Á DB
 						*/
 	print("A ligar á DB...");

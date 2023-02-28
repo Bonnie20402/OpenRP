@@ -20,6 +20,7 @@ new gLocations[MAX_LOCATIONS-1][LOCATIONS];
 /*
     hooks
             */
+            // TODO iniciar locations ao ligar a database
 hook OnPlayerLogin@000(playerid) {
     locationIconsInit(playerid);
 }
@@ -30,8 +31,6 @@ hook OnPlayerLogin@000(playerid) {
 forward PrepareLocationsTable();
 public PrepareLocationsTable() {
     new query[255];
-    print("aaaaaaaaaa");
-    printf("A preparar tablea de locations...");
     mysql_format(mysql,query,255,"CREATE TABLE IF NOT EXISTS locations (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,name varchar(64),x float,y float,z float);");
     mysql_query(mysql,query,false);
     PrepareLocationsLoad();
