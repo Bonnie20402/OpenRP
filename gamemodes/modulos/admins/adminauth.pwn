@@ -36,9 +36,7 @@ hook OnDialogResponse@003(playerid, dialogid, response, listitem, inputtext[]) {
     if(dialogid==ADMINLOGINDIALOG) {
         new String:adminpassword[256];
         format(adminpassword,256,"coxinha123");
-        printf("AAAAAAAA %s - pw: %s",inputtext,adminpassword);
         if(!strcmp(inputtext,adminpassword)) {
-            print("Certo");
             gAdmins[playerid][ADMININFO_AUTH]=1;
             format(aviso,255,"O admin %s entrou!",GetPlayerNameEx(playerid));
             SendStaffMessage(-1,aviso);

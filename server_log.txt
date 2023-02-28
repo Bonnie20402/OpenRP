@@ -28103,3 +28103,124 @@ v0.3.7-R2, (C)2005-2015 SA-MP Team
 [14:31:11] A ligar á DB...
 [14:31:11] Ligado á DB - Tabela: OpenRP
 [14:31:11] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[14:59:33] language = ""  (string)
+[14:59:33] 
+[14:59:33] Server Plugins
+[14:59:33] --------------
+[14:59:33]  Loading plugin: mysql
+[14:59:33]  >> plugin.mysql: R41 successfully loaded.
+[14:59:33]   Loaded.
+[14:59:33]  Loading plugin: sscanf
+[14:59:33] 
+[14:59:33]  ===============================
+[14:59:33] 
+[14:59:33]       sscanf plugin loaded.     
+[14:59:33] 
+[14:59:33]          Version: 2.13.8
+[14:59:33] 
+[14:59:33]    (c) 2022 Alex "Y_Less" Cole  
+[14:59:33] 
+[14:59:33]  ===============================
+[14:59:33] 
+[14:59:33]   Loaded.
+[14:59:33]  Loading plugin: bcrypt-samp
+[14:59:33]   plugin.bcrypt v2.2.3 was loaded.
+[14:59:33]   plugin.bcrypt: 4 cores detected, 3 threads will be used.
+[14:59:33]   Loaded.
+[14:59:33]  Loaded 3 plugins.
+
+[14:59:33] 
+[14:59:33] Filterscripts
+[14:59:33] ---------------
+[14:59:33]   Loaded 0 filterscripts.
+
+[14:59:33]  
+[14:59:33]  
+[14:59:33]          ==============================================================
+[14:59:33]          |                                                            |
+[14:59:33]          |                                                            |
+[14:59:33]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[14:59:33]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[14:59:33]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[14:59:33]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[14:59:33]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[14:59:33]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[14:59:33]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[14:59:33]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[14:59:33]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[14:59:33]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[14:59:33]          |           Y:::::Y                    S:::::S   I::::I      |
+[14:59:33]          |           Y:::::Y                    S:::::S   I::::I      |
+[14:59:33]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[14:59:33]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[14:59:33]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[14:59:33]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[14:59:33]          |                                                            |
+[14:59:33]          |                                                            |
+[14:59:33]          |                      (c) 2021 MPL v1.1                     |
+[14:59:33]          |            Alex "Y_Less" Cole and contributors.            |
+[14:59:33]          |                                                            |
+[14:59:33]          |                                                            |
+[14:59:33]          ==============================================================
+[14:59:33]  
+[14:59:33]  
+[14:59:33]  ========================================== 
+[14:59:33]  |                                        | 
+[14:59:33]  |  Missing YSI scriptfiles directories:  | 
+[14:59:33]  |                                        | 
+[14:59:33]  |      /scriptfiles/YSI/fixes/           | 
+[14:59:33]  |      /scriptfiles/YSI/temp/            | 
+[14:59:33]  |                                        | 
+[14:59:33]  ========================================== 
+[14:59:33]  |                                        | 
+[14:59:33]  |   Generating code, this may take a     | 
+[14:59:33]  |  little bit of time.  Note that this   | 
+[14:59:33]  |  code generation works best with the   | 
+[14:59:33]  |     JIT plugin, which you are not      | 
+[14:59:33]  |     currently using.  Get it here:     | 
+[14:59:33]  |                                        | 
+[14:59:33]  |       https://git.io/jit-plugin        | 
+[14:59:33]  |                                        | 
+[14:59:33]  |             Please wait...             | 
+[14:59:33]  |                                        | 
+[14:59:33]  |                 Done!                  | 
+[14:59:33]  |                                        | 
+[14:59:33]  ========================================== 
+[14:59:33]  |                                        | 
+[14:59:33]  | Server:      0.3DL - Windows           | 
+[14:59:33]  | Compiler:    3.10.10 - Windows         | 
+[14:59:33]  | Codepage:    <none>                    | 
+[14:59:33]  | YSI:         5.06.1932                 | 
+[14:59:33]  | Started:     1677596373                | 
+[14:59:33]  | JIT:         <none>                    | 
+[14:59:33]  | Crashdetect: <none>                    | 
+[14:59:33]  |                                        | 
+[14:59:33]  ========================================== 
+[14:59:33]  
+[14:59:33] *** YSI Warning: Could not load RconCommand/ClientCheckResponse fix FS.
+[14:59:33] *** YSI Info: Ignore this error if the FS already loaded.
+[14:59:33] *** YSI Warning: Could not load RconCommand/ClientCheckResponse fix FS.
+[14:59:33] *** YSI Info: Ignore this error if the FS already loaded.
+[14:59:33] *** YSI Info: YSI Script ID: 1
+[14:59:33]  
+[14:59:33] Sistema de login ligado!
+[14:59:33] maxplayers = 50  (int, read-only)
+[14:59:33] A ligar á DB...
+[14:59:33] Ligado á DB - Tabela: OpenRP
+[14:59:33] Number of vehicle models: 0
+[14:59:59] [connection] incoming connection: 127.0.0.1:52188 id: 0
+[14:59:59] [join] Bonnie20402_PT has joined the server (0:127.0.0.1)
+[15:00:07] AAAAAAAA asdioajsdioadj - pw: coxinha123
+[15:00:08] AAAAAAAA asdasdasd - pw: coxinha123
+[15:00:09] AAAAAAAA asdasdasd - pw: coxinha123
+[15:00:11] AAAAAAAA coxinha123 - pw: coxinha123
+[15:00:11] Certo
