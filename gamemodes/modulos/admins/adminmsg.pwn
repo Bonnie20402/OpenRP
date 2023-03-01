@@ -10,5 +10,6 @@ public SendStaffMessage(playerid,const message[]) {
     if(playerid== -1)format(msg,256,"{FF3333}[Aviso para a STAFF] %s",message);
     else format(msg,256,"{FF3333}[Staff Chat] (%s) %s[%d]:%s",GetStaffLevelString(playerid),GetPlayerNameEx(playerid),playerid,message);
     for(new i=0;i<MAX_PLAYERS;i++) if(GetStaffLevel(i))SendClientMessage(i,-1,msg);
+    print(msg);
     return 1;
 }

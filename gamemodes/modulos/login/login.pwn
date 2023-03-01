@@ -28,9 +28,7 @@ new static LoginMsg[256];
 new static RegisterTitulo[64];
 new static RegisterMsg[256];
 
-hook OnGameModeInit() {
-    print("Sistema de login ligado!");
-}
+
 hook OnPlayerConnect@000(playerid){
     TogglePlayerSpectating(playerid,true);
     PrepareAccountCheck(playerid);
@@ -184,7 +182,7 @@ hook OnPlayerDisconnect(playerid) {
 hook OnPlayerCommandText(playerid,cmdtext[]) {
     if(!Login:gLoggedIn[playerid]) {
         SendClientMessage(playerid,COLOR_RED,"Precisas de iniciar sessão para falar no chat!");
-        return 0;
+        return 1;
     }
     return 1;
 }

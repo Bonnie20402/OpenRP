@@ -19,8 +19,7 @@ new gLocations[MAX_LOCATIONS-1][LOCATIONS];
 
 /*
     hooks
-            */
-            // TODO iniciar locations ao ligar a database
+            *&
 hook OnPlayerLogin@000(playerid) {
     locationIconsInit(playerid);
 }
@@ -58,19 +57,17 @@ public FinishLocationsLoad() {
         cache_get_value_index_float(i,2,gLocations[id][LOCATION_COORDS][1]);
         cache_get_value_index_float(i,3,gLocations[id][LOCATION_COORDS][2]);
     }
-    SendStaffMessage(-1,"Localizções carregadas!");
 }
 /*
         AddLocation
         Adds a location to the table
                                             */
-
+// TODO if name is same reject, as key is not the name but the ID
 forward PrepareAddLocation(const name[],Float:x,Float:y,Float:z);
 public PrepareAddLocation(const name[],Float:x,Float:y,Float:z) {
     new String:query[255];
     mysql_format(mysql,query,255,"INSERT INTO locations (name, x, y, z) VALUES ('%s', %f, %f, %f)",name,x,y,z);
     mysql_pquery(mysql,query,"FinishAddLocation","sfff",name,x,y,z);
-    SendStaffMessage(-1,"A adicionar localização...");
     return 1;
 }
 forward FinishAddLocation(const name[],Float:x,Float:y,Float:z);
@@ -81,5 +78,42 @@ public FinishAddLocation(const name[],Float:x,Float:y,Float:z) {
     PrepareLocationsLoad();
     return 1;
 }
+/*
+    RemoveLocation
+    Removes a location from the table
+    and empties it's value in RAM
+                                    */
+forward PrepareRemoveLocation(playerid,locationid);
+public PrepareRemoveLocation(playerid,locationid) {
+    new String:query[255];
+    mysql_format(mysql,query,255,"SELECT * FROM locations WHERE id = %d",locationid);
+    mysql_pquery(mysql,query,"ContinueRemoveLocation","ii",playerid,locationid);
+    return 1;
+}
+forward ContinueRemoveLocation(playerid,locationid);
+public ContinueRemoveLocation(playerid,locationid) {
+    new Int: locExists;
+    new String:msg[64];
+    cache_get_field_count(locExists);
+    if(locExists) {
+        new String:query[255];
+        mysql_format(mysql,query,255,"DELETE FROM locations WHERE id = %d",locationid);
+        mysql_pquery(mysql,query,"FinishRemoveLocation","ii",playerid,locationid);
+        return 1;   
+    }
+    format(msg,64,"A localização ID %d não existe",locationid);
+    SendStaffMessage(-1,msg);
+    return 1;
+}
 
-// TODO remove location
+forward FinishRemoveLocation(playerid,locationid);
+public FinishRemoveLocation(playerid,locationid) {
+    new String:msg[255];
+    format(msg,255,"A localozação ID %d foi removida da base de dados e da RAM.",locationid);
+    gLocations[locationid][LOCATION_COORDS][0] = 0;
+    gLocations[locationid][LOCATION_COORDS][1] = 0;
+    gLocations[locationid][LOCATION_COORDS][2] = 0;
+    format(gLocations[locationid][LOCATION_NAME],64,"");
+    SendStaffMessage(-1,msg);
+    return 1;
+}

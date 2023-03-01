@@ -23,15 +23,18 @@ new gAdmins[MAX_PLAYERS][ADMININFO];
 /*
         Comandos de Admin
                                     */
+#include "modulos/admins/criarloc.pwn"
+#include "modulos/admins/removerloc.pwn"
+#include "modulos/admins/criaradmin.pwn"
+#include "modulos/admins/aa.pwn"
+#include "modulos/admins/removeradmin.pwn"
+#include "modulos/admins/ac.pwn"
+#include "modulos/admins/beepboop.pwn"
+#include "modulos/admins/atrabalhar.pwn"
+#include "modulos/admins/av.pwn"
+#include "modulos/admins/adminslist.pwn"
 
-#include "modulos/admins/cmds/aa.pwn"
-#include "modulos/admins/cmds/beepboop.pwn" // Comando "secreto"
-#include "modulos/admins/cmds/atrabalhar.pwn"
-#include "modulos/admins/cmds/av.pwn"
-#include "modulos/admins/cmds/criaradmin.pwn"
-#include "modulos/admins/cmds/removeradmin.pwn"
-#include "modulos/admins/cmds/adminslist.pwn"
-#include "modulos/admins/cmds/printloc.pwn"
+
 /*
     HOOKS
                 */
@@ -137,11 +140,22 @@ public Admin:FinishDeleteAdmin(playerid,const username[]) {
 
 /*
     Getterrs
+
+    ESCLARECIMENTO
+
+    A função IsValidStaff valida se o staff está logado e autenticado.
+    A função GetStaffLevel valida tudo acima, e se o staff for nivel 3000+, se ele está a jogar ou A trabalhar.
+    assim, comandos Staff no modo jogo devem usar o IsValidStaff para validação
                 */
+
 forward Getter:GetStaffLevel(playerid);
 public Getter:GetStaffLevel(playerid) {
-    if(IsPlayerLoggedIn(playerid)&&gAdmins[playerid][ADMININFO_LEVEL]&&gAdmins[playerid][ADMININFO_AUTH]) return gAdmins[playerid][ADMININFO_LEVEL];
-    return 0;
+    if(IsPlayerLoggedIn(playerid)&&gAdmins[playerid][ADMININFO_LEVEL]&&gAdmins[playerid][ADMININFO_AUTH]) {
+        if(gAdmins[playerid][ADMININFO_LEVEL]>=3000) return gAdmins[playerid][ADMININFO_LEVEL]; 
+        else if(IsStaffWorking(playerid))return gAdmins[playerid][ADMININFO_LEVEL];
+        else return 0; // Admin no modo jogo
+    }
+    else return 0;
 }
 forward Getter:GetStaffRole(playerid);
 public Getter:GetStaffRole(playerid) {
