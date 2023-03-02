@@ -3,10 +3,12 @@
 //#define FILTERSCRIPT
 #define AMX_OLD_CALL
 #include <a_samp>
+#include <fixes>
 #include <YSI_Visual/y_commands>
 #include <a_mysql>
 #include <sscanf2>
 #include <bcrypt>
+#include <streamer>
 #include "modulos/util/colors.inc" 
 #include "modulos/util/uteis.pwn"
 
@@ -19,16 +21,23 @@ new MySQL:mysql;
 	LOGIN
 	*/
 #include "modulos/login/login.pwn"
-
+/*
+	PLAYER
+			*/
+#include "modulos/players/msg.pwn"
 /*
 	SPAWN
 	*/
 #include "modulos/spawn/playerspawn.pwn"
 
 /*
-GPS
+LOCATIONS
 */
 #include "modulos/locations/locations.pwn"
+/*
+	gps
+			*/
+#include "modulos/gps/gps.pwn"
 /*
 	admin
 				*/
