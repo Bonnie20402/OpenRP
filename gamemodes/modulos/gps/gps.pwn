@@ -6,6 +6,7 @@
 #include <YSI_Coding/y_hooks>
 #include "modulos/gps/icons.pwn"
 #include "modulos/gps/gpstxd.pwn"
+#include "modulos/gps/gpsdialog.pwn"
 /*
     VARIABLES
                 */

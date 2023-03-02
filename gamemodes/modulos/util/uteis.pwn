@@ -29,7 +29,7 @@ stock GetPlayerNameEx(playerid) {
 	return szName;
 }
 stock GetPlayerDistanceToPointEx(playerid,Float:x,Float:y,Float:z) {
-    new Float:x1,Float:y1,Float:z3;
+    new Float:x1,Float:y1,Float:z1;
     new Float:tmpdis;
     GetPlayerPos(playerid,x1,y1,z1);
     tmpdis = floatsqroot(floatpower(floatabs(floatsub(x,x1)),2)+floatpower(floatabs(floatsub(y,y1)),2)+floatpower(floatabs(floatsub(z,z1)),2));

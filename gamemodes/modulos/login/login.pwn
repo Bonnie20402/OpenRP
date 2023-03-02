@@ -6,7 +6,7 @@
 /*
     DIALOGS
     */
-enum Login:LOGINDIALOGS {
+enum LOGINDIALOGS {
     LOGINDIALOG_LOGIN,
     LOGINDIALOG_REGISTER,
     LOGINDIALOG_PASSWORDCONFIRM,
@@ -17,7 +17,7 @@ enum Login:LOGINDIALOGS {
 /*
     VARIAVEIS
                 */
-new Login:gLoggedIn[MAX_PLAYERS];
+new gLoggedIn[MAX_PLAYERS];
 new Int:BCRYPT_COST = 12;
 new gLoadingID[MAX_PLAYERS];
 /*
@@ -29,10 +29,6 @@ new static RegisterTitulo[64];
 new static RegisterMsg[256];
 
 
-hook OnPlayerConnect@000(playerid){
-    TogglePlayerSpectating(playerid,true);
-    PrepareAccountCheck(playerid);
-}
 
 
 hook OnPlayerLogin(playerid) {
@@ -45,8 +41,8 @@ hook OnPlayerLogin(playerid) {
             LÓGICA DE REIGSTRO
             com encriptação bcrypt
                                 */
-forward Login:PrepareRegister(playerid,const username[], const password[]);
-public Login:PrepareRegister(playerid,const username[], const password[]) {
+forward PrepareRegister(playerid,const username[], const password[]);
+public PrepareRegister(playerid,const username[], const password[]) {
     /*
         Verificar se a senha tem entre 0 e a constante MAX_PASSWORD_LENGTH carateres.
             */
@@ -59,8 +55,8 @@ public Login:PrepareRegister(playerid,const username[], const password[]) {
     SendClientMessage(playerid,COLOR_GREEN,"A criar a tua conta...");
     bcrypt_hash(password,BCRYPT_COST,"ContinueRegister","iss",playerid,username,password);
 }
-forward Login:ContinueRegister(playerid,const username[],const password[]);
-public Login:ContinueRegister(playerid,const username[],const password[]) {
+forward ContinueRegister(playerid,const username[],const password[]);
+public ContinueRegister(playerid,const username[],const password[]) {
     new query[255];
     new hashPassword[BCRYPT_HASH_LENGTH];
     bcrypt_get_hash(hashPassword);
@@ -68,8 +64,8 @@ public Login:ContinueRegister(playerid,const username[],const password[]) {
     mysql_format(mysql,query,sizeof(query),"INSERT INTO `accounts` (username, password) VALUES ('%s', '%s')",username,hashPassword);
     mysql_pquery(mysql,query,"FinishRegister","i",playerid);
 }
-forward Login:FinishRegister(playerid);
-public Login:FinishRegister(playerid) {
+forward FinishRegister(playerid);
+public FinishRegister(playerid) {
     printf("A conta de %s[%d] foi criada com sucesso",GetPlayerNameEx(playerid),playerid);
     SendClientMessage(playerid,COLOR_GREEN,"A tua conta foi criada!");
     PrepareAccountCheck(playerid);
@@ -81,22 +77,22 @@ public Login:FinishRegister(playerid) {
             com encriptação bcrypt
                                 */
 
-forward Login:PrepareLogin(playerid,const rawPassword[]);
-public Login:PrepareLogin(playerid,const rawPassword[]) {
+forward PrepareLogin(playerid,const rawPassword[]);
+public PrepareLogin(playerid,const rawPassword[]) {
     SendClientMessage(playerid,COLOR_GREEN,"A iniciar sessão...");
     new query[BCRYPT_HASH_LENGTH+128];
     mysql_format(mysql,query,sizeof(query),"SELECT password FROM accounts WHERE username='%s'",GetPlayerNameEx(playerid));
     mysql_pquery(mysql,query,"ContinueLogin","is",playerid,rawPassword);
 }
-forward Login:ContinueLogin(playerid,const rawPassword[]);
-public Login:ContinueLogin(playerid,const rawPassword[]) {
+forward ContinueLogin(playerid,const rawPassword[]);
+public ContinueLogin(playerid,const rawPassword[]) {
     new hashPassword[256];
     cache_get_value_index(0,0,hashPassword);
     bcrypt_check(rawPassword,hashPassword,"FinishLogin","i",playerid);
 
 }
-forward Login:FinishLogin(playerid);
-public Login:FinishLogin(playerid) {
+forward FinishLogin(playerid);
+public FinishLogin(playerid) {
     if(bcrypt_is_equal()) {
         SendClientMessage(playerid,COLOR_GREEN,"Sessão iniciada!");
         gLoggedIn[playerid]=1;
@@ -112,15 +108,15 @@ public Login:FinishLogin(playerid) {
     VERIFICAÇÃO DA EXISTENCIA DE CONTA NA MYSQL DB
                                                 */
 
-forward Login:PrepareAccountCheck(playerid);
-public Login:PrepareAccountCheck(playerid) {
-    Login:gLoggedIn[playerid]=0;
+forward PrepareAccountCheck(playerid);
+public PrepareAccountCheck(playerid) {
+    gLoggedIn[playerid]=0;
     new query[256];
     mysql_format(mysql,query,sizeof(query),"SELECT COUNT(*) FROM `accounts` WHERE username = '%s'",GetPlayerNameEx(playerid));
     mysql_pquery(mysql,query,"FinishAccountCheck","i",playerid);
 }
-forward Login:FinishAccountCheck(playerid);
-public Login:FinishAccountCheck(playerid) {
+forward FinishAccountCheck(playerid);
+public FinishAccountCheck(playerid) {
     new accountName[MAX_PLAYER_NAME];
     accountName=GetPlayerNameEx(playerid);
     new isRegistered;
@@ -170,17 +166,17 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 */
 
 hook OnPlayerText(playerid,text[]) {
-    if(!Login:gLoggedIn[playerid]) {
+    if(!gLoggedIn[playerid]) {
         SendClientMessage(playerid,COLOR_RED,"Precisas de iniciar sessão para falar no chat!");
         return 0;
     }
     return 1;
 }
-hook OnPlayerDisconnect(playerid) {
+hook OnPlayerDisconnect@003(playerid) {
     gLoggedIn[playerid]=0;
 }
 hook OnPlayerCommandText(playerid,cmdtext[]) {
-    if(!Login:gLoggedIn[playerid]) {
+    if(!gLoggedIn[playerid]) {
         SendClientMessage(playerid,COLOR_RED,"Precisas de iniciar sessão para falar no chat!");
         return 1;
     }
@@ -193,6 +189,10 @@ hook OnPlayerCommandText(playerid,cmdtext[]) {
 
 forward OnPlayerLogin(playerid);
 public OnPlayerLogin(playerid) {
+    PlayerTextDrawHide(playerid,txdloadingBackground1[playerid]);
+    PlayerTextDrawHide(playerid,txdloadingBackground2[playerid]);
+    PlayerTextDrawHide(playerid,txdloadingVersion[playerid]);
+    PlayerTextDrawHide(playerid,txdloadingTitle[playerid]);
     PlayerSpawn:PreparePlayerSpawn(playerid);
 }
 forward IsPlayerLoggedIn(playerid);

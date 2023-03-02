@@ -7,6 +7,7 @@
 #include <YSI_Visual/y_commands>
 #include <a_mysql>
 #include <sscanf2>
+#include <progress2>
 #include <bcrypt>
 #include <streamer>
 #include "modulos/util/colors.inc" 
@@ -20,11 +21,11 @@ new MySQL:mysql;
 /*gi
 	LOGIN
 	*/
-#include "modulos/login/login.pwn"
+#include "modulos/login/connect.pwn"
 /*
 	PLAYER
 			*/
-#include "modulos/players/msg.pwn"
+#include "modulos/util/msg.pwn"
 /*
 	SPAWN
 	*/

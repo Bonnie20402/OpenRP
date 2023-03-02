@@ -8,7 +8,10 @@
 		"pawn-lang/YSI-Includes/:v5.06.1932",
 		"pBlueG/SA-MP-MySQL:R41",
 		"Y-Less/sscanf:v2.13.8",
-		"LassiR/bcrypt-samp"
+		"LassiR/bcrypt-samp",
+		"samp-incognito/samp-streamer-plugin:v2.9.6",
+		"pawn-lang/sa-mp-fixes",
+		"Southclaws/progress2:v2.1.4"
 	],
 	"local": true,
 	"runtime": {
