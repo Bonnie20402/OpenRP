@@ -11,7 +11,7 @@ YCMD:removerloc(playerid,params[],help) {
             for(new i=0;i<sizeof(gLocations);i++) {
                 if(strlen(gLocations[i][LOCATION_NAME]))format(dBody,256,"%s%d\t%s\t(%.2f,%.2f,%.2f)\n",dBody,i,gLocations[i][LOCATION_NAME],gLocations[i][LOCATION_COORDS][0],gLocations[i][LOCATION_COORDS][1],gLocations[i][LOCATION_COORDS][2]);
             }
-            ShowPlayerDialog(playerid,REMOVERLOCDIALOG,DIALOG_STYLE_TABLIST_HEADERS,"Localizações",dBody,"Limpar","");
+            ShowPlayerDialog(playerid,REMOVERLOCDIALOG,DIALOG_STYLE_TABLIST_HEADERS,"Localizações",dBody,"Limpar","Cancelar");
         }
         return 1;
     }
@@ -22,6 +22,10 @@ YCMD:removerloc(playerid,params[],help) {
 #include <YSI_Coding/y_hooks>
 hook OnDialogResponse@003@003(playerid, dialogid, response, listitem, inputtext[]) {
     if(GetStaffLevel(playerid)&&dialogid==REMOVERLOCDIALOG) {
+        if(!response) {
+            ShowPlayerScreenMessage(playerid,700,"Operacao cancelada!");
+            return 0;
+        }
         new locId;
         sscanf(inputtext,"i",locId);
         PrepareRemoveLocation(playerid,locId);
