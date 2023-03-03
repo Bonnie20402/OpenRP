@@ -1,4 +1,4 @@
-#include <YSI_Coding/y_hooks>
+
 YCMD:admins(playerid,params[],help) {
     new j,qtdOnline;
     new String:role[32],String:estado[32];

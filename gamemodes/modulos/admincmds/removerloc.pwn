@@ -1,6 +1,8 @@
 
 // Remover uma localização
 #define REMOVERLOCDIALOG 5004
+
+
 YCMD:removerloc(playerid,params[],help) {
     if(GetStaffLevel(playerid)>=3000) {
         new locId;
@@ -18,9 +20,8 @@ YCMD:removerloc(playerid,params[],help) {
     SendClientMessage(playerid,COLOR_RED,"Precisas de ser Dono ou superior para executares este comando!");
     return 1;
 }
-
-#include <YSI_Coding/y_hooks>
-hook OnDialogResponse@003@003(playerid, dialogid, response, listitem, inputtext[]) {
+#include <YSI_Coding\y_hooks>
+hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
     if(GetStaffLevel(playerid)&&dialogid==REMOVERLOCDIALOG) {
         if(!response) {
             ShowPlayerScreenMessage(playerid,700,"Operacao cancelada!");

@@ -3,18 +3,19 @@
     Description: After logged in, it prepares the players initial spawn
 */
 
-#include <YSI_Coding/y_hooks>
+#include <YSI_Coding\y_hooks>
 
 /*
     LOCALIZAÇÕES
                 */
-// TODO Localizações
-// Spawn Civil
-new Float:LOC_SpawnCivil[3] = {1154.1556,-1768.5778,16.5938};
-new Float:LOC_Perfeitura[3] = {1154.1556,-1768.5778,16.5938};
+new Float:LOC_SpawnCivil[3] = {1154.1556,-1768.5778,16.5938}; // temporario
 
-forward PlayerSpawn:PreparePlayerSpawn(playerid);
-public PlayerSpawn:PreparePlayerSpawn(playerid) {
+hook OnPlayerAuth(playerid) {
+    PreparePlayerSpawn(playerid);
+}
+
+forward PreparePlayerSpawn(playerid);
+public PreparePlayerSpawn(playerid) {
     TogglePlayerSpectating(playerid,false);
     SendClientMessage(playerid,COLOR_GREEN,"Bem vindo ao Open Source RP");
 }

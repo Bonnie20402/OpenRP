@@ -1,5 +1,4 @@
 
-#include <YSI_Coding/y_hooks>
 
 #define MAX_PASSWORD_LENGTH 64
 
@@ -28,14 +27,9 @@ new static LoginMsg[256];
 new static RegisterTitulo[64];
 new static RegisterMsg[256];
 
+#include <YSI_Coding\y_hooks>
 
 
-
-hook OnPlayerLogin(playerid) {
-    new msg[128];
-    format(msg,128,"O jogador %s logou",GetPlayerNameEx(playerid));
-    SendClientMessageToAll(COLOR_BISQUE,msg);
-}
 
 /*
             LÓGICA DE REIGSTRO
@@ -96,8 +90,8 @@ public FinishLogin(playerid) {
     if(bcrypt_is_equal()) {
         SendClientMessage(playerid,COLOR_GREEN,"Sessão iniciada!");
         gLoggedIn[playerid]=1;
-        Admin:PrepareAdminCheck(GetPlayerNameEx(playerid));
-        OnPlayerLogin(playerid);
+        PrepareAdminCheck(GetPlayerNameEx(playerid));
+        OnPlayerAuth(playerid);
         return 1;
     }
     SendClientMessage(playerid,COLOR_RED,"Erro - senha incorreta!");
@@ -144,9 +138,9 @@ public FinishAccountCheck(playerid) {
     \nDesde já, damos-te as nossas boas-vindas\
     \nInsere a tua senha em baixo!");
     ShowPlayerDialog(playerid,LOGINDIALOG_REGISTER,DIALOG_STYLE_PASSWORD,RegisterTitulo,RegisterMsg,"Registrar","");
+    return 1;
 
 }
-
 
 hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
     if(dialogid==LOGINDIALOG_REGISTER) {
@@ -155,6 +149,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
     if(dialogid==LOGINDIALOG_LOGIN) {
         PrepareLogin(playerid,inputtext);
     }
+    return 1;
 }
 
 
@@ -164,7 +159,6 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
     Ao jogador antes de estar com sessão iniciada
     
 */
-
 hook OnPlayerText(playerid,text[]) {
     if(!gLoggedIn[playerid]) {
         SendClientMessage(playerid,COLOR_RED,"Precisas de iniciar sessão para falar no chat!");
@@ -172,8 +166,9 @@ hook OnPlayerText(playerid,text[]) {
     }
     return 1;
 }
-hook OnPlayerDisconnect@003(playerid) {
+hook OnPlayerDisconnect(playerid,reason) {
     gLoggedIn[playerid]=0;
+    return 1;
 }
 hook OnPlayerCommandText(playerid,cmdtext[]) {
     if(!gLoggedIn[playerid]) {
@@ -186,16 +181,16 @@ hook OnPlayerCommandText(playerid,cmdtext[]) {
 /*
     GETTERS e EVENTOS, para poderem ser utilizados em Hooks.
             */
-
-forward OnPlayerLogin(playerid);
-public OnPlayerLogin(playerid) {
+hook OnPlayerAuth(playerid);
+public OnPlayerAuth(playerid) {
     PlayerTextDrawHide(playerid,txdloadingBackground1[playerid]);
     PlayerTextDrawHide(playerid,txdloadingBackground2[playerid]);
     PlayerTextDrawHide(playerid,txdloadingVersion[playerid]);
     PlayerTextDrawHide(playerid,txdloadingTitle[playerid]);
-    PlayerSpawn:PreparePlayerSpawn(playerid);
+    PreparePlayerSpawn(playerid);
+    return 1;
 }
 forward IsPlayerLoggedIn(playerid);
 public IsPlayerLoggedIn(playerid) {
     return gLoggedIn[playerid];
-}
+} 

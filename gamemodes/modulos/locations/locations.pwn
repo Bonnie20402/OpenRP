@@ -1,6 +1,5 @@
 
 
-#include <YSI_Coding/y_hooks>
 #define MAX_LOCATIONS 501
 
 
@@ -16,10 +15,7 @@ enum LOCATIONS {
 new gLocations[MAX_LOCATIONS-1][LOCATIONS];
 
 
-/*
-    includes
-                */
-#include "modulos/gps/gps.pwn"
+
 /*
     LocationsTable
     Creates the locations table
@@ -38,7 +34,7 @@ public PrepareLocationsTable() {
         fills the vector in ram
                                         */
 stock PrepareLocationsLoad() {
-    new String:query[255];
+    new query[255];
     mysql_format(mysql,query,255,"SELECT * FROM locations");
     mysql_pquery(mysql,query,"FinishLocationsLoad","");
 }
@@ -62,7 +58,7 @@ public FinishLocationsLoad() {
 // TODO if name is same reject, as key is not the name but the ID
 forward PrepareAddLocation(const name[],Float:x,Float:y,Float:z);
 public PrepareAddLocation(const name[],Float:x,Float:y,Float:z) {
-    new String:query[255];
+    new query[255];
     mysql_format(mysql,query,255,"INSERT INTO locations (name, x, y, z) VALUES ('%s', %f, %f, %f)",name,x,y,z);
     mysql_pquery(mysql,query,"FinishAddLocation","sfff",name,x,y,z);
     return 1;
@@ -82,7 +78,7 @@ public FinishAddLocation(const name[],Float:x,Float:y,Float:z) {
                                     */
 forward PrepareRemoveLocation(playerid,locationid);
 public PrepareRemoveLocation(playerid,locationid) {
-    new String:query[255];
+    new query[255];
     mysql_format(mysql,query,255,"SELECT * FROM locations WHERE id = %d",locationid);
     mysql_pquery(mysql,query,"ContinueRemoveLocation","ii",playerid,locationid);
     return 1;
@@ -93,7 +89,7 @@ public ContinueRemoveLocation(playerid,locationid) {
     new String:msg[64];
     cache_get_field_count(locExists);
     if(locExists) {
-        new String:query[255];
+        new query[255];
         mysql_format(mysql,query,255,"DELETE FROM locations WHERE id = %d",locationid);
         mysql_pquery(mysql,query,"FinishRemoveLocation","ii",playerid,locationid);
         return 1;   

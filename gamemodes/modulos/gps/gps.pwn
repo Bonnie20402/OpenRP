@@ -3,10 +3,11 @@
     Server GPS System, based on Locations
                                         */
 //Hooks
-#include <YSI_Coding/y_hooks>
+
 #include "modulos/gps/icons.pwn"
 #include "modulos/gps/gpstxd.pwn"
 #include "modulos/gps/gpsdialog.pwn"
+
 /*
     VARIABLES
                 */
@@ -63,7 +64,7 @@ public UpdateGPSDistance(playerid) {
 /*
     Hooks
                     */
-
+#include <YSI_Coding\y_hooks>
 hook OnPlayerEnterCheckpoint(playerid) {
     KillTimer(gGPS[playerid][GPS_TIMERID]);
     DisablePlayerCheckpoint(playerid);

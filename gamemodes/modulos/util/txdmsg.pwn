@@ -4,11 +4,11 @@ Nickk888 is the author of the NTD script
 */
 
 #include <a_samp>
-#include <YSI_Coding/y_hooks>
+#include <YSI_Coding\y_hooks>
 
 new PlayerText:txdscreenMsg[MAX_PLAYERS];
 
-hook OnPlayerConnect@005(playerid)
+hook OnPlayerConnect(playerid)
 {
 	txdscreenMsg[playerid] = CreatePlayerTextDraw(playerid, 183.000000, 365.000000, "mensagem");
 	PlayerTextDrawFont(playerid, txdscreenMsg[playerid], 1);
@@ -25,8 +25,7 @@ hook OnPlayerConnect@005(playerid)
 	PlayerTextDrawSetSelectable(playerid, txdscreenMsg[playerid], 0);
 	return 1;
 }
-
-hook OnPlayerDisconnect@004(playerid)
+hook OnPlayerDisconnect(playerid,reason)
 {
 	PlayerTextDrawDestroy(playerid, txdscreenMsg[playerid]);
 	return 1;

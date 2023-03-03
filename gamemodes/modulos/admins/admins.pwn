@@ -38,20 +38,17 @@ new gAdmins[MAX_PLAYERS][ADMININFO];
 /*
     HOOKS
                 */
-#include <YSI_Coding/y_hooks>
 
 
 // db
+#include <YSI_Coding\y_hooks>
 hook dbInit() {
     new query[256];
+    printf("[ADMINS] Carregado!");
     mysql_format(mysql,query,256,"CREATE TABLE IF NOT EXISTS admins(username varchar(64) PRIMARY KEY NOT NULL,level int(11) NOT NULL,role varchar(64) NOT NULL)");
     mysql_query(mysql,query,false);
+    return 1;
 }
-
-hook OnPlayerConnect@01(playerid) {
-    gAdmins[playerid][ADMININFO_LEVEL]=0;
-}
-
 forward Admin:PrepareAdminCheck(const username[]);
 public Admin:PrepareAdminCheck(const username[]) {
     new query[256];
@@ -202,4 +199,7 @@ stock AdminUtil:GetStaffLevelString(playerid) {
         }
         return role;
     }
+    new String:role[32];
+    format(role,32,"Desconhecido");
+    return role;
 }

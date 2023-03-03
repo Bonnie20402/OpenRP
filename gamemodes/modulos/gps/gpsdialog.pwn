@@ -1,4 +1,4 @@
-#include <YSI_Coding/y_hooks>
+#include <YSI_Coding\y_hooks>
 
 #define GPSDIALOG_MAIN 6000
 #define GPSDIALOG_LOCAISIMPORTANTES 6001
@@ -20,7 +20,7 @@ YCMD:gps(playerid,params[],help) {
     ShowGPSMainDialog(playerid);
     return 1;
 }
-hook OnDialogResponse@004(playerid, dialogid, response, listitem, inputtext[]) {
+hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
     if(response&&dialogid==GPSDIALOG_MAIN) {
         new msg[256];
         format(msg,256,"\
@@ -30,9 +30,11 @@ hook OnDialogResponse@004(playerid, dialogid, response, listitem, inputtext[]) {
         Mercado\
         ");
         ShowPlayerDialog(playerid,GPSDIALOG_LOCAISIMPORTANTES,DIALOG_STYLE_LIST,"GPS",msg,"Marcar","Sair");
+        return 1;
     }
     if(response&&dialogid==GPSDIALOG_LOCAISIMPORTANTES) {
         CreateGPSTimer(playerid,GetLocationIDFromName(inputtext));
     }
+    return 1;
 }
 

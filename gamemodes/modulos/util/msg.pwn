@@ -1,9 +1,10 @@
 #include "modulos/util/txdmsg.pwn"
-#include <YSI_Coding/y_hooks>
-new gscreenMsg[MAX_PLAYERS];
 
-hook OnPlayerConnect@003@003(playerid) {
+new gscreenMsg[MAX_PLAYERS];
+#include <YSI_Coding\y_hooks>
+hook OnPlayerConnect(playerid) {
     gscreenMsg[playerid]=0;
+    return 1;
 }
 
 /*

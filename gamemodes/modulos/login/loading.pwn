@@ -2,19 +2,20 @@
     Connect
 Handles player connection logic
                 */
-#include "modulos/login/connecttxd.pwn"
+#include "modulos/login/loadingtxd.pwn"
 #include "modulos/login/login.pwn"
-#include <YSI_Coding/y_hooks>
 
 new gLoadingTimer[MAX_PLAYERS];
 
 /*
         Does the loading logic
                             */
-hook OnPlayerConnect@004(playerid) {
+#include <YSI_Coding\y_hooks>
+hook OnPlayerConnect(playerid) {
     gLoadingTimer[playerid]=-1;
     TogglePlayerSpectating(playerid,true);
     ShowLoadingScreen(playerid,"A carregar...");
+    return 1;
 }
 
 stock ShowLoadingScreen(playerid,const message[]) { 
@@ -26,8 +27,10 @@ stock ShowLoadingScreen(playerid,const message[]) {
     ShowPlayerProgressBar(playerid,txdloadingProgress[playerid]);
     PlayerTextDrawSetString(playerid,txdloadingMessage[playerid],message);
     PlayerTextDrawShow(playerid,txdloadingMessage[playerid]);
-    gLoadingTimer[playerid]=SetTimerEx("AddLoadingProgress",1,true,"i", playerid);
+    gLoadingTimer[playerid]=SetTimerEx("AddLoadingProgress",100,true,"i", playerid);
 }
+
+
 
 forward AddLoadingProgress(playerid);
 public AddLoadingProgress(playerid) {
@@ -47,6 +50,7 @@ public AddLoadingProgress(playerid) {
         KillTimer(gLoadingTimer[playerid]);
         gLoadingTimer[playerid]=-1;
         PrepareAccountCheck(playerid);
-        SendClientMessage(playerid,-1,"Fim");
+        return 1;
     }
+    return 1;
 }

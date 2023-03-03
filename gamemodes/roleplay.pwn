@@ -4,7 +4,7 @@
 #define AMX_OLD_CALL
 #include <a_samp>
 #include <fixes>
-#include <YSI_Visual/y_commands>
+
 #include <a_mysql>
 #include <sscanf2>
 #include <progress2>
@@ -12,6 +12,8 @@
 #include <streamer>
 #include "modulos/util/colors.inc" 
 #include "modulos/util/uteis.pwn"
+#include "modulos/util/msg.pwn"
+#include <YSI_Visual/y_commands>
 
 /*
 	VARIAVEIS GLOBAIS
@@ -21,15 +23,14 @@ new MySQL:mysql;
 /*gi
 	LOGIN
 	*/
-#include "modulos/login/connect.pwn"
+	
+#include "modulos/login/loading.pwn"
 /*
 	PLAYER
 			*/
-#include "modulos/util/msg.pwn"
-/*
-	SPAWN
-	*/
-#include "modulos/spawn/playerspawn.pwn"
+#include "modulos/players/playerinfo.pwn"
+#include "modulos/players/playerspawn.pwn"
+
 
 /*
 LOCATIONS
@@ -83,9 +84,6 @@ public dbInit() {
 		Tabela init
 				*/
 	PrepareLocationsTable();
-}
-forward SQL:getInstance();
-public SQL:getInstance() {
 }
 public OnGameModeExit()
 {
