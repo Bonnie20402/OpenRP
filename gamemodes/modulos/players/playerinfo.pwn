@@ -24,10 +24,11 @@ hook dbInit() {
     mysql_query(mysql,query,false);
 }
 hook OnPlayerAuth(playerid) {
-    SendClientMessage(playerid,COLOR_AQUA,"A carregar os teus dados...");
+    printf("loadar");
     PrepareLoadPlayerInfo(playerid);
     return 1;
-}                  
+}
+
 hook OnPlayerDisconnect(playerid,reason) {
     PrepareSavePlayerInfo(playerid);
     return 1;
@@ -38,12 +39,12 @@ hook OnPlayerDisconnect(playerid,reason) {
     also creates player's data row if it doesn't exist
     TODO: RESTORE PLAYER STUFF USING THEIR VALUES IN TABLE
                     */
-stock PrepareLoadPlayerInfo(playerid) {
+public PrepareLoadPlayerInfo(playerid) {
     new query[255];
     mysql_format(mysql,query,255,"SELECT * FROM playerinfo WHERE username = '%s'",GetPlayerNameEx(playerid));
     mysql_pquery(mysql,query,"FinishLoadPlayerInfo","i",playerid);
 }
-forward FinishLoadPlayerInfo(playerid);
+
 public FinishLoadPlayerInfo(playerid) {
     new hasInfo;
     cache_get_row_count(hasInfo);
@@ -69,7 +70,7 @@ public FinishLoadPlayerInfo(playerid) {
     mysql_pquery(mysql,query,"InsertPlayerInfo","i",playerid);
     return 1;
 }
-forward InsertPlayerInfo(playerid);
+
 public InsertPlayerInfo(playerid) {
     printf("Dados novos do jogador %s[%d] registados!",GetPlayerNameEx(playerid),playerid);
 }
@@ -79,7 +80,7 @@ public InsertPlayerInfo(playerid) {
     saves player data to the table
                             */
 
-forward PrepareSavePlayerInfo(playerid);
+
 public PrepareSavePlayerInfo(playerid) {
     new query[255];
     new Float:x,Float:y,Float:z,Float:hp,Float:armor;

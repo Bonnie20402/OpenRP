@@ -1,5 +1,5 @@
-
-stock gpsIconsInit(playerid) {
+forward gpsIconsInit(playerid);
+public gpsIconsInit(playerid) {
 	/*
 			Pegado de uma gamemode da internet
 												*/

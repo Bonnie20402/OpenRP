@@ -1,49 +1,60 @@
 // This is a comment
 // uncomment the line below if you want to write a filterscript
 //#define FILTERSCRIPT
+#define LASTEST_UPDATE "03/03/2023"
+#define VERSION "1.0.0"
 #define AMX_OLD_CALL
 #include <a_samp>
 #include <fixes>
-
 #include <a_mysql>
 #include <sscanf2>
 #include <progress2>
 #include <bcrypt>
 #include <streamer>
-#include "modulos/util/colors.inc" 
-#include "modulos/util/uteis.pwn"
-#include "modulos/util/msg.pwn"
-#include <YSI_Visual/y_commands>
+#include "modulos\util\colors.inc" 
+#include "modulos\util\uteis.pwn"
+#include "modulos\util\msg.pwn"
+#include <YSI_Visual\y_commands>
 
 /*
-	VARIAVEIS GLOBAIS
+	First-time variables
 */
-new MySQL:mysql; 
+new MySQL:mysql;
 
-/*gi
+/*
+	HEADERS
+				*/
+#include "modulos\admins\headers.pwn"
+#include "modulos\gps\headers.pwn"
+#include "modulos\locations\headers.pwn"
+#include "modulos\login\headers.pwn"
+#include "modulos\locations\headers.pwn"
+#include "modulos\players\headers.pwn"
+
+/*
 	LOGIN
 	*/
 	
-#include "modulos/login/loading.pwn"
+#include "modulos\login\loading.pwn"
 /*
 	PLAYER
 			*/
-#include "modulos/players/playerinfo.pwn"
-#include "modulos/players/playerspawn.pwn"
+#include "modulos\players\playerinfo.pwn"
+#include "modulos\players\playerspawn.pwn"
 
 
 /*
 LOCATIONS
 */
-#include "modulos/locations/locations.pwn"
+#include "modulos\locations\locations.pwn"
 /*
 	gps
 			*/
-#include "modulos/gps/gps.pwn"
+#include "modulos\gps\gps.pwn"
 /*
 	admin
 				*/
-#include "modulos/admins/admins.pwn"
+#include "modulos\admins\admins.pwn"
 
 
 main() {
@@ -73,17 +84,8 @@ public dbInit() {
 		SendRconCommand("stop");
 	}
 	else print("Ligado á DB - Tabela: OpenRP");
-	    	/*
-		CRIAÇÃO DE TABELAS
-						*/
-	new TabelaAccounts[128];
-	mysql_format(mysql,TabelaAccounts,128,"CREATE TABLE IF NOT EXISTS ACCOUNTS (account_id INT(11) PRIMARY KEY NOT NULL,username VARCHAR(32),password VARCHAR(256))");
-	mysql_query(mysql,TabelaAccounts,false);
 
-	/*
-		Tabela init
-				*/
-	PrepareLocationsTable();
+
 }
 public OnGameModeExit()
 {

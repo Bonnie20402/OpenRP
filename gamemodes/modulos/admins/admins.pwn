@@ -17,22 +17,22 @@ new gAdmins[MAX_PLAYERS][ADMININFO];
 /*
     Includes de admin
                         */
-#include "modulos/admins/adminmsg.pwn"
-#include "modulos/admins/adminauth.pwn"
+#include "modulos\admins\adminmsg.pwn"
+#include "modulos\admins\adminauth.pwn"
 
 /*
         Comandos de Admin
                                     */
-#include "modulos/admincmds/criarloc.pwn"
-#include "modulos/admincmds/removerloc.pwn"
-#include "modulos/admincmds/criaradmin.pwn"
-#include "modulos/admincmds/aa.pwn"
-#include "modulos/admincmds/removeradmin.pwn"
-#include "modulos/admincmds/ac.pwn"
-#include "modulos/admincmds/beepboop.pwn"
-#include "modulos/admincmds/atrabalhar.pwn"
-#include "modulos/admincmds/av.pwn"
-#include "modulos/admincmds/adminslist.pwn"
+#include "modulos\admincmds\criarloc.pwn"
+#include "modulos\admincmds\removerloc.pwn"
+#include "modulos\admincmds\criaradmin.pwn"
+#include "modulos\admincmds\aa.pwn"
+#include "modulos\admincmds\removeradmin.pwn"
+#include "modulos\admincmds\ac.pwn"
+#include "modulos\admincmds\beepboop.pwn"
+#include "modulos\admincmds\atrabalhar.pwn"
+#include "modulos\admincmds\av.pwn"
+#include "modulos\admincmds\adminslist.pwn"
 
 
 /*

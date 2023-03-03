@@ -11,7 +11,9 @@
 new Float:LOC_SpawnCivil[3] = {1154.1556,-1768.5778,16.5938}; // temporario
 
 hook OnPlayerAuth(playerid) {
+    print("preparar1");
     PreparePlayerSpawn(playerid);
+    return 1;
 }
 
 forward PreparePlayerSpawn(playerid);

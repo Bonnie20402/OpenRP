@@ -2,8 +2,8 @@
     Connect
 Handles player connection logic
                 */
-#include "modulos/login/loadingtxd.pwn"
-#include "modulos/login/login.pwn"
+#include "modulos\login\loadingtxd.pwn"
+#include "modulos\login\login.pwn"
 
 new gLoadingTimer[MAX_PLAYERS];
 
@@ -12,13 +12,16 @@ new gLoadingTimer[MAX_PLAYERS];
                             */
 #include <YSI_Coding\y_hooks>
 hook OnPlayerConnect(playerid) {
+    new msg[255];
+    format(msg,255,"Ultima update: %s",LASTEST_UPDATE);
     gLoadingTimer[playerid]=-1;
     TogglePlayerSpectating(playerid,true);
-    ShowLoadingScreen(playerid,"A carregar...");
+    ShowLoadingScreen(playerid,msg);
     return 1;
 }
 
-stock ShowLoadingScreen(playerid,const message[]) { 
+
+public ShowLoadingScreen(playerid,const message[]) { 
     PlayerTextDrawShow(playerid,txdloadingBackground1[playerid]);
     PlayerTextDrawShow(playerid,txdloadingBackground2[playerid]);
     PlayerTextDrawShow(playerid,txdloadingVersion[playerid]);
@@ -32,7 +35,7 @@ stock ShowLoadingScreen(playerid,const message[]) {
 
 
 
-forward AddLoadingProgress(playerid);
+
 public AddLoadingProgress(playerid) {
     //Se ainda não estiver carregado
     if(gLoadingTimer[playerid]!=-1) {
@@ -49,8 +52,18 @@ public AddLoadingProgress(playerid) {
         PlayerTextDrawHide(playerid,txdloadingMessage[playerid]);
         KillTimer(gLoadingTimer[playerid]);
         gLoadingTimer[playerid]=-1;
-        PrepareAccountCheck(playerid);
+        OnPlayerLoad(playerid);
         return 1;
     }
+    return 1;
+}
+
+public IsPlayerLoaded(playerid) {
+    if(gLoadingTimer[playerid]==-1)return 0;
+    return 1;
+}
+
+public OnPlayerLoad(playerid) {
+    PrepareAccountCheck(playerid);
     return 1;
 }

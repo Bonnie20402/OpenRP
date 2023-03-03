@@ -72,7 +72,7 @@ hook OnPlayerConnect(playerid)
 	PlayerTextDrawSetProportional(playerid, txdloadingMessage[playerid], 1);
 	PlayerTextDrawSetSelectable(playerid, txdloadingMessage[playerid], 0);
 
-	txdloadingVersion[playerid] = CreatePlayerTextDraw(playerid, 396.000000, 139.000000, "v1.0.0");
+	txdloadingVersion[playerid] = CreatePlayerTextDraw(playerid, 396.000000, 139.000000,VERSION);
 	PlayerTextDrawFont(playerid, txdloadingVersion[playerid], 2);
 	PlayerTextDrawLetterSize(playerid, txdloadingVersion[playerid], 0.312500, 1.950000);
 	PlayerTextDrawTextSize(playerid, txdloadingVersion[playerid], 400.000000, 17.000000);
@@ -91,7 +91,7 @@ hook OnPlayerConnect(playerid)
 
 	return 1;
 }
-#include <YSI_Coding\y_hooks>
+
 hook OnPlayerDisconnect(playerid,reason)
 {
 	PlayerTextDrawDestroy(playerid, txdloadingBackground1[playerid]);

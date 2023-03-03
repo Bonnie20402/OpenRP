@@ -2,12 +2,10 @@
     GPS
     Server GPS System, based on Locations
                                         */
-//Hooks
-
-#include "modulos/gps/icons.pwn"
-#include "modulos/gps/gpstxd.pwn"
-#include "modulos/gps/gpsdialog.pwn"
-
+#include "modulos\gps\icons.pwn"
+#include "modulos\gps\gpstxd.pwn"
+#include "modulos\gps\gpsdialog.pwn"
+#include <YSI_Coding\y_hooks>
 /*
     VARIABLES
                 */
@@ -34,8 +32,8 @@ YCMD:gpsoff(playerid,params[],help) {
     DisablePlayerCheckpoint(playerid);
     KillTimer(gGPS[playerid][GPS_TIMERID]);
 }
-// TODO corrigir gps
-// TODO usar streamer
+
+
 stock CreateGPSTimer(playerid,locationid) {
     if(!IsValidLocation(locationid)) {
         SendClientMessage(playerid,COLOR_RED,"[GPS] Localização inválida!");
@@ -51,7 +49,6 @@ stock CreateGPSTimer(playerid,locationid) {
     PlayerTextDrawShow(playerid,txdGPS_background[playerid]);
     return 1;
 }
-forward UpdateGPSDistance(playerid);
 public UpdateGPSDistance(playerid) {
     new locationid,String:distanceText[64];
     locationid=gGPS[playerid][GPS_LOCID];
