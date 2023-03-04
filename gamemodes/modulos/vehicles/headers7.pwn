@@ -1,3 +1,4 @@
+
 new gCitizenVehicles[MAX_VEHICLES];
 
 

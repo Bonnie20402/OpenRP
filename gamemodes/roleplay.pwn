@@ -59,13 +59,14 @@ LOCATIONS
 /*
 	vehicles
 			*/
-#include "modulos\vehicles\citizenvehicles.pwn"
+#include "modulos\vehicles\vehicles.pwn"
 
 main() {
 	return 1;
  }
 public OnGameModeInit()
 {
+	ManualVehicleEngineAndLights();
 	SendRconCommand("hostname Open SXurce RP!");
 	SendRconCommand("maxplayers 100");
 	SendRconCommand("language PT");

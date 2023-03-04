@@ -6,7 +6,6 @@ public PrepareCitizenVehicles() {
     new query[255];
     mysql_format(mysql,query,255,"CREATE TABLE IF NOT EXISTS citizenvehicles (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,type INT,color1 INT,color2 INT,x DECIMAL(10,6),y DECIMAL(10,6),z DECIMAL(10,6));");
     mysql_query(mysql,query,false);
-    print("loading ciizen veh");
     PrepareLoadCitizenVehicles();
 }
 
@@ -41,7 +40,15 @@ public FinishLoadCitizenVehicles() {
         cache_get_value_index_float(i,5,y);
         cache_get_value_index_float(i,6,z);
         qtd++;
-        if(!gCitizenVehicles[id])gCitizenVehicles[id] = AddStaticVehicleEx(type,x,y,z,90,color1,color2,120,0);
+        
+        if(!gCitizenVehicles[id]) {
+            gCitizenVehicles[id] = AddStaticVehicleEx(type,x,y,z,90,color1,color2,120,0);
+            new String:vehicleText[255];
+            new Text3D:vehicleTextLabel;
+            format(vehicleText,255,"{ffffff}** Veiculo Civil[{00ffff}%d{ffffff}] **",id);
+            vehicleTextLabel = Create3DTextLabel(vehicleText,-1, 0.0, 0.0, 0.0, 50.0, 0, 1);
+            Attach3DTextLabelToVehicle(vehicleTextLabel,gCitizenVehicles[id],0,0,0);
+        }
     }
     new msg[255];
     format(msg,255,"%d veiculos civis carregados",qtd);
