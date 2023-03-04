@@ -1,3 +1,11 @@
+#define MAX_LOCATIONS 501
+enum LOCATIONS {
+    String:LOCATION_NAME[64],
+    Float:LOCATION_COORDS[3]
+}
+
+new gLocations[MAX_LOCATIONS-1][LOCATIONS];
+
 forward PrepareLocationsTable();
 
 forward PrepareLocationsLoad();

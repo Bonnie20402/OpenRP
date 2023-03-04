@@ -5,8 +5,6 @@ Nickk888 is the author of the NTD script
 
 
 
-new PlayerText:txdGPS_background[MAX_PLAYERS];
-new PlayerText:txdGPS_distance[MAX_PLAYERS];
 #include <YSI_Coding\y_hooks>
 hook OnPlayerConnect(playerid)
 {

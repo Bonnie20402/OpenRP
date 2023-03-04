@@ -7,12 +7,7 @@ Nickk888 is the author of the NTD script
 //Requires "progress2" include by Southclaws
 //Download: https://github.com/Southclaws/progress2/releases
 
-new PlayerText:txdloadingBackground1[MAX_PLAYERS];
-new PlayerText:txdloadingTitle[MAX_PLAYERS];
-new PlayerText:txdloadingBackground2[MAX_PLAYERS];
-new PlayerText:txdloadingMessage[MAX_PLAYERS];
-new PlayerText:txdloadingVersion[MAX_PLAYERS];
-new PlayerBar:txdloadingProgress[MAX_PLAYERS];
+
 #include <YSI_Coding\y_hooks>
 hook OnPlayerConnect(playerid)
 {

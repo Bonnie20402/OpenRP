@@ -4,7 +4,7 @@
 #define GPSDIALOG_LOCAISIMPORTANTES 6001
 #define GPSDIALOG_HQEMPREGOS 6002
 #define GPSDIALOG_HQORGS 6003
-stock ShowGPSMainDialog(playerid) {
+public ShowGPSMainDialog(playerid) {
     new msg[256];
     format(msg,256,"\
     Locais Importanntes\n\
@@ -16,6 +16,7 @@ stock ShowGPSMainDialog(playerid) {
     return 1;
 }
 //TODO melhorar gps mais para a frente
+// TODO move to playercmds
 YCMD:gps(playerid,params[],help) {
     ShowGPSMainDialog(playerid);
     return 1;

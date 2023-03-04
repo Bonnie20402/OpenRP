@@ -1,36 +1,19 @@
 
-
-enum PLAYERINFO {
-    Int:PLAYERINFO_SKIN,
-    Float:PLAYERINFO_COORDS[3],
-
-    Int:PLAYERINFO_HP,
-    Int:PLAYERINFO_ARMOR,
-    Int:PLAYERINFO_WANTED,
-    Int:PLAYERINFO_MONEY,
-
-    //Weapons
-}
-
-
-new gPlayerInfo[MAX_PLAYERS][PLAYERINFO];
 /*
     Hooks
             */
 #include <YSI_Coding\y_hooks>
+hook OnPlayerSpawn(playerid) {
+    PrepareLoadPlayerInfo(playerid);
+}
 hook dbInit() {
     new query[255];
     mysql_format(mysql,query,255,"CREATE TABLE IF NOT EXISTS playerinfo (username VARCHAR(64) NOT NULL PRIMARY KEY,skin INT,x DECIMAL(10, 8),y DECIMAL(10, 8),z DECIMAL(10, 8),hp DECIMAL(10, 8),armor DECIMAL(10, 8),wanted INT,money INT);");
     mysql_query(mysql,query,false);
 }
-hook OnPlayerAuth(playerid) {
-    printf("loadar");
-    PrepareLoadPlayerInfo(playerid);
-    return 1;
-}
 
 hook OnPlayerDisconnect(playerid,reason) {
-    PrepareSavePlayerInfo(playerid);
+    if(IsPlayerLoggedIn(playerid))PrepareSavePlayerInfo(playerid);
     return 1;
 }
 /*
@@ -94,8 +77,8 @@ public PrepareSavePlayerInfo(playerid) {
     mysql_format(mysql,query,255,"UPDATE playerinfo SET skin = %d, x = %f, y = %f, z = %f, hp = %f, armor = %f, wanted = %d, money = %d WHERE username = '%s'",skin,x,y,z,hp,armor,wanted,money,GetPlayerNameEx(playerid));
     mysql_pquery(mysql,query,"FinishSavePlayerInfo","is",playerid,GetPlayerNameEx(playerid));
 }
-forward FinishSavePlayerInfo(playerid,const username[]);
+
 public FinishSavePlayerInfo(playerid,const username[]) {
-    if(cache_affected_rows()) printf("Os dados de %s foram salvos!",username);
-    else printf("Erro ao salvar os dados de %s!",GetPlayerNameEx(playerid));
+    if(cache_affected_rows())return 1;
+    else printf("[playerinfo.pwn] Erro ao salvar os dados de %s!",GetPlayerNameEx(playerid));
 }

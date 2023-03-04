@@ -1,1 +1,0 @@
-forward UpdateGPSDistance(playerid);

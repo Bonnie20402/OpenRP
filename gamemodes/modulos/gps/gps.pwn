@@ -6,35 +6,16 @@
 #include "modulos\gps\gpstxd.pwn"
 #include "modulos\gps\gpsdialog.pwn"
 #include <YSI_Coding\y_hooks>
-/*
-    VARIABLES
-                */
-enum GPS {
-    Float:GPS_DIST,
-    Int:GPS_LOCID,
-    Int:GPS_TIMERID
-}
-// TODO: Completar GPS
-// TODO: GPS Dialog
 
-new gGPS[MAX_PLAYERS][GPS];
+
+// TODO: Completar GPS
 
 
 /*
     STOCKS
                     */
-YCMD:testargps(playerid,params[],help) {
-    new locationid;
-    if(!sscanf(params,"i",locationid))CreateGPSTimer(playerid,locationid);
-    return 1;
-}
-YCMD:gpsoff(playerid,params[],help) {
-    DisablePlayerCheckpoint(playerid);
-    KillTimer(gGPS[playerid][GPS_TIMERID]);
-}
 
-
-stock CreateGPSTimer(playerid,locationid) {
+public CreateGPSTimer(playerid,locationid) {
     if(!IsValidLocation(locationid)) {
         SendClientMessage(playerid,COLOR_RED,"[GPS] Localização inválida!");
         return 0;

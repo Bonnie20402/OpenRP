@@ -5,7 +5,6 @@ Handles player connection logic
 #include "modulos\login\loadingtxd.pwn"
 #include "modulos\login\login.pwn"
 
-new gLoadingTimer[MAX_PLAYERS];
 
 /*
         Does the loading logic

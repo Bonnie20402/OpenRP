@@ -5,10 +5,12 @@ YCMD:atrabalhar(playerid,params[],help) {
     if(IsValidStaff(playerid)) {
         if(IsStaffWorking(playerid)) {
             gAdmins[playerid][ADMININFO_WORKING]=0;
+            SetPlayerHealth(playerid,100.0);
             format(msg,256,"O administrador %s está fora de serviço.",GetPlayerNameEx(playerid));
         }
         else {
             gAdmins[playerid][ADMININFO_WORKING]=1;
+            SetPlayerHealth(playerid,98304);
             format(msg,256,"O administrador %s está em serviço.",GetPlayerNameEx(playerid));
         }
         SendClientMessageToAll(COLOR_AQUA,msg);

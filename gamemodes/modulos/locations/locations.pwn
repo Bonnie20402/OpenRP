@@ -1,18 +1,7 @@
 
 
-#define MAX_LOCATIONS 501
 
 #include <YSI_Coding\y_hooks>
-/*
-    VARIABLES
-                    */
-
-enum LOCATIONS {
-    String:LOCATION_NAME[64],
-    Float:LOCATION_COORDS[3]
-}
-
-new gLocations[MAX_LOCATIONS-1][LOCATIONS];
 
 /*
     hooks

@@ -20,16 +20,16 @@
 	First-time variables
 */
 new MySQL:mysql;
-
+//TODO: Mover todas as globais para headers!
 /*
 	HEADERS
 				*/
-#include "modulos\admins\headers.pwn"
-#include "modulos\gps\headers.pwn"
-#include "modulos\locations\headers.pwn"
-#include "modulos\login\headers.pwn"
-#include "modulos\locations\headers.pwn"
-#include "modulos\players\headers.pwn"
+#include "modulos\admins\headers2.pwn"
+#include "modulos\gps\headers3.pwn"
+#include "modulos\login\headers4.pwn"
+#include "modulos\locations\headers5.pwn"
+#include "modulos\players\headers6.pwn"
+#include "modulos\vehicles\headers7.pwn"
 
 /*
 	LOGIN
@@ -56,6 +56,10 @@ LOCATIONS
 				*/
 #include "modulos\admins\admins.pwn"
 
+/*
+	vehicles
+			*/
+#include "modulos\vehicles\citizenvehicles.pwn"
 
 main() {
 	return 1;
@@ -69,6 +73,7 @@ public OnGameModeInit()
 	dbInit();
 	return 1;
 }
+
 forward dbInit();
 public dbInit() {
 	/*
@@ -85,7 +90,7 @@ public dbInit() {
 	}
 	else print("Ligado á DB - Tabela: OpenRP");
 
-
+	PrepareCitizenVehicles();
 }
 public OnGameModeExit()
 {

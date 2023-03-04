@@ -1,30 +1,5 @@
 
 
-#define MAX_PASSWORD_LENGTH 64
-
-/*
-    DIALOGS
-    */
-enum LOGINDIALOGS {
-    LOGINDIALOG_LOGIN,
-    LOGINDIALOG_REGISTER,
-    LOGINDIALOG_PASSWORDCONFIRM,
-    LOGINDIALOG_RECOVERPASSWORD
-}
-
-
-/*
-    VARIAVEIS
-                */
-new gLoggedIn[MAX_PLAYERS];
-new Int:BCRYPT_COST = 12;
-/*
-    VARIAVEIS FICHEIRO
-                        */
-new static dLoginTitle[64];
-new static dLoginMsg[256];
-new static dRegisterTitle[64];
-new static dRegisterMsg[256];
 
 #include <YSI_Coding\y_hooks>
 
