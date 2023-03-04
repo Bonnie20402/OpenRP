@@ -15,7 +15,7 @@ hook OnPlayerStateChange(playerid,newstate,oldstate) {
 
 public VehicleInit(vehicleid) {
     SetVehicleParamsEx(vehicleid,0,0,0,0,0,0,0);
-    SetTimerEx("UpdateVehicleFuel",100,true,"i",vehicleid);
+    SetTimerEx("UpdateVehicleFuel",120000,true,"i",vehicleid); // Two minutes per value.
     return 1;
 }
 

@@ -1,3 +1,7 @@
+/*
+    Credit: http://unidadesamp.blogspot.com/2016/05/fs-velocimetro-estilo-gta-v.html
+    HUD Author: ForT 
+                                                                                    */
 #include <YSI_Coding\y_hooks>
 hook OnScriptInit() {
     txdVehicleHud[0] = TextDrawCreate(379.000000, 353.000000, "i");
@@ -135,7 +139,7 @@ public UpdatePlayerSpeedMeter(playerid) {
         if (IsPlayerInVehicle(playerid,currentVeh)) {
             new vehicleid = GetPlayerVehicleID(playerid);
             new vehicleStats[15];
-            new health;
+            new Float:health;
             GetVehicleHealth(vehicleid,health);
             //TODO FUEL and SHIELD
             format(vehicleStats, sizeof (vehicleStats), "%02d km/h", GetVehicleSpeed(vehicleid));
