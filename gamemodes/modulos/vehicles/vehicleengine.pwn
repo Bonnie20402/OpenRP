@@ -15,9 +15,12 @@ hook OnPlayerKeyStateChange(playerid,newkeys,oldkeys) {
             vehicleid=GetPlayerVehicleID(playerid);
             GetVehicleParamsEx(vehicleid,engine,lights,alarm,doors,bonnet,boot,objective);
             if(!engine) {
-                engine=1;
-                lights=1;
-                ShowPlayerScreenMessage(playerid,2000,"Veiculo ligado!");     
+                if(GetVehicleFuel(vehicleid)) {
+                    engine=1;
+                    lights=1;
+                    ShowPlayerScreenMessage(playerid,2000,"Veiculo ligado!");     
+                }
+                else ShowPlayerScreenMessage(playerid,2000,"Veiculo sem combustivel!");
             }
             else {
                 engine=0;
@@ -26,6 +29,6 @@ hook OnPlayerKeyStateChange(playerid,newkeys,oldkeys) {
             }
             SetVehicleParamsEx(vehicleid,engine,lights,alarm,doors,bonnet,boot,objective);
         }
-    return 1;
     }
+    return 1;
 }

@@ -40,19 +40,20 @@ public FinishLoadCitizenVehicles() {
         cache_get_value_index_float(i,5,y);
         cache_get_value_index_float(i,6,z);
         qtd++;
-        
         if(!gCitizenVehicles[id]) {
             gCitizenVehicles[id] = AddStaticVehicleEx(type,x,y,z,90,color1,color2,120,0);
             new String:vehicleText[255];
             new Text3D:vehicleTextLabel;
-            format(vehicleText,255,"{ffffff}** Veiculo Civil[{00ffff}%d{ffffff}] **",id);
+            format(vehicleText,255,"{ffffff}- Veiculo Civil[{00ffff}%d{ffffff}] -",id);
             vehicleTextLabel = Create3DTextLabel(vehicleText,-1, 0.0, 0.0, 0.0, 50.0, 0, 1);
             Attach3DTextLabelToVehicle(vehicleTextLabel,gCitizenVehicles[id],0,0,0);
+            VehicleInit(gCitizenVehicles[id]);
         }
     }
     new msg[255];
     format(msg,255,"%d veiculos civis carregados",qtd);
     SendStaffMessage(-1,msg);
+    return 1;
 }
 /*
         RemoveCitizenVehicle

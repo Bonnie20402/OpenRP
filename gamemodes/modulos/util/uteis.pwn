@@ -28,6 +28,12 @@ stock GetPlayerNameEx(playerid) {
 	while ((iPos = strfind(szName, "_", false, iPos)) != -1) szName[iPos] = ' ';
 	return szName;
 }
+stock GetVehicleSpeed(vehicleid)
+{
+        new Float:xPos[3];
+        GetVehicleVelocity(vehicleid, xPos[0], xPos[1], xPos[2]);
+        return floatround(floatsqroot(xPos[0] * xPos[0] + xPos[1] * xPos[1] + xPos[2] * xPos[2]) * 170.00);
+}
 stock GetPlayerDistanceToPointEx(playerid,Float:x,Float:y,Float:z) {
     new Float:x1,Float:y1,Float:z1;
     new Float:tmpdis;
