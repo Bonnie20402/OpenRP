@@ -2,7 +2,7 @@
 
 
 //Put this on dbInit();
-public PrepareCitizenVehicles() {
+public PrepareCitizenVehiclesTable() {
     new query[255];
     mysql_format(mysql,query,255,"CREATE TABLE IF NOT EXISTS citizenvehicles (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,type INT,color1 INT,color2 INT,x DECIMAL(10,6),y DECIMAL(10,6),z DECIMAL(10,6));");
     mysql_query(mysql,query,false);
@@ -71,7 +71,7 @@ public FinishRemoveCitizenVehicle(rowid) {
         new msg[255];
         format(msg,255,"Veiculo CitizenVehicle ID %d foi eliminado!",rowid);
         SendStaffMessage(-1,msg);
-        PrepareCitizenVehicles();
+        PrepareLoadCitizenVehicles();
         return 1;
     }
     SendStaffMessage(-1,"Erro ao remover CitizenVehicle: veiculo não existe");

@@ -30,6 +30,8 @@ new MySQL:mysql;
 #include "modulos\locations\headers5.pwn"
 #include "modulos\players\headers6.pwn"
 #include "modulos\vehicles\headers7.pwn"
+#include "modulos\infocmds\headers8.pwn"
+#include "modulos\interiors\headers9.pwn"
 
 /*
 	LOGIN
@@ -39,10 +41,14 @@ new MySQL:mysql;
 /*
 	PLAYER
 			*/
+#include "modulos\infocmds\creditos.pwn"
 #include "modulos\players\playerinfo.pwn"
 #include "modulos\players\playerspawn.pwn"
 
-
+/*
+	INTERIORS
+					*/
+#include "modulos\interiors\locationpickups.pwn"
 /*
 LOCATIONS
 */
@@ -94,9 +100,11 @@ public dbInit() {
 	}
 	else print("Ligado á DB - Tabela: OpenRP");
 
-
+	PrepareAccountsTable();
 	PrepareLocationsTable();
-	PrepareCitizenVehicles();
+	PrepareLocationPickupsTable(); // BEWARE! This module depends on PrepareLocationsTable, load it first!
+	PrepareCitizenVehiclesTable();
+	PreparePlayerInfoTable();
 	return 1;
 }
 public OnGameModeExit()
@@ -119,6 +127,10 @@ public OnPlayerConnect(playerid)
 
 public OnPlayerDisconnect(playerid, reason)
 {
+	/*
+	 Moved to here in order to make sure all hooks of OnPlayerDisconnect that need the player to be authenticated go through
+	*/
+	gLoggedIn[playerid]=0; 
 	return 1;
 }
 

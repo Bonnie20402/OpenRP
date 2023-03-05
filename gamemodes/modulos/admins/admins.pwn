@@ -22,6 +22,14 @@
 #include "modulos\admincmds\adminslist.pwn"
 #include "modulos\admincmds\criarcitizenvehicle.pwn"
 #include "modulos\admincmds\removercitizenvehicle.pwn"
+#include "modulos\admincmds\criarlocationpickup.pwn"
+#include "modulos\admincmds\removerlocationpickup.pwn"
+#include "modulos\admincmds\setarinterior.pwn"
+#include "modulos\admincmds\irloc.pwn"
+#include "modulos\admincmds\tp.pwn"
+#include "modulos\admincmds\tph.pwn"
+
+
 
 
 /*

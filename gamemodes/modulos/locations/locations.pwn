@@ -54,6 +54,7 @@ public FinishAddLocation(const name[],Float:x,Float:y,Float:z) {
     new String:msg[255];
     format(msg,255,"A localização %s nas coords (%.2f,%.2f,%.2f) foi criada.",name,x,y,z);
     SendStaffMessage(-1,msg);
+    print(msg);
     PrepareLocationsLoad();
     return 1;
 }
@@ -101,6 +102,16 @@ public FinishRemoveLocation(playerid,locationid) {
     Getters
                 */
 
+
+public GetLocationCoordsPointers(locationid, &Float:x,&Float:y,&Float:z) {
+    if(IsValidLocation(locationid)) {
+        x=GetLocationX(locationid);
+        y=GetLocationY(locationid);
+        z=GetLocationZ(locationid);
+        return 1;
+    }
+    return 0;
+}
 /*
     IsValidLocation
     checks if a given locationid exists
@@ -125,7 +136,8 @@ public Int:GetLocationIDFromName(const name[]) {
     }
     return 0;
 }
-public GetLocationName(locationid) {
-    return gLocations[locationid][LOCATION_NAME];
+public String:GetLocationName(locationid) {
+    print(gLocations[locationid][LOCATION_NAME]);
+    return String:gLocations[locationid][LOCATION_NAME];
 }
 

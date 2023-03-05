@@ -19,11 +19,11 @@ forward ContinueRemoveLocation(playerid,locationid);
 forward FinishRemoveLocation(playerid,locationid);
 
 forward IsValidLocation(locationid);
-
+forward GetLocationCoordsPointers(locationid, &Float:x,&Float:y,&Float:z);
 forward Float:GetLocationX(locationid);
 forward Float:GetLocationY(locationid);
 forward Float:GetLocationZ(locationid);
 
 forward Int:GetLocationIDFromName(const name[]);
 
-forward GetLocationName(locationid);
+forward String:GetLocationName(locationid);

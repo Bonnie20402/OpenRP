@@ -6,15 +6,18 @@
 hook OnPlayerSpawn(playerid) {
     PrepareLoadPlayerInfo(playerid);
 }
-hook dbInit() {
-    new query[255];
-    mysql_format(mysql,query,255,"CREATE TABLE IF NOT EXISTS playerinfo (username VARCHAR(64) NOT NULL PRIMARY KEY,skin INT,x DECIMAL(10, 8),y DECIMAL(10, 8),z DECIMAL(10, 8),hp DECIMAL(10, 8),armor DECIMAL(10, 8),wanted INT,money INT);");
-    mysql_query(mysql,query,false);
-}
 
 hook OnPlayerDisconnect(playerid,reason) {
-    if(IsPlayerLoggedIn(playerid))PrepareSavePlayerInfo(playerid);
+    if(IsPlayerLoggedIn(playerid)) {
+        PrepareSavePlayerInfo(playerid);
+    }
     return 1;
+
+}
+public PreparePlayerInfoTable() {
+    new query[255];
+    mysql_format(mysql,query,255,"CREATE TABLE IF NOT EXISTS playerinfo (username VARCHAR(64) NOT NULL PRIMARY KEY,interiorid INT, skin INT,x FLOAT,y FLOAT,z FLOAT,hp FLOAT,armor FLOAT,wanted INT,money INT);");
+    mysql_query(mysql,query,false);
 }
 /*
     load player info
@@ -48,14 +51,14 @@ public FinishLoadPlayerInfo(playerid) {
     GetPlayerHealth(playerid,hp);
     GetPlayerArmour(playerid,armor);
     GetPlayerPos(playerid,x,y,z);
-    mysql_format(mysql,query,255,"INSERT INTO playerinfo (username, skin, x, y, z, hp, armor, wanted, money)\
-    VALUES ('%s', %d, %f, %f, %f, %f, %f, %d, %d)",GetPlayerNameEx(playerid),GetPlayerSkin(playerid),x,y,z,hp,armor,GetPlayerWantedLevel(playerid),GetPlayerMoney(playerid));
+    mysql_format(mysql,query,255,"INSERT INTO playerinfo (username,interiorid, skin, x, y, z, hp, armor, wanted, money)\
+    VALUES ('%s',%d, %d, %f, %f, %f, %f, %f, %d, %d)",GetPlayerNameEx(playerid),GetPlayerInterior(playerid),GetPlayerSkin(playerid),x,y,z,hp,armor,GetPlayerWantedLevel(playerid),GetPlayerMoney(playerid));
     mysql_pquery(mysql,query,"InsertPlayerInfo","i",playerid);
     return 1;
 }
 
 public InsertPlayerInfo(playerid) {
-    printf("Dados novos do jogador %s[%d] registados!",GetPlayerNameEx(playerid),playerid);
+    printf("[playerinfo.pwn] Dados novos do jogador %s[%d] registados!",GetPlayerNameEx(playerid),playerid);
 }
 
 /*
@@ -74,11 +77,12 @@ public PrepareSavePlayerInfo(playerid) {
     GetPlayerHealth(playerid,hp);
     GetPlayerArmour(playerid,armor);
     GetPlayerPos(playerid,x,y,z);
-    mysql_format(mysql,query,255,"UPDATE playerinfo SET skin = %d, x = %f, y = %f, z = %f, hp = %f, armor = %f, wanted = %d, money = %d WHERE username = '%s'",skin,x,y,z,hp,armor,wanted,money,GetPlayerNameEx(playerid));
-    mysql_pquery(mysql,query,"FinishSavePlayerInfo","is",playerid,GetPlayerNameEx(playerid));
+    mysql_format(mysql,query,255,"UPDATE playerinfo SET interiorid = %d, skin = %d, x = %f, y = %f, z = %f, hp = %f, armor = %f, wanted = %d, money = %d WHERE username = '%s'",GetPlayerInterior(playerid),skin,x,y,z,hp,armor,wanted,money,GetPlayerNameEx(playerid));
+    print(query);
+    mysql_pquery(mysql,query,"FinishSavePlayerInfo","iss",playerid,GetPlayerNameEx(playerid),query);
 }
 
-public FinishSavePlayerInfo(playerid,const username[]) {
+public FinishSavePlayerInfo(playerid,const username[],const query[]) {
     if(cache_affected_rows())return 1;
-    else printf("[playerinfo.pwn] Erro ao salvar os dados de %s!",GetPlayerNameEx(playerid));
+    else printf("[playerinfo.pwn] Erro ao salvar os dados de %s!\nEis a query: %s",GetPlayerNameEx(playerid),query);
 }

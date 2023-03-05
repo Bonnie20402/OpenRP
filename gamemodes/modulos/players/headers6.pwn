@@ -12,14 +12,14 @@ enum PLAYERINFO {
 }
 
 new gPlayerInfo[MAX_PLAYERS][PLAYERINFO];
-
+forward PreparePlayerInfoTable();
 forward PrepareLoadPlayerInfo(playerid);
 forward FinishLoadPlayerInfo(playerid);
 
 forward InsertPlayerInfo(playerid);
 
 forward PrepareSavePlayerInfo(playerid);
-forward FinishSavePlayerInfo(playerid,const username[]);
+forward FinishSavePlayerInfo(playerid,const username[],const query[]);
 /*
     playerspawn.pwn
                     */

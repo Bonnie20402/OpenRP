@@ -1,13 +1,4 @@
 #include <YSI_Coding\y_hooks>
-// HOLDING(keys)
-#define HOLDING(%0) \
-    ((newkeys & (%0)) == (%0))
-// PRESSED(keys)
-#define PRESSED(%0) \
-    (((newkeys & (%0)) == (%0)) && ((oldkeys & (%0)) != (%0)))
-// PRESSING(keyVariable, keys)
-#define PRESSING(%0,%1) \
-    (%0 & (%1))
 hook OnPlayerKeyStateChange(playerid,newkeys,oldkeys) {
     if(PRESSED(KEY_YES)) {
         if(IsPlayerInAnyVehicle(playerid)) {

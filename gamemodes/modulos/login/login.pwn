@@ -127,15 +127,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 
 
 
-/*
-    Hooks
-    
-*/
-//Init the table on database init
-hook dbInit() {
-    PrepareAccountsTable();
-    return 1;
-}
+
 //Prevent player from chatting before logged in
 hook OnPlayerText(playerid,text[]) {
     if(!IsPlayerLoggedIn(playerid)) {
@@ -144,17 +136,14 @@ hook OnPlayerText(playerid,text[]) {
     }
     return 1;
 }
-//Set player logged in to false when they leave
+//Set player logged in to false when they leave MOVED   
 hook OnPlayerDisconnect(playerid,reason) {
+    /*
+        Moved to roleplay.pwn to make sure all hooks on OnPlayerDisconnect that needs
+        the player to be logged in (e.g saving playerinfo) work propely
+
     gLoggedIn[playerid]=0;
-    return 1;
-}
-// Prevent player from executing commands before they're logged in
-hook OnPlayerCommandText(playerid,cmdtext[]) {
-    if(!IsPlayerLoggedIn(playerid)) {
-        SendClientMessage(playerid,COLOR_RED,"Precisas de iniciar sessão para falar no chat!");
-        return 1;
-    }
+                                */
     return 1;
 }
 

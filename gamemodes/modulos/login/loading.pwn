@@ -29,7 +29,8 @@ public ShowLoadingScreen(playerid,const message[]) {
     ShowPlayerProgressBar(playerid,txdloadingProgress[playerid]);
     PlayerTextDrawSetString(playerid,txdloadingMessage[playerid],message);
     PlayerTextDrawShow(playerid,txdloadingMessage[playerid]);
-    gLoadingTimer[playerid]=SetTimerEx("AddLoadingProgress",100,true,"i", playerid);
+    gLoadingTimer[playerid]=SetTimerEx("AddLoadingProgress",1,true,"i", playerid);
+    return 1;
 }
 
 
