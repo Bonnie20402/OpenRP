@@ -141,12 +141,13 @@ public UpdatePlayerSpeedMeter(playerid) {
             new vehicleStats[15];
             new Float:health;
             GetVehicleHealth(vehicleid,health);
+            health = health / 10;
             //TODO FUEL and SHIELD
             format(vehicleStats, sizeof (vehicleStats), "%02d km/h", GetVehicleSpeed(vehicleid));
             PlayerTextDrawSetString(playerid, txdVehicleHudPlayer[1][playerid], vehicleStats);
             format(vehicleStats, sizeof (vehicleStats), "%.0f%%",health);
             PlayerTextDrawSetString(playerid, txdVehicleHudPlayer[3][playerid], vehicleStats);
-            format(vehicleStats, sizeof (vehicleStats), "%d%%",0);
+            format(vehicleStats, sizeof (vehicleStats), "%d%%",GetVehicleShield(vehicleid));
             PlayerTextDrawSetString(playerid, txdVehicleHudPlayer[4][playerid], vehicleStats);
             format(vehicleStats, sizeof (vehicleStats), "%02d Litros",GetVehicleFuel(vehicleid));
             PlayerTextDrawSetString(playerid, txdVehicleHudPlayer[2][playerid], vehicleStats);

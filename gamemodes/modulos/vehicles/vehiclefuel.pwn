@@ -1,10 +1,5 @@
 
-#include <YSI_Coding\y_hooks>
 
-hook OnScriptInit() {
-    for(new i;i<sizeof(gVehicleFuel);i++)gVehicleFuel[i]=100;
-    return 1;
-}
 public UpdateVehicleFuel(vehicleid) {
     new engine,lights,doors,alarm,bonnet,boot,objective;
     GetVehicleParamsEx(vehicleid,engine,lights,alarm,doors,bonnet,boot,objective);
@@ -12,7 +7,12 @@ public UpdateVehicleFuel(vehicleid) {
     if(!gVehicleFuel[vehicleid])SetVehicleParamsEx(vehicleid,0,0,0,doors,bonnet,boot,objective);
     return 1;
 }
-
+public FuelVehicle(vehicleid) {
+    SetVehicleFuel(vehicleid,100);
+}
+public SetVehicleFuel(vehicleid,fuel) {
+    gVehicleFuel[vehicleid]=fuel;
+}
 public GetVehicleFuel(vehicleid) {
     return gVehicleFuel[vehicleid];
 }

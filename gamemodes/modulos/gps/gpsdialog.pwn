@@ -34,6 +34,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         return 1;
     }
     if(response&&dialogid==GPSDIALOG_LOCAISIMPORTANTES) {
+        print(inputtext);
         CreateGPSTimer(playerid,GetLocationIDFromName(inputtext));
     }
     return 1;

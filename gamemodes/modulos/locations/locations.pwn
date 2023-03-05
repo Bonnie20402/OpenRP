@@ -3,13 +3,6 @@
 
 #include <YSI_Coding\y_hooks>
 
-/*
-    hooks
-            */
-hook dbInit() {
-    PrepareLocationsTable();
-    return 1;
-}
 
 /*
     LocationsTable

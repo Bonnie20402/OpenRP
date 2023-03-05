@@ -12,7 +12,7 @@
 
 public PrepareAccountsTable() {
     new accountsTable[128];
-	mysql_format(mysql,accountsTable,128,"CREATE TABLE IF NOT EXISTS ACCOUNTS (account_id INT(11) PRIMARY KEY NOT NULL,username VARCHAR(32),password VARCHAR(256))");
+	mysql_format(mysql,accountsTable,128,"CREATE TABLE IF NOT EXISTS ACCOUNTS (account_id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,username VARCHAR(32),password VARCHAR(256))");
 	mysql_query(mysql,accountsTable,false);
 }
 /*
@@ -39,6 +39,7 @@ public ContinueRegister(playerid,const username[],const password[]) {
     bcrypt_get_hash(hashPassword);
     SendClientMessage(playerid,COLOR_GREEN,"Está quase...");
     mysql_format(mysql,query,sizeof(query),"INSERT INTO `accounts` (username, password) VALUES ('%s', '%s')",username,hashPassword);
+    print(query);
     mysql_pquery(mysql,query,"FinishRegister","i",playerid);
 }
 

@@ -5,7 +5,9 @@ YCMD:aveh(playerid,params[],help) {
         new vehid;
         GetPlayerPos(playerid,x,y,z);
         vehid=CreateVehicle(477,x,y,z,200,147,147,-1,1);
+        VehicleInit(vehid);
         PutPlayerInVehicle(playerid,vehid,0);
+        SetVehicleShield(vehid,500);
         return 1;
     }
     SendClientMessage(playerid,COLOR_RED,"Não pertences á staff!");

@@ -66,7 +66,10 @@ main() {
  }
 public OnGameModeInit()
 {
+	ShowPlayerMarkers(0);
+	DisableInteriorEnterExits();
 	ManualVehicleEngineAndLights();
+	UsePlayerPedAnims();
 	SendRconCommand("hostname Open SXurce RP!");
 	SendRconCommand("maxplayers 100");
 	SendRconCommand("language PT");
@@ -91,7 +94,10 @@ public dbInit() {
 	}
 	else print("Ligado á DB - Tabela: OpenRP");
 
+
+	PrepareLocationsTable();
 	PrepareCitizenVehicles();
+	return 1;
 }
 public OnGameModeExit()
 {

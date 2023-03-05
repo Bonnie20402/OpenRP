@@ -36,3 +36,13 @@ forward UpdateVehicleSpeedMeter(playerid);
 new gVehicleFuel[MAX_VEHICLES];
 forward UpdateVehicleFuel(vehicleid);
 forward GetVehicleFuel(vehicleid);
+forward SetVehicleFuel(vehicleid,fuel);
+forward FuelVehicle(vehicleid);
+/*
+    vehicleshield.pwn
+                    */
+new gVehicleShield[MAX_VEHICLES];
+forward ShieldVehicle(vehicleid);
+forward SetVehicleShield(vehicleid,shield);
+forward GetVehicleShield(vehicleid);
+
