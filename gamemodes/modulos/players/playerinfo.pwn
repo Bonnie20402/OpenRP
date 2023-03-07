@@ -85,4 +85,5 @@ public PrepareSavePlayerInfo(playerid) {
 public FinishSavePlayerInfo(playerid,const username[],const query[]) {
     if(cache_affected_rows())return 1;
     else printf("[playerinfo.pwn] Erro ao salvar os dados de %s!\nEis a query: %s",GetPlayerNameEx(playerid),query);
+    return 0;
 }

@@ -12,7 +12,8 @@
 		"samp-incognito/samp-streamer-plugin:v2.9.6",
 		"pawn-lang/sa-mp-fixes",
 		"Southclaws/progress2:v2.1.4",
-		"Zeex/samp-plugin-crashdetect:v4.21"
+		"Zeex/samp-plugin-crashdetect:v4.21",
+		"Ino-Bagaric/VehiclePartPosition"
 	],
 	"local": true,
 	"runtime": {

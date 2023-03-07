@@ -157,6 +157,7 @@ public OnPlayerAuth(playerid) {
     PlayerTextDrawHide(playerid,txdloadingVersion[playerid]);
     PlayerTextDrawHide(playerid,txdloadingTitle[playerid]);
     PreparePlayerSpawn(playerid);
+    PrepareLoadPlayerBankAccount(playerid);
     return 1;
 }
 /*

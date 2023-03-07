@@ -10,6 +10,7 @@ YCMD:irloc(playerid,params[],help) {
             SendStaffMessage(-1,msg);
             return 1;
         }
+        else SendClientMessage(playerid,COLOR_RED,"Localização inválida (/irloc nome)");
     }
     SendClientMessage(playerid,COLOR_RED,"Não pertences á staff!");
     return 1;

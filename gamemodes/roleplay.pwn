@@ -6,6 +6,7 @@
 #define AMX_OLD_CALL
 #include <a_samp>
 #include <fixes>
+#include <VehiclePartPosition>
 #include <a_mysql>
 #include <sscanf2>
 #include <progress2>
@@ -31,8 +32,8 @@ new MySQL:mysql;
 #include "modulos\players\headers6.pwn"
 #include "modulos\vehicles\headers7.pwn"
 #include "modulos\infocmds\headers8.pwn"
-#include "modulos\interiors\headers9.pwn"
-
+#include "modulos\players\bank\headers9.pwn"
+#include "modulos\jobs\headers10.pwn"
 /*
 	LOGIN
 	*/
@@ -44,11 +45,9 @@ new MySQL:mysql;
 #include "modulos\infocmds\creditos.pwn"
 #include "modulos\players\playerinfo.pwn"
 #include "modulos\players\playerspawn.pwn"
+#include "modulos\players\bank\playerbank.pwn"
 
-/*
-	INTERIORS
-					*/
-#include "modulos\interiors\locationpickups.pwn"
+
 /*
 LOCATIONS
 */
@@ -66,6 +65,11 @@ LOCATIONS
 	vehicles
 			*/
 #include "modulos\vehicles\vehicles.pwn"
+
+/*
+	jobs
+				*/
+#include "modulos\jobs\jobs.pwn"
 
 main() {
 	return 1;
@@ -105,6 +109,10 @@ public dbInit() {
 	PrepareLocationPickupsTable(); // BEWARE! This module depends on PrepareLocationsTable, load it first!
 	PrepareCitizenVehiclesTable();
 	PreparePlayerInfoTable();
+	PreparePlayerBankAccountsTable();
+	PrepareBankAtmTable(); // the props that open bank account dialog
+
+	JobsInit();
 	return 1;
 }
 public OnGameModeExit()

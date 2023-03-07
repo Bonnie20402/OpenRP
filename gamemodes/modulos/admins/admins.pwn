@@ -28,6 +28,13 @@
 #include "modulos\admincmds\irloc.pwn"
 #include "modulos\admincmds\tp.pwn"
 #include "modulos\admincmds\tph.pwn"
+#include "modulos\admincmds\tppos.pwn"
+#include "modulos\admincmds\amoney.pwn"
+#include "modulos\admincmds\criaratm.pwn"
+#include "modulos\admincmds\removeratm.pwn"
+#include "modulos\admincmds\verpos.pwn"
+#include "modulos\admincmds\printpos.pwn"
+#include "modulos\admincmds\editobj.pwn"
 
 
 
