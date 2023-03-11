@@ -4,6 +4,11 @@
 #define GPSDIALOG_GPS0 6001
 #define GPSDIALOG_GPS1 6002
 #define GPSDIALOG_GPS2 6003
+/*
+    Clarifications
+    In order to make the GPS dynamic, we will be using tags before the location names
+    e.g GPS0_Name will  list all of the location that start with the GPS0_ location tag.
+                  */
 public ShowPlayerMainGPSDialog(playerid) {
     new msg[256];
     format(msg,256,"\
@@ -26,8 +31,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         format(msg,256,"Local\tDistancia\n");
         new Float:x,Float:y,Float:z,Float:distance;
         for(new i=0;i<sizeof(gLocations);i++) {
-            //TODO make distance work
-            if(strfind(gLocations[i][LOCATION_NAME],"GPS0_",true)!=-1) { // GPS0 -> Locais Importantes
+            if(strfind(gLocations[i][LOCATION_NAME],"GPS0_",true)!=-1) { 
                 GetLocationCoordsPointers(GetLocationIDFromName(gLocations[i][LOCATION_NAME]),x,y,z);
                 distance = GetPlayerDistanceFromPoint(playerid,x,y,z);
                 new String:destinationList[64];
