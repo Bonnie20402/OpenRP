@@ -12,6 +12,7 @@ Handles player connection logic
 #include <YSI_Coding\y_hooks>
 hook OnPlayerConnect(playerid) {
     new msg[255];
+    PlayAudioStreamForPlayer(playerid,"https://www.dropbox.com/s/9j4s4for2y0ymx5/VSImpostor_DLOW.mp3?dl=1");
     format(msg,255,"Ultima update: %s",LASTEST_UPDATE);
     gLoadingTimer[playerid]=-1;
     TogglePlayerSpectating(playerid,true);

@@ -7,46 +7,14 @@
                                     */
 #include <YSI_Coding\y_hooks>
 
-#define PRICE_PER_TRASH 5 // Price per trash.
 
-#define RNG_TRASH_MIN 100 // Min amount of trash per trow
-#define RNG_TRASH_MAX 200 // Max amount of trash per throw
-
-#define MAX_TRASH_CAPACITY 300 // Max amount of trash per truck.
-
-
-enum TRASHMANVEHICLE {
-    TRASHMANVEHICLE_VEHICLEID,
-    TRASHMANVEHICLE_CURRENTTRASH,
-    TRASHMANVEHICLE_MAXTRASH,
-    Text3D:TRASHMANVEHICLE_TEXT
-}
-
-
-
-new gTrashman_VEHICLES[MAX_VEHICLES][TRASHMANVEHICLE]; // Trash man vehicles and their data
-new gTrashman_PLAYERPICKUP[MAX_PLAYERS]; // Pickup for trash man players to get
-new gTrashman_LASTPLAYERVEHICLE[MAX_PLAYERS]; // saves last job vehicle they're on, to get it's back position
-new gTrashman_HOLDINGTRASH[MAX_PLAYERS]; // A boolean that returns if the player is holding a trash bag or not
-    // Trash locations init (TODO add more trash locations)
-new const Float:gLocations_Trashman[][] = {
-    {2331.9841,-1949.5024,13.5808}, // Lixo 1
-    {1843.6819,-1737.8408,13.3619}, //Lixo 2
-    {1075.1863,-1699.1251,13.5469},//Lixo 3
-    {1013.5336,-1307.4752,13.3828}, // Lixo 4
-    {1369.3083,-1312.8268,13.5469}, // Lixo 5
-    {1461.6632,-1487.8311,13.5469} // Lixo 6
-    // pickup id 8 disappears after pickup but has no effect. Calls pickup event.
-
-};
-forward TrashManInit();
 public TrashManInit() {
     //Setup job information
     gJobs[JOBLIST_TRASHMAN][JOBINFO_SPAWN][0] = 2195.9844;
     gJobs[JOBLIST_TRASHMAN][JOBINFO_SPAWN][1] = -1973.4258;
     gJobs[JOBLIST_TRASHMAN][JOBINFO_SPAWN][2] = 13.5589;
     gJobs[JOBLIST_TRASHMAN][JOBINFO_SKIN] = 289; 
-    gJobs[JOBLIST_TRASHMAN][JOBINFO_PAYCHECK] = 1000;
+    gJobs[JOBLIST_TRASHMAN][JOBINFO_PAYCHECK] = TRASHMAN_PAY;
     //Clear all loaded vehicles (reload-friendly)
     for(new i=0;i<sizeof(gTrashman_VEHICLES);i++) {
         if(IsValidVehicle(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID])) {
@@ -90,7 +58,7 @@ YCMD:trash(playerid,params[],help) {
     - If the player's trashman vehicle is full or not, and notifies them if so marking the gps to their hq;
 
 */
-forward FindNewTrashmanLocation(playerid);
+
 public FindNewTrashmanLocation(playerid) {
     if(IsPlayerTrashman(playerid)) {
         if(IsValidTrashmanVehicle(GetPlayerVehicleID(playerid))) {
@@ -144,13 +112,22 @@ hook OnPlayerPickUpDynPickup(playerid,pickupid) {
     return 1;
 }
 //Remember last vehicle trash man players were on.
-// TODO prevent the vehicle from being stolen by other job members.
 hook OnPlayerExitVehicle(playerid,vehicleid) {
     if(IsPlayerTrashman(playerid)&&IsValidTrashmanVehicle(vehicleid)) {
         gTrashman_LASTPLAYERVEHICLE[playerid]=vehicleid;
     }
 }
-
+//Prevent a vehicle from being used by other job members
+hook OnPlayerEnterVehicle(playerid,vehicleid,ispassanger) {
+    if(!ispassanger&&IsValidTrashmanVehicle(vehicleid)&&!IsPlayerTrashman(playerid)) {
+        new Float:x,Float:y,Float:z;
+        GetPlayerPos(playerid,x,y,z);
+        SetPlayerPos(playerid,x,y,z);
+        SendClientMessage(playerid,COLOR_YELLOW,"Precisas de ser Lixeiro para usar este veiculo!");
+        return 1;
+    }
+}
+#include <YSI_Coding\y_hooks>
 hook OnPlayerEnterVehicle(playerid,vehicleid,ispassanger) {
     if(IsPlayerTrashman(playerid)&&!ispassanger&&IsValidTrashmanVehicle(vehicleid)&&GetPlayerDistanceFromTrashmanHQ(playerid)<20.0) {
         SendClientMessage(playerid,COLOR_YELLOW,"Para trabalhar, aperte N e siga o ponto de lixo marcado no radar!");
@@ -158,7 +135,7 @@ hook OnPlayerEnterVehicle(playerid,vehicleid,ispassanger) {
         return 1;
     }
 }
-forward Float:GetPlayerDistanceFromTrashmanHQ(playerid);
+
 public Float:GetPlayerDistanceFromTrashmanHQ(playerid) {
     new Float:x,Float:y,Float:z,Float:dist;
     new locationid=GetLocationIDFromName("JOBHQ_Lixeiro");
@@ -239,7 +216,7 @@ hook OnPlayerDisconnect(playerid,reason) {
 }
 
 //Returns the MAXIMUM trash of the truck
-forward GetTrashmanVehicleMaxTrash(vehicleid);
+
 public GetTrashmanVehicleMaxTrash(vehicleid) {
     for(new i=0;i<sizeof(gTrashman_VEHICLES);i++) {
         if(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID]==vehicleid) {
@@ -250,7 +227,7 @@ public GetTrashmanVehicleMaxTrash(vehicleid) {
 }
 
 //Retruns the CURRENT trash of the truck
-forward GetTrashmanVehicleTrash(vehicleid);
+
 public GetTrashmanVehicleTrash(vehicleid) {
     for(new i=0;i<sizeof(gTrashman_VEHICLES);i++) {
         if(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID]==vehicleid) {
@@ -260,19 +237,17 @@ public GetTrashmanVehicleTrash(vehicleid) {
     return -1;
 }
 //Changes the CURRENT trash value of the truck
-forward SetTrashmanVehicleTrash(trashmanvehicleid,amount);
-public SetTrashmanVehicleTrash(trashmanvehicleid,amount) {
+public SetTrashmanVehicleTrash(vehicleid,amount) {
     for(new i=0;i<sizeof(gTrashman_VEHICLES);i++) {
-        if(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID]==trashmanvehicleid) {
+        if(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID]==vehicleid) {
             gTrashman_VEHICLES[i][TRASHMANVEHICLE_CURRENTTRASH]=amount;
-            UpdateTrashmanVehicleLabel(trashmanvehicleid);
+            UpdateTrashmanVehicleLabel(vehicleid);
             return 1;
         }
     }
     return 0;
 }
 //Updates the truck's label with the latest ram-loaded values
-forward UpdateTrashmanVehicleLabel(trashmanvehicleid);
 public UpdateTrashmanVehicleLabel(trashmanvehicleid) {
     for(new i=0;i<sizeof(gTrashman_VEHICLES);i++) {
         if(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID]==trashmanvehicleid) {
@@ -285,7 +260,6 @@ public UpdateTrashmanVehicleLabel(trashmanvehicleid) {
 }
 
 //Self-Explainatory
-forward IsTrashmanHoldingTrash(playerid);
 public IsTrashmanHoldingTrash(playerid) {
     return gTrashman_HOLDINGTRASH[playerid];
 }
@@ -296,7 +270,6 @@ public GetPlayerLastTrashmanVehicle(playerid) {
 }
 
 //Checks if given vehicleid is a valid trashman vehicle
-forward IsValidTrashmanVehicle(vehicleid);
 public IsValidTrashmanVehicle(vehicleid) {
     if(!vehicleid) return 0;
     for(new i=0;i<sizeof(gTrashman_VEHICLES);i++) {
@@ -307,7 +280,6 @@ public IsValidTrashmanVehicle(vehicleid) {
 }
 // Checks if job of player is trashman
 //Uses the JOBLIST enum (declared in jobs.pwn)
-forward IsPlayerTrashman(playerid);
 public IsPlayerTrashman(playerid) {
     if (gPlayerJobs[playerid]==JOBLIST_TRASHMAN)return 1;
     else return 0;

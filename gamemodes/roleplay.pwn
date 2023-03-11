@@ -1,8 +1,8 @@
 // This is a comment
 // uncomment the line below if you want to write a filterscript
 //#define FILTERSCRIPT
-#define LASTEST_UPDATE "03/03/2023"
-#define VERSION "1.0.0"
+#define LASTEST_UPDATE "08/03/2023"
+#define VERSION "0.0.1"
 #define AMX_OLD_CALL
 #include <a_samp>
 #include <fixes>
@@ -34,6 +34,7 @@ new MySQL:mysql;
 #include "modulos\infocmds\headers8.pwn"
 #include "modulos\players\bank\headers9.pwn"
 #include "modulos\jobs\headers10.pwn"
+#include "modulos\jobs\trashman\headers10a.pwn"
 /*
 	LOGIN
 	*/
@@ -94,15 +95,15 @@ public dbInit() {
 	// TODO tablea contas em ingles
 			LIGAÇÃO Á DB
 						*/
-	print("A ligar á DB...");
+	print("[roleplay.pwn] Connecting to MYSQL...");
 	new MySQLOpt:option_id=mysql_init_options();
 	mysql_set_option(option_id,AUTO_RECONNECT,true);
 	mysql=mysql_connect("localhost","root","","openrp",option_id);
 	if(mysql_errno(mysql)) {
-		print("[LOGIN] Erro ao ligar á db!");
+		print("[roleplay.pwn] Error connecting- server won't work propely!");
 		SendRconCommand("stop");
 	}
-	else print("Ligado á DB - Tabela: OpenRP");
+	else print("[roleplay.pwn] Connected to database OpenRP.");
 
 	PrepareAccountsTable();
 	PrepareLocationsTable();

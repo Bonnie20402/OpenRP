@@ -9,7 +9,7 @@ hook OnScriptInit() {
     return 1;
 }
 hook OnPlayerDisconnect(playerid,reason) {
-    PrepareSavePlayerBankAccount(playerid);
+    if(IsPlayerLoggedIn(playerid))PrepareSavePlayerBankAccount(playerid);
     return 1;
 }
 /*
@@ -37,7 +37,7 @@ public PrepareLoadPlayerBankAccount(playerid) {
 public FinishLoadPlayerBankAccount(playerid) {
     if(cache_num_rows()) {
         cache_get_value_index_int(0,0,gBankAccount[playerid]);
-        printf("[playerbank.pwn] The account of %s[%d] has been loaded.",GetPlayerNameEx(playerid),playerid);
+        printf("[playerbank.pwn] The account of %s[%d] has been loaded %d$.",GetPlayerNameEx(playerid),playerid,gBankAccount[playerid]);
         return 1;
     }
     printf("[playerbank.pwn] The account of %s[%d] has been created.",GetPlayerNameEx(playerid),playerid);
@@ -50,10 +50,8 @@ public FinishLoadPlayerBankAccount(playerid) {
 
 public PrepareSavePlayerBankAccount(playerid) {
     new query[255];
-    print("a salvar");
     mysql_format(mysql,query,255,"UPDATE bank SET money = %d WHERE username = '%s'",gBankAccount[playerid],GetPlayerNameEx(playerid));
     mysql_pquery(mysql,query,"FinishSavePlayerBankAccount","is",playerid,GetPlayerNameEx(playerid));
-    print(query);
     return 1;
 }
 

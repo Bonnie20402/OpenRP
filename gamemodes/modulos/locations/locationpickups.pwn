@@ -30,7 +30,7 @@ public FinishLoadLocationPickups() {
         cache_get_value_index_int(i,1,gLocationPickups[i][LOCATIONPICKUP_MODEL]);
         cache_get_value_index_int(i,2,gLocationPickups[i][LOCATIONPICKUP_INTERIORID]);
         cache_get_value_index_int(i,3,gLocationPickups[i][LOCATIONPICKUP_LOCATIONID]); // Reminder! Locations module.
-        //if(!IsValidLocation(gLocationPickups[i][LOCATIONPICKUP_LOCATIONID]))printf("[locationpickups.pwn] WARN - pickup id %d points to invalid location %d",gLocationPickups[i][LOCATIONPICKUP_ROWID],gLocationPickups[i][LOCATIONPICKUP_LOCATIONID]);
+        if(!IsValidLocation(gLocationPickups[i][LOCATIONPICKUP_LOCATIONID]))printf("[locationpickups.pwn] WARN - pickup id %d points to invalid location %d",gLocationPickups[i][LOCATIONPICKUP_ROWID],gLocationPickups[i][LOCATIONPICKUP_LOCATIONID]);
         cache_get_value_index_float(i,5,gLocationPickups[i][LOCATIONPICKUP_COORDS][0]);
         cache_get_value_index_float(i,6,gLocationPickups[i][LOCATIONPICKUP_COORDS][1]);
         cache_get_value_index_float(i,7,gLocationPickups[i][LOCATIONPICKUP_COORDS][2]);
@@ -38,7 +38,7 @@ public FinishLoadLocationPickups() {
         gLocationPickups[i][LOCATIONPICKUP_TEXT]=CreateDynamic3DTextLabel(rawText,-1,gLocationPickups[i][LOCATIONPICKUP_COORDS][0],gLocationPickups[i][LOCATIONPICKUP_COORDS][1],gLocationPickups[i][LOCATIONPICKUP_COORDS][2],30);
         gLocationPickups[i][LOCATIONPICKUP_PICKUPID]=CreateDynamicPickup(gLocationPickups[i][LOCATIONPICKUP_MODEL],1,gLocationPickups[i][LOCATIONPICKUP_COORDS][0],gLocationPickups[i][LOCATIONPICKUP_COORDS][1],gLocationPickups[i][LOCATIONPICKUP_COORDS][2]);
     }
-    printf("[locationpickups.pwn] Foram carregados %d LocationPickups",cache_num_rows());
+    printf("[locationpickups.pwn] %d LocationPickups loaded",cache_num_rows());
     return 1;
 }
 public PrepareAddLocationPickup(model,interiorid,locationid,const text[64],Float:x,Float:y,Float:z) {
@@ -53,7 +53,7 @@ public PrepareAddLocationPickup(model,interiorid,locationid,const text[64],Float
 }
 
 public FinishAddLocationPickup(model,interiorid,locationid,const text[64],Float:x,Float:y,Float:z) {
-    printf("[locationpickups.pwn] NOVO PICKUP CRIADO\nModelo:%d IntID: %d LocID: %d\nText: %s\nCoords: {%f,%f,%f}",model,interiorid,locationid,text,x,y,z);
+    printf("[locationpickups.pwn] New locationPickup created:\nModel:%d IntID: %d LocID: %d\nText: %s\nCoords: {%f,%f,%f}",model,interiorid,locationid,text,x,y,z);
     PrepareLoadLocationPickups();
     return 1;
 }
@@ -68,7 +68,7 @@ public PrepareRemoveLocationPickup(rowid) {
 
 public FinishRemoveLocationPickup(rowid) {
     SendStaffMessage(-1,"[locationPickups] Um locationnPickup foi eliminado por um Programador!");
-    printf("[locationpickups.pwn] Location deleted rowid: %d",rowid);
+    printf("[locationpickups.pwn] A locationPickup has been deleted deleted. Rowid: %d",rowid);
     PrepareLoadLocationPickups();
     return 1;
 }
