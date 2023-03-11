@@ -79,6 +79,7 @@ public FindNewTrashmanLocation(playerid) {
         }
         // Check if they already have a location marked
         if(gTrashman_PLAYERPICKUP[playerid]) {
+            SetPlayerCheckpoint(playerid,gTrashman_PLAYERPICKUPCOORDS[playerid][0],gTrashman_PLAYERPICKUPCOORDS[playerid][1],gTrashman_PLAYERPICKUPCOORDS[playerid][2],1.0);
             SendClientMessage(playerid,COLOR_YELLOW,"Você já tem lixo marcado no radar!");
             return 1;
         }
@@ -90,6 +91,9 @@ public FindNewTrashmanLocation(playerid) {
         z = gLocations_Trashman[loc][2];
         gTrashman_PLAYERPICKUP[playerid]=CreateDynamicPickup(1264,8,x,y,z,-1,-1,playerid,25.0);
         SetPlayerCheckpoint(playerid,x,y,z,1.0);
+        gTrashman_PLAYERPICKUPCOORDS[playerid][0]=x;
+        gTrashman_PLAYERPICKUPCOORDS[playerid][1]=y;
+        gTrashman_PLAYERPICKUPCOORDS[playerid][2]=z;
         SendClientMessage(playerid,COLOR_YELLOW,"Foi marcado um lixo no radar, vá pegar ele!");
         ShowPlayerScreenMessage(playerid,3000,"Lixo marcado no radar!");
         return 1;
@@ -105,9 +109,45 @@ hook OnPlayerPickUpDynPickup(playerid,pickupid) {
         SetPlayerAttachedObject(playerid,1, 1264, 4, 0.226000, -0.277000, 0.126999, 9.200012, -11.000000, -88.799995);
         DestroyDynamicPickup(gTrashman_PLAYERPICKUP[playerid]);
         gTrashman_PLAYERPICKUP[playerid]=0;
-        gTrashman_HOLDINGTRASH[playerid]=1;
-        ShowPlayerScreenMessage(playerid,2000,"Meta o lixo na parte traseira do veiculo e aperte Y");
+        gTrashman_HOLDINGTRASH[playerid]=SetTimerEx("TrashmanHoldingTrashCheck",500,true,"i",playerid);
+        ShowPlayerScreenMessage(playerid,2000,"Meta o lixo na parte traseira do veiculo!");
+        gTrashman_PLAYERPICKUPCOORDS[playerid][0] = 0.0;
+        gTrashman_PLAYERPICKUPCOORDS[playerid][1] = 0.0;
+        gTrashman_PLAYERPICKUPCOORDS[playerid][2] = 0.0;
+        new Float:x,Float:y,Float:z,Float:dist;
+        GetPosNearVehiclePart(GetPlayerLastTrashmanVehicle(playerid),VEH_PART_TRUNK,x,y,z,0.25);
+        SetPlayerCheckpoint(playerid,x,y,z,1.0);
         return 1;
+    }
+    return 1;
+}
+public TrashmanHoldingTrashCheck(playerid) {
+        /*
+        Fill logic
+        When the players puts trash in back of truck.
+        Insipred on BrasilPlayShox
+        TODO: Add throwing animation
+    */
+    if(IsPlayerTrashman(playerid)&&gTrashman_HOLDINGTRASH[playerid]) {
+        new Float:x,Float:y,Float:z,Float:dist;
+        GetPosNearVehiclePart(GetPlayerLastTrashmanVehicle(playerid),VEH_PART_TRUNK,x,y,z,0.25);
+        dist=GetPlayerDistanceFromPoint(playerid,x,y,z);
+        if(dist<3.0) {
+            RemovePlayerAttachedObject(playerid,1);
+            new trashQuantity;
+            trashQuantity = RNG_TRASH_MIN + random(RNG_TRASH_MAX);
+            new vehicleid;
+            vehicleid=GetPlayerLastTrashmanVehicle(playerid);
+            new newTrash;
+            newTrash=GetTrashmanVehicleTrash(vehicleid);
+            newTrash+=trashQuantity;
+            if(newTrash>MAX_TRASH_CAPACITY)newTrash=MAX_TRASH_CAPACITY;
+            SetTrashmanVehicleTrash(vehicleid,newTrash);
+            SendClientMessage(playerid,COLOR_YELLOW,"Lixo adicionado ao veiculo! Volte a entrar e aperte N para saber a proxima localização!");
+            DisablePlayerCheckpoint(playerid);
+            KillTimer(gTrashman_HOLDINGTRASH[playerid]);
+            gTrashman_HOLDINGTRASH[playerid]=0;
+        }
     }
     return 1;
 }
@@ -178,30 +218,6 @@ hook OnPlayerKeyStateChange(playerid,newkeys,oldkeys) {
                 SendClientMessage(playerid,COLOR_YELLOW,msg);
                 return 1;
             }
-        }
-    }
-    /*
-        Fill logic
-        When the players puts trash in back of truck
-        by pressing Y
-    */
-    if(IsPlayerTrashman(playerid)&&gTrashman_HOLDINGTRASH[playerid]) {
-        new Float:x,Float:y,Float:z,Float:dist;
-        GetPosNearVehiclePart(GetPlayerLastTrashmanVehicle(playerid),VEH_PART_TRUNK,x,y,z,0.25);
-        dist=GetPlayerDistanceFromPoint(playerid,x,y,z);
-        if(dist<3.0) {
-            RemovePlayerAttachedObject(playerid,1);
-            new trashQuantity;
-            trashQuantity = RNG_TRASH_MIN + random(RNG_TRASH_MAX);
-            new vehicleid;
-            vehicleid=GetPlayerLastTrashmanVehicle(playerid);
-            new newTrash;
-            newTrash=GetTrashmanVehicleTrash(vehicleid);
-            newTrash+=trashQuantity;
-            if(newTrash>MAX_TRASH_CAPACITY)newTrash=MAX_TRASH_CAPACITY;
-            SetTrashmanVehicleTrash(vehicleid,newTrash);
-            SendClientMessage(playerid,COLOR_YELLOW,"Lixo adicionado ao veiculo! Volte a entrar e aperte N para saber a proxima localização!");
-            gTrashman_HOLDINGTRASH[playerid]=0;
         }
     }
     return 1;

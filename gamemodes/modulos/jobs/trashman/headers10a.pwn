@@ -18,6 +18,7 @@ enum TRASHMANVEHICLE {
 
 new gTrashman_VEHICLES[MAX_VEHICLES][TRASHMANVEHICLE]; // Trash man vehicles and their data
 new gTrashman_PLAYERPICKUP[MAX_PLAYERS]; // Pickup for trash man players to get
+new Float:gTrashman_PLAYERPICKUPCOORDS[MAX_PLAYERS][3];
 new gTrashman_LASTPLAYERVEHICLE[MAX_PLAYERS]; // saves last job vehicle they're on, to get it's back position
 new gTrashman_HOLDINGTRASH[MAX_PLAYERS]; // A boolean that returns if the player is holding a trash bag or not
     // Trash locations init (TODO add more trash locations)
