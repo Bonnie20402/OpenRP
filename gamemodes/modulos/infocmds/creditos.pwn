@@ -1,8 +1,8 @@
 
 YCMD:creditos(playerid,params[],help) {
     if(IsPlayerLoggedIn(playerid)) {
-        new credits[512];
-        format(credits,512,"\
+        new String:credits[1024];
+        format(credits,1024,"\
         {33CCFF}|________________________________| Créditos - OS RP |________________________________|\
         \n\
         \n\

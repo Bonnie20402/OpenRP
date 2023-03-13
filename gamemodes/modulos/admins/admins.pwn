@@ -35,6 +35,8 @@
 #include "modulos\admincmds\verpos.pwn"
 #include "modulos\admincmds\printpos.pwn"
 #include "modulos\admincmds\editobj.pwn"
+#include "modulos\admincmds\criarcompany.pwn"
+#include "modulos\admincmds\removercompany.pwn"
 
 
 

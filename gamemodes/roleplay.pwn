@@ -12,6 +12,7 @@
 #include <progress2>
 #include <bcrypt>
 #include <streamer>
+#include <crashdetect>
 #include "modulos\util\colors.inc" 
 #include "modulos\util\uteis.pwn"
 #include "modulos\util\msg.pwn"
@@ -35,6 +36,8 @@ new MySQL:mysql;
 #include "modulos\players\bank\headers9.pwn"
 #include "modulos\jobs\headers10.pwn"
 #include "modulos\jobs\trashman\headers10a.pwn"
+#include "modulos\companies\headers11.pwn"
+
 /*
 	LOGIN
 	*/
@@ -53,6 +56,7 @@ new MySQL:mysql;
 LOCATIONS
 */
 #include "modulos\locations\locations.pwn"
+#include "modulos\companies\companies.pwn"
 /*
 	gps
 			*/
@@ -112,6 +116,7 @@ public dbInit() {
 	PreparePlayerInfoTable();
 	PreparePlayerBankAccountsTable();
 	PrepareBankAtmTable(); // the props that open bank account dialog
+	PrepareCompaniesTable();
 
 	JobsInit();
 	return 1;

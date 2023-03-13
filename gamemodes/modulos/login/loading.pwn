@@ -65,6 +65,7 @@ public IsPlayerLoaded(playerid) {
 }
 
 public OnPlayerLoad(playerid) {
+    print(GetPlayerNameEx(playerid));
     PrepareAccountCheck(playerid);
     return 1;
 }

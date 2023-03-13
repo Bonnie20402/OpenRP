@@ -34,7 +34,7 @@ stock GetPlayerNameEx(playerid) {
 		iPos;
 
 	GetPlayerName(playerid, szName, MAX_PLAYER_NAME);
-	while ((iPos = strfind(szName, "_", false, iPos)) != -1) szName[iPos] = ' ';
+	//while ((iPos = strfind(szName, "_", false, iPos)) != -1) szName[iPos] = ' ';
 	return szName;
 }
 stock GetVehicleSpeed(vehicleid)

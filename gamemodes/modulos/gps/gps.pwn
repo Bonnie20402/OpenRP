@@ -50,6 +50,8 @@ hook OnPlayerEnterCheckpoint(playerid) {
         gGPS[playerid][GPS_TIMERID]=0;
         DisablePlayerCheckpoint(playerid);
         ShowPlayerScreenMessage(playerid,3000,"Chegaste ao teu destino!");
+        PlayerTextDrawHide(playerid,txdGPS_distance[playerid]);
+        PlayerTextDrawHide(playerid,txdGPS_background[playerid]);
     }
     return 1;
 }
