@@ -136,6 +136,7 @@ public OnPlayerRequestClass(playerid, classid)
 
 public OnPlayerConnect(playerid)
 {
+	SendClientMessage(playerid, -1, "Ola Bonnie estou a aprender Git ;)");
 	return 1;
 }
 
