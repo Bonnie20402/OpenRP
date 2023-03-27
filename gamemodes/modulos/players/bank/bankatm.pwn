@@ -89,7 +89,6 @@ hook OnPlayerKeyStateChange(playerid,newkeys,oldkeys) {
     if(PRESSED(KEY_YES)) {
         for(new i=0;i<sizeof(gBankAtm);i++) {
             if(IsValidBankAtm(i)) {
-                printf("VALIDO ID: %d",gBankAtm[i][ATMINFO_ROWID]);
                 new Float:x,Float:y,Float:z,Float:dist;
                 GetBankAtmCoordsPointers(i,x,y,z);
                 dist=GetPlayerDistanceFromPoint(playerid,x,y,z);

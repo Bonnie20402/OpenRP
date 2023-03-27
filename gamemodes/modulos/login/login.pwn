@@ -25,7 +25,7 @@ public PrepareRegister(playerid,const username[], const password[]) {
             */
     if(strlen(password)>MAX_PASSWORD_LENGTH||strlen(password)==0) {
         SendClientMessage(playerid,COLOR_RED,"A senha deve ter entre 0 e 64 carateres.");
-        ShowPlayerDialog(playerid,LOGINDIALOG_REGISTER,DIALOG_STYLE_PASSWORD,dRegisterTitle,dRegisterMsg,"Registrar","");
+        ShowPlayerDialog(playerid,LOGINDIALOG_REGISTER,DIALOG_STYLE_PASSWORD,"Senha inválida","{FFFFFF}A senha deve ter entre 0 e 64 carateres.","Registrar","");
         return 1;
     }
     printf("[Register] A preparar a criação da conta de %s[%d]",username,playerid);
@@ -39,7 +39,6 @@ public ContinueRegister(playerid,const username[],const password[]) {
     bcrypt_get_hash(hashPassword);
     SendClientMessage(playerid,COLOR_GREEN,"Está quase...");
     mysql_format(mysql,query,sizeof(query),"INSERT INTO `accounts` (username, password) VALUES ('%s', '%s')",username,hashPassword);
-    print(query);
     mysql_pquery(mysql,query,"FinishRegister","i",playerid);
 }
 
@@ -79,7 +78,7 @@ public FinishLogin(playerid) {
         return 1;
     }
     SendClientMessage(playerid,COLOR_RED,"Erro - senha incorreta!");
-    ShowPlayerDialog(playerid,LOGINDIALOG_LOGIN,DIALOG_STYLE_PASSWORD,dLoginTitle,dLoginMsg,"Iniciar sessão","");
+    ShowPlayerDialog(playerid,LOGINDIALOG_LOGIN,DIALOG_STYLE_PASSWORD,"Senha incorreta","{FFFFFF}Tenta outra vez","Iniciar sessão","");
 }
 /*
                 AccountCheck
@@ -99,18 +98,19 @@ public FinishAccountCheck(playerid) {
     accountName=GetPlayerNameEx(playerid);
     new isRegistered;
     cache_get_value_index_int(0,0,isRegistered);
+    new dTitle[255],dMessage[255];
     if(isRegistered) {
-        format(dLoginTitle,64,"Iniciar sessão");
-        format(dLoginMsg,256,"{FFFFFF}Bem vindo de volta, %s!\
+        format(dTitle,64,"Iniciar sessão");
+        format(dMessage,256,"{FFFFFF}Bem vindo de volta, %s!\
         \nInsere a tua palavra-passe em baixo:",GetPlayerNameEx(playerid));
-        ShowPlayerDialog(playerid,LOGINDIALOG_LOGIN,DIALOG_STYLE_PASSWORD,dLoginTitle,dLoginMsg,"Iniciar sessão","");
+        ShowPlayerDialog(playerid,LOGINDIALOG_LOGIN,DIALOG_STYLE_PASSWORD,dTitle,dMessage,"Iniciar sessão","");
         return 1;
     }
-    format(dRegisterTitle,64,"Criação de conta");
-    format(dRegisterMsg,256,"{ffffff}Parece que não és registrado!\
+    format(dTitle,64,"Criação de conta");
+    format(dMessage,256,"{ffffff}Parece que não és registrado!\
     \nDesde já, damos-te as nossas boas-vindas\
     \nInsere a tua senha em baixo!");
-    ShowPlayerDialog(playerid,LOGINDIALOG_REGISTER,DIALOG_STYLE_PASSWORD,dRegisterTitle,dRegisterMsg,"Registrar","");
+    ShowPlayerDialog(playerid,LOGINDIALOG_REGISTER,DIALOG_STYLE_PASSWORD,dTitle,dMessage,"Registrar","");
     return 1;
 
 }

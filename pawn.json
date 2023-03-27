@@ -14,7 +14,11 @@
 		"Southclaws/progress2:v2.1.4",
 		"Zeex/samp-plugin-crashdetect:v4.21",
 		"Ino-Bagaric/VehiclePartPosition",
-		"MichaelBelgium/MV_Youtube:v6.1"
+		"MichaelBelgium/MV_Youtube:v6.1",
+		"bmisiak/samp-precise-timers:v2.0.2",
+		"TommyB123/eSelection:1.1.1",
+		"oscar-broman/SKY/:2.3.1",
+		"oscar-broman/samp-weapon-config"
 	],
 	"local": true,
 	"runtime": {

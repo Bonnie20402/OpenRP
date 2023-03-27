@@ -1,6 +1,7 @@
 #include <YSI_Coding\y_hooks>
 #define COMPANYDIALOG_CREATING0 500
 #define COMPANYDIALOG_CREATING1 501
+#define COMPANYDIALOG_INTERIOR0 518
 #define COMPANYDIALOG_INTERIOR1 519
 #define COMPANYDIALOG_INTERIOR2 520
 #define COMPANYDIALOG_INTERIOR3 521
@@ -26,7 +27,7 @@ enum COMPANYCREATOR {
     String:COMPANYCREATOR_NAME[1024]
 }
 new gCreatingCompany[MAX_PLAYERS][COMPANYCREATOR];
-new const interiorIds[] = {1,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18};
+new const interiorIds[] = {0,1,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18};
 YCMD:criarcompany(playerid,params[],help) {
     if(GetStaffLevel(playerid)>=5000) {
         new String:companyName[1024],mapicon;
@@ -60,7 +61,8 @@ hook OnDialogResponse(playerid,dialogid,response,listitem,inputtext[]) {
         if(response) {
             new Int:interiorid;
             sscanf(inputtext,"i",interiorid);
-            if(interiorid) {
+            if(interiorid||!interiorid) {
+                if(interiorid==0)ShowPlayerDialog(playerid,COMPANYDIALOG_INTERIOR0,DIALOG_STYLE_LIST,"Escolher interior","Bank\nDillimore Gas Station","Escolher","Cancelar");
                 if(interiorid==1)ShowPlayerDialog(playerid,COMPANYDIALOG_INTERIOR1,DIALOG_STYLE_LIST,"Escolher interior","Ammu-Nation 1\nBulgary House 1\nThe Welcome Pump\nRestaurant 1\nCaligulas Casino\nDenise Place\nShamal Cabin\nLiberty City\nSweet's house\nTransfender\nSafe House 4\nTrials Stadium\nWarehouse 1 \nDoherty Garage\nSindacco Abatoir\nSuburban\nWu Zi Mu Betting place","Escolher","Cancelar");
                 if(interiorid==2)ShowPlayerDialog(playerid,COMPANYDIALOG_INTERIOR2,DIALOG_STYLE_LIST,"Escolher interior","Ryder's House\nAngel Pine Trailer\nThe Pig Pen\nBDUPS Crack apalace\nBig smoke crack palace\nBurglary House 2\nBulgary house 3\nBulgary House 4\nKatie's place\nLoco low co.\nReece's Barbershop","Escolher","Cancelar");
                 if(interiorid==3)ShowPlayerDialog(playerid,COMPANYDIALOG_INTERIOR3,DIALOG_STYLE_LIST,"Escolher interior","Jizzy's Pleasure Domes\nBrothel\nBrothel 2\nBDups Apartment\nBike School\nBig Spread Ranch\nLV Tattoo Parlour\nLVPD HQ\nOG Loc's House\nPro-Laps\nLas Venturas Planning Dep.\nRecord Label Hallway\nDriving School\nJohnson House\nBurglary House 5\nGay Gordo's Barbershop\nHelena's Place\nInside Track Betting\nSex Shop\nWheel Arch Angels","Escolher","Cancelar");
@@ -566,13 +568,13 @@ hook OnDialogResponse(playerid,dialogid,response,listitem,inputtext[]) {
             z=1084.258;
         }
         if(listitem==4) { // Cluckin' Bell
-            x=365.67;
-            y=11.61;
-            z=1002.0;
+            x=364.7723;
+            y=-11.3051;
+            z=1001.8516;
         }
         
     }
-    if(dialogid==COMPANYDIALOG_INTERIOR10) {
+    if(dialogid==COMPANYDIALOG_INTERIOR10) { 
         if(listitem==0) { // Four Dragons Casino
             x=2009.4140;
             y=-1017.8990;
@@ -584,9 +586,9 @@ hook OnDialogResponse(playerid,dialogid,response,listitem,inputtext[]) {
             z=1345.6719;
         }
         if(listitem==2) { // Burger Shot
-            x=366.4220;
-            y=-73.4700;
-            z=1001.5080;
+            x=363.1431;
+            y=-74.7714;
+            z=1001.5078;
         }
         if(listitem==3) { // Burglary House 14
             x=21.241;
@@ -829,8 +831,20 @@ hook OnDialogResponse(playerid,dialogid,response,listitem,inputtext[]) {
         }
         
     }
-    new const interiorsList[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18};
-    new const interiorDialogs[] = {COMPANYDIALOG_INTERIOR1,COMPANYDIALOG_INTERIOR2,COMPANYDIALOG_INTERIOR3,COMPANYDIALOG_INTERIOR4,COMPANYDIALOG_INTERIOR5,COMPANYDIALOG_INTERIOR6,COMPANYDIALOG_INTERIOR7,COMPANYDIALOG_INTERIOR8,COMPANYDIALOG_INTERIOR9,COMPANYDIALOG_INTERIOR10,COMPANYDIALOG_INTERIOR11,COMPANYDIALOG_INTERIOR12,COMPANYDIALOG_INTERIOR13,COMPANYDIALOG_INTERIOR14,COMPANYDIALOG_INTERIOR15,COMPANYDIALOG_INTERIOR16,COMPANYDIALOG_INTERIOR17,COMPANYDIALOG_INTERIOR18};
+    if(dialogid==COMPANYDIALOG_INTERIOR0) {
+        if(listitem==0){ // baaank
+            x=2306.38;
+            y=-15.23;
+            z=26.74;
+        }
+        if(listitem==1){ // dILLIMORE Gas St.
+            x=663.05;
+            y=-573.62;
+            z=16.33;
+        }
+    }
+    new const interiorsList[] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18};
+    new const interiorDialogs[] = {COMPANYDIALOG_INTERIOR0,COMPANYDIALOG_INTERIOR1,COMPANYDIALOG_INTERIOR2,COMPANYDIALOG_INTERIOR3,COMPANYDIALOG_INTERIOR4,COMPANYDIALOG_INTERIOR5,COMPANYDIALOG_INTERIOR6,COMPANYDIALOG_INTERIOR7,COMPANYDIALOG_INTERIOR8,COMPANYDIALOG_INTERIOR9,COMPANYDIALOG_INTERIOR10,COMPANYDIALOG_INTERIOR11,COMPANYDIALOG_INTERIOR12,COMPANYDIALOG_INTERIOR13,COMPANYDIALOG_INTERIOR14,COMPANYDIALOG_INTERIOR15,COMPANYDIALOG_INTERIOR16,COMPANYDIALOG_INTERIOR17,COMPANYDIALOG_INTERIOR18};
     for(new i=0;i<sizeof(interiorDialogs);i++) {
         if(dialogid==interiorDialogs[i]) {
             printf("A criar interiorid %d\nNome %s \nMapID %d",interiorsList[i],gCreatingCompany[playerid][COMPANYCREATOR_NAME],gCreatingCompany[playerid][COMPANYCREATOR_MAPICON]);

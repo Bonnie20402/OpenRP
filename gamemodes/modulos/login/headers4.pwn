@@ -32,11 +32,6 @@ enum LOGINDIALOGS {
 
 new gLoggedIn[MAX_PLAYERS];
 new Int:BCRYPT_COST = 12;
-new dLoginTitle[64];
-new dLoginMsg[256];
-new dRegisterTitle[64];
-new dRegisterMsg[256];
-
 forward PrepareAccountsTable();
 
 forward PrepareRegister(playerid,const username[], const password[]);

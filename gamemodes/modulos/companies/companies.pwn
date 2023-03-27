@@ -19,8 +19,19 @@
     Gas: Gets money from player's houses gas. No interior //TODO House system
     Water: Gets money from player's hosues water. No Interior // TODO house system
 */
+/*
+    Interior Modules
+                */
+#include "modulos\companies\interior\ammonation1.pwn" // Ammo nation 1
+#include "modulos\companies\interior\market1.pwn" // market perfeitura
+#include "modulos\companies\interior\rest1.pwn" // Cluck bell
+#include "modulos\companies\interior\rest2.pwn" // Burger king
+#include "modulos\companies\interior\cdl_ls.pwn" // Centro de licenças LOS SANTOS
+/*
+    Co-modules
+                */
 #include "modulos\companies\companymanager.pwn"
-#include "modulos\companies\market.pwn"
+#include "modulos\companies\companysafe.pwn"
 #include <YSI_Coding\y_hooks>
 
 #define COMPANYBASEPRICE 5000 // for-sale company price.
@@ -212,7 +223,7 @@ public GetPlayerNearestCompanyPointers(playerid,&rowid,&Float:distance) {
     lowestDist=-1.0;
     for(new i;i<sizeof(gCompanies);i++) {
         if(IsValidCompany(i)) {
-            if(GetPlayerInterior(playerid))GetCompanyIntLocationPtrs(i,x,y,z);
+            if(GetPlayerVirtualWorld(playerid))GetCompanyIntLocationPtrs(i,x,y,z);
             else GetCompanyExtLocationPtrs(i,x,y,z);
             thisDist=GetPlayerDistanceFromPoint(playerid,x,y,z);
             if(lowestDist== -1.0) {
@@ -265,7 +276,7 @@ public UpdateCompanyTextLabel(rowid) {
     gCompanies[rowid][COMPANY_EXTTEXT]=CreateDynamic3DTextLabel(text,-1,gCompanies[rowid][COMPANY_EXTCOORDS][0],gCompanies[rowid][COMPANY_EXTCOORDS][1],gCompanies[rowid][COMPANY_EXTCOORDS][2],25.0);
     gCompanies[rowid][COMPANY_EXTPICKUPID] = CreateDynamicPickup(19133, 1,gCompanies[rowid][COMPANY_EXTCOORDS][0],gCompanies[rowid][COMPANY_EXTCOORDS][1],gCompanies[rowid][COMPANY_EXTCOORDS][2]);
     format(text,1024,"%s[%d]\nAperte Y para sair!",gCompanies[rowid][COMPANY_NAME],gCompanies[rowid][COMPANY_ROWID]);
-    if(gCompanies[rowid][COMPANY_INTERIORID]) {
+    if(gCompanies[rowid][COMPANY_ROWID]) { // world id
         gCompanies[rowid][COMPANY_INTTEXT]=CreateDynamic3DTextLabel(text,-1,gCompanies[rowid][COMPANY_INTCOORDS][0],gCompanies[rowid][COMPANY_INTCOORDS][1],gCompanies[rowid][COMPANY_INTCOORDS][2],25.0,INVALID_PLAYER_ID,INVALID_VEHICLE_ID,0,rowid,gCompanies[rowid][COMPANY_INTERIORID]);
         gCompanies[rowid][COMPANY_INTPICKUPID] = CreateDynamicPickup(19133, 1,gCompanies[rowid][COMPANY_INTCOORDS][0],gCompanies[rowid][COMPANY_INTCOORDS][1],gCompanies[rowid][COMPANY_INTCOORDS][2],rowid,gCompanies[rowid][COMPANY_INTERIORID]);
     }
@@ -278,7 +289,12 @@ public UpdateCompanyTextLabel(rowid) {
 forward CompaniesInit();
 public CompaniesInit() {
     CreateCompanyMapIcons();
-    MarketInit();
+    CompanySafeInit();
+    Market1Init();
+    Ammunation1Init();
+    Rest1Init();
+    Rest2Init();
+    Cdl_lsInit(); // Centro de licenças LS
     return 1;
 }
 
@@ -318,7 +334,11 @@ stock IsPlayerCompanyOwner(playerid,rowid) {
                                                 */
 stock IsPlayerCompanyCoowner(playerid,rowid) {
     if(IsValidCompany(rowid)) {
-        if(!strcmp(GetPlayerNameEx(playerid),gCompanies[rowid][COMPANY_COOWNER]))return 1;
+        printf("NAME: %s STRING: %s",GetPlayerNameEx(playerid),gCompanies[rowid][COMPANY_COOWNER]);
+        if(!strcmp(GetPlayerNameEx(playerid),gCompanies[rowid][COMPANY_COOWNER])) {
+            print("é subdono");
+            return 1;
+        }
     }
     return 0;
 }
@@ -336,9 +356,7 @@ stock IsCompanyForSale(rowid) {
 
 /*
     Handles company entrance/leave
-    TODO apply fee
-    TODO create enter safe
-    TODO add companymanager
+    Handles comapny safe entrance
                             */
 #define COMPANYENTERDIALOG 800
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
@@ -350,9 +368,9 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
         GetPlayerNearestCompanyPointers(playerid,rowid,dist);
         if(dist<1.0&&dist!=-1) {
             gEnteringCompany[playerid]=rowid;
-            if(!GetPlayerInterior(playerid)) {
+            if(!GetPlayerVirtualWorld(playerid)) {
                 format(title,64,"%s [%d]",gCompanies[rowid][COMPANY_NAME],rowid);
-                format(msg,256,"Entrar na empresa\nEntrar no Cofre [TODO: Cofre]\n");
+                format(msg,256,"Entrar na empresa\nEntrar no Cofre\n");
                 if(IsCompanyForSale(rowid))format(msg,256,"%sComprar empresa",msg);
                 else format(msg,256,"%sGerir empresa",msg);
                 ShowPlayerDialog(playerid,COMPANYENTERDIALOG,DIALOG_STYLE_LIST,title,msg,"Selecionar","Cancelar");            
@@ -366,6 +384,26 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
     }
     return 1;
 }
+/*
+    Handle company safe leave
+                                */
+#include <YSI_Coding\y_hooks>
+hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
+    if(PRESSED(KEY_YES)) {
+        if(IsPlayerInCompanySafe(playerid)) {
+            new Float:x,Float:y,Float:z,Float:dist;
+            new rowid;
+            rowid=GetPlayerVirtualWorld(playerid);
+            GetCompanySafeLocationPtrs(rowid,x,y,z);
+            if(GetPlayerDistanceFromPoint(playerid,x,y,z)<1.0) {
+                SetPlayerPosCompany(playerid,rowid,false,false);
+                SendClientMessage(playerid,COLOR_YELLOW,"Saiste do cofre da empresa!");
+                CompanySafeSyncPlayer(playerid,rowid);
+            }
+        }
+    }
+    return 1;
+}
 hook OnDialogResponse(playerid,dialogid,response,listitem,inputtext[]) {
     if(gEnteringCompany[playerid]&&dialogid==COMPANYENTERDIALOG&&response) {
         new rowid;
@@ -374,11 +412,11 @@ hook OnDialogResponse(playerid,dialogid,response,listitem,inputtext[]) {
             SetPlayerPosCompany(playerid,rowid,true,false);
         }
         if(listitem==1) { // Enter company safe
-            SendClientMessage(playerid,-1,"Um dia você poderá entrar");
+            SetPlayerPosCompany(playerid,rowid,true,true);
         }
         if(listitem==2) { // Buy company OR manage company
             if(!IsCompanyForSale(rowid)) {
-                if(IsPlayerCompanyOwner(playerid)||IsPlayerCompanyCoowner(playerid))OpenCompanyMgrMenu(playerid,rowid);
+                if(IsPlayerCompanyOwner(playerid,rowid)||IsPlayerCompanyCoowner(playerid,rowid))OpenCompanyMgrMenu(playerid,rowid);
                 else SendClientMessage(playerid,COLOR_YELLOW,"Não fazes parte da gerência desta empresa!");
             }
             else {
@@ -410,8 +448,19 @@ stock SetPlayerPosCompany(playerid,rowid,isInside,isCompanySafe) {
             SetPlayerVirtualWorld(playerid,rowid);
             GetCompanyIntLocationPtrs(rowid,x,y,z);
             SetPlayerPos(playerid,x,y,z);
-            format(msg,255,"Bem vindo á empresa %s\nMensagem do Dono: %s",gCompanies[rowid][COMPANY_NAME],gCompanies[rowid][COMPANY_DESCRIPTION]);
+            format(msg,255,"Bem vindo á empresa %s",gCompanies[rowid][COMPANY_NAME]);
             SendClientMessage(playerid,COLOR_YELLOW,msg);
+            return 1;
+        }
+        else {
+            SetPlayerInterior(playerid,ROBBERY_INTERIOR_ID);
+            SetPlayerVirtualWorld(playerid,rowid);
+            GetCompanySafeLocationPtrs(rowid,x,y,z);
+            SetPlayerPos(playerid,x,y,z);
+            format(msg,255,"Entraste no cofre da empresa %s",gCompanies[rowid][COMPANY_NAME]);
+            CompanySafeSyncPlayer(playerid,rowid);
+            SendClientMessage(playerid,COLOR_YELLOW,msg);
+            SetPlayerCompanySafe(playerid,1);
             return 1;
         }
     }
@@ -420,7 +469,8 @@ stock SetPlayerPosCompany(playerid,rowid,isInside,isCompanySafe) {
         SetPlayerVirtualWorld(playerid,0);
         GetCompanyExtLocationPtrs(rowid,x,y,z);
         SetPlayerPos(playerid,x,y,z);
-        SendClientMessage(playerid,COLOR_YELLOW,"Volte sempre!");
+        if(IsPlayerInCompanySafe(playerid))SetPlayerCompanySafe(playerid,0);
+        PlayerPlaySound(playerid,0,0.0,0.0,0.0);
         return 1;
     }
 }

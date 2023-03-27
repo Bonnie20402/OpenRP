@@ -1,8 +1,28 @@
 // This is a comment
 // uncomment the line below if you want to write a filterscript
 //#define FILTERSCRIPT
-#define LASTEST_UPDATE "08/03/2023"
-#define VERSION "0.0.1"
+#pragma compat 1
+#pragma naked
+#pragma warning disable 200
+#pragma warning disable 201
+#pragma warning disable 202
+#pragma warning disable 203
+#pragma warning disable 204
+#pragma warning disable 205
+#pragma warning disable 206
+#pragma warning disable 207
+#pragma warning disable 208
+#pragma warning disable 209
+#pragma warning disable 210
+#pragma warning disable 211
+#pragma warning disable 212
+#pragma warning disable 213
+#pragma warning disable 214
+#pragma warning disable 215
+
+
+#define LASTEST_UPDATE "19/03/2023"
+#define VERSION "0.0.2a"
 #define AMX_OLD_CALL
 #include <a_samp>
 #include <fixes>
@@ -11,18 +31,21 @@
 #include <sscanf2>
 #include <progress2>
 #include <bcrypt>
+#include <samp-precise-timers>
 #include <streamer>
+#include <weapon-config.inc>
 #include <crashdetect>
+#include <YSI_Visual\y_commands>
+#include "modulos\util\datetime.inc"
 #include "modulos\util\colors.inc" 
 #include "modulos\util\uteis.pwn"
 #include "modulos\util\msg.pwn"
-#include <YSI_Visual\y_commands>
+#include "modulos\util\animbrowse.pwn"
 
 /*
 	First-time variables
 */
 new MySQL:mysql;
-//TODO: Mover todas as globais para headers!
 /*
 	HEADERS
 				*/
@@ -39,6 +62,12 @@ new MySQL:mysql;
 #include "modulos\companies\headers11.pwn"
 
 /*
+	Textdraws
+					*/
+#include "modulos\txd\txdprogress.pwn"
+#include "modulos\txd\txdbnotification.pwn"
+
+/*
 	LOGIN
 	*/
 	
@@ -53,7 +82,7 @@ new MySQL:mysql;
 
 
 /*
-LOCATIONS
+Companies/Locations
 */
 #include "modulos\locations\locations.pwn"
 #include "modulos\companies\companies.pwn"

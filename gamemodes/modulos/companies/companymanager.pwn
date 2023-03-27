@@ -29,7 +29,7 @@ public OpenCompanyMgrMenu(playerid,rowid) {
     new title[255];
     gCompanyManager[playerid]=rowid;
     format(title,255,"Gestor de Empresas [%d]",rowid);
-    format(msg,255,"Mudar Taxa de Entrada\nAtualizar Sub-Dono\nDepositar dinhero no Cofre\nSacar dinheiro do Cofre\nAbandonar Gestão da empresa");
+    format(msg,255,"Mudar Taxa de Entrada\nAtualizar Sub-Dono\nDepositar dinhero no Cofre\nLevantar dinheiro do Cofre\nAbandonar Gestão da empresa");
     ShowPlayerDialog(playerid,COMPANYMGR_MAIN,DIALOG_STYLE_LIST,title,msg,"Proximo","Sair");
     return 1;
 }
@@ -63,7 +63,7 @@ hook OnDialogResponse(playerid,dialogid,response,listitem,inputtext[]) {
                 rowid=gCompanyManager[playerid];
                 format(title,255,"Efetuar Levantamento [%d]",gCompanyManager[playerid]);
                 format(msg,255,"Saldo atual: R$%d\nInsere o valor a levantar",gCompanies[rowid][COMPANY_CASH]);
-                ShowPlayerDialog(playerid,COMPANYMGR_WITHDRAW,DIALOG_STYLE_INPUT,title,msg,"Depositar","Cancelar");
+                ShowPlayerDialog(playerid,COMPANYMGR_WITHDRAW,DIALOG_STYLE_INPUT,title,msg,"Levantar","Cancelar");
             }
             if(listitem==4)  {// Sell company
                 new rowid;
@@ -113,6 +113,10 @@ hook OnDialogResponse(playerid,dialogid,response,listitem,inputtext[]) {
                 return 1;
             }
             if(IsPlayerConnected(targetid)) { // TODO check if targetid is not playerid
+                if(targetid==playerid) {
+                    SendClientMessage(playerid,COLOR_YELLOW,"Não podes ser o Sub-Dono da tua própria empresa!");
+                    return 1;
+                }
                 format(gCompanies[rowid][COMPANY_COOWNER],64,"%s",GetPlayerNameEx(targetid));
                 format(msg,255,"O Sub-Dono foi ajustado para %s[%d]",GetPlayerNameEx(targetid),targetid);
                 SendClientMessage(playerid,COLOR_YELLOW,msg);
@@ -187,7 +191,8 @@ hook OnDialogResponse(playerid,dialogid,response,listitem,inputtext[]) {
     }
     return 1;
 }
-
+// TODO continuar empresas binco,banco, centoro licenaçs, tirei print da loc do banco e das coords exit e shop
+// TODO house system
 hook OnPlayerDisconnect(playerid,reason) {
     gCompanyManager[playerid]=0;
     return 1;

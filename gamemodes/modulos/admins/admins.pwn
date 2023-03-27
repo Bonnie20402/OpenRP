@@ -5,6 +5,7 @@
                         */
 #include "modulos\admins\adminmsg.pwn"
 #include "modulos\admins\adminauth.pwn"
+#include "modulos\admins\adminteleport.pwn"
 
 /*
         Comandos de Admin
@@ -37,7 +38,11 @@
 #include "modulos\admincmds\editobj.pwn"
 #include "modulos\admincmds\criarcompany.pwn"
 #include "modulos\admincmds\removercompany.pwn"
-
+#include "modulos\admincmds\iremp.pwn"
+#include "modulos\admincmds\printobj.pwn"
+#include "modulos\admincmds\playsound.pwn"
+#include "modulos\admincmds\aweapon.pwn"
+#include "modulos\admincmds\abnotificacao.pwn"
 
 
 

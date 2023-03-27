@@ -27,6 +27,12 @@ stock GetPlayerIdFromName(const username[]) {
     return -1;
 }
 
+stock SendVirtualWorldMessage(virtualworld,color,const message[]) {
+    for(new i;i<MAX_PLAYERS;i++) {
+        if(IsPlayerConnected(i)&&GetPlayerVirtualWorld(i)==virtualworld)SendClientMessage(i,color,message);
+    }
+    return 1;
+}
 stock GetPlayerNameEx(playerid) {
 
 	new

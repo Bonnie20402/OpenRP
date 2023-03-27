@@ -1,3 +1,4 @@
+YCMD:irpos(playerid,params[],help) =tppos;
 YCMD:tppos(playerid,params[],help) {
     if(GetStaffLevel(playerid)) {
         new Float:x,Float:y,Float:z;

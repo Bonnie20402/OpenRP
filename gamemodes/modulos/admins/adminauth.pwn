@@ -7,8 +7,6 @@
 
 #define ADMINLOGINDIALOG 5005
 
-static String:titulo[32];
-static String:msg[128];
 
 
 hook OnPlayerCommandText(playerid) {
@@ -20,11 +18,12 @@ hook OnPlayerCommandText(playerid) {
 }
 
 stock PrepareAdminAuth(playerid) {
-    format(msg,128,"Bem-vindo, %s\n\
+    new String:dMessage[128];
+    format(dMessage,128,"Bem-vindo, %s\n\
     Parece que és um administrador nivel %d\n\
     Por favor, insere a senha da staff em baixo",GetPlayerNameEx(playerid),gAdmins[playerid][ADMININFO_LEVEL]);
     if(!gAdmins[playerid][ADMININFO_AUTH]) {
-        ShowPlayerDialog(playerid,ADMINLOGINDIALOG,DIALOG_STYLE_PASSWORD,"Autenticação Staff",msg,"Autenticar","");
+        ShowPlayerDialog(playerid,ADMINLOGINDIALOG,DIALOG_STYLE_PASSWORD,"Autenticação Staff",dMessage,"Autenticar","");
     }
     else SendClientMessage(playerid,COLOR_ORANGE,"[Staff Login] - Já estás autenticado!");
     return 1;
@@ -42,10 +41,15 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
             return 1;
             }
         else {
-            ShowPlayerDialog(playerid,ADMINLOGINDIALOG,DIALOG_STYLE_PASSWORD,"Senha incorreta",msg,"Autenticar","");
+            ShowPlayerDialog(playerid,ADMINLOGINDIALOG,DIALOG_STYLE_PASSWORD,"Senha incorreta","Tenta outra vez","Autenticar","");
             format(aviso,255,"O admin %s errou a senha da staff!",GetPlayerNameEx(playerid));
             SendStaffMessage(-1,aviso);
         }
     }
         return 1;
+}
+
+hook OnPlayerDisconnect(playerid,reason) {
+    gAdmins[playerid][ADMININFO_AUTH]=0;
+    return 1;
 }
