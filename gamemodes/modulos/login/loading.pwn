@@ -65,7 +65,13 @@ public IsPlayerLoaded(playerid) {
 }
 
 public OnPlayerLoad(playerid) {
-    print(GetPlayerNameEx(playerid));
-    PrepareAccountCheck(playerid);
+    ShowCreditsDialog(playerid);
+    return 1;
+}
+
+hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
+    if(dialogid==CREDITSDIALOG&&!IsPlayerLoggedIn(playerid)) {
+        PrepareAccountCheck(playerid);
+    }
     return 1;
 }

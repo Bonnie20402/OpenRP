@@ -1,6 +1,4 @@
-// This is a comment
-// uncomment the line below if you want to write a filterscript
-//#define FILTERSCRIPT
+
 #pragma compat 1
 #pragma naked
 #pragma warning disable 200
@@ -21,8 +19,8 @@
 #pragma warning disable 215
 
 
-#define LASTEST_UPDATE "19/03/2023"
-#define VERSION "0.0.2a"
+#define LASTEST_UPDATE "02/04/2023"
+#define VERSION "0.0.2b"
 #define AMX_OLD_CALL
 #include <a_samp>
 #include <fixes>

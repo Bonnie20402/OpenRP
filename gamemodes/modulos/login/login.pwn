@@ -146,7 +146,10 @@ hook OnPlayerDisconnect(playerid,reason) {
                                 */
     return 1;
 }
-
+hook OnPlayerConnect(playerid) {
+    gLoggedIn[playerid]=0;
+    return 1;
+}
 /*
     Events
             */

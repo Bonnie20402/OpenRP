@@ -41,7 +41,7 @@ enum COMPANYSAFE {
     SAFE_STATUS
 }
 enum COMPANYLASER {
-    Float:COMPANYLASER_COORDS[3], // The location of the numpad + z rotation
+    Float:COMPANYLASER_COORDS[3], // The location of the numpad
     Text3D:COMPANYLASER_TEXT,
     COMPANYLASER_OBJECTID,
     COMPANYLASER_AREAID,
@@ -68,7 +68,7 @@ new gPlayer_CompanySafe[MAX_PLAYERS]; // To check if player has entered a compan
 
 //Rob sucesss rewards
 
-#define ROBMONEY_COMPANY 25 // Percentagem of the cash deleted from the company
+#define ROBMONEY_COMPANY 25 // Percentage of the cash deleted from the company
 #define ROBMONEY_SERVERMIN 25000 // Server-generated min money
 #define ROBMONEY_SERVERMAX 50000 // Server-generated max money
 //minMax for drill percentage, delay between percentage (in ms), and error chance (x in 100)
@@ -220,7 +220,6 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                     format(msg,255,"[ALERTA] %s[%d] está a tentar hackear o sistema de segurança da empresa %s[%d]!",GetPlayerNameEx(playerid),playerid,gCompanies[rowid][COMPANY_NAME],rowid);
                     gCompanySafe_LASER[rowid][LASER_STATUS]=LASER_STATUS_HACKING;
                     SendVirtualWorldMessage(rowid,COLOR_YELLOW,msg);
-                    SetPlayerAttachedObject(playerid,1,19893,5);
                     UpdateCompanySafeLASERText(rowid);
                     for(new i;i<MAX_PLAYERS;i++) {
                         if(IsPlayerConnected(i)&&GetPlayerVirtualWorld(i)==rowid) {
@@ -229,8 +228,11 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                             SetPlayerTxdProgressProgress(i,0.0);
                         }
                     }
-                    //TODO freze player and apply animation
+                    TogglePlayerControllable(playerid,false);
+                    ApplyAnimation(playerid,"INT_OFFICE","OFF_Sit_Type_Loop",4.1,true,0,0,1,0,1);
                     gCompanySafe_LASER[rowid][COMPANYLASER_PROGRESS]=0;
+                    ShowPlayerTxdbNotification(playerid);
+                    SetPlayerTxdbNotifText(playerid,"Desativando alarme...",3);
                     gCompanySafe_LASER[rowid][COMPANYLASER_TIMERID]=SetPreciseTimer("CompanyLaserHackProgress",100,true,"ii",playerid,rowid);
                     SendClientMessage(playerid,COLOR_YELLOW,"Não fiques longe do keypad, senão o hack é cancelado!");
                 }
@@ -257,6 +259,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 /*
     Company Safe Interact Handle
     No need for dialog as players can only plant the drill.
+    Yes, I'm lazy as fuck. Fuck you, too.
                         */
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
     if(PRESSED(KEY_YES)&&IsPlayerInCompanySafe(playerid)) {
@@ -266,7 +269,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
         dist=GetPlayerDistanceFromPoint(playerid,gCompanySafe_SAFE[rowid][COMPANYSAFE_COORDS][0],gCompanySafe_SAFE[rowid][COMPANYSAFE_COORDS][1],gCompanySafe_SAFE[rowid][COMPANYSAFE_COORDS][2]);
         if(dist<=1.0) {
             if(GetCompanySafeSafeStatus(rowid) == SAFE_STATUS_WAITING) {
-                format(msg,255,"[ALERTA] %s[%d] está instalando o drill no cofre da empresa %s[%d]",GetPlayerNameEx(playerid),playerid,gCompanies[rowid][COMPANY_NAME],rowid);
+                format(msg,255,"[ALERTA] %s[%d] está a instalar o drill no cofre da empresa %s[%d]",GetPlayerNameEx(playerid),playerid,gCompanies[rowid][COMPANY_NAME],rowid);
                 SendVirtualWorldMessage(rowid,COLOR_YELLOW,msg);
                 gCompanySafe_SAFE[rowid][SAFE_STATUS] = SAFE_STATUS_PLANTING;
                 gCompanySafe_SAFE[rowid][COMPANYSAFE_PROGRESS] = 0;
@@ -304,7 +307,7 @@ public CompanySafeRobProgress(playerid,rowid) {
                 }
             }
             else {
-                SendVirtualWorldMessage(rowid,COLOR_YELLOW,"[ALERTA] O plantador está longe do cofre, a ação foi cancelada!");
+                SendVirtualWorldMessage(rowid,COLOR_YELLOW,"[ALERTA] O plantador afastou-se do cofre, a ação foi cancelada!");
                 gCompanySafe_SAFE[rowid][SAFE_STATUS] = SAFE_STATUS_WAITING;
                 UpdateCompanySafeSAFEText(rowid);
                 for(new i;i<MAX_PLAYERS;i++) {
@@ -316,7 +319,7 @@ public CompanySafeRobProgress(playerid,rowid) {
         }
         else {
             gCompanySafe_SAFE[rowid][SAFE_STATUS] = SAFE_STATUS_DRILLING;
-            SendVirtualWorldMessage(rowid,COLOR_YELLOW,"[ALERTA] O Drill foi montado, protege-o até prefurar o cofre por completo!");
+            SendVirtualWorldMessage(rowid,COLOR_YELLOW,"[ALERTA] O drill foi montado, protegam-no até prefurar o cofre por completo!");
             gCompanySafe_SAFE[rowid][COMPANYSAFE_PROGRESS] = 0;
             DeletePreciseTimer(gCompanySafe_SAFE[rowid][COMPANYSAFE_TIMERID]);
             gCompanySafe_SAFE[rowid][COMPANYSAFE_TIMERID]=SetPreciseTimer("CompanySafeDrillProgress",DRILLPROGRESS_DELAY,true,"ii",playerid,rowid);
@@ -433,7 +436,7 @@ hook OnPlayerKeyStateChange(playerid,newkeys,oldkeys) {
     return 1;
 }
 
-stock CompanySafeSyncPlayer(playerid,rowid) {
+stock CompanySafeSyncPlayerTxd(playerid,rowid) {
     if(GetPlayerVirtualWorld(playerid)==rowid) {
         SetPlayerTxdProgressText(playerid,"Aguardando");
         SetPlayerTxdProgressProgress(playerid,0.0);
@@ -446,19 +449,17 @@ forward CompanySafeDrillRepairProgress(playerid,rowid);
 public CompanySafeDrillRepairProgress(playerid,rowid) {
     if(GetCompanySafeSafeStatus(rowid) == SAFE_STATUS_DRILLFIX) {
         new Float:dist;
-        new Float:floatProgress;
         new msg[255];
         dist=GetPlayerDistanceFromPoint(playerid,gCompanySafe_SAFE[rowid][COMPANYSAFE_COORDS][0],gCompanySafe_SAFE[rowid][COMPANYSAFE_COORDS][1],gCompanySafe_SAFE[rowid][COMPANYSAFE_COORDS][2]);
         if(dist<=1.0) {
             if(gCompanySafe_SAFE[rowid][COMPANYSAFE_RPROGRESS]<100) {
                 gCompanySafe_SAFE[rowid][COMPANYSAFE_RPROGRESS]+= DRILLREPAIRPROGRESS_MIN + random(DRILLREPAIRPROGRESS_MAX);
                 if(gCompanySafe_SAFE[rowid][COMPANYSAFE_RPROGRESS]>100)gCompanySafe_SAFE[rowid][COMPANYSAFE_RPROGRESS]=100;
-                floatProgress=float(gCompanySafe_SAFE[rowid][COMPANYSAFE_RPROGRESS]);
                 format(msg,255,"Reparando %d%%",gCompanySafe_SAFE[rowid][COMPANYSAFE_RPROGRESS]);
                 UpdateCompanySafeSAFEText(rowid);
                 for(new i;i<MAX_PLAYERS;i++) {
                     if(GetPlayerVirtualWorld(i)==rowid) {
-                        SetPlayerTxdProgressProgress(i,floatProgress);
+                        SetPlayerTxdProgressProgress(i,float(gCompanySafe_SAFE[rowid][COMPANYSAFE_RPROGRESS]));
                         SetPlayerTxdProgressText(i,msg);
                     }
                 }
@@ -472,15 +473,16 @@ public CompanySafeDrillRepairProgress(playerid,rowid) {
             }
         }
         else {
-            SendVirtualWorldMessage(rowid,COLOR_YELLOW,"[ALERTA] A pessoa que estava reparando o drill afastou-se, a ação foi cancelada!");
+            new String:msg[255];
+            format(msg,255,"[ALERTA] %s[%d] afastou-se do drill, a ação foi cancelada!",GetPlayerNameEx(playerid),playerid);
+            SendVirtualWorldMessage(rowid,COLOR_YELLOW,msg);
             gCompanySafe_SAFE[rowid][SAFE_STATUS] = SAFE_STATUS_DRILLERROR;
             DeletePreciseTimer(gCompanySafe_SAFE[rowid][COMPANYSAFE_TIMERID]);
             UpdateCompanySafeSAFEText(rowid);
             format(msg,255,"Furando %d%%",gCompanySafe_SAFE[rowid][COMPANYSAFE_PROGRESS]);
-            floatProgress=float(gCompanySafe_SAFE[rowid][COMPANYSAFE_PROGRESS]);
             for(new i;i<MAX_PLAYERS;i++) {
                 if(GetPlayerVirtualWorld(i)==rowid) {
-                    SetPlayerTxdProgressProgress(i,floatProgress);
+                    SetPlayerTxdProgressProgress(i,float(gCompanySafe_SAFE[rowid][COMPANYSAFE_PROGRESS]));
                     SetPlayerTxdProgressText(i,msg);
                 }
             }
@@ -521,7 +523,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                     SendVirtualWorldMessage(rowid,COLOR_YELLOW,"[ALERTA] A porta de segurança foi fechada.");
                     RegenCompanySafeDoor(rowid);
                 }
-                else return SendClientMessage(playerid,COLOR_YELLOW,"Não fazes parte da gerência desta empresa!");         
+                else return SendClientMessage(playerid,COLOR_YELLOW,"Não fazes parte da gestão desta empresa!");         
             }
             else return SendClientMessage(playerid,COLOR_YELLOW,"A porta já está fechada!");
         } 
@@ -533,6 +535,8 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                 gCompanySafe_DOOR[rowid][DOOR_STATUS] = DOOR_STATUS_EXPLODING;
                 gCompanySafe_DOOR[rowid][COMPANYDOOR_PROGRESS] = 0;
                 gCompanySafe_DOOR[rowid][COMPANYDOOR_TIMERID] = SetPreciseTimer("CompayDoorExplodeProgress",100,true,"ii",playerid,rowid);
+                ApplyAnimation(playerid,"BOMBER","BOM_Plant_Loop",4.1,1,0,0,1,0,1);
+                TogglePlayerControllable(playerid,false);
                 for(new i;i<MAX_PLAYERS;i++) {
                     if(GetPlayerVirtualWorld(i)==rowid) {
                         ShowPlayerTxdProgress(i);
@@ -548,7 +552,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                     DestroyCompanySafeDoor(rowid,0);
                     SendVirtualWorldMessage(rowid,COLOR_YELLOW,"[ALERTA] A porta de segurança foi aberta.");
                 }
-                else return SendClientMessage(playerid,COLOR_YELLOW,"Não fazes parte da gerência desta empresa!");         
+                else return SendClientMessage(playerid,COLOR_YELLOW,"Não fazes parte da gestão desta empresa!");         
             }
             else return SendClientMessage(playerid,COLOR_YELLOW,"A porta já está aberta!");
         }
@@ -565,6 +569,8 @@ stock OnCompanySafeDoorExplode(rowid,playerid) {
         SendVirtualWorldMessage(rowid,COLOR_YELLOW,"[ALERTA] O explosivo foi plantado, afastem-se, vai explodir!");
         AttachDynamicObjectToObject(1654,gCompanySafe_DOOR[rowid][COMPANYDOOR_OBJECTID],0.0,0.0,0.0,0.0,0.0,0.0);
         UpdateCompanySafeDOORText(rowid);
+        ClearAnimations(playerid,1);
+        TogglePlayerControllable(playerid,true);
         for(new i=0;i<MAX_PLAYERS;i++) {
             if(GetPlayerVirtualWorld(i)==rowid) {
                 HidePlayerTxdProgress(i);
@@ -719,6 +725,8 @@ public OnCompanyLaserHack(rowid,playerid) {
         DestroyCompanySafeLaser(rowid);
         SendVirtualWorldMessage(rowid,COLOR_YELLOW,"[ALERTA] O alarme foi hackeado, as autoridades não foram avisadas!");
         UpdateCompanySafeLASERText(rowid);
+        TogglePlayerControllable(playerid,true);
+        ClearAnimations(playerid,1);
         for(new i=0;i<MAX_PLAYERS;i++) {
             if(GetPlayerVirtualWorld(i)==rowid) {
                 HidePlayerTxdProgress(i);
@@ -833,10 +841,13 @@ stock SetPlayerCompanySafe(playerid,bool) {
 hook OnPlayerDeath(playerid, killerid, reason) {
     PlayerPlaySound(playerid,0,0.0,0.0,0.0);
     gPlayer_CompanySafe[playerid]=0;
+    // TODO Safe handling of dying.
+    // Textdraws, if was by cop, whatever the player was doing, etc...
     return 1;
 }
 hook OnPlayerDisconnect(playerid, reason) {
     gPlayer_CompanySafe[playerid]=0;
+    // TODO Safe handling of quitting.
     return 1;
 }
 

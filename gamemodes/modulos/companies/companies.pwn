@@ -398,7 +398,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
             if(GetPlayerDistanceFromPoint(playerid,x,y,z)<1.0) {
                 SetPlayerPosCompany(playerid,rowid,false,false);
                 SendClientMessage(playerid,COLOR_YELLOW,"Saiste do cofre da empresa!");
-                CompanySafeSyncPlayer(playerid,rowid);
+                CompanySafeSyncPlayerTxd(playerid,rowid);
             }
         }
     }
@@ -458,7 +458,7 @@ stock SetPlayerPosCompany(playerid,rowid,isInside,isCompanySafe) {
             GetCompanySafeLocationPtrs(rowid,x,y,z);
             SetPlayerPos(playerid,x,y,z);
             format(msg,255,"Entraste no cofre da empresa %s",gCompanies[rowid][COMPANY_NAME]);
-            CompanySafeSyncPlayer(playerid,rowid);
+            CompanySafeSyncPlayerTxd(playerid,rowid);
             SendClientMessage(playerid,COLOR_YELLOW,msg);
             SetPlayerCompanySafe(playerid,1);
             return 1;
