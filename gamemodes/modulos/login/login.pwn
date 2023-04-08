@@ -3,7 +3,7 @@
 
 #include <YSI_Coding\y_hooks>
 
-
+#define MAX_LOGIN_TRIES 5
 
 /*
             PrepareAccountsTable
@@ -73,11 +73,22 @@ public FinishLogin(playerid) {
     if(bcrypt_is_equal()) {
         SendClientMessage(playerid,COLOR_GREEN,"Sessão iniciada!");
         gLoggedIn[playerid]=1;
+        StopAudioStreamForPlayer(playerid);
         PrepareAdminCheck(GetPlayerNameEx(playerid));
         OnPlayerAuth(playerid);
         return 1;
     }
+    if(gLoginTries[playerid]>=MAX_LOGIN_TRIES) {
+        ShowPlayerDialog(playerid,LOGINDIALOG_LOGIN,DIALOG_STYLE_MSGBOX,"Excesso de senhas incorretas.","\
+        {ffffff} Foste kickado depois de errares a senha 5 vezes.\n\
+        Reinicia o teu jogo para tentares outra vez.\n\
+        AVISO: Se presistires em errar a senha, poderás ter o teu IP temporariamente banido\n\
+        ","OK","");
+        SetPreciseTimer("LoginTimeout",30,false,"i",playerid);
+        return 1;
+    }
     SendClientMessage(playerid,COLOR_RED,"Erro - senha incorreta!");
+    gLoginTries[playerid]++;
     ShowPlayerDialog(playerid,LOGINDIALOG_LOGIN,DIALOG_STYLE_PASSWORD,"Senha incorreta","{FFFFFF}Tenta outra vez","Iniciar sessão","");
 }
 /*
@@ -85,7 +96,11 @@ public FinishLogin(playerid) {
     Checks if the given playerid's name has an account
                                                 */
 
-
+forward LoginTimeout(playerid);
+public LoginTimeout(playerid) {
+    Kick(playerid);
+    return 1;
+}
 public PrepareAccountCheck(playerid) {
     gLoggedIn[playerid]=0;
     new query[256];
@@ -148,6 +163,7 @@ hook OnPlayerDisconnect(playerid,reason) {
 }
 hook OnPlayerConnect(playerid) {
     gLoggedIn[playerid]=0;
+    gLoginTries[playerid]=0;
     return 1;
 }
 /*
@@ -155,10 +171,7 @@ hook OnPlayerConnect(playerid) {
             */
 
 public OnPlayerAuth(playerid) {
-    PlayerTextDrawHide(playerid,txdloadingBackground1[playerid]);
-    PlayerTextDrawHide(playerid,txdloadingBackground2[playerid]);
-    PlayerTextDrawHide(playerid,txdloadingVersion[playerid]);
-    PlayerTextDrawHide(playerid,txdloadingTitle[playerid]);
+    HidePlayerTxdLoading(playerid);
     PreparePlayerSpawn(playerid);
     PrepareLoadPlayerBankAccount(playerid);
     return 1;

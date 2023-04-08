@@ -12,9 +12,9 @@ stock ShowCreditsDialog(playerid) {
     \n\
     {ffffff}Agradecimentos especiais a:\
     \n\
-    \n{0B61B9}Prof. Sofia B. {3E4048} - introduziu-me á linguagem C.\n\
-    {0B61B9}Chainksain {3E4048} - introduziu-me ao pawn\n\
-    {0B61B9}Prof. Alexandre R. & Carla R. {3E4048} - Quase como familia para mim!\n\
+    \n{0B61B9}Prof. Sofia B. - introduziu-me á linguagem C.\n\
+    Chainksain - introduziu-me ao pawn\n\
+    {0B61B9}Prof. Alexandre R. & Carla R. - Quase como familia para mim!\n\
     {0B61B9}Guilherme{ffffff} @guilherme.coto {0B61B9}Côto - Grande amigo <3!\n\
     Tiago{ffffff} @tiago_almeida_23 {0B61B9}Almeida - O gajo de oculos mais bem desposto que conheço\n\
     Renato{ffffff} @asteroidrenato {0B61B9}Almeida - Muito porreiro :)\n\

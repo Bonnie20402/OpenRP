@@ -31,6 +31,7 @@ enum LOGINDIALOGS {
 }
 
 new gLoggedIn[MAX_PLAYERS];
+new gLoginTries[MAX_PLAYERS];
 new Int:BCRYPT_COST = 12;
 forward PrepareAccountsTable();
 

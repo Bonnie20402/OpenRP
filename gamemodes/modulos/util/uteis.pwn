@@ -7,6 +7,12 @@
 // PRESSING(keyVariable, keys)
 #define PRESSING(%0,%1) \
     (%0 & (%1))
+stock ClearPlayerChat(playerid) {
+    for(new i;i<128;i++) {
+        SendClientMessage(playerid,-1,"");
+    }
+    return 1;
+}
 stock GetPlayerNameExt(playerid)
 {
 	new name[MAX_PLAYER_NAME];

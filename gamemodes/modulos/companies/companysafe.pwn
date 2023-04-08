@@ -271,6 +271,8 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
             if(GetCompanySafeSafeStatus(rowid) == SAFE_STATUS_WAITING) {
                 format(msg,255,"[ALERTA] %s[%d] está a instalar o drill no cofre da empresa %s[%d]",GetPlayerNameEx(playerid),playerid,gCompanies[rowid][COMPANY_NAME],rowid);
                 SendVirtualWorldMessage(rowid,COLOR_YELLOW,msg);
+                ApplyAnimation(playerid,"BOMBER","BOM_Plant_Loop",4.1,1,0,0,1,0,1);
+                TogglePlayerControllable(playerid,false);
                 gCompanySafe_SAFE[rowid][SAFE_STATUS] = SAFE_STATUS_PLANTING;
                 gCompanySafe_SAFE[rowid][COMPANYSAFE_PROGRESS] = 0;
                 gCompanySafe_SAFE[rowid][COMPANYSAFE_TIMERID] = SetPreciseTimer("CompanySafeRobProgress",250,true,"ii",playerid,rowid);
@@ -323,6 +325,8 @@ public CompanySafeRobProgress(playerid,rowid) {
             gCompanySafe_SAFE[rowid][COMPANYSAFE_PROGRESS] = 0;
             DeletePreciseTimer(gCompanySafe_SAFE[rowid][COMPANYSAFE_TIMERID]);
             gCompanySafe_SAFE[rowid][COMPANYSAFE_TIMERID]=SetPreciseTimer("CompanySafeDrillProgress",DRILLPROGRESS_DELAY,true,"ii",playerid,rowid);
+            TogglePlayerControllable(playerid,true);
+            ClearAnimations(playerid,1);
         }
     }
     return 1;
@@ -383,7 +387,7 @@ public CompanySafeDrillProgress(playerid,rowid) {
             SendVirtualWorldMessage(rowid,COLOR_YELLOW,msg2);
             SendVirtualWorldMessage(rowid,COLOR_YELLOW,msg3);
             SendVirtualWorldMessage(rowid,COLOR_LIGHTGREEN,"O cofre será regenerado em 5 minutos");
-            SetPreciseTimer("RegenCompanySafeSafe",300000,false,"i",rowid);
+            SetPreciseTimer("RegenCompanySafeSafe",500,false,"i",rowid);
             for(new i;i<MAX_PLAYERS;i++) {
                 if(GetPlayerVirtualWorld(i)==rowid) {
                     HidePlayerTxdProgress(i);
@@ -403,8 +407,12 @@ forward RegenCompanySafeSafe(rowid);
 public RegenCompanySafeSafe(rowid) {
     if(GetCompanySafeSafeStatus(rowid) == SAFE_STATUS_ROBBED) {
         gCompanySafe_SAFE[rowid][SAFE_STATUS] = SAFE_STATUS_WAITING;
-        SendVirtualWorldMessage(rowid,COLOR_YELLOW,"[ALERTA] O cofre regenerou-se!");
+        SendVirtualWorldMessage(rowid,COLOR_LIGHTGREEN,"O cofre regenerou-se!");
+        RegenCompanySafeDoor(rowid);
+        RegenCompanySafeLaser(rowid);
         UpdateCompanySafeSAFEText(rowid);
+        UpdateCompanySafeDOORText(rowid);
+        UpdateCompanySafeLASERText(rowid);
     }
 }
 /*
@@ -424,6 +432,8 @@ hook OnPlayerKeyStateChange(playerid,newkeys,oldkeys) {
                 SendVirtualWorldMessage(rowid,COLOR_YELLOW,msg);
                 gCompanySafe_SAFE[rowid][COMPANYSAFE_RPROGRESS]=0;
                 gCompanySafe_SAFE[rowid][COMPANYSAFE_TIMERID] = SetPreciseTimer("CompanySafeDrillRepairProgress",500,true,"ii",playerid,rowid);
+                ApplyAnimation(playerid,"BOMBER","BOM_Plant_Loop",4.1,1,0,0,1,0,1);
+                TogglePlayerControllable(playerid,false);
                 for(new i;i<MAX_PLAYERS;i++) {
                     if(GetPlayerVirtualWorld(i)==rowid) {
                         SetPlayerTxdProgressProgress(i,0.0);
@@ -468,6 +478,8 @@ public CompanySafeDrillRepairProgress(playerid,rowid) {
                 SendVirtualWorldMessage(rowid,COLOR_YELLOW,"[ALERTA] O drill foi reparado!");
                 gCompanySafe_SAFE[rowid][SAFE_STATUS] = SAFE_STATUS_DRILLING;
                 UpdateCompanySafeSAFEText(rowid);
+                TogglePlayerControllable(playerid,true);
+                ClearAnimations(playerid,1);
                 DeletePreciseTimer(gCompanySafe_SAFE[rowid][COMPANYSAFE_TIMERID]);
                 gCompanySafe_SAFE[rowid][COMPANYSAFE_TIMERID]=SetPreciseTimer("CompanySafeDrillProgress",DRILLPROGRESS_DELAY,true,"ii",playerid,rowid);
             }

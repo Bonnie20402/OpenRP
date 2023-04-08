@@ -19,8 +19,8 @@
 #pragma warning disable 215
 
 
-#define LASTEST_UPDATE "02/04/2023"
-#define VERSION "0.0.2b"
+#define DATE "02/04/2023"
+#define VERSION "0.0.2c"
 #define AMX_OLD_CALL
 #include <a_samp>
 #include <fixes>
@@ -64,6 +64,7 @@ new MySQL:mysql;
 					*/
 #include "modulos\txd\txdprogress.pwn"
 #include "modulos\txd\txdbnotification.pwn"
+#include "modulos\txd\txdloading.pwn"
 
 /*
 	LOGIN
@@ -139,11 +140,11 @@ public dbInit() {
 	PrepareAccountsTable();
 	PrepareLocationsTable();
 	PrepareLocationPickupsTable(); // BEWARE! This module depends on PrepareLocationsTable, load it first!
-	PrepareCitizenVehiclesTable();
-	PreparePlayerInfoTable();
-	PreparePlayerBankAccountsTable();
+	PrepareCitizenVehiclesTable(); // TO BE REPLACED loads citize nvehicles at spawn
+	PreparePlayerInfoTable(); // contains player coords (xyz) health skinid and armor.
+	PreparePlayerBankAccountsTable(); // player bank account table
 	PrepareBankAtmTable(); // the props that open bank account dialog
-	PrepareCompaniesTable();
+	PrepareCompaniesTable(); // Loads companies
 
 	JobsInit();
 	return 1;
@@ -338,4 +339,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 public OnPlayerClickPlayer(playerid, clickedplayerid, source)
 {
 	return 1;
+}
+/*
+    Custom callbacks
+                            */
+forward OnItemUsage(playerid,itemid,quantity);
+public OnItemUsage(playerid,itemid,quantity) {
+    if(!quantity) return 1;
+    return 1;
 }
