@@ -1,17 +1,22 @@
 /*
 This textdraw does NOT follow the server standards.
 */
+#include "modulos/inventory/inventoryitems.pwn"
 #include <YSI_Coding\y_hooks>
 
-#define RENDER_OFFSET 83.0
-#define RENDER_NEGATIVEOFFSET -83.0
-
+/*
+	Inventory Draw Configuration
+									*/
 #define INVENTORY_MAXPAGES 5
-#define INVENTORY_ROWLIMIT 3 // from lçeft to right
+#define INVENTORY_ROWLIMIT 3 // from left to right
 #define INVENTORY_COLUMNLIMIT 6 // from top to bottom
 #define INVENTORY_SIZE INVENTORY_ROWLIMIT*INVENTORY_COLUMNLIMIT
+#define INVENTORY_MAXITEMS INVENTORY_MAXPAGES*INVENTORY_SIZE
 
-
+/*
+	Invenntory Render Default Coordenates
+	Offset: 83.0
+											*/
 #define INVENTORY_DEFAULT_BTN_X 39.0
 #define INVENTORY_DEFAULT_BTN_Y 109.9
 
@@ -96,8 +101,8 @@ public IsPlayerInvOpen(playerid) {
 //Checks if player has an item, by modelid. If so, returns the quantity, otherwhise 0 */
 forward DoesPlayerInvHaveItem(playerid,modelid);
 public DoesPlayerInvHaveItem(playerid,modelid) {
-	for(new i;i<sizeof(INVENTORY_ROWLIMIT;i++)) {
-		for(new j;j<sizeof(INVENTORY_COLUMNLIMIT;j++)) {
+	for(new i;i<INVENTORY_ROWLIMIT;i++) {
+		for(new j;j<INVENTORY_COLUMNLIMIT;j++) {
 			if(GetPlayerInvModelid(playerid,i,j)==modelid)return GetPlayerInvItemQuantity(playerid,i,j);
 		}
 	}
@@ -106,21 +111,35 @@ public DoesPlayerInvHaveItem(playerid,modelid) {
 //Checks if player has an item, by modelid. If so, returns the 1D location. Otherwhsie returns 0 */
 forward DoesPlayerInvHaveItemEx(playerid,modelid);
 public DoesPlayerInvHaveItemEx(playerid,modelid) {
-	for(new i;i<sizeof(INVENTORY_ROWLIMIT;i++)) {
-		for(new j;j<sizeof(INVENTORY_COLUMNLIMIT;j++)) {
-			if(GetPlayerInvModelid(playerid,i,j)==modelid)return i*j;
+	for(new i;i<INVENTORY_ROWLIMIT;i++) {
+		for(new j;j<INVENTORY_COLUMNLIMIT;j++) {
+			if(GetPlayerInvModelid(playerid,i,j)==modelid)return i * INVENTORY_COLUMNLIMIT + j;
 		}
 	}
 	return 0;
 }
+//Returns current selected item 1D index. If no item is selected, returns -1.
+forward GetPlayerInvSelectedItem(playerid);
+public GetPlayerInvSelectedItem(playerid) {
+	if(!IsPlayerConnected(playerid))return -1;
+	return gInv_control_selectedItem[playerid];
+}
+//Returns current selected item modelid. If no item is selected, returns -1.
+forward GetPlayerInvSelectedItemEx(playerid);
+public GetPlayerInvSelectedItemEx(playerid) {
+	if(gInv_control_selectedItem[playerid] != -1)return GetPlayerInvModelidEx(playerid,gInv_control_selectedItem[playerid]);
+	return -1;
+}
 // Gets an item quantity, by passing row and column. UNSAFE: No out of bounds check!
 forward GetPlayerInvItemQuantity(playerid,row,column);
 public GetPlayerInvItemQuantity(playerid,row,column) {
-	return strval(PlayerTextDrawGetString(playerid,txdInv_render_quantity[row][column]));
+	new quantity[64];
+	PlayerTextDrawGetString(playerid,txdInv_render_quantity[playerid][row][column],quantity,64);
+	return strval(quantity);
 }
 //Gets an item quantity, by passing index. SAFE: Has out of bounds check and returns -1 if invalid.
 forward GetPlayerInvItemQuantityEx(playerid,index);
-public GetPlayerInvQuantityEx(playerid,index) {
+public GetPlayerInvItemQuantityEx(playerid,index) {
     new i = index / INVENTORY_COLUMNLIMIT;
     new j = index % INVENTORY_COLUMNLIMIT;
     if (i >= INVENTORY_ROWLIMIT || j >= INVENTORY_COLUMNLIMIT) return -1;
@@ -134,11 +153,24 @@ public GetPlayerInvModelid(playerid,row,column) {
 }
 //Gets an item model id, by passing index. SAFE: Has out of bounds check. Retruns -1 if invalid.
 forward GetPlayerInvModelidEx(playerid,index);
-public GetPlayerInvModelIdEx(playerid,index) {
+public GetPlayerInvModelidEx(playerid,index) {
     new i = index / INVENTORY_COLUMNLIMIT;
     new j = index % INVENTORY_COLUMNLIMIT;
     if (i >= INVENTORY_ROWLIMIT || j >= INVENTORY_COLUMNLIMIT) return -1;
 	return PlayerTextDrawGetPreviewModel(playerid,txdInv_render_model[playerid][i][j]);
+}
+//Counts how many valid items the player currently has rendered. The inventory SHOULD be open, otherwhise returns zero.
+forward GetPlayerInvItemCount(playerid);
+public GetPlayerInvItemCount(playerid) {
+	new itemAmount;
+	if(IsPlayerInvOpen(playerid)) {
+		for(new i;i<INVENTORY_ROWLIMIT;i++) {
+			for(new j;j<INVENTORY_ROWLIMIT;j++) {
+				if(GetPlayerInvItemQuantity(playerid,i,j))itemAmount++;
+			}
+		}
+	}
+	return itemAmount;
 }
 
 
@@ -154,8 +186,8 @@ public InventoryRenderInit(playerid) {
 		for(new j;j<INVENTORY_COLUMNLIMIT;j++) {
             txdInv_render_btn[playerid][i][j] = CreatePlayerTextDraw(playerid,defaultX[0],defaultY[0], "LD_DUAL:white");
 			txdInv_render_model[playerid][i][j] = CreatePlayerTextDraw(playerid,defaultX[1],defaultY[1], "Preview_Model");
-            txdInv_render_title[playerid][i][j] = CreatePlayerTextDraw(playerid,defaultX[2],defaultY[2], "Nome do item");
-			txdInv_render_quantity[playerid][i][j] = CreatePlayerTextDraw(playerid,defaultX[3],defaultY[3], "QTD");
+            txdInv_render_title[playerid][i][j] = CreatePlayerTextDraw(playerid,defaultX[2],defaultY[2], "_");
+			txdInv_render_quantity[playerid][i][j] = CreatePlayerTextDraw(playerid,defaultX[3],defaultY[3], "_");
 			ApplyInvPropetiesPtr(playerid,txdInv_render_btn[playerid][i][j],RENDERTYPE_BTN);
             ApplyInvPropetiesPtr(playerid,txdInv_render_model[playerid][i][j],RENDERTYPE_MODEL);
             ApplyInvPropetiesPtr(playerid,txdInv_render_title[playerid][i][j],RENDERTYPE_TITLE);
@@ -201,7 +233,7 @@ stock ApplyInvPropetiesPtr(playerid,&PlayerText:renderText,type) { // In pawn, &
 		PlayerTextDrawUseBox(playerid, renderText, 0);
 		PlayerTextDrawSetProportional(playerid, renderText, 1);
 		PlayerTextDrawSetSelectable(playerid, renderText, 0);
-		PlayerTextDrawSetPreviewModel(playerid, renderText ,0); // TODO change to question mark
+		PlayerTextDrawSetPreviewModel(playerid, renderText ,18631);
 		PlayerTextDrawSetPreviewRot(playerid, renderText , 0.000000,-1.000000,-20.000000 ,1.200000);
 		PlayerTextDrawSetPreviewVehCol(playerid ,renderText ,1 ,1 );
 	}
@@ -240,11 +272,10 @@ stock ApplyInvPropetiesPtr(playerid,&PlayerText:renderText,type) { // In pawn, &
 YCMD:inv(playerid,params[],help) {
 	SendClientMessage(playerid,-1,"OPEEEN");
 	OpenInventory(playerid);
-	InventoryRenderUpdateItemEx(playerid,0,33,"NUMERO UM","111");
-	InventoryRenderUpdateItemEx(playerid,1,34,"Item dois","22");
-	InventoryRenderUpdateItemEx(playerid,2,57,"Item tres","333");
-	InventoryRenderUpdateItemEx(playerid,3,61,"quatry quatru 4","40404");
-	InventoryRenderUpdateItemEx(playerid,4,944,"Cinco cinco cinco","555");
+	InventoryRenderUpdateItemEx(playerid,0,33,GetItemNameString(33),"1");
+	InventoryRenderUpdateItemEx(playerid,1,34,GetItemNameString(34),"22");
+	InventoryRenderUpdateItemEx(playerid,2,ITEM_RESPEITO,GetItemNameString(ITEM_RESPEITO),"1");
+	InventoryRenderUpdateItemEx(playerid,3,ITEM_GASOLINA,GetItemNameString(ITEM_GASOLINA),"344");
 	return 1;
 }
 forward OpenInventory(playerid);
@@ -271,13 +302,75 @@ public OpenInventory(playerid) {
 				PlayerTextDrawShow(playerid, txdInv_render_title[playerid][i][j]);
 			}
 		}
-
 		SelectTextDraw(playerid, 0xFF0000FF);
+	}
+}
+forward CloseInventory(playerid);
+public CloseInventory(playerid) {
+	if(IsPlayerLoggedIn(playerid)&&IsPlayerInvOpen(playerid)) {
+		gInv_control_selectedItem[playerid]=-1;
+		PlayerTextDrawSetString(playerid,txdInv_Title[playerid],"Nenhum item selecionado");
+		PlayerTextDrawHide(playerid, txdInv_bg0[playerid]);
+		PlayerTextDrawHide(playerid, txdInv_Title[playerid]);
+		PlayerTextDrawHide(playerid, txdInv_btnCLOSE[playerid]);
+		PlayerTextDrawHide(playerid, txdInv_bg1[playerid]);
+		PlayerTextDrawHide(playerid, txdInv_bg2[playerid]);
+		PlayerTextDrawHide(playerid, txdInv_btnNEXT[playerid]);
+		PlayerTextDrawHide(playerid, txdInv_btnPREVIOUS[playerid]);
+		PlayerTextDrawHide(playerid, txdInv_btnUSE[playerid]);
+		PlayerTextDrawHide(playerid, txdInv_btnSELL[playerid]);
+		PlayerTextDrawHide(playerid, txdInv_btnDROP[playerid]);
+		PlayerTextDrawHide(playerid, txdInv_btnSEPARATE[playerid]);
+		PlayerTextDrawHide(playerid, txdInv_btnJOIN[playerid]);
+		PlayerTextDrawHide(playerid, txdInv_Page[playerid]);
+		for(new i;i<INVENTORY_ROWLIMIT;i++) {
+			for(new j;j<INVENTORY_COLUMNLIMIT;j++) {
+				PlayerTextDrawHide(playerid, txdInv_render_quantity[playerid][i][j]);
+				PlayerTextDrawHide(playerid, txdInv_render_btn[playerid][i][j]);
+				PlayerTextDrawHide(playerid, txdInv_render_model[playerid][i][j]);
+				PlayerTextDrawHide(playerid, txdInv_render_title[playerid][i][j]);
+			}
+		}
+		CancelSelectTextDraw(playerid);
+	}
+}
+//Handles selected logic.
+hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
+	if(IsPlayerInvOpen(playerid)) {
+		new msg[255];
+		for(new i;i<INVENTORY_ROWLIMIT;i++) {
+			for(new j;j<INVENTORY_COLUMNLIMIT;j++) {
+				PlayerTextDrawHide(playerid,txdInv_render_btn[playerid][i][j]);
+				if(GetPlayerInvItemQuantity(playerid,i,j))PlayerTextDrawColor(playerid,txdInv_render_btn[playerid][i][j],COLOR_GRAY);
+				if(playertextid==txdInv_render_btn[playerid][i][j]) {
+					if(GetPlayerInvItemQuantity(playerid,i,j)) {
+						gInv_control_selectedItem[playerid]=i * INVENTORY_COLUMNLIMIT + j;
+						PlayerTextDrawColor(playerid,txdInv_render_btn[playerid][i][j],COLOR_AQUA);
+						PlayerTextDrawGetString(playerid,txdInv_render_title[playerid][i][j],msg,255);
+						format(msg,255,"Selecionado: ~b~~h~~h~~h~%dx~w~%s",GetPlayerInvItemQuantity(playerid,i,j),msg);
+						PlayerTextDrawSetString(playerid,txdInv_Title[playerid],msg);
+					}
+					else {
+						PlayerTextDrawSetString(playerid,txdInv_Title[playerid],"Nenhum item selecionado");
+					}
+				}
+				PlayerTextDrawShow(playerid,txdInv_render_btn[playerid][i][j]);
+			}
+		}
+	}
+	return 1;
+}
+// Handles inventory close logic
+#include <YSI_Coding\y_hooks>
+hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
+	if(playertextid==txdInv_btnCLOSE[playerid]&&IsPlayerInvOpen(playerid))  {
+		CloseInventory(playerid); 
 	}
 }
 
 hook OnPlayerConnect(playerid)
 {
+	gInv_control_selectedItem[playerid] = -1;
 	txdInv_bg0[playerid] = CreatePlayerTextDraw(playerid, 37.000000, 85.000000, "LD_DUAL:white");
 	PlayerTextDrawFont(playerid, txdInv_bg0[playerid], 4);
 	PlayerTextDrawLetterSize(playerid, txdInv_bg0[playerid], 0.600000, 2.000000);
@@ -292,7 +385,7 @@ hook OnPlayerConnect(playerid)
 	PlayerTextDrawSetProportional(playerid, txdInv_bg0[playerid], 1);
 	PlayerTextDrawSetSelectable(playerid, txdInv_bg0[playerid], 0);
 
-	txdInv_Title[playerid] = CreatePlayerTextDraw(playerid, 38.000000, 87.000000, "Inventario");
+	txdInv_Title[playerid] = CreatePlayerTextDraw(playerid, 38.000000, 87.000000, "Nenhum item selecionado");
 	PlayerTextDrawFont(playerid, txdInv_Title[playerid], 1);
 	PlayerTextDrawLetterSize(playerid, txdInv_Title[playerid], 0.600000, 2.000000);
 	PlayerTextDrawTextSize(playerid, txdInv_Title[playerid], 562.500000, 17.000000);
@@ -447,8 +540,9 @@ hook OnPlayerConnect(playerid)
 	PlayerTextDrawUseBox(playerid, txdInv_btnJOIN[playerid], 1);
 	PlayerTextDrawSetProportional(playerid, txdInv_btnJOIN[playerid], 1);
 	PlayerTextDrawSetSelectable(playerid, txdInv_btnJOIN[playerid], 1);
-
-	txdInv_Page[playerid] = CreatePlayerTextDraw(playerid, 432.000000, 85.000000, "Pagina 1/4");
+	new msgMaxPages[255];
+	format(msgMaxPages,255,"Pagina 1/%d",INVENTORY_MAXPAGES);
+	txdInv_Page[playerid] = CreatePlayerTextDraw(playerid, 432.000000, 85.000000,msgMaxPages);
 	PlayerTextDrawFont(playerid, txdInv_Page[playerid], 1);
 	PlayerTextDrawLetterSize(playerid, txdInv_Page[playerid], 0.600000, 2.000000);
 	PlayerTextDrawTextSize(playerid, txdInv_Page[playerid], 610.000000, 17.000000);
