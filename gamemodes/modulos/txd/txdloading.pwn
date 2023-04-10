@@ -264,7 +264,7 @@ public ShowPlayerTxdLoading(playerid,isLoaded)
 		PlayerTextDrawShow(playerid, txdLoading_bar2[playerid]);
 		PlayerTextDrawShow(playerid, txdLoading_bar1[playerid]);
 		PlayerTextDrawShow(playerid, txdLoading_bar0[playerid]);
-		SelectTextDraw(playerid, 0xFF0000FF);
+		SelectTextDraw(playerid,0x00FF00FF);
 	}
 	return 0;
 }

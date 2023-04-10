@@ -101,7 +101,7 @@ forward Admin:FinishCreateAdmin(playerid,Int:level,const role[]);
 public Admin:FinishCreateAdmin(playerid,Int:level,const role[]) {
     gAdmins[playerid][ADMININFO_LEVEL]=level;
     gAdmins[playerid][ADMININFO_WORKING]=1;
-    strcpy(gAdmins[playerid][ADMININFO_ROLE],role,64);
+    format(gAdmins[playerid][ADMININFO_ROLE],64,"%s",role);
     new msg[256];
     format(msg,256,"Foste promovido a nivel %d de admin, a tua função é %s",level,role);
     SendClientMessage(playerid,COLOR_AQUA,msg);

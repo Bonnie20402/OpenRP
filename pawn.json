@@ -18,7 +18,8 @@
 		"bmisiak/samp-precise-timers:v2.0.2",
 		"TommyB123/eSelection:1.1.1",
 		"oscar-broman/SKY/:2.3.1",
-		"oscar-broman/samp-weapon-config"
+		"oscar-broman/samp-weapon-config",
+		"IS4Code/YSF:v2.2"
 	],
 	"local": true,
 	"runtime": {

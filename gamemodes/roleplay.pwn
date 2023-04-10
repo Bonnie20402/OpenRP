@@ -33,6 +33,7 @@
 #include <streamer>
 #include <weapon-config.inc>
 #include <crashdetect>
+#include <YSF>
 #include <YSI_Visual\y_commands>
 #include "modulos\util\datetime.inc"
 #include "modulos\util\colors.inc" 
@@ -78,6 +79,7 @@ new MySQL:mysql;
 #include "modulos\players\playerinfo.pwn"
 #include "modulos\players\playerspawn.pwn"
 #include "modulos\players\bank\playerbank.pwn"
+#include "modulos\inventory\inventory.pwn"
 
 
 /*
@@ -338,6 +340,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 public OnPlayerClickPlayer(playerid, clickedplayerid, source)
 {
+	return 1;
+}
+public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
 	return 1;
 }
 /*

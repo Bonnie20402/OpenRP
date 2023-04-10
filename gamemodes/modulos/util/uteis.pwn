@@ -13,6 +13,9 @@ stock ClearPlayerChat(playerid) {
     }
     return 1;
 }
+
+stock Get1DIndex(row,column)return row*column;
+
 stock GetPlayerNameExt(playerid)
 {
 	new name[MAX_PLAYER_NAME];
