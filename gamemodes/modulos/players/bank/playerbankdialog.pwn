@@ -44,6 +44,10 @@ hook OnDialogResponse(playerid,dialogid,response,listitem,inputtext[]) {
         new handMoney,depositMoney;
         handMoney=GetPlayerMoney(playerid);
         depositMoney=strval(inputtext);
+        if(depositMoney<=0) {
+            SendClientMessage(playerid,COLOR_YELLOW,"O valor deve ser positivo!");
+            return 1;
+        }
         if(handMoney-depositMoney>=0) {
             ResetPlayerMoney(playerid);
             GivePlayerMoney(playerid,handMoney-depositMoney);
@@ -60,6 +64,10 @@ hook OnDialogResponse(playerid,dialogid,response,listitem,inputtext[]) {
         new withdrawMoney,bankMoney;
         bankMoney=GetPlayerBankAccount(playerid);
         withdrawMoney=strval(inputtext);
+        if(withdrawMoney<=0) {
+            SendClientMessage(playerid,COLOR_YELLOW,"O valor deve ser positivo!");
+            return 1;
+        }
         if(bankMoney-withdrawMoney>=0) {
             gBankAccount[playerid]=gBankAccount[playerid]-withdrawMoney;
             PrepareSavePlayerBankAccount(playerid);

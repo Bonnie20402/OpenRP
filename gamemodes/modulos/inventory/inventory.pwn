@@ -1,65 +1,13 @@
 /*
 This textdraw does NOT follow the server standards.
 */
-#include "modulos/inventory/inventoryitems.pwn"
+
+
+
+#include "modulos\inventory\inventoryitems.pwn"
+#include "modulos\inventory\inventoryaction.pwn"
+#include "modulos\inventory\inventorycontrol.pwn"
 #include <YSI_Coding\y_hooks>
-
-/*
-	Inventory Draw Configuration
-									*/
-#define INVENTORY_MAXPAGES 5
-#define INVENTORY_ROWLIMIT 3 // from left to right
-#define INVENTORY_COLUMNLIMIT 6 // from top to bottom
-#define INVENTORY_SIZE INVENTORY_ROWLIMIT*INVENTORY_COLUMNLIMIT
-#define INVENTORY_MAXITEMS INVENTORY_MAXPAGES*INVENTORY_SIZE
-
-/*
-	Invenntory Render Default Coordenates
-	Offset: 83.0
-											*/
-#define INVENTORY_DEFAULT_BTN_X 39.0
-#define INVENTORY_DEFAULT_BTN_Y 109.9
-
-#define INVENTORY_DEFAULT_TITLE_X 80.0
-#define INVENTORY_DEFAULT_TITLE_Y 106.0
-
-#define INVENTORY_DEFAULT_QTT_X 107.0
-#define INVENTORY_DEFAULT_QTT_Y 176.0
-
-#define INVENTORY_DEFAULT_MODEL_X 33.0
-#define INVENTORY_DEFAULT_MODEL_Y 113.0
-
-
-enum RENDERTYPE {
-	RENDERTYPE_BTN,
-	RENDERTYPE_MODEL,
-	RENDERTYPE_TITLE,
-	RENDERTYPE_QUANTITY
-}
-
-const Float:cstInv_renderOffset = 83.0;
-new PlayerText:txdInv_bg0[MAX_PLAYERS];
-new PlayerText:txdInv_bg1[MAX_PLAYERS];
-new PlayerText:txdInv_bg2[MAX_PLAYERS];
-
-new PlayerText:txdInv_Title[MAX_PLAYERS];
-new PlayerText:txdInv_Page[MAX_PLAYERS];
-
-new PlayerText:txdInv_render_btn[MAX_PLAYERS][INVENTORY_ROWLIMIT][INVENTORY_COLUMNLIMIT];
-new PlayerText:txdInv_render_model[MAX_PLAYERS][INVENTORY_ROWLIMIT][INVENTORY_COLUMNLIMIT];
-new PlayerText:txdInv_render_title[MAX_PLAYERS][INVENTORY_ROWLIMIT][INVENTORY_COLUMNLIMIT];
-new PlayerText:txdInv_render_quantity[MAX_PLAYERS][INVENTORY_ROWLIMIT][INVENTORY_COLUMNLIMIT];
-
-new gInv_control_selectedItem[MAX_PLAYERS];
-
-new PlayerText:txdInv_btnNEXT[MAX_PLAYERS];
-new PlayerText:txdInv_btnPREVIOUS[MAX_PLAYERS];
-new PlayerText:txdInv_btnUSE[MAX_PLAYERS];
-new PlayerText:txdInv_btnSELL[MAX_PLAYERS];
-new PlayerText:txdInv_btnDROP[MAX_PLAYERS];
-new PlayerText:txdInv_btnSEPARATE[MAX_PLAYERS];
-new PlayerText:txdInv_btnJOIN[MAX_PLAYERS];
-new PlayerText:txdInv_btnCLOSE[MAX_PLAYERS];
 
 
 /*
@@ -143,8 +91,9 @@ public GetPlayerInvItemQuantityEx(playerid,index) {
     new i = index / INVENTORY_COLUMNLIMIT;
     new j = index % INVENTORY_COLUMNLIMIT;
     if (i >= INVENTORY_ROWLIMIT || j >= INVENTORY_COLUMNLIMIT) return -1;
-	return PlayerTextDrawGetPreviewModel(playerid,txdInv_render_model[playerid][i][j]);
-
+	new quantity[64];
+	PlayerTextDrawGetString(playerid,txdInv_render_quantity[playerid][i][j],quantity,64);
+	return strval(quantity);
 }
 //Gets an item model id, by passing row and column. UNSAFE: No out of bounds check!
 forward GetPlayerInvModelid(playerid,row,column);
@@ -290,8 +239,8 @@ public OpenInventory(playerid) {
 		PlayerTextDrawShow(playerid, txdInv_btnPREVIOUS[playerid]);
 		PlayerTextDrawShow(playerid, txdInv_btnUSE[playerid]);
 		PlayerTextDrawShow(playerid, txdInv_btnSELL[playerid]);
+		PlayerTextDrawShow(playerid,txdInv_btnSEPARATE[playerid]);
 		PlayerTextDrawShow(playerid, txdInv_btnDROP[playerid]);
-		PlayerTextDrawShow(playerid, txdInv_btnSEPARATE[playerid]);
 		PlayerTextDrawShow(playerid, txdInv_btnJOIN[playerid]);
 		PlayerTextDrawShow(playerid, txdInv_Page[playerid]);
 		for(new i;i<INVENTORY_ROWLIMIT;i++) {
@@ -302,13 +251,15 @@ public OpenInventory(playerid) {
 				PlayerTextDrawShow(playerid, txdInv_render_title[playerid][i][j]);
 			}
 		}
+		SetPlayerInvPage(playerid,1);
 		SelectTextDraw(playerid, 0xFF0000FF);
 	}
 }
 forward CloseInventory(playerid);
 public CloseInventory(playerid) {
 	if(IsPlayerLoggedIn(playerid)&&IsPlayerInvOpen(playerid)) {
-		gInv_control_selectedItem[playerid]=-1;
+		SetPlayerInvSelectedItem(playerid,-1);
+		SetPlayerInvPage(playerid,0);
 		PlayerTextDrawSetString(playerid,txdInv_Title[playerid],"Nenhum item selecionado");
 		PlayerTextDrawHide(playerid, txdInv_bg0[playerid]);
 		PlayerTextDrawHide(playerid, txdInv_Title[playerid]);
@@ -334,6 +285,16 @@ public CloseInventory(playerid) {
 		CancelSelectTextDraw(playerid);
 	}
 }
+
+//Returns current open page. The inventory should be open.
+forward GetPlayerInvPage(playerid);
+public GetPlayerInvPage(playerid) {
+	if(IsPlayerInvOpen(playerid)) {
+		return gInv_control_currentPage[playerid];
+	}
+	return 0;
+}
+
 //Handles selected logic.
 hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
 	if(IsPlayerInvOpen(playerid)) {
@@ -347,7 +308,7 @@ hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
 						gInv_control_selectedItem[playerid]=i * INVENTORY_COLUMNLIMIT + j;
 						PlayerTextDrawColor(playerid,txdInv_render_btn[playerid][i][j],COLOR_AQUA);
 						PlayerTextDrawGetString(playerid,txdInv_render_title[playerid][i][j],msg,255);
-						format(msg,255,"Selecionado: ~b~~h~~h~~h~%dx~w~%s",GetPlayerInvItemQuantity(playerid,i,j),msg);
+						format(msg,255,"~b~~h~~h~~h~%dx~w~%s",GetPlayerInvItemQuantity(playerid,i,j),msg);
 						PlayerTextDrawSetString(playerid,txdInv_Title[playerid],msg);
 					}
 					else {
@@ -366,11 +327,46 @@ hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
 	if(playertextid==txdInv_btnCLOSE[playerid]&&IsPlayerInvOpen(playerid))  {
 		CloseInventory(playerid); 
 	}
+	return 1;
 }
-
+//Handles next page / previous page logic
+#include <YSI_Coding\y_hooks>
+hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
+	if(playertextid==txdInv_btnNEXT[playerid]||playertextid==txdInv_btnPREVIOUS[playerid]) {
+		PlayerTextDrawSetString(playerid,txdInv_Title[playerid],"Nenhum item selecionado");
+		SetPlayerInvSelectedItem(playerid,-1);
+		new currentPage;
+		currentPage = GetPlayerInvPage(playerid);
+		if(playertextid==txdInv_btnNEXT[playerid]) {
+			currentPage++;
+			if(currentPage>INVENTORY_MAXPAGES)currentPage=INVENTORY_MAXPAGES;
+			
+		}
+		else if(playertextid==txdInv_btnPREVIOUS[playerid]) {
+			currentPage--;
+			if(!currentPage)currentPage=1;
+		}
+		SetPlayerInvPage(playerid,currentPage);
+	}
+	return 1;
+}
+#include <YSI_Coding\y_hooks>
+// Handles action buttons
+hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
+	if(playertextid==txdInv_btnUSE[playerid] || playertextid==txdInv_btnCLOSE[playerid] || playertextid==txdInv_btnJOIN[playerid] || playertextid==txdInv_btnSELL[playerid] || playertextid==txdInv_btnSEPARATE[playerid]) {
+		new modelid,quantity,index;
+		modelid=GetPlayerInvSelectedItemEx(playerid);
+		index=GetPlayerInvSelectedItem(playerid);
+		quantity=GetPlayerInvItemQuantityEx(playerid,index);
+		SetPlayerInvSelectedItem(playerid,-1);
+		
+		if(playertextid==txdInv_btnUSE[playerid])OnPlayerInvAction(playerid,modelid,quantity,INVACTION_USE);
+	}
+	return 1;
+}
 hook OnPlayerConnect(playerid)
 {
-	gInv_control_selectedItem[playerid] = -1;
+	
 	txdInv_bg0[playerid] = CreatePlayerTextDraw(playerid, 37.000000, 85.000000, "LD_DUAL:white");
 	PlayerTextDrawFont(playerid, txdInv_bg0[playerid], 4);
 	PlayerTextDrawLetterSize(playerid, txdInv_bg0[playerid], 0.600000, 2.000000);
@@ -540,9 +536,8 @@ hook OnPlayerConnect(playerid)
 	PlayerTextDrawUseBox(playerid, txdInv_btnJOIN[playerid], 1);
 	PlayerTextDrawSetProportional(playerid, txdInv_btnJOIN[playerid], 1);
 	PlayerTextDrawSetSelectable(playerid, txdInv_btnJOIN[playerid], 1);
-	new msgMaxPages[255];
-	format(msgMaxPages,255,"Pagina 1/%d",INVENTORY_MAXPAGES);
-	txdInv_Page[playerid] = CreatePlayerTextDraw(playerid, 432.000000, 85.000000,msgMaxPages);
+
+	txdInv_Page[playerid] = CreatePlayerTextDraw(playerid, 432.000000, 85.000000,"Pagina 0/0");
 	PlayerTextDrawFont(playerid, txdInv_Page[playerid], 1);
 	PlayerTextDrawLetterSize(playerid, txdInv_Page[playerid], 0.600000, 2.000000);
 	PlayerTextDrawTextSize(playerid, txdInv_Page[playerid], 610.000000, 17.000000);
@@ -563,6 +558,7 @@ hook OnPlayerConnect(playerid)
 
 hook OnPlayerDisconnect(playerid, reason)
 {
+	gInv_control_currentPage[playerid]=0;
 	PlayerTextDrawDestroy(playerid, txdInv_bg0[playerid]);
 	PlayerTextDrawDestroy(playerid, txdInv_Title[playerid]);
 	PlayerTextDrawDestroy(playerid, txdInv_btnCLOSE[playerid]);
@@ -584,6 +580,11 @@ hook OnPlayerDisconnect(playerid, reason)
 			PlayerTextDrawDestroy(playerid, txdInv_render_title[playerid][i][j]);
 		}
 	}
+	return 1;
+}
+
+hook OnPlayerInvAction(playerid,modelid,quantity,actiontype) {
+	SendClientMessage(playerid,-1,"BEEP");
 	return 1;
 }
 

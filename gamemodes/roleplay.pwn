@@ -59,6 +59,7 @@ new MySQL:mysql;
 #include "modulos\jobs\headers10.pwn"
 #include "modulos\jobs\trashman\headers10a.pwn"
 #include "modulos\companies\headers11.pwn"
+#include "modulos\inventory\headers13.pwn"
 
 /*
 	Textdraws
@@ -348,8 +349,3 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
 /*
     Custom callbacks
                             */
-forward OnItemUsage(playerid,itemid,quantity);
-public OnItemUsage(playerid,itemid,quantity) {
-    if(!quantity) return 1;
-    return 1;
-}
