@@ -3,10 +3,15 @@ This textdraw does NOT follow the server standards.
 */
 
 
-
-#include "modulos\inventory\inventoryitems.pwn"
-#include "modulos\inventory\inventoryaction.pwn"
-#include "modulos\inventory\inventorycontrol.pwn"
+#include "modulos\players\inventory\inventoryitems.pwn"
+#include "modulos\players\inventory\inventorytable.pwn"
+#include "modulos\players\inventory\actions\dropAction.pwn"
+#include "modulos\players\inventory\actions\sellAction.pwn"
+#include "modulos\players\inventory\actions\joinAction.pwn"
+#include "modulos\players\inventory\actions\separateAction.pwn"
+#include "modulos\players\inventory\actions\useAction.pwn"
+#include "modulos\players\inventory\inventoryaction.pwn"
+#include "modulos\players\inventory\inventorycontrol.pwn"
 #include <YSI_Coding\y_hooks>
 
 
@@ -37,7 +42,16 @@ public InventoryRenderUpdateItemEx(playerid, index,newModel, const title[], cons
 	PlayerTextDrawShow(playerid, txdInv_render_model[playerid][i][j]);
     PlayerTextDrawSetString(playerid, txdInv_render_title[playerid][i][j], title);
     PlayerTextDrawSetString(playerid, txdInv_render_quantity[playerid][i][j], quantity);
-    return 1;
+	//If the item has 0 remaining uses, no need to display it. This shouldn't really happen tough.
+	if(!strval(quantity)&& newModel != ITEM_INVALID) {
+		printf("[inventory.pwn] WARN - %s[%d] was being updated with item id %d but with 0 quantity.It has been replaced with ITEM_INVALID",GetPlayerNameEx(playerid),playerid,newModel);
+		new index;
+		index=GetPlayerInvItemQuantityEx(playerid,newModel);
+		SetPlayerInvItem(playerid,index,ITEM_INVALID,0);
+		PlayerTextDrawSetPreviewModel(playerid, txdInv_render_model[playerid][i][j],ITEM_INVALID);
+		PrepareSavePlayerInventory(playerid);
+	}
+	return 1;
 }
 
 //Checks if player is currently with their inventory open or not.
@@ -51,7 +65,7 @@ forward DoesPlayerInvHaveItem(playerid,modelid);
 public DoesPlayerInvHaveItem(playerid,modelid) {
 	for(new i;i<INVENTORY_ROWLIMIT;i++) {
 		for(new j;j<INVENTORY_COLUMNLIMIT;j++) {
-			if(GetPlayerInvModelid(playerid,i,j)==modelid)return GetPlayerInvItemQuantity(playerid,i,j);
+			if(GetPlayerInvGuiModelid(playerid,i,j)==modelid)return GetPlayerGuiInvItemQuantity(playerid,i,j);
 		}
 	}
 	return 0;
@@ -61,7 +75,7 @@ forward DoesPlayerInvHaveItemEx(playerid,modelid);
 public DoesPlayerInvHaveItemEx(playerid,modelid) {
 	for(new i;i<INVENTORY_ROWLIMIT;i++) {
 		for(new j;j<INVENTORY_COLUMNLIMIT;j++) {
-			if(GetPlayerInvModelid(playerid,i,j)==modelid)return i * INVENTORY_COLUMNLIMIT + j;
+			if(GetPlayerInvGuiModelid(playerid,i,j)==modelid)return i * INVENTORY_COLUMNLIMIT + j;
 		}
 	}
 	return 0;
@@ -75,19 +89,19 @@ public GetPlayerInvSelectedItem(playerid) {
 //Returns current selected item modelid. If no item is selected, returns -1.
 forward GetPlayerInvSelectedItemEx(playerid);
 public GetPlayerInvSelectedItemEx(playerid) {
-	if(gInv_control_selectedItem[playerid] != -1)return GetPlayerInvModelidEx(playerid,gInv_control_selectedItem[playerid]);
+	if(gInv_control_selectedItem[playerid] != -1)return GetPlayerInvGuiModelidEx(playerid,gInv_control_selectedItem[playerid]);
 	return -1;
 }
 // Gets an item quantity, by passing row and column. UNSAFE: No out of bounds check!
-forward GetPlayerInvItemQuantity(playerid,row,column);
-public GetPlayerInvItemQuantity(playerid,row,column) {
+forward GetPlayerGuiInvItemQuantity(playerid,row,column);
+public GetPlayerGuiInvItemQuantity(playerid,row,column) {
 	new quantity[64];
 	PlayerTextDrawGetString(playerid,txdInv_render_quantity[playerid][row][column],quantity,64);
 	return strval(quantity);
 }
 //Gets an item quantity, by passing index. SAFE: Has out of bounds check and returns -1 if invalid.
-forward GetPlayerInvItemQuantityEx(playerid,index);
-public GetPlayerInvItemQuantityEx(playerid,index) {
+forward GetPlayerGuiInvItemQuantityEx(playerid,index);
+public GetPlayerGuiInvItemQuantityEx(playerid,index) {
     new i = index / INVENTORY_COLUMNLIMIT;
     new j = index % INVENTORY_COLUMNLIMIT;
     if (i >= INVENTORY_ROWLIMIT || j >= INVENTORY_COLUMNLIMIT) return -1;
@@ -96,13 +110,13 @@ public GetPlayerInvItemQuantityEx(playerid,index) {
 	return strval(quantity);
 }
 //Gets an item model id, by passing row and column. UNSAFE: No out of bounds check!
-forward GetPlayerInvModelid(playerid,row,column);
-public GetPlayerInvModelid(playerid,row,column) {
+forward GetPlayerInvGuiModelid(playerid,row,column);
+public GetPlayerInvGuiModelid(playerid,row,column) {
 	return PlayerTextDrawGetPreviewModel(playerid,txdInv_render_model[playerid][row][column]);
 }
 //Gets an item model id, by passing index. SAFE: Has out of bounds check. Retruns -1 if invalid.
-forward GetPlayerInvModelidEx(playerid,index);
-public GetPlayerInvModelidEx(playerid,index) {
+forward GetPlayerInvGuiModelidEx(playerid,index);
+public GetPlayerInvGuiModelidEx(playerid,index) {
     new i = index / INVENTORY_COLUMNLIMIT;
     new j = index % INVENTORY_COLUMNLIMIT;
     if (i >= INVENTORY_ROWLIMIT || j >= INVENTORY_COLUMNLIMIT) return -1;
@@ -115,12 +129,13 @@ public GetPlayerInvItemCount(playerid) {
 	if(IsPlayerInvOpen(playerid)) {
 		for(new i;i<INVENTORY_ROWLIMIT;i++) {
 			for(new j;j<INVENTORY_ROWLIMIT;j++) {
-				if(GetPlayerInvItemQuantity(playerid,i,j))itemAmount++;
+				if(GetPlayerGuiInvItemQuantity(playerid,i,j))itemAmount++;
 			}
 		}
 	}
 	return itemAmount;
 }
+
 
 
 /*
@@ -221,10 +236,8 @@ stock ApplyInvPropetiesPtr(playerid,&PlayerText:renderText,type) { // In pawn, &
 YCMD:inv(playerid,params[],help) {
 	SendClientMessage(playerid,-1,"OPEEEN");
 	OpenInventory(playerid);
-	InventoryRenderUpdateItemEx(playerid,0,33,GetItemNameString(33),"1");
-	InventoryRenderUpdateItemEx(playerid,1,34,GetItemNameString(34),"22");
-	InventoryRenderUpdateItemEx(playerid,2,ITEM_RESPEITO,GetItemNameString(ITEM_RESPEITO),"1");
-	InventoryRenderUpdateItemEx(playerid,3,ITEM_GASOLINA,GetItemNameString(ITEM_GASOLINA),"344");
+
+
 	return 1;
 }
 forward OpenInventory(playerid);
@@ -251,8 +264,29 @@ public OpenInventory(playerid) {
 				PlayerTextDrawShow(playerid, txdInv_render_title[playerid][i][j]);
 			}
 		}
+		new modelid,quantity[25];
+		for(new i;i<INVENTORY_SIZE;i++) {
+			modelid=gInventories[playerid][i][INVITEM_MODELID];
+			format(quantity,25,"%d",gInventories[playerid][i][INVITEM_QUANTITY]);
+			InventoryRenderUpdateItemEx(playerid,i,modelid,GetItemNameString(modelid),quantity);
+		}
 		SetPlayerInvPage(playerid,1);
+		SetPlayerInvSelectedItem(playerid,-1);
+		RefreshPlayerInv(playerid);
 		SelectTextDraw(playerid, 0xFF0000FF);
+	}
+}
+
+forward RefreshPlayerInv(playerid);
+public RefreshPlayerInv(playerid) {
+	new currentPage,slotPointer,modelid;
+	new quantity[5];
+	currentPage=GetPlayerInvPage(playerid);
+	for(new i = (currentPage*INVENTORY_SIZE)-INVENTORY_SIZE;i<currentPage*INVENTORY_SIZE;i++) {
+		modelid=gInventories[playerid][i][INVITEM_MODELID];
+		format(quantity,25,"%d",gInventories[playerid][i][INVITEM_QUANTITY]);
+		InventoryRenderUpdateItemEx(playerid,slotPointer,modelid,GetItemNameString(modelid),quantity);
+		slotPointer++;
 	}
 }
 forward CloseInventory(playerid);
@@ -302,13 +336,13 @@ hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
 		for(new i;i<INVENTORY_ROWLIMIT;i++) {
 			for(new j;j<INVENTORY_COLUMNLIMIT;j++) {
 				PlayerTextDrawHide(playerid,txdInv_render_btn[playerid][i][j]);
-				if(GetPlayerInvItemQuantity(playerid,i,j))PlayerTextDrawColor(playerid,txdInv_render_btn[playerid][i][j],COLOR_GRAY);
+				if(GetPlayerGuiInvItemQuantity(playerid,i,j))PlayerTextDrawColor(playerid,txdInv_render_btn[playerid][i][j],COLOR_GRAY);
 				if(playertextid==txdInv_render_btn[playerid][i][j]) {
-					if(GetPlayerInvItemQuantity(playerid,i,j)) {
+					if(GetPlayerGuiInvItemQuantity(playerid,i,j)) {
 						gInv_control_selectedItem[playerid]=i * INVENTORY_COLUMNLIMIT + j;
 						PlayerTextDrawColor(playerid,txdInv_render_btn[playerid][i][j],COLOR_AQUA);
 						PlayerTextDrawGetString(playerid,txdInv_render_title[playerid][i][j],msg,255);
-						format(msg,255,"~b~~h~~h~~h~%dx~w~%s",GetPlayerInvItemQuantity(playerid,i,j),msg);
+						format(msg,255,"~b~~h~~h~~h~%dx~w~%s",GetPlayerGuiInvItemQuantity(playerid,i,j),msg);
 						PlayerTextDrawSetString(playerid,txdInv_Title[playerid],msg);
 					}
 					else {
@@ -324,9 +358,12 @@ hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
 // Handles inventory close logic
 #include <YSI_Coding\y_hooks>
 hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
-	if(playertextid==txdInv_btnCLOSE[playerid]&&IsPlayerInvOpen(playerid))  {
-		CloseInventory(playerid); 
-	}
+	if(playertextid==txdInv_btnCLOSE[playerid]&&IsPlayerInvOpen(playerid))CloseInventory(playerid); 
+	if(playertextid==INVALID_PLAYER_TEXT_DRAW && IsPlayerInvOpen(playerid))CloseInventory(playerid);
+	return 1;
+}
+hook OnPlayerClickTextDraw(playerid, Text:clickedid) {
+	if(IsPlayerInvOpen(playerid&&clickedid==INVALID_TEXT_DRAW))CloseInventory(playerid);
 	return 1;
 }
 //Handles next page / previous page logic
@@ -341,12 +378,14 @@ hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
 			currentPage++;
 			if(currentPage>INVENTORY_MAXPAGES)currentPage=INVENTORY_MAXPAGES;
 			
+			
 		}
 		else if(playertextid==txdInv_btnPREVIOUS[playerid]) {
 			currentPage--;
 			if(!currentPage)currentPage=1;
 		}
 		SetPlayerInvPage(playerid,currentPage);
+		RefreshPlayerInv(playerid);
 	}
 	return 1;
 }
@@ -357,10 +396,12 @@ hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
 		new modelid,quantity,index;
 		modelid=GetPlayerInvSelectedItemEx(playerid);
 		index=GetPlayerInvSelectedItem(playerid);
-		quantity=GetPlayerInvItemQuantityEx(playerid,index);
-		SetPlayerInvSelectedItem(playerid,-1);
-		
+		quantity=GetPlayerGuiInvItemQuantityEx(playerid,index);
 		if(playertextid==txdInv_btnUSE[playerid])OnPlayerInvAction(playerid,modelid,quantity,INVACTION_USE);
+		if(playertextid==txdInv_btnSELL[playerid])OnPlayerInvAction(playerid,modelid,quantity,INVACTION_SELL);
+		if(playertextid==txdInv_btnDROP[playerid])OnPlayerInvAction(playerid,modelid,quantity,INVACTION_DROP);
+		if(playertextid==txdInv_btnJOIN[playerid])OnPlayerInvAction(playerid,modelid,quantity,INVACTION_JOIN);
+		if(playertextid==txdInv_btnSEPARATE[playerid])OnPlayerInvAction(playerid,modelid,quantity,INVACTION_SEPARATE);
 	}
 	return 1;
 }
@@ -583,9 +624,5 @@ hook OnPlayerDisconnect(playerid, reason)
 	return 1;
 }
 
-hook OnPlayerInvAction(playerid,modelid,quantity,actiontype) {
-	SendClientMessage(playerid,-1,"BEEP");
-	return 1;
-}
 
 

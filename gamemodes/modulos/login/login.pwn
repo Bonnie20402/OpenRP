@@ -174,6 +174,7 @@ public OnPlayerAuth(playerid) {
     HidePlayerTxdLoading(playerid);
     PreparePlayerSpawn(playerid);
     PrepareLoadPlayerBankAccount(playerid);
+    PrepareLoadPlayerInventory(playerid);
     return 1;
 }
 /*

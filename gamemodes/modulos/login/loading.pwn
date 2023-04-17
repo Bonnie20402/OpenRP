@@ -82,7 +82,7 @@ public AddLoadingProgress(playerid) {
         currentProgress=GetPlayerTxdLoadingProgress(playerid);
         if(currentProgress < 100.0) {
             new Float:newProgress;
-            newProgress = currentProgress + 0.1;
+            newProgress = currentProgress + 0.5;
             SetPlayerTxdLoadingProgress(playerid,newProgress);
             return 1;
         }

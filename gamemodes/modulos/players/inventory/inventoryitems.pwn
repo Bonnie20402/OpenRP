@@ -14,6 +14,7 @@
 
 
 stock GetItemNameString(modelid) {
+	
     new itemName[64];
 	switch(modelid) {
 		case ITEM_INVALID:
@@ -23,7 +24,7 @@ stock GetItemNameString(modelid) {
 		case ITEM_DINHEIRO:
 			format(itemName,64,"Dinheiro");
 		case ITEM_GASOLINA:
-			format(itemName,64,"Gasolina");
+			format(itemName,64,"Commbustivel");
 		case ITEM_MEDKIT:
 			format(itemName,64,"Medkit");
 		case ITEM_CAIXACOMUM:

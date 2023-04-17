@@ -1,9 +1,5 @@
 
-
-forward OnPlayerItemUse(playerid,modelid,quantity);
-public OnPlayerItemUse(playerid,modelid,quantity) {
-    return 1;
-}
+#include <YSI_Coding\y_hooks>
 public OnPlayerInvAction(playerid,modelid,quantity,actiontype) {
 	if(modelid==ITEM_INVALID)return 1;
     if(!quantity) return 1;
@@ -20,7 +16,12 @@ public OnPlayerInvAction(playerid,modelid,quantity,actiontype) {
         OnPlayerInvActionSeparate(playerid,modelid,quantity);
     }
     if(actiontype==INVACTION_JOIN) {
-        OnPlayerInvActionSeparate(playerid,modelid,quantity)
+        OnPlayerInvActionJoin(playerid,modelid,quantity);
     }
 	return 1;
 }
+
+
+
+
+

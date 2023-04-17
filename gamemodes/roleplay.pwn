@@ -33,6 +33,7 @@
 #include <streamer>
 #include <weapon-config.inc>
 #include <crashdetect>
+//WARN if YSK gives error function different from prototype, just comment that function out.
 #include <YSF>
 #include <YSI_Visual\y_commands>
 #include "modulos\util\datetime.inc"
@@ -59,7 +60,7 @@ new MySQL:mysql;
 #include "modulos\jobs\headers10.pwn"
 #include "modulos\jobs\trashman\headers10a.pwn"
 #include "modulos\companies\headers11.pwn"
-#include "modulos\inventory\headers13.pwn"
+#include "modulos\players\inventory\headers13.pwn"
 
 /*
 	Textdraws
@@ -80,7 +81,7 @@ new MySQL:mysql;
 #include "modulos\players\playerinfo.pwn"
 #include "modulos\players\playerspawn.pwn"
 #include "modulos\players\bank\playerbank.pwn"
-#include "modulos\inventory\inventory.pwn"
+#include "modulos\players\inventory\inventory.pwn"
 
 
 /*

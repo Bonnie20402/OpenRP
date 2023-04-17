@@ -21,7 +21,7 @@ enum ITEMDATA {
     ITEMDATA_MODELID,
     ITEMDATA_QUANTITY
 }
-#define INVENTORY_MAXPAGES 5
+#define INVENTORY_MAXPAGES 4
 #define INVENTORY_ROWLIMIT 3 // from left to right
 #define INVENTORY_COLUMNLIMIT 6 // from top to bottom
 #define INVENTORY_SIZE INVENTORY_ROWLIMIT*INVENTORY_COLUMNLIMIT
@@ -52,3 +52,8 @@ new PlayerText:txdInv_btnDROP[MAX_PLAYERS];
 new PlayerText:txdInv_btnSEPARATE[MAX_PLAYERS];
 new PlayerText:txdInv_btnJOIN[MAX_PLAYERS];
 new PlayerText:txdInv_btnCLOSE[MAX_PLAYERS];
+
+/*
+    INVENTORYtable.pwn
+                    */
+forward SeparatePlayerInvItem(playerid,modelid,reduceQuantity);
