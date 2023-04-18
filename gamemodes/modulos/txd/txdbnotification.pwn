@@ -2,7 +2,7 @@
 /*
     Textdraw name: Progress
     Description: Shows a message with a progress bar in the bottom left of the screen
-    Adapted for mobile: Yes
+    Adapted for mobile: NO, BROKEN TODO fix for mobile
     Author: Bonnie20402
     Open-Source: Yes
                                                                                             */

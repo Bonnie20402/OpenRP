@@ -68,6 +68,7 @@ new MySQL:mysql;
 #include "modulos\txd\txdprogress.pwn"
 #include "modulos\txd\txdbnotification.pwn"
 #include "modulos\txd\txdloading.pwn"
+#include "modulos\txd\txdinvdrop.pwn"
 
 /*
 	LOGIN
@@ -151,6 +152,7 @@ public dbInit() {
 	PrepareCompaniesTable(); // Loads companies
 
 	JobsInit();
+	PlayerInvDropInit();
 	return 1;
 }
 public OnGameModeExit()

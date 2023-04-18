@@ -34,6 +34,7 @@ enum ITEMDATA {
 #define INVENTORY_DEFAULT_QTT_Y 176.0
 #define INVENTORY_DEFAULT_MODEL_X 33.0
 #define INVENTORY_DEFAULT_MODEL_Y 113.0
+#define INVENTORY_INVALID_SLOT -1
 const Float:cstInv_renderOffset = 83.0;
 new PlayerText:txdInv_bg0[MAX_PLAYERS];
 new PlayerText:txdInv_bg1[MAX_PLAYERS];
