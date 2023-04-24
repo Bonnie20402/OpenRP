@@ -81,14 +81,14 @@ public DoesPlayerInvHaveItemEx(playerid,modelid) {
 	return 0;
 }
 //Returns current selected item 1D index. If no item is selected, returns -1.
-forward GetPlayerInvSelectedItem(playerid);
-public GetPlayerInvSelectedItem(playerid) {
+forward GetPlayerInvSelectedItemIndex(playerid);
+public GetPlayerInvSelectedItemIndex(playerid) {
 	if(!IsPlayerConnected(playerid))return -1;
-	return gInv_control_selectedItem[playerid];
+	return gInv_control_selectedItem[playerid]*gInv_control_currentPage[playerid];
 }
 //Returns current selected item modelid. If no item is selected, returns -1.
-forward GetPlayerInvSelectedItemEx(playerid);
-public GetPlayerInvSelectedItemEx(playerid) {
+forward GetPlayerInvSelectedItemModelId(playerid);
+public GetPlayerInvSelectedItemModelId(playerid) {
 	if(gInv_control_selectedItem[playerid] != -1)return GetPlayerInvGuiModelidEx(playerid,gInv_control_selectedItem[playerid]);
 	return -1;
 }
@@ -276,7 +276,7 @@ public OpenInventory(playerid) {
 		SelectTextDraw(playerid, 0xFF0000FF);
 	}
 }
-
+//Refreshes the player's GUI inventory. Does NOT save the inventory.
 forward RefreshPlayerInv(playerid);
 public RefreshPlayerInv(playerid) {
 	new currentPage,slotPointer,modelid;
@@ -392,14 +392,16 @@ hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
 #include <YSI_Coding\y_hooks>
 // Handles action buttons
 hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
-	if(playertextid==txdInv_btnUSE[playerid] || playertextid==txdInv_btnCLOSE[playerid] || playertextid==txdInv_btnJOIN[playerid] || playertextid==txdInv_btnSELL[playerid] || playertextid==txdInv_btnSEPARATE[playerid]) {
+	if(playertextid==txdInv_btnUSE[playerid] || playertextid==txdInv_btnCLOSE[playerid]\
+	 || playertextid==txdInv_btnJOIN[playerid] || playertextid==txdInv_btnSELL[playerid] || \
+	 playertextid==txdInv_btnSEPARATE[playerid] || playertextid==txdInv_btnDROP[playerid]) {
 		new modelid,quantity,index;
-		modelid=GetPlayerInvSelectedItemEx(playerid);
-		index=GetPlayerInvSelectedItem(playerid);
+		modelid=GetPlayerInvSelectedItemModelId(playerid);
+		index=GetPlayerInvSelectedItemIndex(playerid);
 		quantity=GetPlayerGuiInvItemQuantityEx(playerid,index);
 		if(playertextid==txdInv_btnUSE[playerid])OnPlayerInvAction(playerid,modelid,quantity,INVACTION_USE);
 		if(playertextid==txdInv_btnSELL[playerid])OnPlayerInvAction(playerid,modelid,quantity,INVACTION_SELL);
-		if(playertextid==txdInv_btnDROP[playerid])OnPlayerInvAction(playerid,modelid,quantity,INVACTION_DROP);
+		if(playertextid==txdInv_btnDROP[playerid]) OnPlayerInvAction(playerid,modelid,quantity,INVACTION_DROP);
 		if(playertextid==txdInv_btnJOIN[playerid])OnPlayerInvAction(playerid,modelid,quantity,INVACTION_JOIN);
 		if(playertextid==txdInv_btnSEPARATE[playerid])OnPlayerInvAction(playerid,modelid,quantity,INVACTION_SEPARATE);
 	}

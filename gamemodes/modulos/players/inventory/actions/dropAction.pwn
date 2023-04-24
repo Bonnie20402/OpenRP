@@ -91,14 +91,12 @@ public ClearPlayerInvDropData(index) {
                 index=GetPlayerInvDropIndex(i);
                 areaid=GetPlayerInvDropAreaId(index);
                 if(areaid==gInv_control_droppedItens[index][INVDROP_SPHEREID])  {
-                    SendClientMessagef(i,-1,"Connected MATCH %d Areaid: %d",i,areaid);
                     HidePlayerTxdInvDrop(i);
                 }
             }
         }
         DestroyDynamicArea(gInv_control_droppedItens[index][INVDROP_SPHEREID]);
         gInv_control_droppedItens[index][INVDROP_SPHEREID] = INVENTORY_INVALID_AREAID;
-        SendClientMessageToAllf(-1,"valido e destruido %d",gInv_control_droppedItens[index][INVDROP_PICKUPID]);
         DestroyDynamicPickup(gInv_control_droppedItens[index][INVDROP_PICKUPID]);
         gInv_control_droppedItens[index][INVDROP_PICKUPID] = INVENTORY_INVALID_DROP;
         for(new i;i<MAX_PLAYERS;i++)Streamer_Update(i);
@@ -152,15 +150,9 @@ public GetPlayerInvDropIndex(playerid) {
     return INVENTORY_INVALID_AREAID;
 }
 
-YCMD:itemdrop(playerid,params[],help) {
-    DropPlayerInvItem(playerid,ITEM_DINHEIRO,500);
-    SendClientMessage(playerid,-1,"BEEP!");
-    return 1;
-}
 // Pickup item logic TODO fix it
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
     if(HOLDING(KEY_YES)) {
-        SendClientMessagef(playerid,-1,"AREAID %d",GetPlayerInvDropIndex(playerid));
         if(GetPlayerInvDropIndex(playerid) != INVENTORY_INVALID_AREAID) {
             new pickupid,index,quantity,modelid;
             index=GetPlayerInvDropIndex(playerid);   
@@ -169,6 +161,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
             ClearPlayerInvDropData(index);
             GivePlayerInvItem(playerid,modelid,quantity);
             SendClientMessagef(playerid,-1,"Apanhas-te %dx%s!",quantity,GetItemNameString(modelid));
+            PrepareSavePlayerInventory(playerid);
         }
     }
     return 1;
@@ -184,7 +177,7 @@ hook OnPlayerEnterDynamicArea(p, a) {
         index=GetPlayerInvDropIndex(playerid);   
         quantity=GetPlayerInvDropQuantity(index);
         modelid=GetPlayerInvDropModelid(index);
-        format(text,64,"Aperte Y para pegar~n~%s",GetItemNameString(modelid));
+        format(text,64,"Aperte Y para pegar~n~%s de %s",GetItemNameString(modelid),gInv_control_droppedItens[index][INVDROP_AUTHOR]);
         ShowPlayerTxdInvDrop(playerid,text,modelid,quantity);  
     }
 }
@@ -195,5 +188,15 @@ hook OnPlayerLeaveDynamicArea(playerid, areaid) {
 }
 forward OnPlayerInvActionDrop(playerid,modelid,quantity);
 public OnPlayerInvActionDrop(playerid,modelid,quantity) {
+    new index;
+    index=GetPlayerInvSelectedItemIndex(playerid);
+    SetPlayerInvItem(playerid,index,ITEM_INVALID,0);
+    DropPlayerInvItem(playerid,modelid,quantity);
+    new msg[255];
+    format(msg,255,"Descartou %dx%s para o chao.",quantity,GetItemNameString(modelid));
+    ShowPlayerDialog(playerid,INVDROPDLG_DROP,DIALOG_STYLE_MSGBOX,"Aviso",msg,"OK","");
+    SetPlayerInvSelectedItem(playerid,-1);
+    RefreshPlayerInv(playerid);
+    PrepareSavePlayerInventory(playerid);
     return 1;
 }

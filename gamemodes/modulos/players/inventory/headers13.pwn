@@ -57,4 +57,4 @@ new PlayerText:txdInv_btnCLOSE[MAX_PLAYERS];
 /*
     INVENTORYtable.pwn
                     */
-forward SeparatePlayerInvItem(playerid,modelid,reduceQuantity);
+forward SeparatePlayerInvItem(playerid,index,reduceQuantity);

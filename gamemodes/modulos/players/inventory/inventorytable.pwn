@@ -277,26 +277,21 @@ public OrganizePlayerInv(playerid) {
             if(gInventories[playerid][i][INVITEM_MODELID]==gInventories[playerid][j][INVITEM_MODELID] &&  i != j) {
                 organizedItems++;
                 newQuantity=gInventories[playerid][j][INVITEM_QUANTITY];
-                gInventories[playerid][j][INVITEM_MODELID]= ITEM_INVALID;
-                gInventories[playerid][j][INVITEM_QUANTITY] = 0;
-                gInventories[playerid][i][INVITEM_QUANTITY]+=newQuantity;
+                SetPlayerInvItem(playerid,j,ITEM_INVALID,0);
+                SetPlayerInvItem(playerid,i,gInventories[playerid][i][INVITEM_QUANTITY]+newQuantity);
             }
         }
     }
+    RefreshPlayerInv(playerid);
     return 1;
 }
 
 
-//Checks if a player has said item by passing modelid. Returns the quantity. Always returns 0 if not found or ITEM_INVALID is passed as modelid.
-forward GetPlayerInvItemQuantity(playerid,modelid);
-public GetPlayerInvItemQuantity(playerid,modelid) {
-    if(modelid==ITEM_INVALID) return 0;
-    for(new i;i<INVENTORY_REALSIZE;i++) {
-        if(gInventories[playerid][i][INVITEM_MODELID]==modelid) {
-            return gInventories[playerid][i][INVITEM_QUANTITY];
-        }
-    }
-    return 0;
+//Checks if a player has said item by passing index. Returns the quantity. Always returns ITEM_INVALID if ITEM_INVALID is passed as modelid.
+forward GetPlayerInvItemQuantity(playerid,index);
+public GetPlayerInvItemQuantity(playerid,index) {
+    if(GetPlayerInvModelid(playerid,index)==ITEM_INVALID) return ITEM_INVALID;
+    return gInventories[playerid][index][INVITEM_QUANTITY];
 }
 //Returns the index of the nearest empty slot. Returns -1 if inventory is full
 forward GetPlayerInvEmptySlot(playerid);
@@ -335,12 +330,16 @@ public GetPlayerInvModelid(playerid,index) {
     Doesn't save to SQL.
  */
 
-public SeparatePlayerInvItem(playerid,modelid,reduceQuantity) {
-    new currentQuantity,index,emptySlot;
-    currentQuantity=GetPlayerInvItemQuantity(playerid,modelid);
+public SeparatePlayerInvItem(playerid,index,reduceQuantity) {
+
+    new currentQuantity,emptySlot,modelid;
+    SendClientMessagef(playerid,-1,"chamado IND %d RQ %d",index,reduceQuantity);
+    currentQuantity=GetPlayerInvItemQuantity(playerid,index);
+    SendClientMessage(playerid,-1,"chamado2");
+    modelid=GetPlayerInvModelid(playerid,index);
+    SendClientMessagef(playerid,-1,"CQ %d SQ %d",currentQuantity,reduceQuantity);
     if(reduceQuantity >= currentQuantity)return 0;
     emptySlot=GetPlayerInvEmptySlot(playerid);
-    index = GetPlayerInvItemQuantityEx(playerid,modelid);
     if(currentQuantity) {
         currentQuantity-=reduceQuantity;
         SetPlayerInvItem(playerid,index,modelid,currentQuantity);

@@ -7,6 +7,7 @@ public OnPlayerInvAction(playerid,modelid,quantity,actiontype) {
         OnPlayerInvActionUse(playerid,modelid,quantity);
 	}
     if(actiontype==INVACTION_DROP) {
+        SendClientMessagef(playerid,-1,"Drop phase0 modelid %d qtt %d",modelid,quantity);
         OnPlayerInvActionDrop(playerid,modelid,quantity);
     }
     if(actiontype==INVACTION_SELL) {
