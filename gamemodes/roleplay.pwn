@@ -18,6 +18,9 @@
 #pragma warning disable 214
 #pragma warning disable 215
 
+#define CGEN_MEMORY 60000
+
+
 
 #define DATE "02/04/2023"
 #define VERSION "0.0.2c"
@@ -36,6 +39,10 @@
 //WARN if YSK gives error function different from prototype, just comment that function out.
 #include <YSF>
 #include <YSI_Visual\y_commands>
+#include <YSI_Visual/y_dialog>
+#include <YSI_Coding/y_inline>
+
+
 #include "modulos\util\datetime.inc"
 #include "modulos\util\colors.inc" 
 #include "modulos\util\uteis.pwn"

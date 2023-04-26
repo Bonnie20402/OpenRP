@@ -333,11 +333,9 @@ public GetPlayerInvModelid(playerid,index) {
 public SeparatePlayerInvItem(playerid,index,reduceQuantity) {
 
     new currentQuantity,emptySlot,modelid;
-    SendClientMessagef(playerid,-1,"chamado IND %d RQ %d",index,reduceQuantity);
     currentQuantity=GetPlayerInvItemQuantity(playerid,index);
     SendClientMessage(playerid,-1,"chamado2");
     modelid=GetPlayerInvModelid(playerid,index);
-    SendClientMessagef(playerid,-1,"CQ %d SQ %d",currentQuantity,reduceQuantity);
     if(reduceQuantity >= currentQuantity)return 0;
     emptySlot=GetPlayerInvEmptySlot(playerid);
     if(currentQuantity) {

@@ -67,8 +67,16 @@ public IsPlayerBankAccountLoaded(playerid) {
     return 1;
 }
 
+
+
 public GetPlayerBankAccount(playerid) {
     return gBankAccount[playerid];
+}
+
+public SetPlayerBankAccountMoney(playerid,money) {
+    gBankAccount[playerid]=money;
+    PrepareSavePlayerBankAccount(playerid);
+    return 1;
 }
 
 

@@ -78,12 +78,3 @@ hook OnDialogResponse(playerid,dialogid,response,listitem,inputtext[]) {
     }
     return 1;
 }
-YCMD:banco(playerid,params[],help) {
-    ShowPlayerBankAccountMenu(playerid,PLAYERBANKDIALOG_MAIN);
-    return 1;
-}
-YCMD:rbanco(playerid,params[],help) {
-    gBankAccount[playerid]=0;
-    ResetPlayerMoney(playerid);
-    return 1;
-}

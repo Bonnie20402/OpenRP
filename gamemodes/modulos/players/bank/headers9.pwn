@@ -29,6 +29,6 @@ forward PrepareLoadPlayerBankAccount(playerid);
 forward FinishLoadPlayerBankAccount(playerid);
 forward PrepareSavePlayerBankAccount(playerid);
 forward FinishSavePlayerankAccount(playerid,const username[]);
-
+forward SetPlayerBankAccountMoney(playerid,money);
 forward IsPlayerBankAccountLoaded(playerid);
 forward GetPlayerBankAccount(playerid);
