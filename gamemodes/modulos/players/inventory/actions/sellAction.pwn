@@ -103,14 +103,11 @@ public OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inp
                     format(outputMessage,255,"%s conta bancaria.\nO montante foi transferido para a sua conta bancaria.",outputMessage);
                     SetPlayerBankAccountMoney(fromid,GetPlayerBankAccount(fromid)+price);
                     SetPlayerBankAccountMoney(targetid,subtractMoney);
-                    PrepareSavePlayerBankAccount(fromid);
-                    PrepareSavePlayerBankAccount(targetid);
                 }
                 SetPlayerInvItem(fromid,gInv_control_sellHandler[fromid][SELLHANDLER_INDEX],ITEM_INVALID,0);
                 GivePlayerInvItem(targetid,modelid,quantity);
                 Dialog_Show(fromid,DIALOG_STYLE_MSGBOX,"Concluido",outputMessage,"OK","");
                 Dialog_Show(targetid,DIALOG_STYLE_MSGBOX,"Concluido","Aceitaste a oferta e os itens foram adicionados ao teu inventario.","OK","");
-                ResetPlayerOffer(fromid);
                 PrepareSavePlayerInventory(fromid);
                 PrepareSavePlayerInventory(targetid);
                 RefreshPlayerInv(fromid);

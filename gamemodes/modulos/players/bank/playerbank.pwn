@@ -73,6 +73,8 @@ public GetPlayerBankAccount(playerid) {
     return gBankAccount[playerid];
 }
 
+
+// Sets player bank account money. Saves to MYSQL.
 public SetPlayerBankAccountMoney(playerid,money) {
     gBankAccount[playerid]=money;
     PrepareSavePlayerBankAccount(playerid);
