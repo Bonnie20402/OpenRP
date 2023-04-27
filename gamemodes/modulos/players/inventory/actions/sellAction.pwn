@@ -43,6 +43,7 @@ public OnPlayerInvActionSell(playerid,modelid,quantity) {
     inline const NoPlayersNearbyResponse(response,listitem,String:inputtext[]) {
         #pragma unused listitem
         if(response)return 1;
+        //TODO Open the server market
         else return Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Ups!","O mercado ainda não existe. Fica atento ás novidades no discord!","OK","");
     }
 
@@ -53,7 +54,7 @@ public OnPlayerInvActionSell(playerid,modelid,quantity) {
             GetPlayerPos(i,x,y,z);
             if(GetPlayerDistanceToPointEx(playerid,x,y,z)<=INVSELL_DISTANCE) {
                 qtt++;
-                format(msg,1024,"%s%s\t%d\n",msg,GetPlayerNameEx(i),0); // TODO repplacre 500 level placeholder with player level 
+                format(msg,1024,"%s%s\t%d\n",msg,GetPlayerNameEx(i),0); // TODO Replace level placeholder with actual player level
             }
         }
         if(qtt)  {
@@ -69,13 +70,11 @@ public OnPlayerInvActionSell(playerid,modelid,quantity) {
 }
 
 // Price input and validation logic. Uses ysi's inline libary.
-// TODO complete this shit
 public OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inputtext[]) {
     // Offer cancel logic
     inline const offerCancelResponse(response,listitem,string:cancelText[]) {
         #pragma unused listitem,cancelText,response
         gInv_control_sellHandler[playerid][SELLHANDLER_WAITINGREPLY] = 0;
-        SendClientMessage(playerid,-1,"A tua oferta foi cancelada!");
         Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Tudo feito","A tua oferta foi cancelada.\nO jogador já não poderá aceitá-la.","OK");
         ResetPlayerOffer(playerid);
     }
@@ -101,7 +100,6 @@ public OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inp
                     format(outputMessage,255,"%s dinheiro em maos.\nO dinheiro foi parar em suas maos.",outputMessage);
                 }
                 else if(chosenOption) { // Chosen option is bank account.
-                    //TODO fix this. Money is not working
                     format(outputMessage,255,"%s conta bancaria.\nO montante foi transferido para a sua conta bancaria.",outputMessage);
                     SetPlayerBankAccountMoney(fromid,GetPlayerBankAccount(fromid)+price);
                     SetPlayerBankAccountMoney(targetid,subtractMoney);
@@ -219,7 +217,6 @@ stock GetPlayerOfferFromID(targetid) {
 
 //Resets a offerman offer.
 stock ResetPlayerOffer(playerid) {
-    SendClientMessage(playerid,-1,"Oferta foi expirada.");
     gInv_control_sellHandler[playerid][SELLHANDLER_INDEX] = -1;
     gInv_control_sellHandler[playerid][SELLHANDLER_MODELID] = ITEM_INVALID;
     gInv_control_sellHandler[playerid][SELLHANDLER_QUANTITY] = 0;
