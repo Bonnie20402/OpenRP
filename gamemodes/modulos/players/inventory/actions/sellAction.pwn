@@ -82,37 +82,43 @@ public OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inp
     inline const offerConcludePaymentTypeSet(targetid,dlgid,response,listitem,String:paymentText[]) {
         new fromid=GetPlayerOfferFromID(targetid);
         if(response) {
-            new currentMoney,price;
-            SendClientMessageToAllf(-1,"listitem: %d",listitem);
-            if(fromid==INVALID_PLAYER_ID)Dialog_Show(targetid,DIALOG_STYLE_MSGBOX,"Ups!","Parece que a oferta expirou.","OK","");
-            if(!listitem) currentMoney = GetPlayerMoney(targetid); // Hand money
-            else currentMoney = GetPlayerBankAccount(targetid); // Bank account money
+            if(fromid==INVALID_PLAYER_ID) return Dialog_Show(targetid,DIALOG_STYLE_MSGBOX,"Ups!","Parece que a oferta expirou.","OK","");
+            new currentMoney,price,chosenOption;
+            chosenOption=listitem;
+            price=gInv_control_sellHandler[fromid][SELLHANDLER_PRICE];
+            if(!chosenOption) currentMoney = GetPlayerMoney(targetid); // Hand money
+            else if(chosenOption) currentMoney = GetPlayerBankAccount(targetid); // Bank account money
             SendClientMessageToAllf(-1,"currentMons: %d",currentMoney);
-            if(currentMoney-price>0) {
-                new modelid,quantity;
+            new subtractMoney=currentMoney-price;
+            SendClientMessageToAllf(-1,"subtractMons: %d",subtractMoney);
+            if(subtractMoney>=0) {
+                new modelid,quantity,outputMessage[255];
+                format(outputMessage,255,"A oferta foi aceite.\nO jogador pagou via ");
                 modelid=gInv_control_sellHandler[fromid][SELLHANDLER_MODELID];
                 quantity=gInv_control_sellHandler[fromid][SELLHANDLER_QUANTITY];
-                currentMoney-=price;
-                if(!listitem) { // Chosen option is by hand money
+                if(!chosenOption) { // Chosen option is by hand money
                     GivePlayerMoney(fromid,price);
                     GivePlayerMoney(targetid,-price);
+                    format(outputMessage,255,"%s dinheiro em maos.\nO dinheiro foi parar em suas maos.",outputMessage);
                 }
-                else { // Chosen option is bank account.
-                    SendClientMessageToAll(-1,"Via dois");
+                else if(chosenOption) { // Chosen option is bank account.
+                    //TODO fix this. Money is not working
+                    format(outputMessage,255,"%s conta bancaria.\nO montante foi transferido para a sua conta bancaria.",outputMessage);
                     SetPlayerBankAccountMoney(fromid,GetPlayerBankAccount(fromid)+price);
-                    SetPlayerBankAccountMoney(targetid,currentMoney-price);
+                    SetPlayerBankAccountMoney(targetid,subtractMoney);
                     PrepareSavePlayerBankAccount(fromid);
                     PrepareSavePlayerBankAccount(targetid);
                 }
                 SetPlayerInvItem(fromid,gInv_control_sellHandler[fromid][SELLHANDLER_INDEX],ITEM_INVALID,0);
                 GivePlayerInvItem(targetid,modelid,quantity);
-                Dialog_Show(fromid,DIALOG_STYLE_MSGBOX,"Concluido","O jogador aceitou a tua oferta!","OK","");
-                Dialog_Show(targetid,DIALOG_STYLE_MSGBOX,"Concluido","Aceitaste a oferta e os itens foram adicionados ao teu inventario","OK","");
+                Dialog_Show(fromid,DIALOG_STYLE_MSGBOX,"Concluido",outputMessage,"OK","");
+                Dialog_Show(targetid,DIALOG_STYLE_MSGBOX,"Concluido","Aceitaste a oferta e os itens foram adicionados ao teu inventario.","OK","");
+                ResetPlayerOffer(fromid);
                 PrepareSavePlayerInventory(fromid);
                 PrepareSavePlayerInventory(targetid);
                 RefreshPlayerInv(fromid);
                 RefreshPlayerInv(targetid);
-                ResetPlayerOffer(fromid);
+                
             }
             else {
                 Dialog_Show(fromid,DIALOG_STYLE_MSGBOX,"Ups!","Parece que o jogador não tem dinheiro suficiente.\nA oferta foi cancelada.","OK","");
@@ -138,8 +144,11 @@ public OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inp
             Dialog_Show(targetid,DIALOG_STYLE_MSGBOX,"Concluido!","A oferta foi rejeitada!","OK","");
         }
         else {
+            new title[255],msg[255];
+            format(title,255,"Escolha o meio de pagamento - Preço: R$ %d",gInv_control_sellHandler[fromid][SELLHANDLER_PRICE]);
+            format(msg,255,"Via\tMeio\nDinheiro em maos\tR$ %d\nConta bancaria\tR$ %d",GetPlayerMoney(targetid),GetPlayerBankAccount(targetid));
             Dialog_ShowCallback(fromid,using inline offerCancelResponse,DIALOG_STYLE_MSGBOX,"Aguarda...","O jogador está a escolher o meio de pagamento...","Cancelar","");
-            Dialog_ShowCallback(targetid,using inline offerConcludePaymentTypeSet,DIALOG_STYLE_TABLIST,"Escolhe o meio de pagamento","Dinheiro na mao\nDinheiro no banco","Selecionar","Rejeitar");
+            Dialog_ShowCallback(targetid,using inline offerConcludePaymentTypeSet,DIALOG_STYLE_TABLIST_HEADERS,title,msg,"Selecionar","Rejeitar");
         }
     }
     #pragma unused dialogid,listitem
@@ -180,11 +189,12 @@ public OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inp
 
 forward ExpirePlayerInvOffer(playerid);
 public ExpirePlayerInvOffer(playerid) {
-    if(gInv_control_sellHandler[playerid][SELLHANDLER_EXPIRETIME]) {
+    if(gInv_control_sellHandler[playerid][SELLHANDLER_EXPIRETIME]>0) {
         gInv_control_sellHandler[playerid][SELLHANDLER_EXPIRETIME]--;
         SetPreciseTimer("ExpirePlayerInvOffer",1000,false,"i",playerid);
     }
-    else if (gInv_control_sellHandler[playerid][SELLHANDLER_MODELID] != ITEM_INVALID) {
+    else if (gInv_control_sellHandler[playerid][SELLHANDLER_MODELID] != ITEM_INVALID &&\
+    gInv_control_sellHandler[playerid][SELLHANDLER_PRICE] && gInv_control_sellHandler[playerid][SELLHANDLER_QUANTITY]) {
         Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Ups!","O tempo limite da oferta expirou, e não obtiveste uma resposta.","OK","");
         ResetPlayerOffer(playerid);
     }
@@ -206,12 +216,13 @@ stock GetPlayerOfferFromID(targetid) {
 }
 
 stock ResetPlayerOffer(playerid) {
+    SendClientMessage(playerid,-1,"Oferta foi expirada.");
     gInv_control_sellHandler[playerid][SELLHANDLER_INDEX] = -1;
     gInv_control_sellHandler[playerid][SELLHANDLER_MODELID] = ITEM_INVALID;
     gInv_control_sellHandler[playerid][SELLHANDLER_QUANTITY] = 0;
     gInv_control_sellHandler[playerid][SELLHANDLER_WAITINGREPLY] = 0;
     gInv_control_sellHandler[playerid][SELLHANDLER_TARGETID] = INVALID_PLAYER_ID;
-    gInv_control_sellHandler[playerid][SELLHANDLER_EXPIRETIME] = 0;
+    gInv_control_sellHandler[playerid][SELLHANDLER_EXPIRETIME] = -1;
     return 1;
 }
 
