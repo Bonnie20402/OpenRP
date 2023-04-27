@@ -79,6 +79,7 @@ public OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inp
         Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Tudo feito","A tua oferta foi cancelada.\nO jogador já não poderá aceitá-la.","OK");
         ResetPlayerOffer(playerid);
     }
+    // Once target picks up a payment type set.
     inline const offerConcludePaymentTypeSet(targetid,dlgid,response,listitem,String:paymentText[]) {
         new fromid=GetPlayerOfferFromID(targetid);
         if(response) {
@@ -88,9 +89,7 @@ public OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inp
             price=gInv_control_sellHandler[fromid][SELLHANDLER_PRICE];
             if(!chosenOption) currentMoney = GetPlayerMoney(targetid); // Hand money
             else if(chosenOption) currentMoney = GetPlayerBankAccount(targetid); // Bank account money
-            SendClientMessageToAllf(-1,"currentMons: %d",currentMoney);
             new subtractMoney=currentMoney-price;
-            SendClientMessageToAllf(-1,"subtractMons: %d",subtractMoney);
             if(subtractMoney>=0) {
                 new modelid,quantity,outputMessage[255];
                 format(outputMessage,255,"A oferta foi aceite.\nO jogador pagou via ");
@@ -145,7 +144,7 @@ public OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inp
         }
         else {
             new title[255],msg[255];
-            format(title,255,"Escolha o meio de pagamento - Preço: R$ %d",gInv_control_sellHandler[fromid][SELLHANDLER_PRICE]);
+            format(title,255,"Pagar o montante de R$ %d",gInv_control_sellHandler[fromid][SELLHANDLER_PRICE]);
             format(msg,255,"Via\tMeio\nDinheiro em maos\tR$ %d\nConta bancaria\tR$ %d",GetPlayerMoney(targetid),GetPlayerBankAccount(targetid));
             Dialog_ShowCallback(fromid,using inline offerCancelResponse,DIALOG_STYLE_MSGBOX,"Aguarda...","O jogador está a escolher o meio de pagamento...","Cancelar","");
             Dialog_ShowCallback(targetid,using inline offerConcludePaymentTypeSet,DIALOG_STYLE_TABLIST_HEADERS,title,msg,"Selecionar","Rejeitar");
@@ -160,7 +159,6 @@ public OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inp
             if(IsPlayerLoggedIn(playerid)&&!strcmp(targetName,GetPlayerNameEx(i)))targetid=i;
         }
 
-        if(targetid==INVALID_PLAYER_ID) return Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Ups!","Este jogador não está atualmente autenticado!","OK","");
         // Post-price processing. Includes validation (>0)
         inline const priceSetResponse(pid,did,resp,listitem,String:sellPriceText[]) {
             #pragma unused pid,did,listitem
@@ -181,6 +179,9 @@ public OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inp
                 SetPreciseTimer("ExpirePlayerInvOffer",1000,false,"i",playerid);
             }
         }
+        //Actual target set handling. This is a mess, I know.
+        if(targetid==INVALID_PLAYER_ID) return Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Ups!","Este jogador não está atualmente autenticado!","OK","");
+        if(GetPlayerOfferFromID(targetid) != INVALID_PLAYER_ID) return Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Ups!","Este jogador está negociando atualmente com outro jogador.\nTente novamente mais tarde.","OK","");
         Dialog_ShowCallback(playerid,using inline priceSetResponse,DIALOG_STYLE_INPUT,"Vender","Introduz o preço de venda","OK","");
     }
     else return Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Aviso","A venda foi cancelada.","OK","");
@@ -215,6 +216,8 @@ stock GetPlayerOfferFromID(targetid) {
     return fromid;
 }
 
+
+//Resets a offerman offer.
 stock ResetPlayerOffer(playerid) {
     SendClientMessage(playerid,-1,"Oferta foi expirada.");
     gInv_control_sellHandler[playerid][SELLHANDLER_INDEX] = -1;
