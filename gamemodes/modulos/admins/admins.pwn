@@ -1,14 +1,14 @@
 
 
 /*
-    Includes de admin
+    Admin sub-modules
                         */
 #include "modulos\admins\adminmsg.pwn"
 #include "modulos\admins\adminauth.pwn"
 #include "modulos\admins\adminteleport.pwn"
-
+#include "modulos\admins\punish\kick.pwn"
 /*
-        Comandos de Admin
+        Admin commands
                                     */
 #include "modulos\admincmds\criarloc.pwn"
 #include "modulos\admincmds\removerloc.pwn"
@@ -43,7 +43,7 @@
 #include "modulos\admincmds\playsound.pwn"
 #include "modulos\admincmds\aweapon.pwn"
 #include "modulos\admincmds\abnotificacao.pwn"
-
+#include "modulos\admincmds\akick.pwn"
 
 
 /*
@@ -82,7 +82,6 @@ public Login:FinishAdminCheck(const username[]) {
     }
     return 1;
 }
-// TODO command foradmins to show coords
 
 
 

@@ -1,3 +1,8 @@
+
+/*
+    Inventory Module - Sub-module separateAction
+    Makes players able to split items in their inventory
+                                */
 #define INVDLG_SEPARATE 2025
 #define INVACDIALOG_EMPTY 131211
 

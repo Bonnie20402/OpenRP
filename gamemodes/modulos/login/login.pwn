@@ -183,5 +183,6 @@ public OnPlayerAuth(playerid) {
                                                         */
 
 public IsPlayerLoggedIn(playerid) {
-    return gLoggedIn[playerid];
+    if(IsPlayerConnected(playerid))return gLoggedIn[playerid];
+    return 0;
 } 

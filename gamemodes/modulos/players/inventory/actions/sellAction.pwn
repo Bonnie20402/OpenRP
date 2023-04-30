@@ -1,9 +1,13 @@
 
-
+/*
+    Inventory Module - Sub-module sellAction
+    Makes players able to sell their inventory items to other in-range players.
+    They can pay by money or by bank.
+                                */
 
 #define MAX_OFFERS 250 
 #define INVSELL_DISTANCE 25.0
-#define INVSELL_EXPIRETIME 10 // Offer expire time, in seconds.
+#define INVSELL_EXPIRETIME 20 // Offer expire time, in seconds.
 
 #include <YSI_Coding\y_hooks>
 
@@ -29,14 +33,6 @@ hook OnPlayerDisconnect(playerid, reason) {
     ResetPlayerOffer(playerid);
     return 1;
 }
-
-stock PlayerInvOffersInit() {
-    for(new i;i<MAX_OFFERS;i++) {
-        gInv_control_sellOffers[i][ITEMSELL_MODELID] = ITEM_INVALID;
-    }
-    printf("[sellAction.pwn] Inventory offers init success.");
-}
-
 forward OnPlayerInvActionSell(playerid,modelid,quantity);
 public OnPlayerInvActionSell(playerid,modelid,quantity) {
     if(modelid==ITEM_INVALID)return 1;
@@ -200,6 +196,7 @@ public ExpirePlayerInvOffer(playerid) {
 
 // Checks where the offer of specified comes from. Returns their offerman player id. If none found, returns INVALID_PLAYER_ID
 stock GetPlayerOfferFromID(targetid) {
+    if(!IsPlayerLoggedIn(targetid))return INVALID_PLAYER_ID;
     new fromid=INVALID_PLAYER_ID;
     for(new i;i<MAX_PLAYERS;i++) {
         if(IsPlayerLoggedIn(i)) {

@@ -1,5 +1,5 @@
 
-
+YCMD:trabalhar(playerid,params[],help)=atrabalhar;
 YCMD:atrabalhar(playerid,params[],help) {
     new msg[256];
     if(IsValidStaff(playerid)) {
