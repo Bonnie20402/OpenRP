@@ -1,4 +1,8 @@
 
+/*
+    Inventory Module - Sub-module dropAction
+    Handles the button drop logic.
+                                */
 enum DROP {
     String:INVDROP_AUTHOR[MAX_PLAYER_NAME],
     INVDROP_PICKUPID,

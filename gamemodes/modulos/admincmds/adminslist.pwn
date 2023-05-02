@@ -3,11 +3,11 @@ YCMD:admins(playerid,params[],help) {
     new j,qtdOnline;
     new String:adminRole[32],String:adminStatus[32];
     new String:dTitle[64],String:dBody[128];
-    format(dBody,128,"Admin\tadminStatus\tFunção\n");
+    format(dBody,128,"Admin\tEstado\tFunção\n");
     for(j=0;j<MAX_PLAYERS;j++) {
         if(IsValidStaff(j)) {
             //adminStatus do admin
-            if(IsStaffWorking(j))format(adminStatus,32,"Em serviço");
+            if(IsStaffWorking(j))format(adminStatus,32,"Disponivel");
             else format(adminStatus,32,"A jogar");
             // Nivel admin
             format(adminRole,32,"%s",GetStaffLevelString(j));
