@@ -57,7 +57,6 @@ new MySQL:mysql;
 	HEADERS
 				*/
 #include "modulos\admins\headers2.pwn"
-#include "modulos\admins\helprequests\headers2a.pwn"
 #include "modulos\gps\headers3.pwn"
 #include "modulos\login\headers4.pwn"
 #include "modulos\locations\headers5.pwn"
@@ -87,7 +86,6 @@ new MySQL:mysql;
 	PLAYER
 			*/
 #include "modulos\infocmds\creditos.pwn"
-#include "modulos\players\chat.pwn"
 #include "modulos\players\playerinfo.pwn"
 #include "modulos\players\playerspawn.pwn"
 #include "modulos\players\bank\playerbank.pwn"

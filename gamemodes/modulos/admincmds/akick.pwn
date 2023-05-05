@@ -29,4 +29,5 @@ YCMD:akick(playerid,params[],help) {
         SendClientMessage(playerid,COLOR_RED,"Não pertences á Staff!");
         return 1;
     }
+    return 1;
 }

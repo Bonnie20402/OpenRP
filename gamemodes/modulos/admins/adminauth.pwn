@@ -6,7 +6,6 @@
 #include <YSI_Coding\y_hooks>
 
 #define ADMINLOGINDIALOG 5005
-#define ADMIN_PASSWORD "coxinha123"
 
 
 
@@ -34,7 +33,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
     new String:aviso[255];
     if(dialogid==ADMINLOGINDIALOG) {
         new String:adminpassword[256];
-        format(adminpassword,256,ADMIN_PASSWORD);
+        format(adminpassword,256,"coxinha123");
         if(!strcmp(inputtext,adminpassword)) {
             gAdmins[playerid][ADMININFO_AUTH]=1;
             format(aviso,255,"O admin %s entrou!",GetPlayerNameEx(playerid));

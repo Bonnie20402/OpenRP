@@ -7,18 +7,6 @@
 // PRESSING(keyVariable, keys)
 #define PRESSING(%0,%1) \
     (%0 & (%1))
-stock GetTimeFormatted(h,m,s) {
-    new String:formattedTime[12];
-    if(h>=0&&h<=9)format(formattedTime,12,"0%d:",h);
-    else format(formattedTime,12,"%d:",h);
-
-    if(m>=0&&m<=9)format(formattedTime,12,"%s0%d:",formattedTime,m);
-    else format(formattedTime,12,"%s%d:",formattedTime,m);
-
-    if(s>=0&&s<=9)format(formattedTime,12,"%s0%d",formattedTime,s);
-    else format(formattedTime,12,"%s%d",formattedTime,s);
-    return formattedTime;
-}
 stock ClearPlayerChat(playerid) {
     for(new i;i<128;i++) {
         SendClientMessage(playerid,-1,"");

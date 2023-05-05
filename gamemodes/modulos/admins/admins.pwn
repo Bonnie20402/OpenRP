@@ -7,7 +7,6 @@
 #include "modulos\admins\adminauth.pwn"
 #include "modulos\admins\adminteleport.pwn"
 #include "modulos\admins\punish\kick.pwn"
-#include "modulos\admins\helprequests\helprequests.pwn"
 /*
         Admin commands
                                     */
@@ -175,7 +174,7 @@ public Getter:GetStaffRole(playerid) {
 forward Getter:IsStaffWorking(playerid);
 public Getter:IsStaffWorking(playerid) {
     if(IsPlayerLoggedIn(playerid))return gAdmins[playerid][ADMININFO_WORKING];
-    return 0;
+    return -1;
 }
 
 forward Getter:IsValidStaff(playerid);
@@ -190,7 +189,7 @@ public Getter:IsValidStaff(playerid) {
 stock AdminUtil:GetStaffLevelString(playerid) {
     if(IsValidStaff(playerid)) {
         new role[32];
-        switch(gAdmins[playerid][ADMININFO_LEVEL]) {
+        switch(GetStaffLevel(playerid)) {
             case 1:
                 format(role,32,"Aprendiz");
             case 2:
