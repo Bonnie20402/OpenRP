@@ -8,8 +8,8 @@
 
 #include <YSI_Coding\y_hooks>
 
-forward OnPlayerInvActionSeparate(playerid,modelid,quantity);
-public OnPlayerInvActionSeparate(playerid,modelid,quantity) {
+forward InvAction:OnPlayerInvActionSeparate(playerid,modelid,quantity);
+public InvAction:OnPlayerInvActionSeparate(playerid,modelid,quantity) {
     ShowPlayerDialog(playerid,INVDLG_SEPARATE,DIALOG_STYLE_INPUT,"Separar item","Introduz a quantidade que desejas separar.","Separar","Cancelar");
     return 1;
 

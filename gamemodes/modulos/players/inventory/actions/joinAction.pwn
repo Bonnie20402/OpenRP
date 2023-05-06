@@ -1,5 +1,5 @@
 
-forward OnPlayerInvActionJoin(playerid,modelid,quantity);
-public OnPlayerInvActionJoin(playerid,modelid,quantity) {
+forward InvAction:OnPlayerInvActionJoin(playerid,modelid,quantity);
+public InvAction:OnPlayerInvActionJoin(playerid,modelid,quantity) {
     return 1;
 }

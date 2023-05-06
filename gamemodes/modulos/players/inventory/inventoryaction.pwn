@@ -1,6 +1,10 @@
 
-#include <YSI_Coding\y_hooks>
-public OnPlayerInvAction(playerid,modelid,quantity,actiontype) {
+/*
+	Inventory module: inventoryaction.pwn
+	Forward the button's logic to their own functions (located at modulos/player/inventory/actions/)
+	Prefix: InvAction			*/
+
+public InvAction:OnPlayerInvAction(playerid,modelid,quantity,actiontype) {
 	if(modelid==ITEM_INVALID)return 1;
     if(!quantity) return 1;
 	if(actiontype==INVACTION_USE) {

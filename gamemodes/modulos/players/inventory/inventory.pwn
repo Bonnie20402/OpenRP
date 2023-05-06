@@ -1,4 +1,8 @@
 /*
+	Inventory module: inventory.pwn
+	Handles all of the GUI logic for player inventories.
+	Prefix: InvGUI 					*/
+/*
 This textdraw does NOT follow the server standards.
 */
 
@@ -18,8 +22,8 @@ This textdraw does NOT follow the server standards.
 /*
 	Updates an item	by passing the row and column. UNSAFE: No out of bounds check!
 						*/
-forward InventoryRenderUpdateItem(playerid,row,column,newModel,const title[],const quantity[]);
-public InventoryRenderUpdateItem(playerid,row,column,newModel,const title[],const quantity[]) {
+forward InvGUI:InventoryRenderUpdateItem(playerid,row,column,newModel,const title[],const quantity[]);
+public InvGUI:InventoryRenderUpdateItem(playerid,row,column,newModel,const title[],const quantity[]) {
 	PlayerTextDrawSetPreviewModel(playerid,txdInv_render_model[playerid][row][column],newModel);
 	PlayerTextDrawHide(playerid, txdInv_render_model[playerid][row][column]);
 	PlayerTextDrawShow(playerid, txdInv_render_model[playerid][row][column]);
@@ -32,8 +36,8 @@ public InventoryRenderUpdateItem(playerid,row,column,newModel,const title[],cons
 /*
 	Updates an item by passing a index SAFE: Has out of bounds check.
 	*/
-forward InventoryRenderUpdateItemEx(playerid, index,newModel, const title[], const quantity[]);
-public InventoryRenderUpdateItemEx(playerid, index,newModel, const title[], const quantity[]) {
+forward InvGUI:InventoryRenderUpdateItemEx(playerid, index,newModel, const title[], const quantity[]);
+public InvGUI:InventoryRenderUpdateItemEx(playerid, index,newModel, const title[], const quantity[]) {
     new i = index / INVENTORY_COLUMNLIMIT;
     new j = index % INVENTORY_COLUMNLIMIT;
     if (i >= INVENTORY_ROWLIMIT || j >= INVENTORY_COLUMNLIMIT) return 0;
@@ -55,14 +59,14 @@ public InventoryRenderUpdateItemEx(playerid, index,newModel, const title[], cons
 }
 
 //Checks if player is currently with their inventory open or not.
-forward IsPlayerInvOpen(playerid);
-public IsPlayerInvOpen(playerid) {
+forward InvGUI:IsPlayerInvOpen(playerid);
+public InvGUI:IsPlayerInvOpen(playerid) {
 	if(IsPlayerTextDrawVisible(playerid,txdInv_bg0[playerid]))return 1;
 	return 0;
 }
 //Checks if player has an item, by modelid. If so, returns the quantity, otherwhise 0 */
-forward DoesPlayerInvHaveItem(playerid,modelid);
-public DoesPlayerInvHaveItem(playerid,modelid) {
+forward InvGUI:DoesPlayerInvHaveItem(playerid,modelid);
+public InvGUI:DoesPlayerInvHaveItem(playerid,modelid) {
 	for(new i;i<INVENTORY_ROWLIMIT;i++) {
 		for(new j;j<INVENTORY_COLUMNLIMIT;j++) {
 			if(GetPlayerInvGuiModelid(playerid,i,j)==modelid)return GetPlayerGuiInvItemQuantity(playerid,i,j);
@@ -71,8 +75,8 @@ public DoesPlayerInvHaveItem(playerid,modelid) {
 	return 0;
 }
 //Checks if player has an item, by modelid. If so, returns the 1D location. Otherwhsie returns 0 */
-forward DoesPlayerInvHaveItemEx(playerid,modelid);
-public DoesPlayerInvHaveItemEx(playerid,modelid) {
+forward InvGUI:DoesPlayerInvHaveItemEx(playerid,modelid);
+public InvGUI:DoesPlayerInvHaveItemEx(playerid,modelid) {
 	for(new i;i<INVENTORY_ROWLIMIT;i++) {
 		for(new j;j<INVENTORY_COLUMNLIMIT;j++) {
 			if(GetPlayerInvGuiModelid(playerid,i,j)==modelid)return i * INVENTORY_COLUMNLIMIT + j;
@@ -81,27 +85,27 @@ public DoesPlayerInvHaveItemEx(playerid,modelid) {
 	return 0;
 }
 //Returns current selected item 1D index. If no item is selected, returns -1.
-forward GetPlayerInvSelectedItemIndex(playerid);
-public GetPlayerInvSelectedItemIndex(playerid) {
+forward InvGUI:GetPlayerInvSelectedItemIndex(playerid);
+public InvGUI:GetPlayerInvSelectedItemIndex(playerid) {
 	if(!IsPlayerConnected(playerid))return -1;
 	return gInv_control_selectedItem[playerid]*gInv_control_currentPage[playerid];
 }
 //Returns current selected item modelid. If no item is selected, returns -1.
-forward GetPlayerInvSelectedItemModelId(playerid);
-public GetPlayerInvSelectedItemModelId(playerid) {
+forward InvGUI:GetPlayerInvSelectedItemModelId(playerid);
+public InvGUI:GetPlayerInvSelectedItemModelId(playerid) {
 	if(gInv_control_selectedItem[playerid] != -1)return GetPlayerInvGuiModelidEx(playerid,gInv_control_selectedItem[playerid]);
 	return -1;
 }
 // Gets an item quantity, by passing row and column. UNSAFE: No out of bounds check!
-forward GetPlayerGuiInvItemQuantity(playerid,row,column);
-public GetPlayerGuiInvItemQuantity(playerid,row,column) {
+forward InvGUI:GetPlayerGuiInvItemQuantity(playerid,row,column);
+public InvGUI:GetPlayerGuiInvItemQuantity(playerid,row,column) {
 	new quantity[64];
 	PlayerTextDrawGetString(playerid,txdInv_render_quantity[playerid][row][column],quantity,64);
 	return strval(quantity);
 }
 //Gets an item quantity, by passing index. SAFE: Has out of bounds check and returns -1 if invalid.
-forward GetPlayerGuiInvItemQuantityEx(playerid,index);
-public GetPlayerGuiInvItemQuantityEx(playerid,index) {
+forward InvGUI:GetPlayerGuiInvItemQuantityEx(playerid,index);
+public InvGUI:GetPlayerGuiInvItemQuantityEx(playerid,index) {
     new i = index / INVENTORY_COLUMNLIMIT;
     new j = index % INVENTORY_COLUMNLIMIT;
     if (i >= INVENTORY_ROWLIMIT || j >= INVENTORY_COLUMNLIMIT) return -1;
@@ -110,21 +114,21 @@ public GetPlayerGuiInvItemQuantityEx(playerid,index) {
 	return strval(quantity);
 }
 //Gets an item model id, by passing row and column. UNSAFE: No out of bounds check!
-forward GetPlayerInvGuiModelid(playerid,row,column);
-public GetPlayerInvGuiModelid(playerid,row,column) {
+forward InvGUI:GetPlayerInvGuiModelid(playerid,row,column);
+public InvGUI:GetPlayerInvGuiModelid(playerid,row,column) {
 	return PlayerTextDrawGetPreviewModel(playerid,txdInv_render_model[playerid][row][column]);
 }
 //Gets an item model id, by passing index. SAFE: Has out of bounds check. Retruns -1 if invalid.
-forward GetPlayerInvGuiModelidEx(playerid,index);
-public GetPlayerInvGuiModelidEx(playerid,index) {
+forward InvGUI:GetPlayerInvGuiModelidEx(playerid,index);
+public InvGUI:GetPlayerInvGuiModelidEx(playerid,index) {
     new i = index / INVENTORY_COLUMNLIMIT;
     new j = index % INVENTORY_COLUMNLIMIT;
     if (i >= INVENTORY_ROWLIMIT || j >= INVENTORY_COLUMNLIMIT) return -1;
 	return PlayerTextDrawGetPreviewModel(playerid,txdInv_render_model[playerid][i][j]);
 }
 //Counts how many valid items the player currently has rendered. The inventory SHOULD be open, otherwhise returns zero.
-forward GetPlayerInvItemCount(playerid);
-public GetPlayerInvItemCount(playerid) {
+forward InvGUI:GetPlayerInvItemCount(playerid);
+public InvGUI:GetPlayerInvItemCount(playerid) {
 	new itemAmount;
 	if(IsPlayerInvOpen(playerid)) {
 		for(new i;i<INVENTORY_ROWLIMIT;i++) {
@@ -142,8 +146,8 @@ public GetPlayerInvItemCount(playerid) {
 	Starts to prepare render all of the inventories items.
 	Doesn't show them. Should be called OnPlayerConnect with the other txd stuff
 															*/
-forward InventoryRenderInit(playerid);
-public InventoryRenderInit(playerid) {
+forward InvGUI:InventoryRenderInit(playerid);
+public InvGUI:InventoryRenderInit(playerid) {
     new Float:defaultX[] = {INVENTORY_DEFAULT_BTN_X,INVENTORY_DEFAULT_MODEL_X,INVENTORY_DEFAULT_TITLE_X,INVENTORY_DEFAULT_QTT_X};
     new Float:defaultY[] = {INVENTORY_DEFAULT_BTN_Y,INVENTORY_DEFAULT_MODEL_Y,INVENTORY_DEFAULT_TITLE_Y,INVENTORY_DEFAULT_QTT_Y};
 	for(new i;i<INVENTORY_ROWLIMIT;i++) {
@@ -240,8 +244,8 @@ YCMD:inv(playerid,params[],help) {
 
 	return 1;
 }
-forward OpenInventory(playerid);
-public OpenInventory(playerid) {
+forward InvGUI:OpenInventory(playerid);
+public InvGUI:OpenInventory(playerid) {
 	if(IsPlayerLoggedIn(playerid)) {
 		PlayerTextDrawShow(playerid, txdInv_bg0[playerid]);
 		PlayerTextDrawShow(playerid, txdInv_Title[playerid]);
@@ -277,8 +281,8 @@ public OpenInventory(playerid) {
 	}
 }
 //Refreshes the player's GUI inventory. Does NOT save the inventory.
-forward RefreshPlayerInv(playerid);
-public RefreshPlayerInv(playerid) {
+forward InvGUI:RefreshPlayerInv(playerid);
+public InvGUI:RefreshPlayerInv(playerid) {
 	new currentPage,slotPointer,modelid;
 	new quantity[5];
 	currentPage=GetPlayerInvPage(playerid);
@@ -289,8 +293,8 @@ public RefreshPlayerInv(playerid) {
 		slotPointer++;
 	}
 }
-forward CloseInventory(playerid);
-public CloseInventory(playerid) {
+forward InvGUI:CloseInventory(playerid);
+public InvGUI:CloseInventory(playerid) {
 	if(IsPlayerLoggedIn(playerid)&&IsPlayerInvOpen(playerid)) {
 		SetPlayerInvSelectedItem(playerid,-1);
 		SetPlayerInvPage(playerid,0);
@@ -321,8 +325,8 @@ public CloseInventory(playerid) {
 }
 
 //Returns current open page. The inventory should be open.
-forward GetPlayerInvPage(playerid);
-public GetPlayerInvPage(playerid) {
+forward InvGUI:GetPlayerInvPage(playerid);
+public InvGUI:GetPlayerInvPage(playerid) {
 	if(IsPlayerInvOpen(playerid)) {
 		return gInv_control_currentPage[playerid];
 	}

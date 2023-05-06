@@ -1,3 +1,9 @@
+/*
+	Inventory module: inventorycontrol.pwn
+	Updates the current selected player inv item as well as the current open inventory page.
+    Uses the InvGUI module
+	Prefix: InvControl:			*/
+
 
 #include <YSI_Coding\y_hooks>
 
@@ -7,8 +13,8 @@ new gInv_control_items[MAX_PLAYERS][INVENTORY_MAXPAGES*INVENTORY_SIZE][ITEMDATA]
 
 
 //Updates current page. Handles both the control variable and the textdraw.
-forward SetPlayerInvPage(playerid,page);
-public SetPlayerInvPage(playerid,page) {
+forward InvControl:SetPlayerInvPage(playerid,page);
+public InvControl:SetPlayerInvPage(playerid,page) {
 	if(IsPlayerLoggedIn(playerid)&&IsPlayerInvOpen(playerid)) {
 		gInv_control_currentPage[playerid]=page;
 		new msg[255];
@@ -21,8 +27,8 @@ public SetPlayerInvPage(playerid,page) {
 	}
 	return 0;
 }
-forward SetPlayerInvSelectedItem(playerid,index);
-public SetPlayerInvSelectedItem(playerid,index) {
+forward InvControl:SetPlayerInvSelectedItem(playerid,index);
+public InvControl:SetPlayerInvSelectedItem(playerid,index) {
     gInv_control_selectedItem[playerid]=index;
     if(index==-1)PlayerTextDrawSetString(playerid,txdInv_Title[playerid],"Nenhum item selecionado");
     return 1;

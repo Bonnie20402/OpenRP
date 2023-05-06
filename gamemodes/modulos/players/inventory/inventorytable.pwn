@@ -1,3 +1,9 @@
+/*
+	Inventory module: inventorytable.pwn
+	Handles all of the SQL and variable logic for player inventories.
+    Uses the InvGUI module
+	Prefix: InvSQL			*/
+
 
 enum INVENTORYITEM {
     Int:INVITEM_MODELID,
@@ -16,8 +22,8 @@ enum INVENTORYITEM {
 new gInventories[MAX_PLAYERS][INVENTORY_TABLESIZE][INVENTORYITEM];
 new gInv_control_savedItens[MAX_PLAYERS];
 
-forward PreparePlayerInventoryTable(playerid);
-public PreparePlayerInventoryTable(playerid) {
+forward InvSQL:PreparePlayerInventoryTable(playerid);
+public InvSQL:PreparePlayerInventoryTable(playerid) {
     /*new const query[]="
     CREATE TABLE IF NOT EXISTS inventories (
     username VARCHAR(64) PRinvITMARY KEY,
@@ -175,15 +181,15 @@ public PreparePlayerInventoryTable(playerid) {
 }
 
 
-forward PrepareLoadPlayerInventory(playerid);
-public PrepareLoadPlayerInventory(playerid) {
+forward InvSQL:PrepareLoadPlayerInventory(playerid);
+public InvSQL:PrepareLoadPlayerInventory(playerid) {
     new query[255];
     mysql_format(mysql,query,255,"SELECT * FROM inventories WHERE username = '%s'",GetPlayerNameEx(playerid));
     mysql_pquery(mysql,query,"FinishLoadPlayerInventory","i",playerid);
     return 1;
 }
-forward FinishLoadPlayerInventory(playerid);
-public FinishLoadPlayerInventory(playerid) {
+forward InvSQL:FinishLoadPlayerInventory(playerid);
+public InvSQL:FinishLoadPlayerInventory(playerid) {
     if(!cache_num_rows()) {
         printf("[inventorytable.pwn] WARN inventory of %s[%d] not found, first join? Creating..",GetPlayerNameEx(playerid),playerid);
         PrepareCreatePlayerInventory(playerid);
@@ -201,8 +207,8 @@ public FinishLoadPlayerInventory(playerid) {
     return 1;
 }
 
-forward PrepareCreatePlayerInventory(playerid);
-public PrepareCreatePlayerInventory(playerid) {
+forward InvSQL:PrepareCreatePlayerInventory(playerid);
+public InvSQL:PrepareCreatePlayerInventory(playerid) {
     new query[255];
     mysql_format(mysql,query,255,"INSERT INTO inventories (username) VALUES ('%s')",GetPlayerNameEx(playerid));
     mysql_pquery(mysql,query,"PrepareLoadPlayerInventory","i",playerid);
@@ -212,8 +218,8 @@ public PrepareCreatePlayerInventory(playerid) {
 
 
 //Saves the ram values of player's inventory to database. Builds the string in parts because once again fuck pawn's compiler :/
-forward PrepareSavePlayerInventory(playerid);
-public PrepareSavePlayerInventory(playerid) {
+forward InvSQL:PrepareSavePlayerInventory(playerid);
+public InvSQL:PrepareSavePlayerInventory(playerid) {
     new String:query[1024];
     new qtt=1;
     gInv_control_savedItens[playerid]=0;
@@ -228,24 +234,24 @@ public PrepareSavePlayerInventory(playerid) {
     printf("[inventorytable.pwn] %d valid itens saved for %s[%d]",qtt,GetPlayerNameEx(playerid),playerid);
     return 1;
 }
-forward FinishSavePlayerInventory(const playerid,const username[]);
-public FinishSavePlayerInventory(const playerid,const username[]) {
+forward InvSQL:FinishSavePlayerInventory(const playerid,const username[]);
+public InvSQL:FinishSavePlayerInventory(const playerid,const username[]) {
     if(cache_affected_rows())return 1;
     else printf("[inventorytable.pwn] WARN - No rows affected while saving the inventory of %s[%d]",username,playerid);
     return 1;
 }
 
 // Sets a player's item model id at specified index. Index should be between 0 and INVENTORY_REALSIZE Doesn't save to SQL
-forward SetPlayerInvItem(playerid,index,modelid,quantity);
-public SetPlayerInvItem(playerid,index,modelid,quantity) {
+forward InvSQL:SetPlayerInvItem(playerid,index,modelid,quantity);
+public InvSQL:SetPlayerInvItem(playerid,index,modelid,quantity) {
     gInventories[playerid][index][INVITEM_MODELID]=modelid;
     gInventories[playerid][index][INVITEM_QUANTITY]=quantity;
     return 1;
 }
 
 //Gives a player an item. Checks for empty slots. If it does not find one, returns 0. Does not save to SQL
-forward GivePlayerInvItem(playerid,modelid,quantity);
-public GivePlayerInvItem(playerid,modelid,quantity) {
+forward InvSQL:GivePlayerInvItem(playerid,modelid,quantity);
+public InvSQL:GivePlayerInvItem(playerid,modelid,quantity) {
     new slotFound; // if the inventory is full
     for(new i;i<INVENTORY_REALSIZE;i++) {
         if(!slotFound&&gInventories[playerid][i][INVITEM_MODELID] == ITEM_INVALID) {
@@ -269,8 +275,8 @@ YCMD:dinheiro(playerid,params[],help) {
 
 
 //Organizes the player inventory, checking for repeated itens and joining them. Saves to RAM only, not to SQL!
-forward OrganizePlayerInv(playerid);
-public OrganizePlayerInv(playerid) {
+forward InvSQL:OrganizePlayerInv(playerid);
+public InvSQL:OrganizePlayerInv(playerid) {
     new newQuantity,organizedItems;
     for(new i;i<INVENTORY_REALSIZE;i++) {
         for(new j;j<INVENTORY_REALSIZE;j++) {
@@ -288,29 +294,29 @@ public OrganizePlayerInv(playerid) {
 
 
 //Checks if a player has said item by passing index. Returns the quantity. Always returns ITEM_INVALID if ITEM_INVALID is passed as modelid.
-forward GetPlayerInvItemQuantity(playerid,index);
-public GetPlayerInvItemQuantity(playerid,index) {
+forward InvSQL:GetPlayerInvItemQuantity(playerid,index);
+public InvSQL:GetPlayerInvItemQuantity(playerid,index) {
     if(GetPlayerInvModelid(playerid,index)==ITEM_INVALID) return ITEM_INVALID;
     return gInventories[playerid][index][INVITEM_QUANTITY];
 }
 //Returns the index of the nearest empty slot. Returns -1 if inventory is full
-forward GetPlayerInvEmptySlot(playerid);
-public GetPlayerInvEmptySlot(playerid) {
+forward InvSQL:GetPlayerInvEmptySlot(playerid);
+public InvSQL:GetPlayerInvEmptySlot(playerid) {
     for(new i;i<INVENTORY_REALSIZE;i++) {
         if(gInventories[playerid][i][INVITEM_MODELID]==ITEM_INVALID) return i;
     }
     return -1;
 }
 //Checks if given slot is empty. Returns 1 of so. Returns 0 otherwhise. Returns 0 if out of bounds.
-forward IsPlayerInvSlotEmpty(playerid,index);
-public IsPlayerInvSlotEmpty(playerid,index) {
+forward InvSQL:IsPlayerInvSlotEmpty(playerid,index);
+public InvSQL:IsPlayerInvSlotEmpty(playerid,index) {
     if(index>INVENTORY_REALSIZE||index<0) return 0;
     if(gInventories[playerid][index][INVITEM_MODELID] == ITEM_INVALID) return 1;
     return 0;
 }
 //Checks if a player has said item by passing modelid. Returns the index. Always returns -1 if not found or ITEM_INVALID is passed as modelid.
-forward GetPlayerInvItemQuantityEx(playerid,modelid);
-public GetPlayerInvItemQuantityEx(playerid,modelid) {
+forward InvSQL:GetPlayerInvItemQuantityEx(playerid,modelid);
+public InvSQL:GetPlayerInvItemQuantityEx(playerid,modelid) {
     if(modelid==ITEM_INVALID) return -1;
     for(new i;i<INVENTORY_REALSIZE;i++) {
         if(gInventories[playerid][i][INVITEM_MODELID]==modelid)return i;
@@ -318,8 +324,8 @@ public GetPlayerInvItemQuantityEx(playerid,modelid) {
     return -1;
 }
 
-forward GetPlayerInvModelid(playerid,index);
-public GetPlayerInvModelid(playerid,index) {
+forward InvSQL:GetPlayerInvModelid(playerid,index);
+public InvSQL:GetPlayerInvModelid(playerid,index) {
     return gInventories[playerid][index][INVITEM_MODELID];
 }
 
@@ -330,7 +336,7 @@ public GetPlayerInvModelid(playerid,index) {
     Doesn't save to SQL.
  */
 
-public SeparatePlayerInvItem(playerid,index,reduceQuantity) {
+public InvSQL:SeparatePlayerInvItem(playerid,index,reduceQuantity) {
 
     new currentQuantity,emptySlot,modelid;
     currentQuantity=GetPlayerInvItemQuantity(playerid,index);

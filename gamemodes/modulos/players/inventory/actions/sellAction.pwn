@@ -33,8 +33,8 @@ hook OnPlayerDisconnect(playerid, reason) {
     ResetPlayerOffer(playerid);
     return 1;
 }
-forward OnPlayerInvActionSell(playerid,modelid,quantity);
-public OnPlayerInvActionSell(playerid,modelid,quantity) {
+forward InvAction:OnPlayerInvActionSell(playerid,modelid,quantity);
+public InvAction:OnPlayerInvActionSell(playerid,modelid,quantity) {
     if(modelid==ITEM_INVALID)return 1;
     inline const NoPlayersNearbyResponse(response,listitem,String:inputtext[]) {
         #pragma unused listitem
@@ -54,7 +54,7 @@ public OnPlayerInvActionSell(playerid,modelid,quantity) {
             }
         }
         if(qtt)  {
-            Dialog_ShowCallback(playerid,using public OnPlayerInvSellTargetSet<iiiis>,DIALOG_STYLE_TABLIST_HEADERS,"Seleciona um jogador",msg,"Selecionar","Cancelar");
+            Dialog_ShowCallback(playerid,using public InvAction:OnPlayerInvSellTargetSet<iiiis>,DIALOG_STYLE_TABLIST_HEADERS,"Seleciona um jogador",msg,"Selecionar","Cancelar");
             gInv_control_sellHandler[playerid][SELLHANDLER_INDEX]=GetPlayerInvSelectedItemIndex(playerid);
             gInv_control_sellHandler[playerid][SELLHANDLER_MODELID]=modelid;
             gInv_control_sellHandler[playerid][SELLHANDLER_QUANTITY]=quantity;
@@ -66,7 +66,7 @@ public OnPlayerInvActionSell(playerid,modelid,quantity) {
 }
 
 // Price input and validation logic. Uses ysi's inline libary.
-public OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inputtext[]) {
+public InvAction:OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inputtext[]) {
     // Offer cancel logic
     inline const offerCancelResponse(response,listitem,string:cancelText[]) {
         #pragma unused listitem,cancelText,response
@@ -179,8 +179,8 @@ public OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inp
     return 1;
 }
 
-forward ExpirePlayerInvOffer(playerid);
-public ExpirePlayerInvOffer(playerid) {
+forward InvAction:ExpirePlayerInvOffer(playerid);
+public InvAction:ExpirePlayerInvOffer(playerid) {
     if(gInv_control_sellHandler[playerid][SELLHANDLER_EXPIRETIME]>0) {
         gInv_control_sellHandler[playerid][SELLHANDLER_EXPIRETIME]--;
         SetPreciseTimer("ExpirePlayerInvOffer",1000,false,"i",playerid);
@@ -195,7 +195,7 @@ public ExpirePlayerInvOffer(playerid) {
 
 
 // Checks where the offer of specified comes from. Returns their offerman player id. If none found, returns INVALID_PLAYER_ID
-stock GetPlayerOfferFromID(targetid) {
+stock InvAction:GetPlayerOfferFromID(targetid) {
     if(!IsPlayerLoggedIn(targetid))return INVALID_PLAYER_ID;
     new fromid=INVALID_PLAYER_ID;
     for(new i;i<MAX_PLAYERS;i++) {
@@ -210,7 +210,7 @@ stock GetPlayerOfferFromID(targetid) {
 
 
 //Resets a offerman offer.
-stock ResetPlayerOffer(playerid) {
+stock InvAction:ResetPlayerOffer(playerid) {
     gInv_control_sellHandler[playerid][SELLHANDLER_INDEX] = -1;
     gInv_control_sellHandler[playerid][SELLHANDLER_MODELID] = ITEM_INVALID;
     gInv_control_sellHandler[playerid][SELLHANDLER_QUANTITY] = 0;

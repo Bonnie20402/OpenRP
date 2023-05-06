@@ -1,3 +1,8 @@
+/*
+	Inventory module: inventorytable.pwn
+	Contains the item defines for their ids as well as a stock function to convert the id to a name string based on id.
+	Prefix: InvItem:			*/
+ 
 #define ITEM_INVALID 18631 // the question mark
 #define ITEM_RESPEITO 19941
 #define ITEM_DINHEIRO 1212
@@ -13,8 +18,7 @@
 #define ITEM_SKIN_MAX 312
 
 
-stock GetItemNameString(modelid) {
-	
+stock InvItem:GetItemNameString(modelid) {
     new itemName[64];
 	switch(modelid) {
 		case ITEM_INVALID:

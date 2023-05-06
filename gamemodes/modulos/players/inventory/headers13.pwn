@@ -1,4 +1,4 @@
-forward OnPlayerInvAction(playerid,modelid,quantity,actiontype);
+forward InvAction:OnPlayerInvAction(playerid,modelid,quantity,actiontype);
 
 /*
     inventory.pwmn
@@ -57,4 +57,4 @@ new PlayerText:txdInv_btnCLOSE[MAX_PLAYERS];
 /*
     INVENTORYtable.pwn
                     */
-forward SeparatePlayerInvItem(playerid,index,reduceQuantity);
+forward InvSQL:SeparatePlayerInvItem(playerid,index,reduceQuantity);
