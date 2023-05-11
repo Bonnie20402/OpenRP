@@ -3,7 +3,7 @@
 Handles player connection logic
                 */
 
-#include "modulos\login\login.pwn"
+#include "modulos\players\login\login.pwn"
 
 #include <YSI_Coding\y_hooks>
 
@@ -41,7 +41,7 @@ new gLoadingTipsTimer[MAX_PLAYERS];
         Does the loading logic
                             */
 hook OnPlayerConnect(playerid) {
-    PlayAudioStreamForPlayer(playerid,"https://www.dropbox.com/s/9j4s4for2y0ymx5/VSImpostor_DLOW.mp3?dl=1");
+    PlayAudioStreamForPlayer(playerid,"https://www.dropbox.com/s/x86pxgwmrvx51es/FNF_Dlow_Original.mp3?dl=1");
     ClearPlayerChat(playerid);
     SendClientMessage(playerid,COLOR_AQUA,"Bem-vindo!");
     SendClientMessage(playerid,COLOR_AQUA,"A carregar informações do SQL, aguarda...");
@@ -56,8 +56,6 @@ hook OnPlayerConnect(playerid) {
     return 1;
 }
 
-//TODO adjust eSelection textdraws for mobile then
-// TODO inventory system
 
 forward GenerateLoadingTip(playerid);
 public GenerateLoadingTip(playerid) {

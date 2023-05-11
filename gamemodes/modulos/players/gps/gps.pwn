@@ -2,14 +2,13 @@
     GPS
     Server GPS System, based on Locations
                                         */
-#include "modulos\gps\icons.pwn"
-#include "modulos\gps\gpstxd.pwn"
-#include "modulos\gps\gpsdialog.pwn"
+#include "modulos\players\gps\icons.pwn"
+#include "modulos\players\gps\gpstxd.pwn"
+#include "modulos\players\gps\gpsdialog.pwn"
 #include <YSI_Coding\y_hooks>
 
 
-// TODO: Completar GPS
-
+//TODO: re create gps system, current one is shitty af
 
 /*
     STOCKS

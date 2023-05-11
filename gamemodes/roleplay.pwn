@@ -58,12 +58,12 @@ new MySQL:mysql;
 				*/
 #include "modulos\admins\headers2.pwn"
 #include "modulos\admins\helprequests\headers2a.pwn"
-#include "modulos\gps\headers3.pwn"
-#include "modulos\login\headers4.pwn"
+#include "modulos\players\gps\headers3.pwn"
+#include "modulos\players\login\headers4.pwn"
 #include "modulos\locations\headers5.pwn"
 #include "modulos\players\headers6.pwn"
 #include "modulos\vehicles\headers7.pwn"
-#include "modulos\infocmds\headers8.pwn"
+#include "modulos\players\cmds\headers8.pwn"
 #include "modulos\players\bank\headers9.pwn"
 #include "modulos\jobs\headers10.pwn"
 #include "modulos\jobs\trashman\headers10a.pwn"
@@ -82,27 +82,23 @@ new MySQL:mysql;
 	LOGIN
 	*/
 	
-#include "modulos\login\loading.pwn"
+#include "modulos\players\login\loading.pwn"
 /*
 	PLAYER
 			*/
-#include "modulos\infocmds\creditos.pwn"
+#include "modulos\players\cmds\cmds.pwn"
 #include "modulos\players\chat.pwn"
 #include "modulos\players\playerinfo.pwn"
 #include "modulos\players\playerspawn.pwn"
 #include "modulos\players\bank\playerbank.pwn"
 #include "modulos\players\inventory\inventory.pwn"
-
+#include "modulos\players\gps\gps.pwn"
 
 /*
 Companies/Locations
 */
 #include "modulos\locations\locations.pwn"
 #include "modulos\companies\companies.pwn"
-/*
-	gps
-			*/
-#include "modulos\gps\gps.pwn"
 /*
 	admin
 				*/

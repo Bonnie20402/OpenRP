@@ -7,9 +7,7 @@
 
 #include <YSI_Coding\y_hooks>
 
-new gInv_control_selectedItem[MAX_PLAYERS];
-new gInv_control_currentPage[MAX_PLAYERS];
-new gInv_control_items[MAX_PLAYERS][INVENTORY_MAXPAGES*INVENTORY_SIZE][ITEMDATA];
+
 
 
 //Updates current page. Handles both the control variable and the textdraw.

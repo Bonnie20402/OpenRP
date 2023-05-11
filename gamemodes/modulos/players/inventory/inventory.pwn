@@ -84,11 +84,11 @@ public InvGUI:DoesPlayerInvHaveItemEx(playerid,modelid) {
 	}
 	return 0;
 }
-//Returns current selected item 1D index. If no item is selected, returns -1.
+//Returns current selected item 1D index. If no item is selected, returns -1. Considers the current page.
 forward InvGUI:GetPlayerInvSelectedItemIndex(playerid);
 public InvGUI:GetPlayerInvSelectedItemIndex(playerid) {
-	if(!IsPlayerConnected(playerid))return -1;
-	return gInv_control_selectedItem[playerid]*gInv_control_currentPage[playerid];
+	if(!IsPlayerConnected(playerid) || gInv_control_selectedItem[playerid] == -1)return -1;
+	return (GetPlayerInvPage(playerid) - 1) * INVENTORY_MAXITEMS_PERPAGE + gInv_control_selectedItem[playerid];
 }
 //Returns current selected item modelid. If no item is selected, returns -1.
 forward InvGUI:GetPlayerInvSelectedItemModelId(playerid);
@@ -343,11 +343,12 @@ hook OnPlayerClickPlayerTD(playerid, PlayerText:playertextid) {
 				if(GetPlayerGuiInvItemQuantity(playerid,i,j))PlayerTextDrawColor(playerid,txdInv_render_btn[playerid][i][j],COLOR_GRAY);
 				if(playertextid==txdInv_render_btn[playerid][i][j]) {
 					if(GetPlayerGuiInvItemQuantity(playerid,i,j)) {
-						gInv_control_selectedItem[playerid]=i * INVENTORY_COLUMNLIMIT + j;
 						PlayerTextDrawColor(playerid,txdInv_render_btn[playerid][i][j],COLOR_AQUA);
 						PlayerTextDrawGetString(playerid,txdInv_render_title[playerid][i][j],msg,255);
 						format(msg,255,"~b~~h~~h~~h~%dx~w~%s",GetPlayerGuiInvItemQuantity(playerid,i,j),msg);
-						PlayerTextDrawSetString(playerid,txdInv_Title[playerid],msg);
+						PlayerTextDrawSetString(playerid,txdInv_Title[playerid],msg); 
+						SendClientMessagef(playerid,-1,"Convertido em %d",i*INVENTORY_COLUMNLIMIT+j);
+						SetPlayerInvSelectedItem(playerid,i*INVENTORY_COLUMNLIMIT+j);
 					}
 					else {
 						PlayerTextDrawSetString(playerid,txdInv_Title[playerid],"Nenhum item selecionado");

@@ -269,8 +269,6 @@ YCMD:dinheiro(playerid,params[],help) {
     GivePlayerInvItem(playerid,ITEM_RESPEITO,12);
     GivePlayerInvItem(playerid,ITEM_GASOLINA,13);
     GivePlayerInvItem(playerid,ITEM_MEDKIT,1);
-    OrganizePlayerInv(playerid);
-    PrepareSavePlayerInventory(playerid);
 }
 
 

@@ -26,6 +26,7 @@ enum ITEMDATA {
 #define INVENTORY_COLUMNLIMIT 6 // from top to bottom
 #define INVENTORY_SIZE INVENTORY_ROWLIMIT*INVENTORY_COLUMNLIMIT
 #define INVENTORY_MAXITEMS INVENTORY_MAXPAGES*INVENTORY_SIZE
+#define INVENTORY_MAXITEMS_PERPAGE INVENTORY_SIZE
 #define INVENTORY_DEFAULT_BTN_X 39.0
 #define INVENTORY_DEFAULT_BTN_Y 109.9
 #define INVENTORY_DEFAULT_TITLE_X 80.0
@@ -58,3 +59,10 @@ new PlayerText:txdInv_btnCLOSE[MAX_PLAYERS];
     INVENTORYtable.pwn
                     */
 forward InvSQL:SeparatePlayerInvItem(playerid,index,reduceQuantity);
+
+/*
+    Inventorycontrol.pwn
+                            */
+new gInv_control_selectedItem[MAX_PLAYERS];
+new gInv_control_currentPage[MAX_PLAYERS];
+new gInv_control_items[MAX_PLAYERS][INVENTORY_MAXPAGES*INVENTORY_SIZE][ITEMDATA];

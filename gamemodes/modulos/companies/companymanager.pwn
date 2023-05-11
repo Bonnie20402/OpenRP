@@ -1,10 +1,6 @@
-//
-// assign co owner, change nntrance fee
-// enter company logic  (cofre/company)
 
-// deposit money into the company safe
-// buy company upgrades,etc....
- // TODO preparesavecompany rowid at companies.pwn
+
+
 #define COMPANYMGR_MAIN 700
 #define COMPANYMGR_COOWNER 701
 #define COMPANYMGR_DEPOSIT 702
@@ -15,10 +11,6 @@
 #define MAX_FEE 1000 // Max entrance fee company owners can set.
 
 #include <YSI_Coding\y_hooks>
-YCMD:mgr(playerid,params[],help) {
-    OpenCompanyMgrMenu(playerid,1);
-    return 1;
-}
 new gCompanyManager[MAX_PLAYERS]; // Company id of players managing a company
 /*
     Shows comapny maanger main menu
