@@ -5,7 +5,8 @@ public InvAction:OnPlayerInvActionJoin(playerid,modelid,quantity) {
     new selectedIndex=GetPlayerInvSelectedItemIndex(playerid);
     new dBody[1024];
     new totalFound;
-    totalFound+=quantity;
+    new iQuantity = GetPlayerInvItemQuantity(playerid,selectedIndex);
+    totalFound+=iQuantity;
     format(dBody,1024,"Juntou %s com\n",GetItemNameString(modelid));
     for(new j;j<INVENTORY_REALSIZE;j++) {
         if(GetPlayerInvModelid(playerid,selectedIndex) == GetPlayerInvModelid(playerid,j) && selectedIndex!=j) {
@@ -17,7 +18,7 @@ public InvAction:OnPlayerInvActionJoin(playerid,modelid,quantity) {
         }
     }
     SetPlayerInvSelectedItem(playerid,-1);
-    if(totalFound==quantity) Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Ups!","Não existe nada a juntar.","OK","");
+    if(totalFound==iQuantity) Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Ups!","Não existe nada a juntar.","OK","");
     else {
         format(dBody,1024,"%s\nTotal: %d items",dBody,totalFound);
         PrepareSavePlayerInventory(playerid);

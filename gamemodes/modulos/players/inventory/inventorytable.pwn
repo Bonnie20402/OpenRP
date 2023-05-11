@@ -295,6 +295,7 @@ public InvSQL:OrganizePlayerInv(playerid) {
 forward InvSQL:GetPlayerInvItemQuantity(playerid,index);
 public InvSQL:GetPlayerInvItemQuantity(playerid,index) {
     if(GetPlayerInvModelid(playerid,index)==ITEM_INVALID) return ITEM_INVALID;
+    SendClientMessagef(playerid,-1,"I returned quantity %d at the index %d",gInventories[playerid][index][INVITEM_QUANTITY],index);
     return gInventories[playerid][index][INVITEM_QUANTITY];
 }
 //Returns the index of the nearest empty slot. Returns -1 if inventory is full
