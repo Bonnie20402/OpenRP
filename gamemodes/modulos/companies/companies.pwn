@@ -280,7 +280,6 @@ public UpdateCompanyTextLabel(rowid) {
         gCompanies[rowid][COMPANY_INTTEXT]=CreateDynamic3DTextLabel(text,-1,gCompanies[rowid][COMPANY_INTCOORDS][0],gCompanies[rowid][COMPANY_INTCOORDS][1],gCompanies[rowid][COMPANY_INTCOORDS][2],25.0,INVALID_PLAYER_ID,INVALID_VEHICLE_ID,0,rowid,gCompanies[rowid][COMPANY_INTERIORID]);
         gCompanies[rowid][COMPANY_INTPICKUPID] = CreateDynamicPickup(19133, 1,gCompanies[rowid][COMPANY_INTCOORDS][0],gCompanies[rowid][COMPANY_INTCOORDS][1],gCompanies[rowid][COMPANY_INTCOORDS][2],rowid,gCompanies[rowid][COMPANY_INTERIORID]);
     }
-    printf("[companies.pwn] The text data of company ID %d has been reloaded.",rowid);
     return 1;
 }
 /*

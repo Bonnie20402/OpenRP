@@ -175,6 +175,7 @@ public OnPlayerAuth(playerid) {
     PreparePlayerSpawn(playerid);
     PrepareLoadPlayerBankAccount(playerid);
     PrepareLoadPlayerInventory(playerid);
+    PrepareLoadPlayerLevel(playerid);
     return 1;
 }
 /*

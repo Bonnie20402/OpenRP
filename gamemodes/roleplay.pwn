@@ -41,6 +41,7 @@
 #include <YSI_Visual\y_commands>
 #include <YSI_Visual/y_dialog>
 #include <YSI_Coding/y_inline>
+#include <YSI_Extra/y_inline_mysql>
 
 
 #include "modulos\util\datetime.inc"
@@ -69,6 +70,7 @@ new MySQL:mysql;
 #include "modulos\jobs\trashman\headers10a.pwn"
 #include "modulos\companies\headers11.pwn"
 #include "modulos\players\inventory\headers13.pwn"
+#include "modulos\players\payday\headers14.pwn"
 
 /*
 	Textdraws
@@ -93,6 +95,7 @@ new MySQL:mysql;
 #include "modulos\players\bank\playerbank.pwn"
 #include "modulos\players\inventory\inventory.pwn"
 #include "modulos\players\gps\gps.pwn"
+#include "modulos\players\payday\paydaysql.pwn"
 
 /*
 Companies/Locations
@@ -153,6 +156,7 @@ public dbInit() {
 	PrepareCitizenVehiclesTable(); // TO BE REPLACED loads citize nvehicles at spawn
 	PreparePlayerInfoTable(); // contains player coords (xyz) health skinid and armor.
 	PreparePlayerBankAccountsTable(); // player bank account table
+	PreparePlayerLevelTable(); // prepares level respect table stuff
 	PrepareBankAtmTable(); // the props that open bank account dialog
 	PrepareCompaniesTable(); // Loads companies
 

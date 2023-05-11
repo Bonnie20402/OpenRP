@@ -339,10 +339,13 @@ public InvSQL:SeparatePlayerInvItem(playerid,index,reduceQuantity) {
 
     new currentQuantity,emptySlot,modelid;
     currentQuantity=GetPlayerInvItemQuantity(playerid,index);
-    SendClientMessage(playerid,-1,"chamado2");
     modelid=GetPlayerInvModelid(playerid,index);
     if(reduceQuantity >= currentQuantity)return 0;
     emptySlot=GetPlayerInvEmptySlot(playerid);
+    if(emptySlot==-1) {
+        Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Ups!","O inventario está cheio.","OK","");
+        return 0;
+        }
     if(currentQuantity) {
         currentQuantity-=reduceQuantity;
         SetPlayerInvItem(playerid,index,modelid,currentQuantity);
