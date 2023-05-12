@@ -1,4 +1,0 @@
-/*
-    Payday timer system
-                        */
-

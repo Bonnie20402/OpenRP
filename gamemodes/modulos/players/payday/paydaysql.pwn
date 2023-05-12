@@ -24,6 +24,7 @@ public PaydaySQL:PreparePlayerLevelTable() {
     respect INT NOT NULL,\
     hours INT NOT NULL)");
     mysql_pquery(mysql,query);
+    
     return 1;
 }
 

@@ -95,7 +95,8 @@ new MySQL:mysql;
 #include "modulos\players\bank\playerbank.pwn"
 #include "modulos\players\inventory\inventory.pwn"
 #include "modulos\players\gps\gps.pwn"
-#include "modulos\players\payday\paydaysql.pwn"
+#include "modulos\players\payday\payday.pwn"
+
 
 /*
 Companies/Locations
