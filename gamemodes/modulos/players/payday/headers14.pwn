@@ -1,5 +1,9 @@
-#define INVALID_LEVEL 0
 
+
+/*
+    playerlevel.pwn
+                        */
+#define INVALID_LEVEL 0
 enum PLAYERLEVEL {
     PLAYERLEVEL_LEVEL,
     PLAYERLEVEL_RESPECT,
@@ -13,5 +17,17 @@ forward PaydaySQL:PrepareLoadPlayerLevel(playerid);
 forward DeletePlayerLevel(playerid);
 
 /*
-    payday.pwn
-                */
+    paydaytimers.pwn
+                    */
+#define PAYDAYDEFAULT_H 0
+#define PAYDAYDEFAULT_M 5
+#define PAYDAYDEFAULT_S 0
+#define PAYDAYDEFAULT_PAYCHECK_MAX 1500
+enum PAYDAYTIMER {
+    PAYDAYTIMER_ACTIVE,
+    PAYDAYTIMER_H,
+    PAYDAYTIMER_M,
+    PAYDAYTIMER_S
+}
+
+new gPaydayTimer[MAX_PLAYERS][PAYDAYTIMER];

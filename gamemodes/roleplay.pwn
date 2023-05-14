@@ -73,6 +73,11 @@ new MySQL:mysql;
 #include "modulos\players\payday\headers14.pwn"
 
 /*
+	TABLES
+				*/
+#include "modulos\tables.pwn"
+
+/*
 	Textdraws
 					*/
 #include "modulos\txd\txdprogress.pwn"
@@ -151,15 +156,7 @@ public dbInit() {
 	}
 	else print("[roleplay.pwn] Connected to database OpenRP.");
 
-	PrepareAccountsTable();
-	PrepareLocationsTable();
-	PrepareLocationPickupsTable(); // BEWARE! This module depends on PrepareLocationsTable, load it first!
-	PrepareCitizenVehiclesTable(); // TO BE REPLACED loads citize nvehicles at spawn
-	PreparePlayerInfoTable(); // contains player coords (xyz) health skinid and armor.
-	PreparePlayerBankAccountsTable(); // player bank account table
-	PreparePlayerLevelTable(); // prepares level respect table stuff
-	PrepareBankAtmTable(); // the props that open bank account dialog
-	PrepareCompaniesTable(); // Loads companies
+	LoadServerTables();
 
 	JobsInit();
 	PlayerInvDropInit();

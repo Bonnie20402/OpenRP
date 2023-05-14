@@ -173,9 +173,7 @@ hook OnPlayerConnect(playerid) {
 public OnPlayerAuth(playerid) {
     HidePlayerTxdLoading(playerid);
     PreparePlayerSpawn(playerid);
-    PrepareLoadPlayerBankAccount(playerid);
-    PrepareLoadPlayerInventory(playerid);
-    PrepareLoadPlayerLevel(playerid);
+    LoadPlayerTables(playerid);
     return 1;
 }
 /*

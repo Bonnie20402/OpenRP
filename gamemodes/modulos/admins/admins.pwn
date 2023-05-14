@@ -54,21 +54,23 @@
 
 // db
 #include <YSI_Coding\y_hooks>
-hook dbInit() {
+
+forward PrepareAdminsTable();
+public PrepareAdminsTable() {
     new query[256];
-    printf("[ADMINS] Carregado!");
     mysql_format(mysql,query,256,"CREATE TABLE IF NOT EXISTS admins(username varchar(64) PRIMARY KEY NOT NULL,level int(11) NOT NULL,role varchar(64) NOT NULL)");
-    mysql_query(mysql,query,false);
+    mysql_pquery(mysql,query);
     return 1;
 }
-forward Admin:PrepareAdminCheck(const username[]);
-public Admin:PrepareAdminCheck(const username[]) {
+
+forward Staff:PrepareAdminCheck(const username[]);
+public Staff:PrepareAdminCheck(const username[]) {
     new query[256];
     mysql_format(mysql,query,sizeof(query),"SELECT * FROM `admins` WHERE username = '%s'",username);
     mysql_pquery(mysql,query,"FinishAdminCheck","s",username);
 }
-forward Login:FinishAdminCheck(const username[]);
-public Login:FinishAdminCheck(const username[]) {
+forward Staff:FinishAdminCheck(const username[]);
+public Staff:FinishAdminCheck(const username[]) {
     new Int:IsStaff;
     cache_get_value_index_int(0,1,IsStaff);
     if(IsStaff) {
@@ -91,14 +93,14 @@ public Login:FinishAdminCheck(const username[]) {
     Inserts a new admin in the table
 
                                    */
-stock Admin:PrepareCreateAdmin(playerid,Int:level,String:role[]) {
+stock Staff:PrepareCreateAdmin(playerid,Int:level,String:role[]) {
     new query[256];
     mysql_format(mysql,query,256,"INSERT INTO `admins`(`username`, `level`, `role`) VALUES ('%s','%d','%s') ON DUPLICATE KEY UPDATE level=%d,role='%s'",GetPlayerNameEx(playerid),level,role,level,role);
     mysql_pquery(mysql,query,"FinishCreateAdmin","iis",playerid,level,role);
     return 1;
 }
-forward Admin:FinishCreateAdmin(playerid,Int:level,const role[]);
-public Admin:FinishCreateAdmin(playerid,Int:level,const role[]) {
+forward Staff:FinishCreateAdmin(playerid,Int:level,const role[]);
+public Staff:FinishCreateAdmin(playerid,Int:level,const role[]) {
     gAdmins[playerid][ADMININFO_LEVEL]=level;
     gAdmins[playerid][ADMININFO_WORKING]=1;
     format(gAdmins[playerid][ADMININFO_ROLE],64,"%s",role);
@@ -112,14 +114,14 @@ public Admin:FinishCreateAdmin(playerid,Int:level,const role[]) {
     Deletes an admin from the table
                                 */
 
-forward Admin:PreparteDeleteAdmin(playerid,const username[]);
-public Admin:PrepareDeleteAdmin(playerid,const username[]) {
+forward Staff:PreparteDeleteAdmin(playerid,const username[]);
+public Staff:PrepareDeleteAdmin(playerid,const username[]) {
     new query[255];
     mysql_format(mysql,query,255,"DELETE FROM admins WHERE username = '%s'",username);
     mysql_pquery(mysql,query,"FinishDeleteAdmin","is",playerid,username);
     return 1;
 }
-public Admin:FinishDeleteAdmin(playerid,const username[]) {
+public Staff:FinishDeleteAdmin(playerid,const username[]) {
     new String:msg[255];
     new Int:staffid;
     staffid=GetPlayerIdFromName(username);
@@ -156,8 +158,8 @@ public Admin:FinishDeleteAdmin(playerid,const username[]) {
     assim, comandos Staff no modo jogo devem usar o IsValidStaff para validação
                 */
 
-forward Getter:GetStaffLevel(playerid);
-public Getter:GetStaffLevel(playerid) {
+forward Staff:GetStaffLevel(playerid);
+public Staff:GetStaffLevel(playerid) {
     if(IsPlayerLoggedIn(playerid)&&gAdmins[playerid][ADMININFO_LEVEL]&&gAdmins[playerid][ADMININFO_AUTH]) {
         if(gAdmins[playerid][ADMININFO_LEVEL]>=3000) return gAdmins[playerid][ADMININFO_LEVEL]; 
         else if(IsStaffWorking(playerid))return gAdmins[playerid][ADMININFO_LEVEL];
@@ -165,21 +167,21 @@ public Getter:GetStaffLevel(playerid) {
     }
     else return 0;
 }
-forward Getter:GetStaffRole(playerid);
-public Getter:GetStaffRole(playerid) {
+forward Staff:GetStaffRole(playerid);
+public Staff:GetStaffRole(playerid) {
     if(IsPlayerLoggedIn(playerid)) return gAdmins[playerid][ADMININFO_ROLE];
     return 0;
 
 }
 
-forward Getter:IsStaffWorking(playerid);
-public Getter:IsStaffWorking(playerid) {
+forward Staff:IsStaffWorking(playerid);
+public Staff:IsStaffWorking(playerid) {
     if(IsPlayerLoggedIn(playerid))return gAdmins[playerid][ADMININFO_WORKING];
     return 0;
 }
 
-forward Getter:IsValidStaff(playerid);
-public Getter:IsValidStaff(playerid) {
+forward Staff:IsValidStaff(playerid);
+public Staff:IsValidStaff(playerid) {
     if(IsPlayerLoggedIn(playerid)&&gAdmins[playerid][ADMININFO_LEVEL]&&gAdmins[playerid][ADMININFO_AUTH]) return 1;
     return 0;
 }
@@ -187,7 +189,7 @@ public Getter:IsValidStaff(playerid) {
 /*
     Converte um nivel em string
 */
-stock AdminUtil:GetStaffLevelString(playerid) {
+stock Staff:GetStaffLevelString(playerid) {
     if(IsValidStaff(playerid)) {
         new role[32];
         switch(gAdmins[playerid][ADMININFO_LEVEL]) {

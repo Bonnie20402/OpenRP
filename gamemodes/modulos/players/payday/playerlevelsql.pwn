@@ -1,21 +1,7 @@
 
 #include <YSI_Coding\y_hooks>
 
-hook OnPlayerDisconnect(playerid,reason) {
-    PrepareSavePlayerLevel(playerid);
-    if(IsPlayerLoggedIn(playerid))DeletePlayerLevel(playerid);
-    return 1;
-}
-hook OnPlayerConnect(playerid) {
-    DeletePlayerLevel(playerid);
-    return 1;
-}
-public DeletePlayerLevel(playerid) {
-    gPlayerLevel[playerid][PLAYERLEVEL_LEVEL]=0;
-    gPlayerLevel[playerid][PLAYERLEVEL_RESPECT]=0;
-    gPlayerLevel[playerid][PLAYERLEVEL_HOURS]=0;
-    return 1;
-}
+
 public PaydaySQL:PreparePlayerLevelTable() {
     new query[255];
     format(query,255,"CREATE TABLE IF NOT EXISTS playerlevel (\
@@ -62,11 +48,6 @@ public PaydaySQL:PrepareSavePlayerLevel(playerid) {
     mysql_format(mysql,query,255,"UPDATE playerlevel SET level = %d, hours = %d, respect = %d WHERE username = '%s'",\
     gPlayerLevel[playerid][PLAYERLEVEL_LEVEL],gPlayerLevel[playerid][PLAYERLEVEL_HOURS],gPlayerLevel[playerid][PLAYERLEVEL_RESPECT],GetPlayerNameEx(playerid));
     MySQL_PQueryInline(mysql,using inline SavePlayerLevel,query);
-    return 1;
-}
-
-YCMD:savelevel(playerid,params[],help) {
-    PrepareSavePlayerLevel(playerid);
     return 1;
 }
 

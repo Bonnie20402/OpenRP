@@ -2,31 +2,18 @@
     Payday timer system
                         */
 
-
-#define PAYDAYDEFAULT_H 0
-#define PAYDAYDEFAULT_M 0
-#define PAYDAYDEFAULT_S 20
-#define PAYDAYDEFAULT_PAYCHECK_MAX 1500
 #include <YSI_Coding\y_hooks>
-
 hook OnPlayerConnect(playerid) {
     DeletePlayerPaydayTimer(playerid);
     return 1;
 }
 hook OnPlayerDisconnect(playerid, reason) {
-    if(IsPlayerLoggedIn(playerid))DeletePlayerPaydayTimer(playerid);
+    if(IsPlayerLoggedIn(playerid)) {
+        PrepareSavePlayerPaydayTimer(playerid);
+        DeletePlayerPaydayTimer(playerid);
+    }
     return 1;
 }
-
-enum PAYDAYTIMER {
-    PAYDAYTIMER_ACTIVE,
-    PAYDAYTIMER_H,
-    PAYDAYTIMER_M,
-    PAYDAYTIMER_S
-}
-
-new gPaydayTimer[MAX_PLAYERS][PAYDAYTIMER];
-
 
 stock Payday:DeletePlayerPaydayTimer(playerid) {
     gPaydayTimer[playerid][PAYDAYTIMER_ACTIVE] = 0;
