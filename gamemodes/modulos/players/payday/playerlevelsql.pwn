@@ -38,6 +38,7 @@ public PaydaySQL:PrepareLoadPlayerLevel(playerid) {
     MySQL_PQueryInline(mysql,using inline LoadPlayerLevel,query);
     return 1;
 }
+
 public PaydaySQL:PrepareSavePlayerLevel(playerid) {
     inline SavePlayerLevel() {
         if(!cache_num_rows())printf("[paydaysql.pwn] WARN - no rows have been affected whole saving the level of %s[%d]",GetPlayerNameEx(playerid),playerid);

@@ -61,3 +61,46 @@ stock Payday:GetPlayerLevelRespect(playerid) {
 stock Payday:GetPlayerLevelHours(playerid) {
     return gPlayerLevel[playerid][PLAYERLEVEL_HOURS];
 }
+
+stock Payday:CanPlayerLevelUp(playerid) {
+    if(!IsPlayerLoggedIn(playerid))return 0;
+    new level=GetPlayerLevel(playerid);
+    if(GetPlayerLevelRespect(playerid) >= CalculateRequiredLevelRespect(level) && GetPlayerLevelHours(playerid) >= CalculateRequiredLevelHours(level)) {
+        return 1;
+    }
+    return 0;
+}
+
+YCMD:levelup(playerid,params[],help) {
+    ShowPlayerLevelLevelUpDialog(playerid);
+    return 1;
+}
+
+stock Payday:ShowPlayerLevelLevelUpDialog(playerid) {
+    printf("a");
+    inline Response(response,listitem,String:input[]) {
+        #pragma unused listitem,Stinput
+        if(response) {
+            if(!CanPlayerLevelUp(playerid))return Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Ups!","Não cumpres os requisitos para subir de nivel!","OK","");
+            gPlayerLevel[playerid][PLAYERLEVEL_LEVEL]++;
+            gPlayerLevel[playerid][PLAYERLEVEL_RESPECT]=0;
+            SendClientMessage(playerid,COLOR_AQUA,"Subiste de nivel, parabens!");
+        }
+    }
+    new requirmentMet[32] = "{00FF00}OK{FFFFFF}";
+    new requirmentUnmet[32] = "{FF0000}INSUFICIENTE{FFFFFF}";
+    new dBody[256];
+    new nextLevel=GetPlayerLevel(playerid);
+    format(dBody,256,"{FFFFFF}\
+    Requisitos para subir para o nivel {FFFF00}%d{FFFFFF}\n\n\
+    Respeito: {00FF00}%d{FFFFFF} (%s)\n\
+    Horas de  jogo: {00FF00}%d{FFFFFF} (%s)\n\n Continuar?",\
+    nextLevel+1,CalculateRequiredLevelRespect(nextLevel),\
+    //Ternary operation
+    GetPlayerLevelRespect(playerid) >= CalculateRequiredLevelRespect(nextLevel) ? requirmentMet : requirmentUnmet,\
+    CalculateRequiredLevelHours(nextLevel),\
+    //Ternary operation
+    GetPlayerLevelHours(playerid) >= CalculateRequiredLevelHours(nextLevel) ? requirmentMet : requirmentUnmet);
+    Dialog_ShowCallback(playerid,using inline Response,DIALOG_STYLE_MSGBOX,"LEVEL UP!",dBody,"Level UP!","Cancelar");
+    return 1;
+}

@@ -10,7 +10,6 @@ public PaydaySQL:PreparePlayerPaydayTimerTable() {
     minutes INT NOT NULL,\
     seconds INT NOT NULL);");
     mysql_pquery(mysql,query);
-    printf("beep");
     return 1;
 }
 forward PaydaySQL:PrepareLoadPlayerPaydayTimer(playerid);
@@ -19,7 +18,6 @@ public PaydaySQL:PrepareLoadPlayerPaydayTimer(playerid) {
     inline LoadPlayerPaydayTimer() {
         //if its new player
         if(!cache_num_rows()) {
-            printf("firstjoin yay");
             mysql_format(mysql,query,255,"INSERT INTO paydaytimer VALUES ('%s',%d,%d,%d)",GetPlayerNameEx(playerid),PAYDAYDEFAULT_H,PAYDAYDEFAULT_M,PAYDAYDEFAULT_S);
             mysql_pquery(mysql,query,"PrepareLoadPlayerPaydayTimer","i",playerid);
         }
@@ -30,6 +28,9 @@ public PaydaySQL:PrepareLoadPlayerPaydayTimer(playerid) {
             cache_get_value_index_int(0,1,gPaydayTimer[playerid][PAYDAYTIMER_H]);
             cache_get_value_index_int(0,2,gPaydayTimer[playerid][PAYDAYTIMER_M]);
             cache_get_value_index_int(0,3,gPaydayTimer[playerid][PAYDAYTIMER_S]);
+
+            //change tablist score
+            SetPlayerScore(playerid,GetPlayerLevel(playerid));
         }
     }
     mysql_format(mysql,query,255,"SELECT * FROM paydaytimer WHERE username = '%s'",GetPlayerNameEx(playerid));

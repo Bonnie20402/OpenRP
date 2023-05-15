@@ -17,6 +17,11 @@ forward PaydaySQL:PrepareLoadPlayerLevel(playerid);
 forward DeletePlayerLevel(playerid);
 
 /*
+    playerlevelsql.pwn
+                        */
+forward PaydaySQL:PrepareSavePlayerLevel(playerid);
+
+/*
     paydaytimers.pwn
                     */
 #define PAYDAYDEFAULT_H 0
