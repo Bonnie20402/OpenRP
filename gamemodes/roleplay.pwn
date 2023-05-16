@@ -39,9 +39,9 @@
 //WARN if YSK gives error function different from prototype, just comment that function out.
 #include <YSF>
 #include <YSI_Visual\y_commands>
-#include <YSI_Visual/y_dialog>
-#include <YSI_Coding/y_inline>
-#include <YSI_Extra/y_inline_mysql>
+#include <YSI_Visual\y_dialog>
+#include <YSI_Coding\y_inline>
+#include <YSI_Extra\y_inline_mysql>
 
 
 #include "modulos\util\datetime.inc"
@@ -71,6 +71,7 @@ new MySQL:mysql;
 #include "modulos\companies\headers11.pwn"
 #include "modulos\players\inventory\headers13.pwn"
 #include "modulos\players\payday\headers14.pwn"
+#include "modulos\players\characterinfo\headers6a.pwn"
 
 /*
 	TABLES
@@ -84,23 +85,15 @@ new MySQL:mysql;
 #include "modulos\txd\txdbnotification.pwn"
 #include "modulos\txd\txdloading.pwn"
 #include "modulos\txd\txdinvdrop.pwn"
+#include "modulos\txd\txdpayday.pwn"
 
 /*
-	LOGIN
+	Players
 	*/
+#include "modulos\players\player.pwn"
 	
-#include "modulos\players\login\loading.pwn"
-/*
-	PLAYER
-			*/
-#include "modulos\players\cmds\cmds.pwn"
-#include "modulos\players\chat.pwn"
-#include "modulos\players\playerinfo.pwn"
-#include "modulos\players\playerspawn.pwn"
-#include "modulos\players\bank\playerbank.pwn"
-#include "modulos\players\inventory\inventory.pwn"
-#include "modulos\players\gps\gps.pwn"
-#include "modulos\players\payday\payday.pwn"
+
+
 
 
 /*

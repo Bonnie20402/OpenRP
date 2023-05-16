@@ -1,7 +1,7 @@
 /*
     Payday timer system
                         */
-
+#include "modulos\players\playerlevel\playerlevelsql.pwn"
 #include <YSI_Coding\y_hooks>
 
 #define REWARD_DEFAULT_RESPECT 1
@@ -91,6 +91,9 @@ public Payday:RunPlayerPaydayTimer(playerid) {
             }
         }
         else gPaydayTimer[playerid][PAYDAYTIMER_S]--;
+        new String:paydayText[25];
+        format(paydayText,25,"payday: %s",GetTimeFormatted(gPaydayTimer[playerid][PAYDAYTIMER_H],gPaydayTimer[playerid][PAYDAYTIMER_M],gPaydayTimer[playerid][PAYDAYTIMER_S]));
+        ShowPlayerTxdPaydayCounter(playerid,paydayText);
         SetPreciseTimer("RunPlayerPaydayTimer",1000,false,"i",playerid);
         return 1;
     }

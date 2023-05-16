@@ -77,20 +77,19 @@ YCMD:levelup(playerid,params[],help) {
 }
 
 stock Payday:ShowPlayerLevelLevelUpDialog(playerid) {
-    printf("a");
+    new nextLevel=GetPlayerLevel(playerid);
     inline Response(response,listitem,String:input[]) {
         #pragma unused listitem,Stinput
         if(response) {
             if(!CanPlayerLevelUp(playerid))return Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Ups!","Não cumpres os requisitos para subir de nivel!","OK","");
             gPlayerLevel[playerid][PLAYERLEVEL_LEVEL]++;
-            gPlayerLevel[playerid][PLAYERLEVEL_RESPECT]=0;
+            gPlayerLevel[playerid][PLAYERLEVEL_RESPECT]-=CalculateRequiredLevelRespect(nextLevel);
             SendClientMessage(playerid,COLOR_AQUA,"Subiste de nivel, parabens!");
         }
     }
     new requirmentMet[32] = "{00FF00}OK{FFFFFF}";
     new requirmentUnmet[32] = "{FF0000}INSUFICIENTE{FFFFFF}";
     new dBody[256];
-    new nextLevel=GetPlayerLevel(playerid);
     format(dBody,256,"{FFFFFF}\
     Requisitos para subir para o nivel {FFFF00}%d{FFFFFF}\n\n\
     Respeito: {00FF00}%d{FFFFFF} (%s)\n\

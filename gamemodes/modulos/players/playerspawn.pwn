@@ -1,4 +1,5 @@
 /*
+    DEPRECATED
     Prepare player spawn
     Description: After logged in, it prepares the players initial spawn
 */

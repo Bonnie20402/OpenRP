@@ -2,7 +2,7 @@
 
 stock LoadPlayerTables(playerid) {
     PrepareLoadPlayerBankAccount(playerid);
-    PrepareLoadPlayerInfo(playerid);
+    PrepareLoadPlayerCharacterInfo(playerid);
     PrepareLoadPlayerInventory(playerid);
     PrepareLoadPlayerLevel(playerid);
     PrepareLoadPlayerPaydayTimer(playerid);
@@ -14,7 +14,7 @@ stock LoadServerTables() {
 	PrepareLocationsTable(); // Deprecated
 	PrepareLocationPickupsTable(); // Deprecated 
 	PrepareCitizenVehiclesTable(); // Deprecated 
-	PreparePlayerInfoTable(); // Deprecated 
+	PrepareCharacterInfoTable(); // Deprecated 
 	PrepareAdminsTable();
 	PreparePlayerBankAccountsTable(); // Player bank accounts table creation.
 	PreparePlayerLevelTable(); // Player level,respect,hoursplayed  table creation.
