@@ -8,5 +8,6 @@ stock OnCharacterInfoLoad(playerid) {
     SetPlayerInterior(playerid,gCharacterInfo[playerid][PLAYERINFO_INTERIORID]);
     SetPlayerVirtualWorld(playerid,gCharacterInfo[playerid][PLAYERINFO_VIRTUALWORLD]);
     SetPlayerWantedLevel(playerid,gCharacterInfo[playerid][PLAYERINFO_WANTED]);
+    SetPlayerPos(playerid,gCharacterInfo[playerid][PLAYERINFO_COORDS][0],gCharacterInfo[playerid][PLAYERINFO_COORDS][1],gCharacterInfo[playerid][PLAYERINFO_COORDS][2]);
     return 1;
 }
