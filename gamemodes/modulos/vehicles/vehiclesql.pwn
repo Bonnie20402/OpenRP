@@ -4,7 +4,7 @@
 forward VehicleSQL:PrepareVehiclesTable();
 public VehicleSQL:PrepareVehiclesTable() {
 	new query[512];
-	mysql_format(mysql,query,512,"CREATE TABLE IF NOT EXISTS vehicles ( rowid INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT, modelid INTEGER, x FLOAT, y FLOAT, z FLOAT, angle FLOAT, color1 INTEGER, color2 INTEGER, fuel INTEGER, shield INTEGER, hp INTEGER, locked INTEGER, FLAG_RESPAWN INTEGER, respawntime INTEGER, FLAG_PUBLIC INTEGER, ownertype INTEGER, owner INTEGER);");
+	mysql_format(mysql,query,512,"CREATE TABLE IF NOT EXISTS vehicles ( rowid INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT, modelid INTEGER, x FLOAT, y FLOAT, z FLOAT, angle FLOAT, color1 INTEGER, color2 INTEGER, fuel INTEGER, shield INTEGER, hp INTEGER, locked INTEGER, FLAG_RESPAWN INTEGER, respawntime INTEGER, FLAG_PUBLIC INTEGER, ownertype INTEGER, owner varchar(64));");
     mysql_pquery(mysql,query,"PrepareLoadVehicles");
 	print("[vehicesql.pwn] Vehicle SQL table loaded");
     return 1;
@@ -33,7 +33,7 @@ public VehicleSQL:PrepareLoadVehicles() {
 				cache_get_value_index_int(i,13,gVehicles[i][VEHICLEINFO_RESPAWNTIME]);
 				cache_get_value_index_int(i,14,gVehicles[i][VEHICLEINFO_FLAG_PUBLIC]);
 				cache_get_value_index_int(i,15,gVehicles[i][VEHICLEINFO_OWNERTYPE]);
-				cache_get_value_index_int(i,16,gVehicles[i][VEHICLEINFO_OWNERID]);
+				cache_get_value_index(i,16,gVehicles[i][VEHICLEINFO_OWNER]);
 			}
 			printf("[vehicles.pwn] A total of %d vehicles have been loaded",i);
 			SpawnLoadedVehicles();
@@ -45,7 +45,7 @@ public VehicleSQL:PrepareLoadVehicles() {
 	return 1;
 }
 
-stock VehicleSQL:PrepareAddVehicle(modelid,Float:x,Float:y,Float:z,Float:angle,color1,color2,FLAG_RESPAWN,respawntime,FLAG_PUBLIC,ownertype,ownerid) {
+stock VehicleSQL:PrepareAddVehicle(modelid,Float:x,Float:y,Float:z,Float:angle,color1,color2,FLAG_RESPAWN,respawntime,FLAG_PUBLIC,ownertype,const owner[]) {
 	new query[512];
 	inline AddVehicle() {
 		if(cache_affected_rows())printf("[vehiclesq.pwn] A new vehicle has been added",query);
@@ -55,20 +55,20 @@ stock VehicleSQL:PrepareAddVehicle(modelid,Float:x,Float:y,Float:z,Float:angle,c
 	mysql_format(mysql, query, sizeof(query),
 		"INSERT INTO vehicles (\
 		modelid, x, y, z, angle, color1, color2, fuel, shield, hp, locked, FLAG_RESPAWN, respawntime, FLAG_PUBLIC, ownertype, owner) \
-		VALUES (%d, %f, %f, %f, %f, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d)",
-		modelid, x, y, z, angle, color1, color2, fuel, shield, hp, 0, FLAG_RESPAWN, respawntime, FLAG_PUBLIC, ownertype, ownerid);
+		VALUES (%d, %f, %f, %f, %f, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, '%s')",
+		modelid, x, y, z, angle, color1, color2, fuel, shield, hp, 0, FLAG_RESPAWN, respawntime, FLAG_PUBLIC, ownertype, owner);
 	if(!MySQL_PQueryInline(mysql,using inline AddVehicle,query)) {
 		printf("[vehiclesql.pwn] Error in query while adding vehicle.\nQuery: %s",query);
 	}
 	return 1;
 }
 
-stock VehicleSQL:PrepareEditVehicle(rowid,modelid,Float:x,Float:y,Float:z,Float:angle,color1,color2,FLAG_RESPAWN,respawntime,FLAG_PUBLIC,ownertype,ownerid) {
+stock VehicleSQL:PrepareEditVehicle(rowid,modelid,Float:x,Float:y,Float:z,Float:angle,color1,color2,FLAG_RESPAWN,respawntime,FLAG_PUBLIC,ownertype,const owner[]) {
 	inline EditVehicle() {
 		printf("[vehiclesql.pwn] The vehicle with rowid %d has been edited.",rowid);
 	}
 	new query[512];
-	mysql_format(mysql, query, sizeof(query), "UPDATE vehicles SET modelid = %d, x = %f, y = %f, z = %f, angle = %f, color1 = %d, color2 = %d, fuel = %d, shield = %d, hp = %d, locked = %d, FLAG_RESPAWN = %d, respawntime = %d, FLAG_PUBLIC = %d, ownertype = %d, owner = %d WHERE rowid = %d", modelid, x, y, z, angle, color1, color2, fuel, shield, hp, 0, FLAG_RESPAWN, respawntime, FLAG_PUBLIC, ownertype, ownerid,rowid);
+	mysql_format(mysql, query, sizeof(query), "UPDATE vehicles SET modelid = %d, x = %f, y = %f, z = %f, angle = %f, color1 = %d, color2 = %d, fuel = %d, shield = %d, hp = %d, locked = %d, FLAG_RESPAWN = %d, respawntime = %d, FLAG_PUBLIC = %d, ownertype = %d, owner = '%s' WHERE rowid = %d", modelid, x, y, z, angle, color1, color2, fuel, shield, hp, 0, FLAG_RESPAWN, respawntime, FLAG_PUBLIC, ownertype, ownerid,rowid);
 	if(!MySQL_PQueryInline(mysql,using inline EditVehicle,query)) {
 		printf("[vehiclesql.pwn] Error in query while editing vehicle.\nQuery: %s",query);
 	}
@@ -85,12 +85,12 @@ stock VehicleSQL:PrepareSaveLoadedVehicle(vehicleid,silent = 0) {
 		if(!silent)printf("[vehiclesql.pwn] The vehicle id %d, at index %d and rowid %d has been saved with latest values from RAM.",vehicleid,index,rowid);
 	}
 	new query[512];
-	mysql_format(mysql, query, sizeof(query), "UPDATE vehicles SET modelid = %d, x = %f, y = %f, z = %f, angle = %f, color1 = %d, color2 = %d, fuel = %d, shield = %d, hp = %d, locked = %d, FLAG_RESPAWN = %d, respawntime = %d, FLAG_PUBLIC = %d, ownertype = %d, owner = %d WHERE rowid = %d",\
+	mysql_format(mysql, query, sizeof(query), "UPDATE vehicles SET modelid = %d, x = %f, y = %f, z = %f, angle = %f, color1 = %d, color2 = %d, fuel = %d, shield = %d, hp = %d, locked = %d, FLAG_RESPAWN = %d, respawntime = %d, FLAG_PUBLIC = %d, ownertype = %d, owner = '%s' WHERE rowid = %d",\
 	gVehicles[index][VEHICLEINFO_MODELID],gVehicles[index][VEHICLEINFO_COORDS][0],gVehicles[index][VEHICLEINFO_COORDS][1], gVehicles[index][VEHICLEINFO_COORDS][2],\
 	gVehicles[index][VEHICLEINFO_ANGLE],gVehicles[index][VEHICLEINFO_COLOR1],gVehicles[index][VEHICLEINFO_COLOR2],\
 	GetVehicleFuel(vehicleid),GetVehicleShield(vehicleid),hp,0,\
 	gVehicles[index][VEHICLEINFO_FLAG_RESPAWN], gVehicles[index][VEHICLEINFO_RESPAWNTIME],\
-	gVehicles[index][VEHICLEINFO_FLAG_PUBLIC],gVehicles[index][VEHICLEINFO_OWNERTYPE],gVehicles[index][VEHICLEINFO_OWNERID],rowid);
+	gVehicles[index][VEHICLEINFO_FLAG_PUBLIC],gVehicles[index][VEHICLEINFO_OWNERTYPE],gVehicles[index][VEHICLEINFO_OWNER],rowid);
 	if(!MySQL_PQueryInline(mysql,using inline SaveLoadedVehicle,query)) {
 		printf("[vehiclesql.pwn] Error ocurred while saving vehicle id %d. Index is %d and rowid is %d\nThe query: %s",vehicleid,index,rowid,query);
 	}

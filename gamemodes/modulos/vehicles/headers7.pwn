@@ -17,7 +17,7 @@ enum VEHICLEINFO {
 	VEHICLEINFO_RESPAWNTIME,
 	VEHICLEINFO_FLAG_PUBLIC,  // FLAG to know if vehicle is public or has a owner type (Might be a org vehicle, player vehicle)
 	VEHICLEINFO_OWNERTYPE,
-	VEHICLEINFO_OWNERID, // If ownertype is player it's going to be a playerid, if org orgid, etc.....
+	String:VEHICLEINFO_OWNER[64], // If ownertype is player it's going to be a playerid, if org orgid, etc.....
 	Text3D:VEHICLEINFO_TEXT3D[64] // 3D text for vehicles.
 
 }

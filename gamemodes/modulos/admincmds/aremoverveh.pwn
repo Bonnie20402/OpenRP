@@ -35,12 +35,12 @@ YCMD:aremoverveh(playerid,params[],help) {
             respawntime\t%d\n\
             FLAG_PUBLIC\t%d\n\
             ownertype\t%d\n\
-            owner\t%d",\
+            owner string\t%s",\
             GetLoadedVehicleRowId(vehicleid),vehicleid,gVehicles[index][VEHICLEINFO_MODELID],\
             gVehicles[index][VEHICLEINFO_COORDS][0],gVehicles[index][VEHICLEINFO_COORDS][1],gVehicles[index][VEHICLEINFO_COORDS][2],\
             gVehicles[index][VEHICLEINFO_COLOR1],gVehicles[index][VEHICLEINFO_COLOR2],gVehicles[index][VEHICLEINFO_FLAG_RESPAWN],\
             gVehicles[index][VEHICLEINFO_RESPAWNTIME],gVehicles[index][VEHICLEINFO_FLAG_PUBLIC],gVehicles[index][VEHICLEINFO_OWNERTYPE],\
-            gVehicles[index][VEHICLEINFO_OWNERID]);
+            gVehicles[index][VEHICLEINFO_OWNER]);
             Dialog_ShowCallback(playerid,using inline ConfirmDeleteVehicle,DIALOG_STYLE_TABLIST,"Confirmar...",dBody,"Remover","Cancelar");
         }
         format(dBody,1024,"vehicleid\trowid\tmodelid\tXYZ");

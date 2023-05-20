@@ -31,19 +31,21 @@ hook OnPlayerExitVehicle(playerid, vehicleid) {
         GetVehiclePos(vehicleid,x,y,z);
         inline CreateVehicleConfirm(responseH,listitemH,String:inputtextH) {
             #pragma unused listitemH,inputtextH
+            gCreatingVehicle[playerid][VEHICLEINFO_MODELID]=0;
+            if(!responseH) return Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Cancelado","Operação cancelada","OK","");
             PrepareAddVehicle(modelid,x,y,z,angle,gCreatingVehicle[playerid][VEHICLEINFO_COLOR1],\
             gCreatingVehicle[playerid][VEHICLEINFO_COLOR2],gCreatingVehicle[playerid][VEHICLEINFO_FLAG_RESPAWN],\
             gCreatingVehicle[playerid][VEHICLEINFO_RESPAWNTIME],\
             gCreatingVehicle[playerid][VEHICLEINFO_FLAG_PUBLIC],gCreatingVehicle[playerid][VEHICLEINFO_OWNERTYPE],\
-            gCreatingVehicle[playerid][VEHICLEINFO_OWNERID]);
+            gCreatingVehicle[playerid][VEHICLEINFO_OWNER]);
             SendClientMessage(playerid,COLOR_AQUA,"Veiculo criado!");
             PrepareLoadVehicles();
-            gCreatingVehicle[playerid][VEHICLEINFO_MODELID]=0;
+            
             DestroyVehicle(vehicleid);
         }
         inline OwnerSet(responseG,listitemG,String:inputtextG[]) {
             #pragma unused listitemG
-            gCreatingVehicle[playerid][VEHICLEINFO_OWNERID]=strval(StinputtextG);
+            sscanf(StinputtextG,"s[64]",gCreatingVehicle[playerid][VEHICLEINFO_OWNER]);
             new dialogBody[512];
             format(dialogBody,512,\
             "atributo\tvalor\n\
@@ -56,10 +58,10 @@ hook OnPlayerExitVehicle(playerid, vehicleid) {
             respawntime\t%d\n\
             FLAG_PUBLIC\t%d\n\
             ownertype\t%d\n\
-            ownerid\t%d",\
+            owner string \t%s",\
             modelid,x,y,z,angle,gCreatingVehicle[playerid][VEHICLEINFO_COLOR1],gCreatingVehicle[playerid][VEHICLEINFO_COLOR2],\
             gCreatingVehicle[playerid][VEHICLEINFO_FLAG_RESPAWN],gCreatingVehicle[playerid][VEHICLEINFO_RESPAWNTIME],gCreatingVehicle[playerid][VEHICLEINFO_FLAG_PUBLIC],\
-            gCreatingVehicle[playerid][VEHICLEINFO_OWNERTYPE],gCreatingVehicle[playerid][VEHICLEINFO_OWNERID]);
+            gCreatingVehicle[playerid][VEHICLEINFO_OWNERTYPE],gCreatingVehicle[playerid][VEHICLEINFO_OWNER]);
             Dialog_ShowCallback(playerid,using inline CreateVehicleConfirm,DIALOG_STYLE_TABLIST_HEADERS,"Confirmar",dialogBody,"Sim","Não");
         }
         inline OwnerTypeSet(responseF,listitemF,String:inputtextF[]) {
