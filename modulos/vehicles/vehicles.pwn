@@ -44,6 +44,7 @@ stock Vehicle:IsValidLoadedVehicle(vehicleid) {
 }
 stock Vehicle:SpawnLoadedVehicles() {
     DestroyLoadedVehicles();
+    if(!task_valid(tskVehicleLoad))tskVehicleLoad=task_new();
     for(new i;i<LoadedVehicleCount;i++) {
         // if it should resapwn make it so
         if(gVehicles[i][VEHICLEINFO_FLAG_RESPAWN]) {
@@ -56,6 +57,7 @@ stock Vehicle:SpawnLoadedVehicles() {
         SetupLoadedVehicle3DText(gVehicles[i][VEHICLEINFO_VEHICLEID]);
         new engine,lights,alarm,doors,bonnet,boot,objective;
         GetVehicleParamsEx(gVehicles[i][VEHICLEINFO_LOCKED],engine,lights,alarm,doors,bonnet,boot,objective);
+        
         // Lock vehicle if supposed to.
         SetVehicleParamsEx(gVehicles[i][VEHICLEINFO_LOCKED],engine,lights,alarm,gVehicles[i][VEHICLEINFO_LOCKED],bonnet,boot,objective);
         SetVehicleFuel(gVehicles[i][VEHICLEINFO_VEHICLEID],gVehicles[i][VEHICLEINFO_FUEL]);
