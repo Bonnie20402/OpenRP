@@ -129,6 +129,9 @@ public OnGameModeInit()
 	SendRconCommand("maxplayers 100");
 	SendRconCommand("language PT");
 	SendRconCommand("mode RPG");
+	//To make sure vehicle ids start from 1
+	new tmpveh = AddStaticVehicle(509,0.0,-1.0,0.0,0.0,1,1);
+	SetVehicleVirtualWorld(tmpveh,5000);
 	dbInit();
 	return 1;
 }

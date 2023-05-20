@@ -1,25 +1,38 @@
 /*
     vehicles.pwn
                     */
+enum VEHICLEINFO {
+	VEHICLEINFO_ROWID,
+	VEHICLEINFO_VEHICLEID,
+	VEHICLEINFO_MODELID,
+	Float:VEHICLEINFO_COORDS[3],
+	VEHICLEINFO_ANGLE,
+	VEHICLEINFO_COLOR1,
+	VEHICLEINFO_COLOR2,
+	VEHICLEINFO_FUEL,
+	VEHICLEINFO_SHIELD,
+	VEHICLEINFO_HP,
+	VEHICLEINFO_LOCKED,
+	VEHICLEINFO_FLAG_RESPAWN, // FLAG to decide if vehicle is supposed to be respawned by itself or not
+	VEHICLEINFO_RESPAWNTIME,
+	VEHICLEINFO_FLAG_PUBLIC,  // FLAG to know if vehicle is public or has a owner type (Might be a org vehicle, player vehicle)
+	VEHICLEINFO_OWNERTYPE,
+	VEHICLEINFO_OWNERID, // If ownertype is player it's going to be a playerid, if org orgid, etc.....
+	Text3D:VEHICLEINFO_TEXT3D[64] // 3D text for vehicles.
+
+}
+
+enum OWNERTYPE { //
+	OWNERTYPE_PLAYER,
+	OWNERTYPE_ORG,
+	OWNERTYPE_JOB,
+	OWNERTYPE_ADMIN,
+	OWNERTYPE_COP 
+}
+new gVehicles[MAX_VEHICLES][VEHICLEINFO];
 forward OnVehicleSpawn(vehicleid);
 forward VehicleInit(vehicleid);
-/*
-    citizenvehicles.pwn
-                        */
-new gCitizenVehicles[MAX_VEHICLES];
 
-forward PrepareCitizenVehicles();
-
-forward PrepareLoadCitizenVehicles();
-forward FinishLoadCitizenVehicles();
-
-forward PrepareRemoveCitizenVehicle(rowid);
-forward FinishRemoveCitizenVehicle(rowid);
-
-forward PrepareAddCitizenVehicle(type,color1,color2,Float:x,Float:y,Float:z);
-forward FinishAddCitizenVehicle();
-
-forward IsCitizenVehicle(vehicleid);
 /*
     vehiclehud.pwn
                     */

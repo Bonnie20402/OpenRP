@@ -22,8 +22,6 @@
 #include "modulos\admincmds\av.pwn"
 #include "modulos\admincmds\aveh.pwn"
 #include "modulos\admincmds\adminslist.pwn"
-#include "modulos\admincmds\criarcitizenvehicle.pwn"
-#include "modulos\admincmds\removercitizenvehicle.pwn"
 #include "modulos\admincmds\criarlocationpickup.pwn"
 #include "modulos\admincmds\removerlocationpickup.pwn"
 #include "modulos\admincmds\setarinterior.pwn"
@@ -45,6 +43,9 @@
 #include "modulos\admincmds\aweapon.pwn"
 #include "modulos\admincmds\abnotificacao.pwn"
 #include "modulos\admincmds\akick.pwn"
+#include "modulos\admincmds\acriarveh.pwn"
+#include "modulos\admincmds\aremoverveh.pwn"
+#include "modulos\admincmds\asalvarveh.pwn"
 
 
 /*

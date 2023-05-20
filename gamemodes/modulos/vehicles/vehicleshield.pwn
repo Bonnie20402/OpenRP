@@ -17,9 +17,11 @@ public OnVehicleDamageStatusUpdate(vehicleid, playerid) {
 }
 public ShieldVehicle(vehicleid) {
     SetVehicleShield(vehicleid,100);
+    return 1;
 }
 public SetVehicleShield(vehicleid,shield) {
     gVehicleShield[vehicleid]=shield;
+    return 1;
 }
 public GetVehicleShield(vehicleid) {
     return gVehicleShield[vehicleid];

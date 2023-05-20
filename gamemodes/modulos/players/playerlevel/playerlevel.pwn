@@ -76,6 +76,14 @@ YCMD:levelup(playerid,params[],help) {
     return 1;
 }
 
+stock Payday:SetPlayerLevelRespect(playerid,respect) {
+    gPlayerLevel[playerid][PLAYERLEVEL_RESPECT]=respect;
+    return 1;
+}
+stock Payday:SetPlayerLevelHours(playerid,hours) {
+    gPlayerLevel[playerid][PLAYERLEVEL_HOURS]=hours;
+    return 1;
+}
 stock Payday:ShowPlayerLevelLevelUpDialog(playerid) {
     new nextLevel=GetPlayerLevel(playerid);
     inline Response(response,listitem,String:input[]) {
@@ -84,7 +92,10 @@ stock Payday:ShowPlayerLevelLevelUpDialog(playerid) {
             if(!CanPlayerLevelUp(playerid))return Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Ups!","Não cumpres os requisitos para subir de nivel!","OK","");
             gPlayerLevel[playerid][PLAYERLEVEL_LEVEL]++;
             gPlayerLevel[playerid][PLAYERLEVEL_RESPECT]-=CalculateRequiredLevelRespect(nextLevel);
+            SetPlayerScore(playerid,GetPlayerLevel(playerid));
+            PrepareSavePlayerLevel(playerid);
             SendClientMessage(playerid,COLOR_AQUA,"Subiste de nivel, parabens!");
+            GameTextForPlayer(playerid,"LEVEL UP!",3000,3);
         }
     }
     new requirmentMet[32] = "{00FF00}OK{FFFFFF}";

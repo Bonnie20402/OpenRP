@@ -13,9 +13,9 @@ stock LoadServerTables() {
 	PrepareAccountsTable();
 	PrepareLocationsTable(); // Deprecated
 	PrepareLocationPickupsTable(); // Deprecated 
-	PrepareCitizenVehiclesTable(); // Deprecated 
 	PrepareCharacterInfoTable(); // Deprecated 
 	PrepareAdminsTable();
+	PrepareVehiclesTable();
 	PreparePlayerBankAccountsTable(); // Player bank accounts table creation.
 	PreparePlayerLevelTable(); // Player level,respect,hoursplayed  table creation.
 	PreparePlayerPaydayTimerTable();
