@@ -27,8 +27,9 @@ YCMD:acriarveh(playerid,params[],help) {
 hook OnPlayerExitVehicle(playerid, vehicleid) {
     if(gCreatingVehicle[playerid][VEHICLEINFO_MODELID]) {
         new modelid = GetVehicleModel(vehicleid);
-        new Float:x,Float:y,Float:z,Float:angle=0.0;
+        new Float:x,Float:y,Float:z,Float:angle;
         GetVehiclePos(vehicleid,x,y,z);
+        GetVehicleZAngle(vehicleid,angle);
         inline CreateVehicleConfirm(responseH,listitemH,String:inputtextH) {
             #pragma unused listitemH,inputtextH
             gCreatingVehicle[playerid][VEHICLEINFO_MODELID]=0;
