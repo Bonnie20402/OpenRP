@@ -17,6 +17,7 @@
 #pragma warning disable 213
 #pragma warning disable 214
 #pragma warning disable 215
+#pragma warning disable 239
 
 #define CGEN_MEMORY 60000
 
@@ -24,9 +25,7 @@
 
 #define DATE "02/04/2023"
 #define VERSION "0.0.2c"
-#define AMX_OLD_CALL
 #include <a_samp>
-#include <fixes>
 #include <VehiclePartPosition>
 #include <a_mysql>
 #include <sscanf2>
@@ -35,13 +34,17 @@
 #include <samp-precise-timers>
 #include <streamer>
 #include <weapon-config.inc>
+#include <PawnPlus>
 #include <crashdetect>
 //WARN if YSK gives error function different from prototype, just comment that function out.
 #include <YSF>
+
 #include <YSI_Visual\y_commands>
 #include <YSI_Visual\y_dialog>
 #include <YSI_Coding\y_inline>
 #include <YSI_Extra\y_inline_mysql>
+
+
 
 
 #include "modulos\util\datetime.inc"
@@ -116,7 +119,16 @@ Companies/Locations
 				*/
 #include "modulos\jobs\jobs.pwn"
 
+
+
+
+stock TasksInit() {
+	tskVehicleLoad = task_new();
+	return 1;
+}
 main() {
+	//TODO add a task that enables the warnings after  everyting loads.
+	DisableCrashDetectLongCall();
 	return 1;
  }
 public OnGameModeInit()
@@ -125,10 +137,11 @@ public OnGameModeInit()
 	DisableInteriorEnterExits();
 	ManualVehicleEngineAndLights();
 	UsePlayerPedAnims();
-	SendRconCommand("hostname Open SXurce RP!");
-	SendRconCommand("maxplayers 100");
+	SendRconCommand("hostname Open Source RPG");
+	SendRconCommand("maxplayers 1000");
 	SendRconCommand("language PT");
 	SendRconCommand("mode RPG");
+	TasksInit();
 	//To make sure vehicle ids start from 1
 	new tmpveh = AddStaticVehicle(509,0.0,-1.0,0.0,0.0,1,1);
 	SetVehicleVirtualWorld(tmpveh,5000);
