@@ -4,7 +4,7 @@ taskkill /f /im samp-server.exe
 echo All samp server instances have been killed.
 del gamemodes\roleplay.amx
 echo Compiling...
-pawncc -iincludes -d2 -ogamemodes\roleplay.amx gamemodes\roleplay.pwn
+pawncc -iincludes -d2 -O0 -Z+ -ogamemodes\roleplay.amx gamemodes\roleplay.pwn
 IF %ERRORLEVEL% EQU 0 (
     echo Compile success, starting server...
     start samp-server.exe

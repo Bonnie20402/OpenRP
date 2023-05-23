@@ -234,8 +234,8 @@ public InvSQL:PrepareSavePlayerInventory(playerid) {
     printf("[inventorytable.pwn] %d valid itens saved for %s[%d]",qtt,GetPlayerNameEx(playerid),playerid);
     return 1;
 }
-forward InvSQL:FinishSavePlayerInventory(const playerid,const username[]);
-public InvSQL:FinishSavePlayerInventory(const playerid,const username[]) {
+forward InvSQL:FinishSavePlayerInventory(const playerid,String:username[]);
+public InvSQL:FinishSavePlayerInventory(const playerid,String:username[]) {
     if(cache_affected_rows())return 1;
     else printf("[inventorytable.pwn] WARN - No rows affected while saving the inventory of %s[%d]",username,playerid);
     return 1;

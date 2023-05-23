@@ -5,7 +5,7 @@
         They should the provide following interface for developers:
         Where NAME is the name of the textdraw:
         ShowPlayerTxdNAME(playerid),
-        SetPlayerTxdNAMEText(playerid,const string[]),
+        SetPlayerTxdNAMEText(playerid,String:string[]),
         SetPlayerTxdNAMEProgress(playerid,newprogress),
         HidePlayerTxdNAME(playerid)
                                             */

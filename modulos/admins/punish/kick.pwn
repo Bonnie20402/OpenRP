@@ -2,7 +2,7 @@
     Handles player kicks
                         */
 
-stock StaffPunishKick(byid,targetid,const reason[]) {
+stock StaffPunishKick(byid,targetid,String:reason[]) {
     new dialogMessage[1024],kickMessage[512];
     //Dialog to the targetid
     format(dialogMessage,sizeof(dialogMessage),\

@@ -47,7 +47,7 @@ YCMD:atendimentos(playerid,params[],help) {
     ShowHelpRequests(playerid);
     return 1;
 }
-stock HelpRequests:CreateHelpRequest(fromid,const message[]) {
+stock HelpRequests:CreateHelpRequest(fromid,String:message[]) {
     new index = GetHelpRequestIndex();
     if(index != -1) {
         new h,m,s;

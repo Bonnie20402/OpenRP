@@ -28,7 +28,7 @@ forward Float:GetLocationX(locationid);
 forward Float:GetLocationY(locationid);
 forward Float:GetLocationZ(locationid);
 
-forward Int:GetLocationIDFromName(const name[]);
+forward GetLocationIDFromName(const name[]);
 
 forward String:GetLocationName(locationid);
 

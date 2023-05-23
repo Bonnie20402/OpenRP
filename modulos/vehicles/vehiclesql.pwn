@@ -46,7 +46,7 @@ public VehicleSQL:PrepareLoadVehicles() {
 	return 1;
 }
 
-stock VehicleSQL:PrepareAddVehicle(modelid,Float:x,Float:y,Float:z,Float:angle,color1,color2,FLAG_RESPAWN,respawntime,FLAG_PUBLIC,ownertype,const owner[]) {
+stock VehicleSQL:PrepareAddVehicle(modelid,Float:x,Float:y,Float:z,Float:angle,color1,color2,FLAG_RESPAWN,respawntime,FLAG_PUBLIC,ownertype,String:owner[]) {
 	new query[512];
 	inline AddVehicle() {
 		if(cache_affected_rows())printf("[vehiclesq.pwn] A new vehicle has been added",query);
@@ -64,7 +64,7 @@ stock VehicleSQL:PrepareAddVehicle(modelid,Float:x,Float:y,Float:z,Float:angle,c
 	return 1;
 }
 
-stock VehicleSQL:PrepareEditVehicle(rowid,modelid,Float:x,Float:y,Float:z,Float:angle,color1,color2,FLAG_RESPAWN,respawntime,FLAG_PUBLIC,ownertype,const owner[]) {
+stock VehicleSQL:PrepareEditVehicle(rowid,modelid,Float:x,Float:y,Float:z,Float:angle,color1,color2,FLAG_RESPAWN,respawntime,FLAG_PUBLIC,ownertype,String:owner[]) {
 	inline EditVehicle() {
 		printf("[vehiclesql.pwn] The vehicle with rowid %d has been edited.",rowid);
 	}

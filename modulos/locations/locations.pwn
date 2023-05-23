@@ -131,9 +131,11 @@ public Float:GetLocationY(locationid) {
 public Float:GetLocationZ(locationid) {
     return gLocations[locationid][LOCATION_COORDS][2];
 }
-public Int:GetLocationIDFromName(const name[]) {
+public GetLocationIDFromName(const name[]) {
     for(new i=0;i<sizeof(gLocations);i++) {
-        if(!strcmp((gLocations)[i][LOCATION_NAME],name))  return i;
+        if(!strcmp(gLocations[i][LOCATION_NAME],name,true)) {
+            return i;
+        } 
     }
     return 0;
 }

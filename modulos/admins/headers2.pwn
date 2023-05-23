@@ -15,4 +15,4 @@ new gAdmins[MAX_PLAYERS][ADMININFO];
 /*
     adminmsg.pwn
                 */
-forward SendStaffMessage(playerid,const message[]);
+forward SendStaffMessage(playerid,String:message[]);

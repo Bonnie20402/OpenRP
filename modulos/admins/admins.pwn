@@ -100,8 +100,8 @@ stock Staff:PrepareCreateAdmin(playerid,Int:level,String:role[]) {
     mysql_pquery(mysql,query,"FinishCreateAdmin","iis",playerid,level,role);
     return 1;
 }
-forward Staff:FinishCreateAdmin(playerid,Int:level,const role[]);
-public Staff:FinishCreateAdmin(playerid,Int:level,const role[]) {
+forward Staff:FinishCreateAdmin(playerid,Int:level,String:role[]);
+public Staff:FinishCreateAdmin(playerid,Int:level,String:role[]) {
     gAdmins[playerid][ADMININFO_LEVEL]=level;
     gAdmins[playerid][ADMININFO_WORKING]=1;
     format(gAdmins[playerid][ADMININFO_ROLE],64,"%s",role);
@@ -115,14 +115,14 @@ public Staff:FinishCreateAdmin(playerid,Int:level,const role[]) {
     Deletes an admin from the table
                                 */
 
-forward Staff:PreparteDeleteAdmin(playerid,const username[]);
-public Staff:PrepareDeleteAdmin(playerid,const username[]) {
+forward Staff:PreparteDeleteAdmin(playerid,String:username[]);
+public Staff:PrepareDeleteAdmin(playerid,String:username[]) {
     new query[255];
     mysql_format(mysql,query,255,"DELETE FROM admins WHERE username = '%s'",username);
     mysql_pquery(mysql,query,"FinishDeleteAdmin","is",playerid,username);
     return 1;
 }
-public Staff:FinishDeleteAdmin(playerid,const username[]) {
+public Staff:FinishDeleteAdmin(playerid,String:username[]) {
     new String:msg[255];
     new Int:staffid;
     staffid=GetPlayerIdFromName(username);

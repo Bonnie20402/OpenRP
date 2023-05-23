@@ -55,7 +55,7 @@ public PrepareSavePlayerBankAccount(playerid) {
     return 1;
 }
 
-public FinishSavePlayerankAccount(playerid,const username[]) {
+public FinishSavePlayerankAccount(playerid,String:username[]) {
     printf("[playerbank.pwn] The account of %s[%d] has been saved!",username,playerid);
     gBankAccount[playerid]=-1;
     return 1;

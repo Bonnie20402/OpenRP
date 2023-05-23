@@ -79,7 +79,7 @@ public PrepareSaveCharacterInfo(playerid) {
     mysql_pquery(mysql,query,"FinishSaveCharacterInfo","iss",playerid,GetPlayerNameEx(playerid),query);
 }
 
-public FinishSaveCharacterInfo(playerid,const username[],const query[]) {
+public FinishSaveCharacterInfo(playerid,String:username[],String:query[]) {
     if(cache_affected_rows())return 1;
     else printf("[characterinfo.pwn] Error saving characteer info of %s!\nEis a query: %s",GetPlayerNameEx(playerid),query);
     return 0;

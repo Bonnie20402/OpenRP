@@ -26,6 +26,7 @@
 #define DATE "02/04/2023"
 #define VERSION "0.0.2c"
 #include <a_samp>
+#include <fixes>
 #include <VehiclePartPosition>
 #include <a_mysql>
 #include <sscanf2>
@@ -33,9 +34,10 @@
 #include <bcrypt>
 #include <samp-precise-timers>
 #include <streamer>
+#include <CrashDetect>
 #include <weapon-config.inc>
 #include <PawnPlus>
-#include <crashdetect>
+//#include <crashdetect>
 //WARN if YSK gives error function different from prototype, just comment that function out.
 #include <YSF>
 
@@ -119,7 +121,7 @@ Companies/Locations
 				*/
 #include "modulos\jobs\jobs.pwn"
 
-
+#define SSCANF_NO_NICE_FEATURES
 
 
 stock TasksInit() {
@@ -127,6 +129,7 @@ stock TasksInit() {
 	return 1;
 }
 main() {
+
 	//TODO add a task that enables the warnings after  everyting loads.
 	DisableCrashDetectLongCall();
 	return 1;

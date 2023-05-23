@@ -66,7 +66,7 @@ public InvAction:OnPlayerInvActionSell(playerid,modelid,quantity) {
 }
 
 // Price input and validation logic. Uses ysi's inline libary.
-public InvAction:OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,const inputtext[]) {
+public InvAction:OnPlayerInvSellTargetSet(playerid, dialogid, response, listitem,String:inputtext[]) {
     // Offer cancel logic
     inline const offerCancelResponse(response,listitem,string:cancelText[]) {
         #pragma unused listitem,cancelText,response

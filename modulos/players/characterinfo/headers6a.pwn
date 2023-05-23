@@ -21,4 +21,4 @@ forward FinishLoadCharacterInfo(playerid);
 forward InsertCharacterInfo(playerid);
 
 forward PrepareSaveCharacterInfo(playerid);
-forward FinishSaveCharacterInfo(playerid,const username[],const query[]);
+forward FinishSaveCharacterInfo(playerid,String:username[],String:query[]);

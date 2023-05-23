@@ -13,7 +13,7 @@ forward PreparePlayerBankAccountsTable();
 forward PrepareLoadPlayerBankAccount(playerid);
 forward FinishLoadPlayerBankAccount(playerid);
 forward PrepareSavePlayerBankAccount(playerid);
-forward FinishSavePlayerankAccount(playerid,const username[]);
+forward FinishSavePlayerankAccount(playerid,String:username[]);
 forward PrepareLoadPlayerBankAccount(playerid);
 
 forward IsPlayerBankAccountLoaded(playerid);
