@@ -5,6 +5,7 @@ public JobsInit() {
     task_await(tskVehicleLoad);
     printf("[jobs.pwn] Now loading jobs...");
     TrashManInit();
+    printf("[job.pwn] All jobs have been called to load.");
     return 1;
 }
 

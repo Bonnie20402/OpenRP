@@ -121,7 +121,6 @@ Companies/Locations
 				*/
 #include "modulos\jobs\jobs.pwn"
 
-#define SSCANF_NO_NICE_FEATURES
 
 
 stock TasksInit() {

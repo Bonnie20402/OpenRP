@@ -15,25 +15,17 @@ public TrashManInit() {
     gJobs[JOBLIST_TRASHMAN][JOBINFO_SPAWN][2] = 13.5589;
     gJobs[JOBLIST_TRASHMAN][JOBINFO_SKIN] = 289; 
     gJobs[JOBLIST_TRASHMAN][JOBINFO_PAYCHECK] = TRASHMAN_PAY;
-    //Clear all loaded vehicles (reload-friendly)
-    for(new i=0;i<sizeof(gTrashman_VEHICLES);i++) {
-        if(IsValidVehicle(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID])) {
-            DestroyVehicle(i);
-            DestroyDynamic3DTextLabel(gTrashman_VEHICLES[i][TRASHMANVEHICLE_TEXT]);
-        }
-    }
     // Job vehicles
     //ADDING IN GAME
     
     
     //Vehicle  init logic
-    for(new i=0;i<sizeof(gTrashman_VEHICLES);i++) {
-        if(IsValidVehicle(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID])) {
-            VehicleInit(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID]);
-            SetVehicleShield(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID],25);
+    for(new i=0;i<LoadedVehicleCount;i++) {
+        if(IsValidTrashmanVehicle(gVehicles[i][VEHICLEINFO_VEHICLEID])) {
+            SetVehicleShield(gVehicles[i][VEHICLEINFO_VEHICLEID],25);
             gTrashman_VEHICLES[i][TRASHMANVEHICLE_MAXTRASH]=MAX_TRASH_CAPACITY;
-            gTrashman_VEHICLES[i][TRASHMANVEHICLE_TEXT]=CreateDynamic3DTextLabel("Á espera...",-1,0,0,0,15,INVALID_PLAYER_ID,gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID]);
-            UpdateTrashmanVehicleLabel(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID]);
+            gTrashman_VEHICLES[i][TRASHMANVEHICLE_TEXT]=CreateDynamic3DTextLabel("Á espera...",-1,0,0,0,15,INVALID_PLAYER_ID,gVehicles[i][VEHICLEINFO_VEHICLEID]);
+            UpdateTrashmanVehicleLabel(gVehicles[i][VEHICLEINFO_VEHICLEID]);
         }
     }
     print("[trashman.pwn] Job loaded!");
@@ -229,44 +221,40 @@ hook OnPlayerDisconnect(playerid,reason) {
 //Returns the MAXIMUM trash of the truck
 
 public GetTrashmanVehicleMaxTrash(vehicleid) {
-    for(new i=0;i<sizeof(gTrashman_VEHICLES);i++) {
-        if(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID]==vehicleid) {
-            return gTrashman_VEHICLES[i][TRASHMANVEHICLE_MAXTRASH];
-        }
+    new index = GetLoadedVehicleIndex(vehicleid);
+    if(IsValidTrashmanVehicle(vehicleid)) {
+        return gTrashman_VEHICLES[index][TRASHMANVEHICLE_MAXTRASH];
     }
-    return -2;
+    return -1;
 }
 
 //Retruns the CURRENT trash of the truck
 
 public GetTrashmanVehicleTrash(vehicleid) {
-    for(new i=0;i<sizeof(gTrashman_VEHICLES);i++) {
-        if(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID]==vehicleid) {
-            return gTrashman_VEHICLES[i][TRASHMANVEHICLE_CURRENTTRASH];
-        }
+    new index = GetLoadedVehicleIndex(vehicleid);
+    if(IsValidTrashmanVehicle(vehicleid)) {
+        return gTrashman_VEHICLES[index][TRASHMANVEHICLE_CURRENTTRASH];
     }
     return -1;
 }
 //Changes the CURRENT trash value of the truck
 public SetTrashmanVehicleTrash(vehicleid,amount) {
-    for(new i=0;i<sizeof(gTrashman_VEHICLES);i++) {
-        if(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID]==vehicleid) {
-            gTrashman_VEHICLES[i][TRASHMANVEHICLE_CURRENTTRASH]=amount;
-            UpdateTrashmanVehicleLabel(vehicleid);
-            return 1;
-        }
+    new index = GetLoadedVehicleIndex(vehicleid);
+    if(IsValidTrashmanVehicle(vehicleid)) {
+        gTrashman_VEHICLES[index][TRASHMANVEHICLE_CURRENTTRASH]=amount;
+        UpdateTrashmanVehicleLabel(vehicleid);
+        return 1;
     }
     return 0;
 }
 //Updates the truck's label with the latest ram-loaded values
 public UpdateTrashmanVehicleLabel(trashmanvehicleid) {
-    for(new i=0;i<sizeof(gTrashman_VEHICLES);i++) {
-        if(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID]==trashmanvehicleid) {
-            new String:text[64];
-            format(text,64,"- Camião do Lixo [%d] -\nLixo: %d/%d",i,gTrashman_VEHICLES[i][TRASHMANVEHICLE_CURRENTTRASH],gTrashman_VEHICLES[i][TRASHMANVEHICLE_MAXTRASH]);
-            UpdateDynamic3DTextLabelText(gTrashman_VEHICLES[i][TRASHMANVEHICLE_TEXT],-1,text);
-            return 1;
-        }
+    new i = GetLoadedVehicleIndex(trashmanvehicleid);
+    if(IsValidTrashmanVehicle(trashmanvehicleid)) {
+        new String:text[64];
+        format(text,64,"- Camião do Lixo [%d] -\nLixo: %d/%d",i,gTrashman_VEHICLES[i][TRASHMANVEHICLE_CURRENTTRASH],gTrashman_VEHICLES[i][TRASHMANVEHICLE_MAXTRASH]);
+        UpdateDynamic3DTextLabelText(gTrashman_VEHICLES[i][TRASHMANVEHICLE_TEXT],-1,text);
+        return 1;
     }
 }
 
@@ -283,10 +271,10 @@ public GetPlayerLastTrashmanVehicle(playerid) {
 //Checks if given vehicleid is a valid trashman vehicle
 public IsValidTrashmanVehicle(vehicleid) {
     if(!vehicleid) return 0;
-    for(new i=0;i<sizeof(gTrashman_VEHICLES);i++) {
-        if(gTrashman_VEHICLES[i][TRASHMANVEHICLE_VEHICLEID]==vehicleid) return 1;
-        }
-    printf("veiculo invalido");
+    new index = GetLoadedVehicleIndex(vehicleid);
+    if(gVehicles[index][VEHICLEINFO_OWNERTYPE] == OWNERTYPE_JOB && strval(gVehicles[index][VEHICLEINFO_OWNER]) == JOBLIST_TRASHMAN) {
+        return 1;
+    }
     return 0;
 }
 // Checks if job of player is trashman
