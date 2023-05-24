@@ -17,11 +17,9 @@ stock ShowCreditsDialog(playerid) {
     {0B61B9}Prof. Alexandre R. & Carla R. - Quase como familia para mim!\n\
     {0B61B9}Guilherme{ffffff} @guilherme.coto {0B61B9}Côto - Grande amigo <3!\n\
     Tiago{ffffff} @tiago_almeida_23 {0B61B9}Almeida - O gajo de oculos mais bem desposto que conheço\n\
-    Renato{ffffff} @asteroidrenato {0B61B9}Almeida - Muito porreiro :)\n\
     Manuel{ffffff} @manuel14674 {0B61B9}Teixeira - Oh Manel, vou te bater...\n\
     Mariana{ffffff} @_.maariaanaa {0B61B9} P. - Boa pessoa, sempre a sorrir <3\n\
     Erico{ffffff} @mr.mewo_{0B61B9} Siqueira - Posso sempre contar com ele :)\n\
-    Rafael{ffffff} @rafaelcabral04{0B61B9} Cabral - Super tranquilo!\n\
     \n{ffffff}\
     Obrigado por leres. <3\n\
     ");

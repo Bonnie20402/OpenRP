@@ -30,8 +30,8 @@ hook OnPlayerExitVehicle(playerid, vehicleid) {
         new Float:x,Float:y,Float:z,Float:angle;
         GetVehiclePos(vehicleid,x,y,z);
         GetVehicleZAngle(vehicleid,angle);
-        inline CreateVehicleConfirm(responseH,listitemH,String:inputtextH) {
-            #pragma unused listitemH,inputtextH
+        inline CreateVehicleConfirm(responseH,listitemH,String:inputtextH[]) {
+            #pragma unused listitemH,StinputtextH
             gCreatingVehicle[playerid][VEHICLEINFO_MODELID]=0;
             if(!responseH) return Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Cancelado","Operação cancelada","OK","");
             PrepareAddVehicle(modelid,x,y,z,angle,gCreatingVehicle[playerid][VEHICLEINFO_COLOR1],\
@@ -40,8 +40,6 @@ hook OnPlayerExitVehicle(playerid, vehicleid) {
             gCreatingVehicle[playerid][VEHICLEINFO_FLAG_PUBLIC],gCreatingVehicle[playerid][VEHICLEINFO_OWNERTYPE],\
             gCreatingVehicle[playerid][VEHICLEINFO_OWNER]);
             SendClientMessage(playerid,COLOR_AQUA,"Veiculo criado!");
-            PrepareLoadVehicles();
-            
             DestroyVehicle(vehicleid);
         }
         inline OwnerSet(responseG,listitemG,String:inputtextG[]) {

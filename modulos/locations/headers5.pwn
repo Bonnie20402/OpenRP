@@ -37,7 +37,6 @@ forward GetLocationInterior(locationid);
     locationpickups.pwn
                         */
 enum LOCATIONPICKUP {
-    //Int:LOCATIONPICKUP_TYPE Should always be 1, for now.
     Int:LOCATIONPICKUP_PICKUPID,
     Int:LOCATIONPICKUP_ROWID, // It's the mysql row id.
     Int:LOCATIONPICKUP_MODEL,

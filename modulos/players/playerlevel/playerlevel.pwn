@@ -13,8 +13,10 @@
 
 #include <YSI_Coding\y_hooks>
 hook OnPlayerDisconnect(playerid,reason) {
-    PrepareSavePlayerLevel(playerid);
-    if(IsPlayerLoggedIn(playerid))DeletePlayerLevel(playerid);
+    if(IsPlayerLoggedIn(playerid)) {
+        PrepareSavePlayerLevel(playerid);
+        DeletePlayerLevel(playerid);
+    }
     return 1;
 }
 hook OnPlayerConnect(playerid) {

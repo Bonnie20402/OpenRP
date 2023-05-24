@@ -3,12 +3,11 @@
 #define RNG_TRASH_MIN 100 // Min amount of trash per trow
 #define RNG_TRASH_MAX 200 // Max amount of trash per throw
 
-#define MAX_TRASH_CAPACITY 300 // Max amount of trash per truck.
+#define MAX_TRASH_CAPACITY 500 // Max amount of trash per truck.
 
 #define TRASHMAN_PAY 5000 // Payday value
 
 enum TRASHMANVEHICLE {
-    TRASHMANVEHICLE_VEHICLEID,
     TRASHMANVEHICLE_CURRENTTRASH,
     TRASHMANVEHICLE_MAXTRASH,
     Text3D:TRASHMANVEHICLE_TEXT
@@ -30,8 +29,8 @@ new const Float:gLocations_Trashman[][] = {
     {1369.3083,-1312.8268,13.5469}, // Lixo 5
     {1461.6632,-1487.8311,13.5469} // Lixo 6
     // pickup id 8 disappears after pickup but has no effect. Calls pickup event.
-
 };
+
 forward TrashManInit();
 forward FindNewTrashmanLocation(playerid);
 forward Float:GetPlayerDistanceFromTrashmanHQ(playerid);

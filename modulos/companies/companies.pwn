@@ -22,6 +22,7 @@
 /*
     Interior Modules
                 */
+#include "modulos\companies\interior\interiordialogs.pwn" // -*- INTERIOR DIALOGS / SHOPPING MENUS -*- 
 #include "modulos\companies\interior\ammonation1.pwn" // Ammo nation 1
 #include "modulos\companies\interior\market1.pwn" // market perfeitura
 #include "modulos\companies\interior\rest1.pwn" // Cluck bell

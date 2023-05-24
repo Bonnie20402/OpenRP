@@ -14,6 +14,12 @@
 #define ITEM_CAIXAEPICA 19057
 #define ITEM_CAIXALENDARIA 19058
 
+#define ITEM_SUMOLARANJA 19563
+#define ITEM_SUMOMACA 19564
+#define ITEM_PIZZA 2814
+#define ITEM_TACO 2769
+#define ITEM_HAMBURGER 2880
+
 #define ITEM_SKIN_MIN 0
 #define ITEM_SKIN_MAX 312
 
@@ -41,6 +47,16 @@ stock InvItem:GetItemNameString(modelid) {
 			format(itemName,64,"Caixa Epica");
 		case ITEM_CAIXALENDARIA:
 			format(itemName,64,"Caixa Lendaria");
+		case ITEM_PIZZA:
+			format(itemName,64,"Caixa de Pizza");
+		case ITEM_TACO:
+			format(itemName,64,"Taco");
+		case ITEM_SUMOLARANJA:
+			format(itemName,64,"Sumo de laranja");
+		case ITEM_SUMOMACA:
+			format(itemName,64,"Sumo de maca");
+		case ITEM_HAMBURGER:
+			format(itemName,64,"Hamburger");
 	}
 	if(modelid >= ITEM_SKIN_MIN && modelid < ITEM_SKIN_MAX) {
 		format(itemName, 64, "Skin %d",modelid); // if it's a skin
