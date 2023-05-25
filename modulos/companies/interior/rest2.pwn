@@ -25,6 +25,13 @@ public Rest2Init() {
 }
 
 hook OnPlayerEnterDynArea(p,a) {
-    if(a==interiorRestaurante1_AREAID)ShowRestaurantDialog(p);
+    new playerid=p;
+    if(a==interiorRestaurante2_AREAID) {
+        DialogShopInit(playerid);
+        AddDialogShopItem(playerid,ITEM_SUMOLARANJA,250);
+        AddDialogShopItem(playerid,ITEM_PIZZA,300);
+        AddDialogShopItem(playerid,ITEM_SUMOMACA,100);
+        ShowInteriorShopDialog(playerid);
+    }
     return 1;
 }
