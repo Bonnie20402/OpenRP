@@ -248,7 +248,15 @@ public InvSQL:SetPlayerInvItem(playerid,index,modelid,quantity) {
     gInventories[playerid][index][INVITEM_QUANTITY]=quantity;
     return 1;
 }
-
+// Checks if player has item. If he does, return the quantity. Else return 0
+stock InvSQL:DoesPlayerHaveItem(playerid,modelid) {
+    for(new i;i<INVENTORY_REALSIZE;i++) {
+        if(gInventories[playerid][i][INVITEM_MODELID] == modelid) {
+            return gInventories[playerid][i][INVITEM_QUANTITY];
+        }
+    }
+    return 0;
+}
 //Gives a player an item. Checks for empty slots. If it does not find one, returns 0. Does not save to SQL
 forward InvSQL:GivePlayerInvItem(playerid,modelid,quantity);
 public InvSQL:GivePlayerInvItem(playerid,modelid,quantity) {

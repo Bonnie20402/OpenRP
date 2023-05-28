@@ -36,7 +36,7 @@ stock CompanyDialog:ShowInteriorShopDialog(playerid) {
     }
     inline SetupQuantity(responseA,listitemA,String:inputtextA[]) {
         if(!responseA)return Dialog_Show(playerid,DIALOG_STYLE_MSGBOX,"Adeus","Saiste do menu de compras.","OK","");
-        price=gInteriorShop[playerid][listitemA][INTERIORSHOP_PRICE]; // cut R$ from the string R - [0] $ - [1]
+        price=gInteriorShop[playerid][listitemA][INTERIORSHOP_PRICE]; 
         selectedItem=gInteriorShop[playerid][listitemA][INTERIORSHOP_MODELID];
         format(dBody,512,"Escolheste adquirir %s.\nPreço por unidade: R$ %d\nIntroduz a quantidade:",GetItemNameString(gInteriorShop[playerid][listitemA][INTERIORSHOP_MODELID]),gInteriorShop[playerid][listitemA][INTERIORSHOP_PRICE]);
         Dialog_ShowCallback(playerid,using inline ConfirmPurchase,DIALOG_STYLE_INPUT,"Quantidade",dBody,"Continuar","Cancelar");
@@ -69,6 +69,7 @@ stock InteriorDialogs:GetDialogShopIndex(playerid) {
     return -1;
 }
 
+/* Adds a item to the DialogShop. WARN: DialogShopInit should be called BEFORE adding itens! */
 stock InteriorDialogs:AddDialogShopItem(playerid,modelid,price) {
     new index = GetDialogShopIndex(playerid);
     gInteriorShop[playerid][index][INTERIORSHOP_MODELID]=modelid;

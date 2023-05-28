@@ -64,26 +64,6 @@ public InvGUI:IsPlayerInvOpen(playerid) {
 	if(IsPlayerTextDrawVisible(playerid,txdInv_bg0[playerid]))return 1;
 	return 0;
 }
-//Checks if player has an item, by modelid. If so, returns the quantity, otherwhise 0 */
-forward InvGUI:DoesPlayerInvHaveItem(playerid,modelid);
-public InvGUI:DoesPlayerInvHaveItem(playerid,modelid) {
-	for(new i;i<INVENTORY_ROWLIMIT;i++) {
-		for(new j;j<INVENTORY_COLUMNLIMIT;j++) {
-			if(GetPlayerInvGuiModelid(playerid,i,j)==modelid)return GetPlayerGuiInvItemQuantity(playerid,i,j);
-		}
-	}
-	return 0;
-}
-//Checks if player has an item, by modelid. If so, returns the 1D location. Otherwhsie returns 0 */
-forward InvGUI:DoesPlayerInvHaveItemEx(playerid,modelid);
-public InvGUI:DoesPlayerInvHaveItemEx(playerid,modelid) {
-	for(new i;i<INVENTORY_ROWLIMIT;i++) {
-		for(new j;j<INVENTORY_COLUMNLIMIT;j++) {
-			if(GetPlayerInvGuiModelid(playerid,i,j)==modelid)return i * INVENTORY_COLUMNLIMIT + j;
-		}
-	}
-	return 0;
-}
 //Returns current selected item 1D index. If no item is selected, returns -1. Considers the current page.
 forward InvGUI:GetPlayerInvSelectedItemIndex(playerid);
 public InvGUI:GetPlayerInvSelectedItemIndex(playerid) {
